@@ -1,12 +1,34 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import {withStyles} from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
+import Toolbar from 'material-ui/Toolbar';
 
+const styles = theme => ({
+    root: {
+        marginTop: 0,
+        width: '100%'
+    },
+    flex: {
+        flex: 0,
+    }
+});
 
-const Header = () => (
+const Header = (props) => {
+    const { classes } = props;
 
-    <header className="App-header">
-        <h1 className="App-title">Welcome to TagMeCloud</h1>
-    </header>
+    return(
+        <div className={classes.root}>
+            <AppBar position="static" color="primary">
+                <Toolbar>
+                    <Typography type="title" color="inherit" className={classes.flex} >
+                        TagMeCloud
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+        </div>
 
-)
+    );
+};
 
-export default Header;
+export default withStyles (styles) (Header);

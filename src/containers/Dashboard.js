@@ -13,18 +13,13 @@ const styles = theme => ({
     },
   });
 
-const HomePage = (props) => {
+const Dashboard = (props) => {
     const { classes } = props;
     return (
         <div>
-            <h1>Home</h1>
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-                <Button raised  className={classes.button}>
-                        Login
-                </Button>
-            </Link>
+            <h1>Dashboard</h1>
         </div>
     );
 };
 
-export default withStyles (styles)(HomePage);
+export default withStyles (styles)(Dashboard);
