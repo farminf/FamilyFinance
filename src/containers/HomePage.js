@@ -1,30 +1,62 @@
 import React from 'react';
 import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
-import { Link } from 'react-router-dom';
-
+import {withStyles} from 'material-ui/styles';
+import {Link} from 'react-router-dom';
+import Constants from '../utils/constants'
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 
 const styles = theme => ({
+    
     button: {
-      margin: theme.spacing.unit,
+        margin: theme.spacing.unit
     },
     input: {
-      display: 'none',
+        display: 'none'
     },
-  });
+    paper: theme
+        .mixins
+        .gutters({
+            paddingTop: 40,
+            paddingBottom: 40,
+            paddingLeft: 16,
+            paddingRight: 16,
+            marginTop: theme.spacing.unit * 3,
+            marginLeft: 20,
+            marginRight: 20
+        })
+
+});
 
 const HomePage = (props) => {
-    const { classes } = props;
+    const {classes} = props;
     return (
-        <div>
-            <h1>Home</h1>
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-                <Button raised  className={classes.button}>
-                        Login
-                </Button>
-            </Link>
+        <div >
+            {/*<h1>Home</h1>*/}
+            <Grid container spacing={8} justify="center">
+                <Grid item xs={3} md={3}> 
+                    <Paper className={classes.paper} elevation={4}>
+                        <Typography type="headline" component="h3">
+                            {Constants.TEXT_LOGIN_CARD_HEADER}
+                        </Typography>
+                        <Typography type="body1" component="p">
+                            {Constants.TEXT_LOGIN_CARD_BODY}
+                        </Typography>
+                        <Link
+                            to="/dashboard"
+                            style={{
+                            textDecoration: 'none'
+                        }}>
+                            <Button raised className={classes.button}>
+                                {Constants.ASSIGNS_LOGIN}
+                            </Button>
+                        </Link>
+                    </Paper>
+                </Grid>
+            </Grid>
         </div>
     );
 };
 
-export default withStyles (styles)(HomePage);
+export default withStyles(styles)(HomePage);
