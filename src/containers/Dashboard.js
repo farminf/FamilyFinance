@@ -3,6 +3,8 @@ import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
+import {showLogoutButton} from '../actions/header';
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     button: {
@@ -24,57 +26,77 @@ const styles = theme => ({
     }
 });
 
-const Dashboard = (props) => {
-    const {classes} = props;
-    return (
-        <div>
-            <h1>{Constants.DASHBOARD_PAGE_TITLE}</h1>
-            <div className={classes.root}>
-                <Grid container spacing={8}>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}></Paper>
-                    </Grid>
+const mapStateToProps = (state) => {
+    return {isLogoutButton: state.header.isLogoutButton}
+}
 
-                </Grid>
+const mapDispatchToProps = dispatch => {
+
+    return {
+        onShowHeader: isLogoutButton => {
+            dispatch(showLogoutButton({isLogoutButton: isLogoutButton}));
+        }
+    }
+}
+
+class Dashboard extends React.Component {
+
+    componentWillMount() {
+        this.props.onShowHeader(true);
+    }
+
+    render() {
+        const {classes} = this.props;
+        return (
+            <div>
+                <h1>{Constants.DASHBOARD_PAGE_TITLE}</h1>
+                <div className={classes.root}>
+                    <Grid container spacing={8}>
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={6} sm={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+
+                    </Grid>
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
-export default withStyles(styles)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Dashboard));

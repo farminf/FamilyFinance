@@ -15,5 +15,6 @@ It will run on port 3000.
 
 ```
 > npm run build
+// or yarn build
 > npm install -g serve
 > serve -p 80 -s build

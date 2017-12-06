@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography';
 import Toolbar from 'material-ui/Toolbar';
 import MenuIcon from 'material-ui-icons/Menu';
 import IconButton from 'material-ui/IconButton';
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     root: {
@@ -24,12 +25,17 @@ const styles = theme => ({
     }
 });
 
+const mapStateToProps = (state) => {
+    return {isLogoutButton: state.header.isLogoutButton}
+}
+
 const Header = (props) => {
     const {classes} = props;
-    const open  = false;
+    const open = false;
+    console.log(props)
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="primary">
+            {props.isLogoutButton && <AppBar position="static" color="primary">
                 <Toolbar>
                     <IconButton
                         color="contrast"
@@ -42,10 +48,10 @@ const Header = (props) => {
                         {props.title}
                     </Typography>
                 </Toolbar>
-            </AppBar>
+            </AppBar>}
         </div>
 
     );
 };
 
-export default withStyles(styles)(Header);
+export default connect(mapStateToProps)(withStyles(styles)(Header));
