@@ -3,7 +3,7 @@
 
 const Constants = {
 
-    APP_TITLE : "Title",
+    APP_TITLE : "Family Finance",
     DASHBOARD_PAGE_TITLE : "Dashboard",
     MATERIAL_PAGE_TITLE : "Material",
     TAGS_PAGE_TITLE : "Tags",

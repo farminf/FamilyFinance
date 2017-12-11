@@ -31,21 +31,22 @@ const styles = theme => ({
 
 });
 
-const mapStateToProps = (state) => {
-    return {isLogoutButton: state.header.isLogoutButton}
-}
+// const mapStateToProps = (state) => {
+//     return {isLogoutButton: state.header.isLogoutButton}
+// }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onShowHeader: isLogoutButton => {
-            dispatch(showLogoutButton({isLogoutButton: isLogoutButton}));
-        }
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onShowHeader: isLogoutButton => {
+//             dispatch(showLogoutButton({isLogoutButton: isLogoutButton}));
+//         }
+//     }
+// }
 
 class HomePage extends React.Component {
     componentWillMount(){
-        this.props.onShowHeader(false);
+        //this.props.onShowHeader(false);
+        this.props.dispatch(showLogoutButton({isLogoutButton: false}));
     }
     render() {
         const {classes} = this.props;
@@ -78,4 +79,4 @@ class HomePage extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HomePage));
+export default connect()(withStyles(styles)(HomePage));
