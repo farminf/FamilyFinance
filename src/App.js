@@ -10,7 +10,7 @@ import './firebase/firebase'
 
 class App extends Component {
   render() {
-    
+    console.log('You are running this application in ' + process.env.NODE_ENV);    
     return (
       <div className="App">
         <AppRouter/>
@@ -18,5 +18,4 @@ class App extends Component {
     );
   }
 }
-console.log('You are running this application in ' + process.env.NODE_ENV);
 export default App; 
