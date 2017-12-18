@@ -1,9 +1,14 @@
 language: node_js
 node_js:
-  - 6
+- 6
 cache:
   directories:
-    - node_modules
+  - node_modules
 script:
-  - npm run build
-  - npm test
+- npm run build
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: U78j0RPC6ZdgUahN4hiU8Je5zug3DEEK/iMkbbFahunyTDAqSNilzbnvUAkaw8t2Vs9Z5+ofGVG0aWZbuKeTDJyZZnsdd1F89sdmPNMlzOsnygs+gZylFYRTIjU8uWE1l4tkL70sCKtKZOFwPIXlRQIQVZUQjykmtvmeDM2gPXRDTwg1pTAQFVg8G0E+F0+QniywazGTMKecf3ZOvLdYh44banJ20xMw3BRe0v5yGZzfdOoW4dt3xR8DTCYzQ8/sSclMJFoIYZeH1pEJQQ4GSPqYThfNDFO16jdonZXbDylaC9jkF1aj25kQL4e+2NB9SecPuBNy+ANTKObCWh6mcNP39q8ivtr4g49T8qTmh04UgSKbIGeJudH804v6gOYOPjmKWMG8FRdB81It5/lAh1yw42pTHTYbtg9d1TgA1c2SkoxhmjweM7l87zb/uPEwLWcwHuguWjtiYjTReIAS5xoFdph+mz3kKhm9cyABvhjs94gmfZUVi90Ct9rDWl3zd8hCPa1U0+DgovhL0AGw1VdVmfwOjdMv0YagrTMvsaTh+Y8A1LCfr1eLvICZ4XzhGicTT66gskSnZjwpc4Tu+cA2ftNmf5PacQs+Aly+8Vth1nbC7E89320ZkR4R6NlmwjcLNEBIg6EfEWlrG1h6VVo7bD5Dx5YQm7lsKblogRM=
+  app: familyfinance-webapp

@@ -40,7 +40,7 @@ const Header = (props) => {
                     <IconButton
                         color="contrast"
                         aria-label="open drawer"
-                        onClick={this.handleDrawerOpen}
+                        
                         className={classNames(classes.menuButton, open && classes.hide)}>
                         <MenuIcon/>
                     </IconButton>

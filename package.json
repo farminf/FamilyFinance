@@ -18,11 +18,14 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "prod" : "node server/server.js",
+    "prod": "node server/server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=.env.test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^22.0.0",
+    "jest-cli": "^22.0.0"
+  }
 }
