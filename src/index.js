@@ -8,11 +8,9 @@ import {firebase} from './firebase/firebase';
 import {history} from './routers/AppRouter';
 import {login, logout} from './actions/auth';
 import configureStore from './store/configureStore';
-import {showLogoutButton} from './actions/header'
 import './firebase/firebase'
 
 const store = configureStore();
-//store.dispatch(showLogoutButton({ isLogoutButton: true }));
 
 const jsx = (
     <Provider store={store}>

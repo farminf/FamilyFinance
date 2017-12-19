@@ -6,7 +6,6 @@ import Constants from '../utils/constants'
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import {showLogoutButton} from '../actions/header';
 import {connect} from 'react-redux';
 import {startLogin} from '../actions/auth';
 

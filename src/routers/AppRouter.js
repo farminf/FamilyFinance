@@ -4,21 +4,19 @@ import createHistory from 'history/createBrowserHistory';
 import NotFoundPage from '../containers/NotFoundPage';
 import HomePage from '../containers/HomePage';
 import Dashboard from '../containers/Dashboard';
-import Header from '../components/Header';
-import Constants from '../utils/constants';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 export const history = createHistory();
-
-
 
 const AppRouter = (props) => {
   return (
     <Router history={history}>
       <div>
-        <Header title={Constants.APP_TITLE}/>
+        
         <Switch>
-          <Route path="/" component={HomePage} exact={true}/>
-          <Route path="/dashboard" component={Dashboard} exact={true}/>
+          <PublicRoute path="/" component={HomePage} exact={true}/>
+          <PrivateRoute path="/dashboard" component={Dashboard} exact={true}/>
           <Route component={NotFoundPage}/>
         </Switch>
       </div>

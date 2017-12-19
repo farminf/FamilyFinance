@@ -33,17 +33,14 @@ const styles = theme => ({
     }
 });
 
-const mapStateToProps = (state) => {
-    return {isLogoutButton: state.header.isLogoutButton}
-}
 
 const Header = (props) => {
     const {classes} = props;
     const open = false;
-    console.log(props)
+    //console.log(props)
     return (
         <div className={classes.root}>
-            {props.isLogoutButton && <AppBar position="static" color="primary">
+            <AppBar position="static" color="primary">
                 <Toolbar>
                     <IconButton
                         color="contrast"
@@ -59,7 +56,7 @@ const Header = (props) => {
                     {Constants.ASSIGNS_LOGOUT}
                 </Button>
                 </Toolbar>
-            </AppBar>}
+            </AppBar>
         </div>
 
     );
@@ -70,4 +67,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps , mapDispatchToProps)(withStyles(styles)(Header));
+export default connect(undefined , mapDispatchToProps)(withStyles(styles)(Header));
