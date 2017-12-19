@@ -1,6 +1,7 @@
 # Family Finance Website Application
 
 [![Heroku](http://heroku-badge.herokuapp.com/?app=familyfinance-webapp)]
+[![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://heroku-badge.herokuapp.com/projects.html)
 
 *Bootstrapped by create-react-app*
 
