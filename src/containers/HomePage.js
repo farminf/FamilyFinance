@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from 'material-ui/Button';
 import {withStyles} from 'material-ui/styles';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import Constants from '../utils/constants'
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import {showLogoutButton} from '../actions/header';
 import {connect} from 'react-redux';
+import {startLogin} from '../actions/auth';
 
 const styles = theme => ({
 
@@ -31,25 +32,16 @@ const styles = theme => ({
 
 });
 
-// const mapStateToProps = (state) => {
-//     return {isLogoutButton: state.header.isLogoutButton}
+// const mapStateToProps = (state) => {     return {isLogoutButton:
+// state.header.isLogoutButton} } const mapDispatchToProps = dispatch => {
+// return {         onShowHeader: isLogoutButton => {
+// dispatch(showLogoutButton({isLogoutButton: isLogoutButton}));         }     }
 // }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onShowHeader: isLogoutButton => {
-//             dispatch(showLogoutButton({isLogoutButton: isLogoutButton}));
-//         }
-//     }
-// }
-
-class HomePage extends React.Component {
-    componentWillMount(){
-        //this.props.onShowHeader(false);
-        this.props.dispatch(showLogoutButton({isLogoutButton: false}));
-    }
-    render() {
-        const {classes} = this.props;
+const HomePage = (props) =>{
+    
+    
+        const {classes} = props;
         return (
             <div >
                 {/*<h1>Home</h1>*/}
@@ -62,21 +54,26 @@ class HomePage extends React.Component {
                             <Typography type="body1" component="p">
                                 {Constants.TEXT_LOGIN_CARD_BODY}
                             </Typography>
-                            <Link
+                            {/*<Link
                                 to="/dashboard"
                                 style={{
                                 textDecoration: 'none'
                             }}>
-                                <Button raised className={classes.button}>
-                                    {Constants.ASSIGNS_LOGIN}
-                                </Button>
-                            </Link>
+                            </Link>*/}
+                            <Button onClick={props.startLogin} raised className={classes.button}>
+                                {Constants.ASSIGNS_LOGIN}
+                            </Button>
+
                         </Paper>
                     </Grid>
                 </Grid>
             </div>
         );
     }
-}
 
-export default connect()(withStyles(styles)(HomePage));
+
+const mapDispatchToProps = (dispatch) => ({
+    startLogin: () => dispatch(startLogin())
+});
+
+export default connect(undefined,mapDispatchToProps)(withStyles(styles)(HomePage));
