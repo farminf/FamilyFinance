@@ -3,8 +3,6 @@ import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
-import {showLogoutButton} from '../actions/header';
-import {connect} from 'react-redux';
 
 const styles = theme => ({
     button: {
@@ -26,24 +24,11 @@ const styles = theme => ({
     }
 });
 
-const mapStateToProps = (state) => {
-    return {isLogoutButton: state.header.isLogoutButton}
-}
 
-const mapDispatchToProps = dispatch => {
-
-    return {
-        onShowHeader: isLogoutButton => {
-            dispatch(showLogoutButton({isLogoutButton: isLogoutButton}));
-        }
-    }
-}
 
 class Dashboard extends React.Component {
 
-    componentWillMount() {
-        this.props.onShowHeader(true);
-    }
+
 
     render() {
         const {classes} = this.props;
@@ -99,4 +84,4 @@ class Dashboard extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Dashboard));
+export default withStyles(styles)(Dashboard);

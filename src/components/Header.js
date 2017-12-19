@@ -6,7 +6,12 @@ import Typography from 'material-ui/Typography';
 import Toolbar from 'material-ui/Toolbar';
 import MenuIcon from 'material-ui-icons/Menu';
 import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
 import {connect} from 'react-redux';
+import {startLogout} from '../actions/auth';
+import Constants from '../utils/constants'
+
+
 
 const styles = theme => ({
     root: {
@@ -22,20 +27,20 @@ const styles = theme => ({
     },
     hide: {
         display: 'none'
+    },
+    button: {
+        margin: theme.spacing.unit
     }
 });
 
-const mapStateToProps = (state) => {
-    return {isLogoutButton: state.header.isLogoutButton}
-}
 
 const Header = (props) => {
     const {classes} = props;
     const open = false;
-    console.log(props)
+    //console.log(props)
     return (
         <div className={classes.root}>
-            {props.isLogoutButton && <AppBar position="static" color="primary">
+            <AppBar position="static" color="primary">
                 <Toolbar>
                     <IconButton
                         color="contrast"
@@ -47,11 +52,19 @@ const Header = (props) => {
                     <Typography type="title" color="inherit" className={classes.flex}>
                         {props.title}
                     </Typography>
+                    <Button onClick={props.startLogout} raised className={classes.button}>
+                    {Constants.ASSIGNS_LOGOUT}
+                </Button>
                 </Toolbar>
-            </AppBar>}
+            </AppBar>
         </div>
 
     );
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Header));
+const mapDispatchToProps = (dispatch) => ({
+    startLogout: () => dispatch(startLogout())
+});
+
+
+export default connect(undefined , mapDispatchToProps)(withStyles(styles)(Header));
