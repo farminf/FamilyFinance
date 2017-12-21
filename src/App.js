@@ -5,7 +5,7 @@ import AppRouter from './routers/AppRouter';
 // console.log(store.getState())
 
 const App = () => {
-    console.log('You are running this application in ' + process.env.NODE_ENV);
+    console.log('You are running this application in ' + process.env.NODE_ENV + ' with parameters of ' + process.env.REACT_APP_ENV);
     return (
         <div className="App">
           <AppRouter/>
