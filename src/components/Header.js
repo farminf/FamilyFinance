@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
 import {withStyles} from 'material-ui/styles';
@@ -10,8 +11,6 @@ import Button from 'material-ui/Button';
 import {connect} from 'react-redux';
 import {startLogout} from '../actions/auth';
 import Constants from '../utils/constants'
-
-
 
 const styles = theme => ({
     root: {
@@ -33,7 +32,6 @@ const styles = theme => ({
     }
 });
 
-
 const Header = (props) => {
     const {classes} = props;
     const open = false;
@@ -45,16 +43,18 @@ const Header = (props) => {
                     <IconButton
                         color="contrast"
                         aria-label="open drawer"
-                        
                         className={classNames(classes.menuButton, open && classes.hide)}>
                         <MenuIcon/>
                     </IconButton>
                     <Typography type="title" color="inherit" className={classes.flex}>
                         {props.title}
                     </Typography>
+                    <NavLink to="/addaccount" activeClassName="is-active">Add Account</NavLink>
+                    <NavLink to="/addtransaction" activeClassName="is-active">Add Transaction</NavLink>                    
+                    
                     <Button onClick={props.startLogout} raised className={classes.button}>
-                    {Constants.ASSIGNS_LOGOUT}
-                </Button>
+                        {Constants.ASSIGNS_LOGOUT}
+                    </Button>
                 </Toolbar>
             </AppBar>
         </div>
@@ -66,5 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
     startLogout: () => dispatch(startLogout())
 });
 
-
-export default connect(undefined , mapDispatchToProps)(withStyles(styles)(Header));
+export default connect(undefined, mapDispatchToProps)(withStyles(styles)(Header));
