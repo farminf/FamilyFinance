@@ -4,7 +4,6 @@ import {Route, Redirect} from 'react-router-dom';
 import Header from '../components/Header';
 import Constants from '../utils/constants';
 
-
 export const PrivateRoute = ({
     isAuthenticated,
     component: Component,
@@ -14,10 +13,9 @@ export const PrivateRoute = ({
         {...rest}
         component={(props) => (isAuthenticated
         ? (
-            <div>
-                <Header title={Constants.APP_TITLE}/>
-                <Component {...props}/>
-            </div>
+                <Header title={Constants.APP_TITLE}>
+                    <Component {...props}/>
+                </Header>
         )
         : (<Redirect to="/"/>))}/>
 );

@@ -35,7 +35,10 @@ firebase
     .auth()
     .onAuthStateChanged((user) => {
         if (user) {
-            store.dispatch(login({"uid": user.uid}));
+            store.dispatch(login({
+                                    "uid": user.uid,
+                                    "photoURL" : user.photoURL   
+                                }));
             renderApp();
             if (history.location.pathname === '/') {
                 history.push('/dashboard');

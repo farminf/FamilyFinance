@@ -11,8 +11,8 @@ const Constants = {
     ASSIGNS_LOGOUT : "Logout",
     TEXT_LOGIN_CARD_HEADER : 'Welcome to Family Finance',
     TEXT_LOGIN_CARD_BODY : 'Login to your area',
-    ADD_ACCOUNT_PAGE_TITLE : 'Add new account',
-    ADD_TRANSACTION_PAGE_TITLE : 'Add new transaction'
+    ADD_ACCOUNT_PAGE_TITLE : 'Account',
+    ADD_TRANSACTION_PAGE_TITLE : 'Transactions'
 
 };
 
