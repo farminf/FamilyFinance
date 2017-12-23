@@ -8,7 +8,8 @@ import {firebase} from './firebase/firebase';
 import {history} from './routers/AppRouter';
 import {login, logout} from './actions/auth';
 import configureStore from './store/configureStore';
-import './firebase/firebase'
+import './firebase/firebase';
+import LoadProgress from './components/LoadProgress';
 
 const store = configureStore();
 
@@ -29,13 +30,17 @@ const renderApp = () => {
 };
 
 ReactDOM.render(
-    <p>Loading...</p>, document.getElementById('root'));
+    <LoadProgress />
+    , document.getElementById('root'));
 
 firebase
     .auth()
     .onAuthStateChanged((user) => {
         if (user) {
-            store.dispatch(login({"uid": user.uid}));
+            store.dispatch(login({
+                                    "uid": user.uid,
+                                    "photoURL" : user.photoURL   
+                                }));
             renderApp();
             if (history.location.pathname === '/') {
                 history.push('/dashboard');
