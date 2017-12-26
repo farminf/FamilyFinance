@@ -10,7 +10,7 @@ export default(state = {}, action) => {
         case 'DELETE_ACCOUNTS':
             return {};
         case 'SET_ACCOUNTS':
-            return {};
+            return action.accounts;
         default:
             return state;
     }

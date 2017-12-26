@@ -9,8 +9,8 @@ export default(state = {}, action) => {
             return {};
         case 'DELETE_TRANSACTION':
             return {};
-        case 'SET_TRANSACTION':
-            return {};
+        case 'SET_TRANSACTIONS':
+            return action.transactions;
         default:
             return state;
     }

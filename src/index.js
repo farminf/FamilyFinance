@@ -10,6 +10,8 @@ import {login, logout} from './actions/auth';
 import configureStore from './store/configureStore';
 import './firebase/firebase';
 import LoadProgress from './components/LoadProgress';
+import {startSetTransactions} from './actions/transactions';
+import {startSetAccounts} from './actions/accounts';
 
 const store = configureStore();
 
@@ -30,23 +32,26 @@ const renderApp = () => {
 };
 
 ReactDOM.render(
-    <LoadProgress />
-    , document.getElementById('root'));
+    <LoadProgress/>, document.getElementById('root'));
 
 firebase
     .auth()
     .onAuthStateChanged((user) => {
         if (user) {
-            store.dispatch(login({
-                                    "uid": user.uid,
-                                    "photoURL" : user.photoURL   
-                                }));
-            renderApp();
-            if (history.location.pathname === '/') {
-                history.push('/dashboard');
-            }
-            // store.dispatch(startSetExpenses()).then(() => {   renderApp();   if
-            // (history.location.pathname === '/') {     history.push('/dashboard');   } });
+            store.dispatch(login({"uid": user.uid, "photoURL": user.photoURL}));
+            store
+                .dispatch(startSetTransactions())
+                .then(() => {
+                    store
+                        .dispatch(startSetAccounts())
+                        .then(() => {
+                            renderApp();
+                            if (history.location.pathname === '/') {
+                                history.push('/dashboard');
+                            }
+                        });
+                });
+
         } else {
             store.dispatch(logout());
             renderApp();

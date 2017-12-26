@@ -31,3 +31,25 @@ export const startAddTransaction = (transactionData = {}) => {
     }
 
 }
+
+export const setTransactions = (transactions) => ({type: 'SET_TRANSACTIONS', transactions});
+
+export const startSetTransactions = () => {
+
+    return (dispatch, getState) => {
+        const user_uid = getState().auth.uid;
+        return database
+            .ref(`users/${user_uid}/transactions`)
+            .once('value')
+            .then((snapshot) => {
+                const transactions = [];
+                snapshot.forEach((childSnapshot) => {
+                    transactions.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                });
+                dispatch(setTransactions(transactions));
+            });
+    };
+}
