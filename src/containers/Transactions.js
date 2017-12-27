@@ -3,9 +3,10 @@ import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
-import AccountForm from '../components/AccountForm';
+import TransactionForm from '../components/TransactionForm';
 import {connect} from 'react-redux';
-import {startAddAccount} from '../actions/accounts';
+import {startAddTransaction} from '../actions/transactions';
+import TransactionList from '../components/TransactionList';
 
 const styles = theme => ({
     button: {
@@ -18,7 +19,8 @@ const styles = theme => ({
         flexGrow: 1,
         marginTop: 30,
         marginLeft: 10,
-        marginRight: 5
+        marginRight: 5,
+        height: 'auto'
     },
     paper: {
         padding: 60,
@@ -27,12 +29,12 @@ const styles = theme => ({
     }
 });
 
-class AddAccountContainer extends React.Component {
+class AddTransactionContainer extends React.Component {
 
-    onSubmit = (account) => {
+    onSubmit = (transaction) => {
         this
             .props
-            .startAddAccount(account);
+            .startAddTransaction(transaction);
         this
             .props
             .history
@@ -45,14 +47,19 @@ class AddAccountContainer extends React.Component {
             <div>
 
                 <div className={classes.root}>
-                    <h1>{Constants.ADD_ACCOUNT_PAGE_TITLE}</h1>
+                    <h1>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h1>
                     <Grid container spacing={8}>
 
                         <Grid item md={4} xs={12} sm={6}>
                             <Paper className={classes.paper}>
-                                <AccountForm onSubmit={this.onSubmit}/>
+                                <TransactionForm onSubmit={this.onSubmit}/>
                             </Paper>
                         </Grid>
+                        <Grid item md={8} xs={12} sm={6}>
+                        <Paper className={classes.paper}>
+                            <TransactionList />
+                        </Paper>
+                    </Grid>
 
                     </Grid>
                 </div>
@@ -62,7 +69,7 @@ class AddAccountContainer extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddAccount: (account) => dispatch(startAddAccount(account))
+    startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction))
 });
 
-export default connect(undefined, mapDispatchToProps)(withStyles(styles)(AddAccountContainer));
+export default connect(undefined, mapDispatchToProps)(withStyles(styles)(AddTransactionContainer));

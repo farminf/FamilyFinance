@@ -6,8 +6,8 @@ import HomePage from '../containers/HomePage';
 import Dashboard from '../containers/Dashboard';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import AddAccountContainer from '../containers/AddAccount';
-import AddTransactionContainer from '../containers/AddTransaction';
+import AddAccountContainer from '../containers/Accounts';
+import AddTransactionContainer from '../containers/Transactions';
 
 export const history = createHistory();
 
@@ -19,8 +19,9 @@ const AppRouter = (props) => {
         <Switch>
           <PublicRoute path="/" component={HomePage} exact={true}/>
           <PrivateRoute path="/dashboard" component={Dashboard}/>
-          <PrivateRoute path="/addaccount" component={AddAccountContainer}/> 
-          <PrivateRoute path="/addtransaction" component={AddTransactionContainer}/>          
+          <PrivateRoute path="/accounts" component={AddAccountContainer}/> 
+          <PrivateRoute path="/transactions" component={AddTransactionContainer}/>
+          <PrivateRoute path="/accounts/edit/:id" component={Dashboard}/>         
           <Route component={NotFoundPage}/>
         </Switch>
       </div>

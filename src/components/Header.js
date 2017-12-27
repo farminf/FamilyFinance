@@ -162,13 +162,13 @@ class Header extends React.Component {
                             <ListItemText primary="Dashboard"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/addaccount" activeClassName="is-active">
+                    <NavLink to="/accounts" activeClassName="is-active">
                         <ListItem button>
                             <AccountBalanceIcon/>
                             <ListItemText primary="Accounts"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/addtransaction" activeClassName="is-active">
+                    <NavLink to="/transactions" activeClassName="is-active">
                         <ListItem button>
                             <AddIcon/>
                             <ListItemText primary="Transactions"/>
