@@ -8,7 +8,7 @@ export default(state = {}, action) => {
         case 'UPDATE_ACCOUNTS':
             return {};
         case 'DELETE_ACCOUNTS':
-            return {};
+            return state.filter(({ id }) => id !== action.id);
         case 'SET_ACCOUNTS':
             return action.accounts;
         default:

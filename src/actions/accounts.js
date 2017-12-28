@@ -47,4 +47,20 @@ export const startSetAccounts = () => {
                 dispatch(setAccounts(accounts));
             });
     };
-}
+};
+
+export const deleteAccount = ({id} = {}) => ({
+
+    type: 'DELETE_ACCOUNTS',
+    id
+});
+
+export const startDeleteAccount = ({id} = {}) => {
+    return (dispatch , getState) =>{
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/accounts/${id}`).remove().then(() => {
+          dispatch(deleteAccount({ id }));
+        });
+    }
+};
+

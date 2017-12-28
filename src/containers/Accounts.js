@@ -34,10 +34,10 @@ class AddAccountContainer extends React.Component {
         this
             .props
             .startAddAccount(account);
-        // this
-        //     .props
-        //     .history
-        //     .push('/');
+        this
+            .props
+            .history
+            .push('/accounts');
     };
 
     render() {

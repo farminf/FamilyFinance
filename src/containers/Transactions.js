@@ -38,7 +38,7 @@ class AddTransactionContainer extends React.Component {
         this
             .props
             .history
-            .push('/');
+            .push('/transactions');
     };
 
     render() {

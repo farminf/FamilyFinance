@@ -52,4 +52,19 @@ export const startSetTransactions = () => {
                 dispatch(setTransactions(transactions));
             });
     };
-}
+};
+
+export const deleteTransaction = ({id} = {}) => ({type: 'DELETE_TRANSACTION', id});
+
+export const startDeleteTransaction = ({id} = {}) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database
+            .ref(`users/${uid}/transactions/${id}`)
+            .remove()
+            .then(() => {
+                dispatch(deleteTransaction({id}));
+            });
+    }
+};
+

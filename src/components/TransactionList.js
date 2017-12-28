@@ -1,23 +1,41 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TransactionListItem from './TransactionListItem';
+import {startDeleteTransaction} from '../actions/transactions';
 
-const TransactionList = (props) => (
-    <div>
-        {props.transactions.lenght === 0
-            ? (
-                <p>no transaction</p>
-            )
-            : (props.transactions.map((transaction) => {
-                return <TransactionListItem key={transaction.id} {...transaction}/>
-            }))
+class TransactionList extends React.Component {
+
+    onDelete = (id) => {
+        this
+            .props
+            .startDeleteTransaction(id);
+    };
+
+    render() {
+        return (
+            <div>
+                {this.props.transactions.lenght === 0
+                    ? (
+                        <p>no transaction</p>
+                    )
+                    : (this.props.transactions.map((transaction) => {
+                        return <TransactionListItem
+                            key={transaction.id}
+                            onDelete={this.onDelete}
+                            {...transaction}/>
+                    }))
 }
-    </div>
+            </div>
 
-)
-
+        )
+    }
+}
 const mapStateToProps = (state) => {
     return {transactions: state.transactions};
 };
 
-export default connect(mapStateToProps)(TransactionList)
+const mapDispatchToProps = (dispatch, props) => ({
+    startDeleteTransaction: (data) => dispatch(startDeleteTransaction(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionList)
