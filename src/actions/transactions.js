@@ -68,3 +68,16 @@ export const startDeleteTransaction = ({id} = {}) => {
     }
 };
 
+export const editTransaction = (id, updates) => ({type: 'UPDATE_TRANSACTION', id, updates});
+
+export const startEditTransaction = (id, updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database
+            .ref(`users/${uid}/transactions/${id}`)
+            .update(updates)
+            .then(() => {
+                dispatch(editTransaction(id, updates));
+            });
+    };
+};

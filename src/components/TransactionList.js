@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TransactionListItem from './TransactionListItem';
-import {startDeleteTransaction} from '../actions/transactions';
+import {startDeleteTransaction , startEditTransaction} from '../actions/transactions';
 
 class TransactionList extends React.Component {
 
@@ -9,6 +9,10 @@ class TransactionList extends React.Component {
         this
             .props
             .startDeleteTransaction(id);
+    };
+
+    onEdit = (id, update) => {
+        this.props.startEditTransaction(id,update);
     };
 
     render() {
@@ -22,6 +26,7 @@ class TransactionList extends React.Component {
                         return <TransactionListItem
                             key={transaction.id}
                             onDelete={this.onDelete}
+                            onEdit={this.onEdit}
                             {...transaction}/>
                     }))
 }
@@ -35,7 +40,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-    startDeleteTransaction: (data) => dispatch(startDeleteTransaction(data))
+    startDeleteTransaction: (data) => dispatch(startDeleteTransaction(data)),
+    startEditTransaction: (id ,update) => dispatch(startEditTransaction(id ,update))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionList)

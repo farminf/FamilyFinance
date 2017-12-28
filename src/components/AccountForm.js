@@ -8,10 +8,12 @@ export default class AccountForm extends React.Component {
                 ? props.account.name
                 : '',
             balance: props.account
-                ? props.account.balance
+                ? (props.account.balance / 100).toString()
                 : '',
-
-            error: ''
+            error: '',
+            submit_button_title: props.account
+            ? 'Update'
+            : 'Add',
         };
     };
 
@@ -59,7 +61,7 @@ export default class AccountForm extends React.Component {
                         value={this.state.balance}
                         onChange={this.onBalanceChange}/>
 
-                    <button>Add Account</button>
+                    <button>{this.state.submit_button_title}</button>
                 </form>
             </div>
         )

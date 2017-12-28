@@ -8,7 +8,7 @@ export default class TransactionForm extends React.Component {
                 ? props.transaction.description
                 : '',
             amount: props.transaction
-                ? props.transaction.amount
+                ? (props.transaction.amount / 100).toString()
                 : '',
             account: props.transaction
                 ? props.transaction.account
@@ -16,7 +16,10 @@ export default class TransactionForm extends React.Component {
             date: props.transaction
                 ? props.transaction.date
                 : '',
-            error: ''
+            error: '',
+            submit_button_title: props.transaction
+            ? 'Update'
+            : 'Add',
         };
     };
 
@@ -88,7 +91,7 @@ export default class TransactionForm extends React.Component {
                         value={this.state.date}
                         onChange={this.onDateChange}/>
 
-                    <button>Add Transaction</button>
+                    <button>{this.state.submit_button_title}</button>
                 </form>
             </div>
         )

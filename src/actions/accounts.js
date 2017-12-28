@@ -49,18 +49,30 @@ export const startSetAccounts = () => {
     };
 };
 
-export const deleteAccount = ({id} = {}) => ({
-
-    type: 'DELETE_ACCOUNTS',
-    id
-});
+export const deleteAccount = ({id} = {}) => ({type: 'DELETE_ACCOUNTS', id});
 
 export const startDeleteAccount = ({id} = {}) => {
-    return (dispatch , getState) =>{
+    return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        return database.ref(`users/${uid}/accounts/${id}`).remove().then(() => {
-          dispatch(deleteAccount({ id }));
-        });
+        return database
+            .ref(`users/${uid}/accounts/${id}`)
+            .remove()
+            .then(() => {
+                dispatch(deleteAccount({id}));
+            });
     }
 };
 
+export const editAccount = (id, updates) => ({type: 'UPDATE_ACCOUNTS', id, updates});
+
+export const startEditAccount = (id, updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database
+            .ref(`users/${uid}/accounts/${id}`)
+            .update(updates)
+            .then(() => {
+                dispatch(editAccount(id, updates));
+            });
+    };
+};
