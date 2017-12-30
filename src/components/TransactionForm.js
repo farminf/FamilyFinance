@@ -1,6 +1,34 @@
 import React from 'react';
+import {withStyles} from 'material-ui/styles';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
+import Save from 'material-ui-icons/Save';
+import Divider from 'material-ui/Divider';
 
-export default class TransactionForm extends React.Component {
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap'
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginTop: theme.spacing.unit,
+        marginBottom: theme.spacing.unit,
+        width: 200
+    },
+    menu: {
+        width: 200
+    },
+    button: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 150,
+        marginTop: theme.spacing.unit
+    }
+});
+
+class TransactionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,8 +46,8 @@ export default class TransactionForm extends React.Component {
                 : '',
             error: '',
             submit_button_title: props.transaction
-            ? 'Update'
-            : 'Add',
+                ? 'Update'
+                : 'Add'
         };
     };
 
@@ -64,37 +92,45 @@ export default class TransactionForm extends React.Component {
     };
 
     render() {
-
+        const {classes} = this.props;
         return (
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
-                    <input
+                    <TextField
+                        className={classes.textField}
                         type="text"
                         placeholder="description"
                         autoFocus
                         value={this.state.description}
                         onChange={this.onDescriptionChange}/>
-                    <input
+                    <TextField
+                        className={classes.textField}
                         type="text"
                         placeholder="Amount"
                         value={this.state.amount}
                         onChange={this.onAmountChange}/>
-                    <input
+                    <TextField
+                        className={classes.textField}
                         type="text"
                         placeholder="Account"
                         value={this.state.account}
                         onChange={this.onAccountChange}/>
-                    <input
+                    <TextField
+                        className={classes.textField}
                         type="text"
                         placeholder="date"
                         value={this.state.date}
                         onChange={this.onDateChange}/>
 
-                    <button>{this.state.submit_button_title}</button>
+                    <Button onClick={this.onSubmit} className={classes.button} raised color="primary">
+                        <Save className={classes.leftIcon}/> {this.state.submit_button_title}
+                    </Button>
                 </form>
             </div>
         )
     }
 
 }
+
+export default withStyles(styles)(TransactionForm);

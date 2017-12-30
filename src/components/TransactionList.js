@@ -1,11 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TransactionListItem from './TransactionListItem';
-import {startDeleteTransaction, startEditTransaction} from '../actions/transactions';
+import {startDeleteTransaction, startEditTransaction, startAddTransaction} from '../actions/transactions';
 import {withStyles} from 'material-ui/styles';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
-
 
 const styles = theme => ({
     root: {
@@ -26,46 +24,45 @@ class TransactionList extends React.Component {
             .startDeleteTransaction(id);
     };
 
-    onEdit = (id, update) => {
-        this
-            .props
-            .startEditTransaction(id, update);
+    onCopy = (id) => {
+        console.log(id)
+        // this
+        //     .props
+        //     .startAddTransaction(transaction);
     };
 
     render() {
         const {classes} = this.props;
-        return (
-                this.props.transactions.lenght === 0
-                    ? (
-                        <p>no transaction</p>
-                    )
-                    : (
-                        <Table className={classes.table}>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Description</TableCell>
-                                    <TableCell numeric>Amount</TableCell>
-                                    <TableCell >Date</TableCell>
-                                    <TableCell >Account</TableCell>
-                                    <TableCell >Options</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {this
-                                    .props
-                                    .transactions
-                                    .map((transaction) => {
-                                        return <TransactionListItem
-                                            key={transaction.id}
-                                            onDelete={this.onDelete}
-                                            onEdit={this.onEdit}
-                                            {...transaction}/>
-                                    })
+        return (this.props.transactions.lenght === 0
+            ? (
+                <p>no transaction</p>
+            )
+            : (
+                <Table className={classes.table}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Description</TableCell>
+                            <TableCell numeric>Amount</TableCell>
+                            <TableCell >Date</TableCell>
+                            <TableCell >Account</TableCell>
+                            <TableCell ></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this
+                            .props
+                            .transactions
+                            .map((transaction) => {
+                                return <TransactionListItem
+                                    key={transaction.id}
+                                    onDelete={this.onDelete}
+                                    onCopy={this.onCopy}
+                                    {...transaction}/>
+                            })
 }
-                            </TableBody>
-                        </Table>
-                    )
-        )
+                    </TableBody>
+                </Table>
+            ))
     }
 }
 const mapStateToProps = (state) => {
@@ -73,7 +70,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, props) => ({
     startDeleteTransaction: (data) => dispatch(startDeleteTransaction(data)),
-    startEditTransaction: (id, update) => dispatch(startEditTransaction(id, update))
+    startEditTransaction: (id, update) => dispatch(startEditTransaction(id, update)),
+    startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction))
 });
 
-export default connect (mapStateToProps,mapDispatchToProps)(withStyles(styles)(TransactionList))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TransactionList))
