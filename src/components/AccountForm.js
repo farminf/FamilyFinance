@@ -1,6 +1,32 @@
 import React from 'react';
+import {withStyles} from 'material-ui/styles';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
 
-export default class AccountForm extends React.Component {
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap'
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginTop: theme.spacing.unit,
+        marginBottom: theme.spacing.unit,
+        width: 200
+    },
+    menu: {
+        width: 200
+    },
+    button: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 150,
+        marginTop: theme.spacing.unit
+    }
+});
+
+class AccountForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,22 +38,24 @@ export default class AccountForm extends React.Component {
                 : '',
             error: '',
             submit_button_title: props.account
-            ? 'Update'
-            : 'Add',
+                ? 'Update'
+                : 'Add'
         };
     };
 
     onSubmit = (e) => {
         e.preventDefault();
         if (!this.state.name || !this.state.balance) {
-            this.setState(() => ({ error: 'Please provide name and balance.' }));
-          } else {
-            this.setState(() => ({ error: '' }));
-            this.props.onSubmit({
-              name: this.state.name,
-              balance: parseFloat(this.state.balance, 10) * 100,
-            });
-          }
+            this.setState(() => ({error: 'Please provide name and balance.'}));
+        } else {
+            this.setState(() => ({error: ''}));
+            this
+                .props
+                .onSubmit({
+                    name: this.state.name,
+                    balance: parseFloat(this.state.balance, 10) * 100
+                });
+        }
     };
 
     onNameChange = (e) => {
@@ -44,27 +72,35 @@ export default class AccountForm extends React.Component {
     };
 
     render() {
-
+        const {classes} = this.props;
         return (
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
-                    <input
+                    <TextField
+                        className={classes.textField}
                         type="text"
                         placeholder="name"
                         autoFocus
                         value={this.state.name}
                         onChange={this.onNameChange}/>
-                    <input
+                    <TextField
+                        className={classes.textField}
                         type="text"
                         placeholder="Balance"
                         value={this.state.balance}
                         onChange={this.onBalanceChange}/>
 
-                    <button>{this.state.submit_button_title}</button>
+                    <Button
+                        onClick={this.onSubmit}
+                            className={classes.button}
+                        raised
+                        color="primary">{this.state.submit_button_title}</Button>
                 </form>
             </div>
         )
     }
 
 }
+
+export default withStyles(styles)(AccountForm);

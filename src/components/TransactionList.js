@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TransactionListItem from './TransactionListItem';
-import {startDeleteTransaction, startEditTransaction, startAddTransaction} from '../actions/transactions';
+import {startDeleteTransaction, startAddTransaction} from '../actions/transactions';
 import {withStyles} from 'material-ui/styles';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
@@ -80,7 +80,6 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, props) => ({
     startDeleteTransaction: (data) => dispatch(startDeleteTransaction(data)),
-    startEditTransaction: (id, update) => dispatch(startEditTransaction(id, update)),
     startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction))
 });
 

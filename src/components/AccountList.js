@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import AccountListItem from './AccountListItem';
-import {startDeleteAccount} from '../actions/accounts';
+import {startDeleteAccount, startAddAccount} from '../actions/accounts';
 import {withStyles} from 'material-ui/styles';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
@@ -23,6 +23,24 @@ export class AccountList extends React.Component {
             .props
             .startDeleteAccount(id);
     };
+
+    onCopy = (id) => {
+        console.log(id)
+        this
+            .props
+            .accounts
+            .map((account) => {
+                if (account.id === id) {
+                    return this
+                        .props
+                        .startAddAccount(account);
+                } else {
+                    return console.log('no account with this ID found')
+                }
+            })
+
+    };
+
     render() {
         const {classes} = this.props;
         return (
@@ -37,7 +55,7 @@ export class AccountList extends React.Component {
                                 <TableRow>
                                     <TableCell>Account</TableCell>
                                     <TableCell numeric>Balance</TableCell>
-                                    <TableCell >Options</TableCell>
+                                    <TableCell ></TableCell>
 
                                 </TableRow>
                             </TableHead>
@@ -46,13 +64,17 @@ export class AccountList extends React.Component {
                                     .props
                                     .accounts
                                     .map((account) => {
-                                        return <AccountListItem key={account.id} onDelete={this.onDelete} {...account}/>
+                                        return <AccountListItem 
+                                            key={account.id} 
+                                            onDelete={this.onDelete}
+                                            onCopy={this.onCopy}
+                                            {...account}/>
                                     })
-}
+                                }
                             </TableBody>
                         </Table>
                     )
-}
+                }
             </div>
 
         )
@@ -67,6 +89,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
+    startAddAccount: (account) => dispatch(startAddAccount(account)),
     startDeleteAccount: (data) => dispatch(startDeleteAccount(data))
 });
 

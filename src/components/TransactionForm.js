@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
-import Save from 'material-ui-icons/Save';
 
 const styles = theme => ({
     container: {
@@ -123,7 +122,8 @@ class TransactionForm extends React.Component {
                         onChange={this.onDateChange}/>
 
                     <Button onClick={this.onSubmit} className={classes.button} raised color="primary">
-                        <Save className={classes.leftIcon}/> {this.state.submit_button_title}
+                        {/*<Save className={classes.leftIcon}/> */}
+                        {this.state.submit_button_title}
                     </Button>
                 </form>
             </div>
