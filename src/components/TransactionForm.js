@@ -2,6 +2,10 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import Select from 'material-ui/Select';
+import Input, {InputLabel} from 'material-ui/Input';
+import {FormControl} from 'material-ui/Form';
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     container: {
@@ -23,6 +27,13 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 150,
         marginTop: theme.spacing.unit
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 200
+    },
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2
     }
 });
 
@@ -108,12 +119,31 @@ class TransactionForm extends React.Component {
                         placeholder="Amount"
                         value={this.state.amount}
                         onChange={this.onAmountChange}/>
-                    <TextField
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="age-native-simple">Account</InputLabel>
+                        <Select
+                            native
+                            value={this.state.account}
+                            onChange={this.onAccountChange}
+                            input={< Input id = "age-native-simple" />}>
+                            <option value="" />
+                            {this
+                                .props
+                                .accounts
+                                .map((account) => {
+                                    return <option value={account.name}>{account.name}</option>
+                                })}
+
+                        </Select>
+                    </FormControl>
+
+                    {/*<TextField
                         className={classes.textField}
                         type="text"
                         placeholder="Account"
                         value={this.state.account}
-                        onChange={this.onAccountChange}/>
+                    onChange={this.onAccountChange}/>*/}
                     <TextField
                         className={classes.textField}
                         type="text"
@@ -121,7 +151,11 @@ class TransactionForm extends React.Component {
                         value={this.state.date}
                         onChange={this.onDateChange}/>
 
-                    <Button onClick={this.onSubmit} className={classes.button} raised color="primary">
+                    <Button
+                        onClick={this.onSubmit}
+                        className={classes.button}
+                        raised
+                        color="primary">
                         {/*<Save className={classes.leftIcon}/> */}
                         {this.state.submit_button_title}
                     </Button>
@@ -132,4 +166,8 @@ class TransactionForm extends React.Component {
 
 }
 
-export default withStyles(styles)(TransactionForm);
+const mapStateToProps = (state) => {
+    return {accounts: state.accounts};
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(TransactionForm));
