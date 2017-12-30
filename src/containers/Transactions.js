@@ -23,7 +23,7 @@ const styles = theme => ({
         height: 'auto'
     },
     paper: {
-        padding: 60,
+        padding: 100,
         textAlign: 'center',
         color: theme.palette.text.secondary
     }

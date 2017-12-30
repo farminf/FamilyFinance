@@ -12,6 +12,8 @@ import './firebase/firebase';
 import LoadProgress from './components/LoadProgress';
 import {startSetTransactions} from './actions/transactions';
 import {startSetAccounts} from './actions/accounts';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 
 const store = configureStore();
 

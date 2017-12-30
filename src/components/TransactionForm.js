@@ -6,6 +6,8 @@ import Select from 'material-ui/Select';
 import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
 import {connect} from 'react-redux';
+import moment from 'moment';
+import {SingleDatePicker} from 'react-dates';
 
 const styles = theme => ({
     container: {
@@ -51,9 +53,10 @@ class TransactionForm extends React.Component {
                 ? props.transaction.account
                 : '',
             date: props.transaction
-                ? props.transaction.date
-                : '',
+                ? moment(props.transaction.date)
+                : moment(),
             error: '',
+            calendarFocused: false,
             submit_button_title: props.transaction
                 ? 'Update'
                 : 'Add'
@@ -72,7 +75,7 @@ class TransactionForm extends React.Component {
                     description: this.state.description,
                     amount: parseFloat(this.state.amount, 10) * 100,
                     account: this.state.account,
-                    date: this.state.date
+                    date: this.state.date.valueOf()
                 });
         }
     };
@@ -95,9 +98,13 @@ class TransactionForm extends React.Component {
         this.setState(() => ({account}));
     };
 
-    onDateChange = (e) => {
-        const date = e.target.value;
+    onDateChange = (date) => {
+        //const date = e.target.value;
         this.setState(() => ({date}));
+    };
+
+    onFocusChange = ({focused}) => {
+        this.setState(() => ({calendarFocused: focused}));
     };
 
     render() {
@@ -106,6 +113,14 @@ class TransactionForm extends React.Component {
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
+                    <SingleDatePicker
+                        date={this.state.date}
+                        onDateChange={this.onDateChange}
+                        focused={this.state.calendarFocused}
+                        onFocusChange={this.onFocusChange}
+                        numberOfMonths={1}
+                        isOutsideRange={() => false}/>
+
                     <TextField
                         className={classes.textField}
                         type="text"
@@ -127,12 +142,11 @@ class TransactionForm extends React.Component {
                             value={this.state.account}
                             onChange={this.onAccountChange}
                             input={< Input id = "age-native-simple" />}>
-                            <option value="" />
-                            {this
+                            <option value=""/> {this
                                 .props
                                 .accounts
                                 .map((account) => {
-                                    return <option value={account.name}>{account.name}</option>
+                                    return <option key={account.name} value={account.name}>{account.name}</option>
                                 })}
 
                         </Select>
@@ -143,13 +157,16 @@ class TransactionForm extends React.Component {
                         type="text"
                         placeholder="Account"
                         value={this.state.account}
-                    onChange={this.onAccountChange}/>*/}
-                    <TextField
+                    onChange={this.onAccountChange}/>
+
+                 <TextField
                         className={classes.textField}
-                        type="text"
+                        type="date"
                         placeholder="date"
-                        value={this.state.date}
-                        onChange={this.onDateChange}/>
+                        value={moment
+                        .unix(this.state.date)
+                        .format("DD/mm/YYYY")}
+                        onChange={this.onDateChange}/>*/}
 
                     <Button
                         onClick={this.onSubmit}
