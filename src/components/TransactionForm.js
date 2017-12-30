@@ -3,7 +3,6 @@ import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Save from 'material-ui-icons/Save';
-import Divider from 'material-ui/Divider';
 
 const styles = theme => ({
     container: {

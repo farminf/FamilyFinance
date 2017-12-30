@@ -26,9 +26,19 @@ class TransactionList extends React.Component {
 
     onCopy = (id) => {
         console.log(id)
-        // this
-        //     .props
-        //     .startAddTransaction(transaction);
+        this
+            .props
+            .transactions
+            .map((transaction) => {
+                if (transaction.id === id) {
+                    return this
+                        .props
+                        .startAddTransaction(transaction);
+                }else{
+                    return console.log('no transaction with this ID found')
+                }
+            })
+
     };
 
     render() {

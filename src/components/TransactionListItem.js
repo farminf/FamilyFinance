@@ -24,6 +24,7 @@ class TransactionListItem extends React.Component {
         this
             .props
             .onDelete({id: this.props.id});
+        this.setState({anchorEl: null});
     };
 
     editTransaction = () => {
@@ -31,12 +32,14 @@ class TransactionListItem extends React.Component {
             .props
             .history
             .push('/transactions/edit/' + this.props.id);
+        this.setState({anchorEl: null});
     };
 
     copyTransaction = () => {
         this
             .props
-            .onCopy({id: this.props.id});
+            .onCopy(this.props.id);
+        this.setState({anchorEl: null});
     };
 
     render() {
