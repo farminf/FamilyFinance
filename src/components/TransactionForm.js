@@ -8,34 +8,36 @@ import {FormControl} from 'material-ui/Form';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import {SingleDatePicker} from 'react-dates';
+import '../react_dates_overrides.css'
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap'
-    },
+
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit,
-        width: 200
+        width: 250,
+        padding: 10
     },
-    menu: {
-        width: 200
-    },
+
     button: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: 150,
-        marginTop: theme.spacing.unit
+        width: 250,
+        marginTop: theme.spacing.unit,
+        marginBottom: 40
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 200
+        minWidth: 250,
+        padding: 10
     },
-    selectEmpty: {
-        marginTop: theme.spacing.unit * 2
+    dateFormControl:{
+        margin: theme.spacing.unit,
+        marginTop:10,
+        minWidth: 250,
+        padding: 10
     }
 });
 
@@ -75,7 +77,10 @@ class TransactionForm extends React.Component {
                     description: this.state.description,
                     amount: parseFloat(this.state.amount, 10) * 100,
                     account: this.state.account,
-                    date: this.state.date.valueOf()
+                    date: this
+                        .state
+                        .date
+                        .valueOf()
                 });
         }
     };
@@ -113,14 +118,16 @@ class TransactionForm extends React.Component {
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
-                    <SingleDatePicker
-                        date={this.state.date}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calendarFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths={1}
-                        isOutsideRange={() => false}/>
-
+                    <FormControl className={classes.dateFormControl}>
+                        <SingleDatePicker
+                            date={this.state.date}
+                            onDateChange={this.onDateChange}
+                            focused={this.state.calendarFocused}
+                            onFocusChange={this.onFocusChange}
+                            numberOfMonths={1}
+                            isOutsideRange={() => false}
+                            />
+                    </FormControl>
                     <TextField
                         className={classes.textField}
                         type="text"

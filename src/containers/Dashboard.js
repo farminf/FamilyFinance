@@ -5,8 +5,17 @@ import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
+import AddFloatingBtton from '../components/AddFloatingButton';
 
 const styles = theme => ({
+    floatingButton: {
+        margin: 0,
+        top: 'auto',
+        right: 20,
+        bottom: 20,
+        left: 'auto',
+        position: 'fixed'
+    },
     button: {
         margin: theme.spacing.unit
     },
@@ -16,11 +25,11 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         marginTop: 30,
-        marginLeft: 10,
-        marginRight: 5
+        marginRight: 30,
+        marginLeft: 30,
+        textAlign: 'center'
     },
     paper: {
-        textAlign: 'center',
         color: theme.palette.text.secondary,
         width: '100%',
         marginTop: theme.spacing.unit * 3,
@@ -30,61 +39,35 @@ const styles = theme => ({
 
 class Dashboard extends React.Component {
 
+    handleClickFloatingButton = event => {};
+
     render() {
         const {classes} = this.props;
         return (
             <div>
                 <h1>{Constants.DASHBOARD_PAGE_TITLE}</h1>
                 <div className={classes.root}>
-                    <Grid container spacing={8}>
+                    <Grid container spacing={8} justify-content='center'>
 
-                        <Grid item md={6} xs={12} sm={6}>
+                        <Grid item md={5} xs={10} sm={11}>
                             <Paper className={classes.paper}>
                                 <AccountList/>
                             </Paper>
                         </Grid>
-                        <Grid item md={6} xs={12} sm={6}>
+                        <Grid item md={7} xs={10} sm={11}>
                             <Paper className={classes.paper}>
                                 <TransactionList/>
                             </Paper>
                         </Grid>
-
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
+                        {/*<Grid item md={12} xs={10} sm={11}>
+                            <Paper className={classes.paper}>
+                                <h3>ff</h3>
+                            </Paper>
+        </Grid>*/}
 
                     </Grid>
+                    <AddFloatingBtton/>
+
                 </div>
             </div>
         );

@@ -45,7 +45,7 @@ const HomePage = (props) =>{
             <div >
                 {/*<h1>Home</h1>*/}
                 <Grid container spacing={8} justify="center">
-                    <Grid item xs={3} md={3}>
+                    <Grid item xs={12} sm={6} md={6}>
                         <Paper className={classes.paper} elevation={4}>
                             <Typography type="headline" component="h3">
                                 {Constants.TEXT_LOGIN_CARD_HEADER}

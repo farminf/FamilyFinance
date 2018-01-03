@@ -18,14 +18,15 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         marginTop: 30,
-        marginLeft: 10,
-        marginRight: 5,
-        height: 'auto'
+        marginRight: 30,
+        marginLeft: 30,
+        textAlign: 'center',
     },
     paper: {
-        padding: 100,
-        textAlign: 'center',
-        color: theme.palette.text.secondary
+        color: theme.palette.text.secondary,
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto'
     }
 });
 
@@ -50,12 +51,12 @@ class AddTransactionContainer extends React.Component {
                     <h1>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h1>
                     <Grid container spacing={8}>
 
-                        <Grid item md={4} xs={12} sm={6}>
+                        <Grid item md={4} xs={10} sm={11}>
                             <Paper className={classes.paper}>
                                 <TransactionForm onSubmit={this.onSubmit}/>
                             </Paper>
                         </Grid>
-                        <Grid item md={8} xs={12} sm={6}>
+                        <Grid item md={8} xs={10} sm={11}>
                         <Paper className={classes.paper}>
                             <TransactionList />
                         </Paper>
