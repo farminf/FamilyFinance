@@ -5,8 +5,17 @@ import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
+import AddFloatingBtton from '../components/AddFloatingButton';
 
 const styles = theme => ({
+    floatingButton: {
+        margin: 0,
+        top: 'auto',
+        right: 20,
+        bottom: 20,
+        left: 'auto',
+        position: 'fixed'
+    },
     button: {
         margin: theme.spacing.unit
     },
@@ -18,8 +27,7 @@ const styles = theme => ({
         marginTop: 30,
         marginRight: 30,
         marginLeft: 30,
-        textAlign: 'center',
-        
+        textAlign: 'center'
     },
     paper: {
         color: theme.palette.text.secondary,
@@ -30,6 +38,8 @@ const styles = theme => ({
 });
 
 class Dashboard extends React.Component {
+
+    handleClickFloatingButton = event => {};
 
     render() {
         const {classes} = this.props;
@@ -56,6 +66,8 @@ class Dashboard extends React.Component {
         </Grid>*/}
 
                     </Grid>
+                    <AddFloatingBtton/>
+
                 </div>
             </div>
         );

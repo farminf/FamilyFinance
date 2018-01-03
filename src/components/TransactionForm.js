@@ -35,9 +35,9 @@ const styles = theme => ({
     },
     dateFormControl:{
         margin: theme.spacing.unit,
-        marginTop:40,
+        marginTop:10,
         minWidth: 250,
-        padding: 20
+        padding: 10
     }
 });
 
