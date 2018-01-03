@@ -4,25 +4,21 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap'
-    },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit,
-        width: 200
-    },
-    menu: {
-        width: 200
+        width: 250,
+        padding: 10
     },
     button: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: 150,
-        marginTop: theme.spacing.unit
+        width: 250,
+        marginTop: theme.spacing.unit,
+        marginBottom: theme.spacing.unit,
+        
     }
 });
 
