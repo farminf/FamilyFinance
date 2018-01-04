@@ -8,7 +8,6 @@ import {startAddCategory} from '../actions/categories';
 import CategotyList from '../components/CategoryList';
 import CategoryForm from '../components/CategoryForm';
 
-
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit
@@ -18,10 +17,10 @@ const styles = theme => ({
     },
     root: {
         flexGrow: 1,
-        marginTop: 30,
-        marginRight: 30,
-        marginLeft: 30,
-        textAlign: 'center',
+        marginTop: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing.unit,
+        textAlign: 'center'
     },
     paper: {
         textAlign: 'center',
@@ -30,9 +29,8 @@ const styles = theme => ({
         overflowX: 'auto'
 
     },
-    rootgrid:{
-        justifyContent:'center'
-        
+    rootgrid: {
+        justifyContent: 'center'
     }
 });
 

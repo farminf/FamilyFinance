@@ -25,7 +25,7 @@ const styles = theme => ({
     },
     root: {
         flexGrow: 1,
-        marginTop: 30,
+        marginTop: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         marginLeft: theme.spacing.unit,
         textAlign: 'center'
@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
                 <div className={classes.root}>
                     <Grid container spacing={8} className={classes.rootgrid}>
 
-                        <Grid item md={12} xs={10} sm={11}>
+                        <Grid item md={10} xs={10} sm={11}>
                             <Paper className={classes.paper}>
                                 <TransactionList/>
                             </Paper>
