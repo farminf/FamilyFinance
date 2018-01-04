@@ -55,6 +55,7 @@ class TransactionList extends React.Component {
                             <TableCell numeric>Amount</TableCell>
                             <TableCell >Date</TableCell>
                             <TableCell >Account</TableCell>
+                            <TableCell >Category</TableCell>
                             <TableCell ></TableCell>
                         </TableRow>
                     </TableHead>

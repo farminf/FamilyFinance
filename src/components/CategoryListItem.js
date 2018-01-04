@@ -1,6 +1,4 @@
 import React from 'react';
-import numeral from 'numeral';
-import moment from 'moment';
 import {TableCell, TableRow} from 'material-ui/Table';
 import IconButton from 'material-ui/IconButton';
 import Menu, {MenuItem} from 'material-ui/Menu';
@@ -8,10 +6,12 @@ import MoreVertIcon from 'material-ui-icons/MoreVert';
 import {withRouter} from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
-class TransactionListItem extends React.Component {
+
+class CategoryListItem extends React.Component {
     state = {
         anchorEl: null
     };
+
     handleClick = event => {
         this.setState({anchorEl: event.currentTarget});
     };
@@ -20,22 +20,15 @@ class TransactionListItem extends React.Component {
         this.setState({anchorEl: null});
     };
 
-    deleteTransaction = () => {
+    deleteCategory = () => {
         this
             .props
             .onDelete({id: this.props.id});
-        this.setState({anchorEl: null});
     };
 
-    editTransaction = () => {
-        this
-            .props
-            .history
-            .push('/transactions/edit/' + this.props.id);
-        this.setState({anchorEl: null});
-    };
 
-    copyTransaction = () => {
+
+    copyCategory = () => {
         this
             .props
             .onCopy(this.props.id);
@@ -45,13 +38,9 @@ class TransactionListItem extends React.Component {
     render() {
         const open = Boolean(this.state.anchorEl);
         return (
+
             <TableRow key={this.props.id}>
-                <TableCell>{this.props.description}</TableCell>
-                <TableCell numeric>{numeral(this.props.amount / 100).format('€ 0,0.00')}</TableCell>
-                <TableCell>{moment(this.props.date).format('MMMM Do, YYYY')}</TableCell>
-                <TableCell>{this.props.account}</TableCell>
-                <TableCell>{this.props.category}</TableCell>
-                
+                <TableCell>{this.props.name}</TableCell>
                 <TableCell>
                     <IconButton
                         aria-label="More"
@@ -73,16 +62,17 @@ class TransactionListItem extends React.Component {
                             width: 200
                         }
                     }}>
-                        {/*<Link to={`/transactions/edit/${this.props.id}`}></Link>*/}
-                        <MenuItem key='Edit' onClick={this.editTransaction}>
-                            Edit
-                        </MenuItem>
+                        {/*<button onClick={this.deleteAccount}>Remove</button>
+                        <Link to={`/accounts/edit/${this.props.id}`}>
+                            <button >Edit</button>
+                        </Link>*/}
 
-                        <MenuItem key='Remove' onClick={this.deleteTransaction}>
+
+                        <MenuItem key='Remove' onClick={this.deleteCategory}>
                             Remove
                         </MenuItem>
 
-                        <MenuItem key='Copy' onClick={this.copyTransaction}>
+                        <MenuItem key='Copy' onClick={this.copyCategory}>
                             Copy
                         </MenuItem>
 
@@ -90,7 +80,9 @@ class TransactionListItem extends React.Component {
 
                 </TableCell>
             </TableRow>
+
         )
     }
 }
-export default withRouter(TransactionListItem);
+
+export default withRouter(CategoryListItem);

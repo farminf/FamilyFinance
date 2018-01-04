@@ -10,12 +10,14 @@ export const startAddTransaction = (transactionData = {}) => {
             amount = 0,
             description = '',
             account = '',
+            category='',
             date = ''
         } = transactionData;
         const transaction = {
             amount,
             description,
             account,
+            category,
             date
         };
 

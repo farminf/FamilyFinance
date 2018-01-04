@@ -33,9 +33,9 @@ const styles = theme => ({
         minWidth: 250,
         padding: 10
     },
-    dateFormControl:{
+    dateFormControl: {
         margin: theme.spacing.unit,
-        marginTop:10,
+        marginTop: 10,
         minWidth: 250,
         padding: 10
     }
@@ -53,6 +53,9 @@ class TransactionForm extends React.Component {
                 : '',
             account: props.transaction
                 ? props.transaction.account
+                : '',
+            category: props.transaction
+                ? props.transaction.category
                 : '',
             date: props.transaction
                 ? moment(props.transaction.date)
@@ -77,6 +80,7 @@ class TransactionForm extends React.Component {
                     description: this.state.description,
                     amount: parseFloat(this.state.amount, 10) * 100,
                     account: this.state.account,
+                    category: this.state.category,
                     date: this
                         .state
                         .date
@@ -103,6 +107,11 @@ class TransactionForm extends React.Component {
         this.setState(() => ({account}));
     };
 
+    onCategoryChange = (e) => {
+        const category = e.target.value;
+        this.setState(() => ({category}));
+    };
+
     onDateChange = (date) => {
         //const date = e.target.value;
         this.setState(() => ({date}));
@@ -125,8 +134,7 @@ class TransactionForm extends React.Component {
                             focused={this.state.calendarFocused}
                             onFocusChange={this.onFocusChange}
                             numberOfMonths={1}
-                            isOutsideRange={() => false}
-                            />
+                            isOutsideRange={() => false}/>
                     </FormControl>
                     <TextField
                         className={classes.textField}
@@ -154,6 +162,22 @@ class TransactionForm extends React.Component {
                                 .accounts
                                 .map((account) => {
                                     return <option key={account.name} value={account.name}>{account.name}</option>
+                                })}
+
+                        </Select>
+                    </FormControl>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="age-native-simple">Category</InputLabel>
+                        <Select
+                            native
+                            value={this.state.category}
+                            onChange={this.onCategoryChange}
+                            input={< Input id = "age-native-simple" />}>
+                            <option value=""/> {this
+                                .props
+                                .categories
+                                .map((category) => {
+                                    return <option key={category.name} value={category.name}>{category.name}</option>
                                 })}
 
                         </Select>
@@ -191,7 +215,7 @@ class TransactionForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {accounts: state.accounts};
+    return {accounts: state.accounts, categories: state.categories};
 };
 
 export default connect(mapStateToProps)(withStyles(styles)(TransactionForm));

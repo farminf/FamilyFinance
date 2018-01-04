@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import AccountsContainer from '../containers/Accounts';
 import TransactionsContainer from '../containers/Transactions';
+import CategoriesContainer from '../containers/Categories';
 import EditAccountContainer from '../containers/EditAccount';
 import EditTransactionContainer from '../containers/EditTransaction';
 
@@ -23,6 +24,7 @@ const AppRouter = (props) => {
           <PrivateRoute path="/dashboard" component={Dashboard}/>
           <PrivateRoute path="/accounts" component={AccountsContainer} exact={true}/> 
           <PrivateRoute path="/transactions" component={TransactionsContainer} exact={true}/>
+          <PrivateRoute path="/categories" component={CategoriesContainer} exact={true}/>          
           <PrivateRoute path="/accounts/edit/:id" component={EditAccountContainer}/>
           <PrivateRoute path="/transactions/edit/:id" component={EditTransactionContainer}/>         
           
