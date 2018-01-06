@@ -45,6 +45,9 @@ class TransactionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            type: props.transaction
+                ? props.transaction.type
+                : '',
             description: props.transaction
                 ? props.transaction.description
                 : '',
@@ -70,13 +73,14 @@ class TransactionForm extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        if (!this.state.description || !this.state.amount || !this.state.account || !this.state.date) {
+        if (!this.state.description || !this.state.amount || !this.state.account || !this.state.date || !this.state.type || !this.state.category) {
             this.setState(() => ({error: 'Please provide all required data.'}));
         } else {
             this.setState(() => ({error: ''}));
             this
                 .props
                 .onSubmit({
+                    type: this.state.type,
                     description: this.state.description,
                     amount: parseFloat(this.state.amount, 10) * 100,
                     account: this.state.account,
@@ -87,6 +91,10 @@ class TransactionForm extends React.Component {
                         .valueOf()
                 });
         }
+    };
+    onTypeChange = (e) => {
+        const type = e.target.value;
+        this.setState(() => ({type}));
     };
 
     onDescriptionChange = (e) => {
@@ -136,6 +144,26 @@ class TransactionForm extends React.Component {
                             numberOfMonths={1}
                             isOutsideRange={() => false}/>
                     </FormControl>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="age-native-simple">Type</InputLabel>
+                        <Select
+                            native
+                            value={this.state.type}
+                            onChange={this.onTypeChange}
+                            input={< Input id = "age-native-simple" />}>
+                            <option key=""></option>
+                            <option key="expense" value="Expense">Expense</option>
+                            <option key="income" value="Income">Income</option>
+
+                        </Select>
+                    </FormControl>
+                    <TextField
+                        className={classes.textField}
+                        type="text"
+                        placeholder="Amount"
+                        value={this.state.amount}
+                        onChange={this.onAmountChange}/>
+
                     <TextField
                         className={classes.textField}
                         type="text"
@@ -143,12 +171,6 @@ class TransactionForm extends React.Component {
                         autoFocus
                         value={this.state.description}
                         onChange={this.onDescriptionChange}/>
-                    <TextField
-                        className={classes.textField}
-                        type="text"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}/>
 
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="age-native-simple">Account</InputLabel>

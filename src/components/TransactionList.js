@@ -34,7 +34,7 @@ class TransactionList extends React.Component {
                     return this
                         .props
                         .startAddTransaction(transaction);
-                }else{
+                } else {
                     return console.log('no transaction with this ID found')
                 }
             })
@@ -51,6 +51,7 @@ class TransactionList extends React.Component {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
+                            <TableCell>Type</TableCell>
                             <TableCell>Description</TableCell>
                             <TableCell numeric>Amount</TableCell>
                             <TableCell >Date</TableCell>
