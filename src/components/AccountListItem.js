@@ -24,21 +24,21 @@ class AccountListItems extends React.Component {
     deleteAccount = () => {
         this
             .props
-            .onDelete({id: this.props.id});
+            .onDelete({name: this.props.name});
     };
 
     editAccount = () => {
         this
             .props
             .history
-            .push('/accounts/edit/' + this.props.id);
+            .push('/accounts/edit/' + this.props.name);
         this.setState({anchorEl: null});
     };
 
     copyAccount = () => {
         this
             .props
-            .onCopy(this.props.id);
+            .onCopy(this.props.name);
         this.setState({anchorEl: null});
     };
 
@@ -46,7 +46,7 @@ class AccountListItems extends React.Component {
         const open = Boolean(this.state.anchorEl);
         return (
 
-            <TableRow key={this.props.id}>
+            <TableRow key={this.props.name}>
                 <TableCell>{this.props.name}</TableCell>
                 <TableCell numeric>{numeral(this.props.balance / 100).format('€ 0,0.00')}</TableCell>
                 <TableCell>
@@ -82,9 +82,9 @@ class AccountListItems extends React.Component {
                             Remove
                         </MenuItem>
 
-                        <MenuItem key='Copy' onClick={this.copyAccount}>
+                        {/*<MenuItem key='Copy' onClick={this.copyAccount}>
                             Copy
-                        </MenuItem>
+                        </MenuItem>*/}
 
                     </Menu>
 

@@ -4,6 +4,7 @@ import TransactionListItem from './TransactionListItem';
 import {startDeleteTransaction, startAddTransaction} from '../actions/transactions';
 import {withStyles} from 'material-ui/styles';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
+import {updateAccountBalance} from '../actions/accounts';
 
 const styles = theme => ({
     root: {
@@ -18,14 +19,25 @@ const styles = theme => ({
 
 class TransactionList extends React.Component {
 
-    onDelete = (id) => {
+    onDelete = (idObject , id) => {
+        console.log(id);
         this
             .props
-            .startDeleteTransaction(id);
+            .transactions
+            .map((transaction) => {
+                if (transaction.id === id) {
+                    this
+                        .props
+                        .startDeleteTransaction(idObject , transaction);
+                } else {
+                    return null;
+                }
+            })
+
     };
 
     onCopy = (id) => {
-        console.log(id)
+        console.log(id);
         this
             .props
             .transactions
@@ -35,7 +47,7 @@ class TransactionList extends React.Component {
                         .props
                         .startAddTransaction(transaction);
                 } else {
-                    return console.log('no transaction with this ID found')
+                    return null;
                 }
             })
 
@@ -81,8 +93,20 @@ const mapStateToProps = (state) => {
     return {transactions: state.transactions};
 };
 const mapDispatchToProps = (dispatch, props) => ({
-    startDeleteTransaction: (data) => dispatch(startDeleteTransaction(data)),
-    startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction))
+    startDeleteTransaction: (id, transaction) => dispatch(startDeleteTransaction(id)).then(() => {
+        let delta = -transaction.amount
+        if (transaction.type === 'Expense') {
+            delta = -delta
+        }
+        dispatch(updateAccountBalance(transaction.account, delta))
+    }),
+    startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction)).then(() => {
+        let delta = transaction.amount
+        if (transaction.type === 'Expense') {
+            delta = -delta
+        }
+        dispatch(updateAccountBalance(transaction.account, delta))
+    })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TransactionList))

@@ -16,11 +16,10 @@ export const startAddAccount = (accountData = {}) => {
         };
 
         return database
-            .ref(`users/${user_uid}/accounts`)
-            .push(account)
+            .ref(`users/${user_uid}/accounts/${account.name}`)
+            .update(account)
             .then((ref) => {
                 dispatch(addAccount({
-                    id: ref.key,
                     ...account
                 }));
             });
@@ -40,7 +39,6 @@ export const startSetAccounts = () => {
                 const accounts = [];
                 snapshot.forEach((childSnapshot) => {
                     accounts.push({
-                        id: childSnapshot.key,
                         ...childSnapshot.val()
                     })
                 });
@@ -49,30 +47,50 @@ export const startSetAccounts = () => {
     };
 };
 
-export const deleteAccount = ({id} = {}) => ({type: 'DELETE_ACCOUNTS', id});
+export const deleteAccount = ({name} = {}) => ({type: 'DELETE_ACCOUNTS', name});
 
-export const startDeleteAccount = ({id} = {}) => {
+export const startDeleteAccount = ({name} = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database
-            .ref(`users/${uid}/accounts/${id}`)
+            .ref(`users/${uid}/accounts/${name}`)
             .remove()
             .then(() => {
-                dispatch(deleteAccount({id}));
+                dispatch(deleteAccount({name}));
             });
     }
 };
 
-export const editAccount = (id, updates) => ({type: 'UPDATE_ACCOUNTS', id, updates});
+export const editAccount = (name, updates) => ({type: 'UPDATE_ACCOUNTS', name, updates});
 
-export const startEditAccount = (id, updates) => {
+export const startEditAccount = (name, updates) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database
-            .ref(`users/${uid}/accounts/${id}`)
+            .ref(`users/${uid}/accounts/${name}`)
             .update(updates)
             .then(() => {
-                dispatch(editAccount(id, updates));
+                dispatch(editAccount(name, updates));
             });
     };
+};
+
+//this one will get the current amount and change it based on the delta Value
+export const updateAccountBalance = (name, delta) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database
+            .ref(`users/${uid}/accounts/${name}/balance`)
+            .transaction(function (currentBalance) {
+                return Number(currentBalance) + Number(delta)
+            }, function (error, committed, snapshot) {
+                if (error) {
+                    console.log('Transaction failed abnormally!', error);
+                } else if (!committed) {
+                    console.log('aborted the transaction');
+                } else {
+                    dispatch(editAccount(name, {balance: snapshot.val()}));
+                }
+            });
+    }
 };

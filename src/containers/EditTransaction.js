@@ -6,6 +6,7 @@ import Constants from '../utils/constants';
 import TransactionForm from '../components/TransactionForm';
 import {connect} from 'react-redux';
 import {startEditTransaction} from '../actions/transactions';
+import {updateAccountBalance} from '../actions/accounts';
 
 const styles = theme => ({
     button: {
@@ -31,9 +32,12 @@ const styles = theme => ({
 class EditTransactionContainer extends React.Component {
 
     onSubmit = (transaction) => {
+        // console.log(this.props.transaction)
+        
+
         this
             .props
-            .startEditTransaction(this.props.transaction.id ,transaction);
+            .startEditTransaction(this.props.transaction, transaction);
         this
             .props
             .history
@@ -51,9 +55,7 @@ class EditTransactionContainer extends React.Component {
 
                         <Grid item md={4} xs={12} sm={6}>
                             <Paper className={classes.paper}>
-                                <TransactionForm
-                                    transaction={this.props.transaction}
-                                    onSubmit={this.onSubmit}/>
+                                <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
                             </Paper>
                         </Grid>
 
@@ -71,7 +73,20 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startEditTransaction: (id ,transaction) => dispatch(startEditTransaction(id ,transaction))
+    startEditTransaction: (oldTransaction, transaction) => dispatch(startEditTransaction(oldTransaction.id, transaction))
+    .then(() => {
+        let delta = -oldTransaction.amount
+        if (oldTransaction.type === 'Expense') {
+            delta = -delta
+        }
+        dispatch(updateAccountBalance(oldTransaction.account, delta))
+    }).then(() => {
+        let delta = transaction.amount
+        if (transaction.type === 'Expense') {
+            delta = -delta
+        }
+        dispatch(updateAccountBalance(transaction.account, delta))
+    })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EditTransactionContainer));

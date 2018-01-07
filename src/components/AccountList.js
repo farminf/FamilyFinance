@@ -19,25 +19,25 @@ const styles = theme => ({
 
 export class AccountList extends React.Component {
 
-    onDelete = (id) => {
+    onDelete = (name) => {
         this
             .props
-            .startDeleteAccount(id);
+            .startDeleteAccount(name);
     };
 
-    onCopy = (id) => {
-        console.log(id)
+    onCopy = (name) => {
         this
             .props
             .accounts
             .map((account) => {
-                if (account.id === id) {
+                if (account.name === name) {
                     return this
                         .props
-                        .startAddAccount(account);
-                } else {
-                    return console.log('no account with this ID found')
-                }
+                        .startAddAccount({...account , name:account.name+'-copy'});
+                } 
+                // else {
+                    // return console.log('no account with this ID found')
+                // }
             })
 
     };
@@ -66,7 +66,7 @@ export class AccountList extends React.Component {
                                     .accounts
                                     .map((account) => {
                                         return <AccountListItem 
-                                            key={account.id} 
+                                            key={account.name} 
                                             onDelete={this.onDelete}
                                             onCopy={this.onCopy}
                                             {...account}/>

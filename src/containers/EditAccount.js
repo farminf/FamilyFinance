@@ -32,7 +32,7 @@ class EditAccountContainer extends React.Component {
     onSubmit = (account) => {
         this
             .props
-            .startEditAccount(this.props.account.id, account);
+            .startEditAccount(this.props.account.name, account);
         this
             .props
             .history
@@ -62,11 +62,11 @@ class EditAccountContainer extends React.Component {
 const mapStateToProps = (state, props) => ({
     account: state
         .accounts
-        .find((account) => account.id === props.match.params.id)
+        .find((account) => account.name === props.match.params.name)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startEditAccount: (id ,account) => dispatch(startEditAccount(id ,account))
+    startEditAccount: (name ,account) => dispatch(startEditAccount(name ,account))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EditAccountContainer));

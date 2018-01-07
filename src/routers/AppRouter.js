@@ -25,7 +25,7 @@ const AppRouter = (props) => {
           <PrivateRoute path="/accounts" component={AccountsContainer} exact={true}/> 
           <PrivateRoute path="/transactions" component={TransactionsContainer} exact={true}/>
           <PrivateRoute path="/categories" component={CategoriesContainer} exact={true}/>          
-          <PrivateRoute path="/accounts/edit/:id" component={EditAccountContainer}/>
+          <PrivateRoute path="/accounts/edit/:name" component={EditAccountContainer}/>
           <PrivateRoute path="/transactions/edit/:id" component={EditTransactionContainer}/>         
           
           <Route component={NotFoundPage}/>

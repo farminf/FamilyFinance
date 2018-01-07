@@ -17,8 +17,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 250,
         marginTop: theme.spacing.unit,
-        marginBottom: theme.spacing.unit,
-        
+        marginBottom: theme.spacing.unit
     }
 });
 
@@ -35,7 +34,10 @@ class AccountForm extends React.Component {
             error: '',
             submit_button_title: props.account
                 ? 'Update'
-                : 'Add'
+                : 'Add',
+            disableName: props.account
+                ? true
+                : false
         };
     };
 
@@ -74,6 +76,8 @@ class AccountForm extends React.Component {
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
                     <TextField
+                        required
+                        disabled={this.state.disableName}
                         className={classes.textField}
                         type="text"
                         placeholder="name"
@@ -81,6 +85,7 @@ class AccountForm extends React.Component {
                         value={this.state.name}
                         onChange={this.onNameChange}/>
                     <TextField
+                        required
                         className={classes.textField}
                         type="text"
                         placeholder="Balance"
@@ -89,7 +94,7 @@ class AccountForm extends React.Component {
 
                     <Button
                         onClick={this.onSubmit}
-                            className={classes.button}
+                        className={classes.button}
                         raised
                         color="primary">{this.state.submit_button_title}</Button>
                 </form>

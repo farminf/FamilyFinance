@@ -23,7 +23,7 @@ class TransactionListItem extends React.Component {
     deleteTransaction = () => {
         this
             .props
-            .onDelete({id: this.props.id});
+            .onDelete({id: this.props.id} , this.props.id);
         this.setState({anchorEl: null});
     };
 
