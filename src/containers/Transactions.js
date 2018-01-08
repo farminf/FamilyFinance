@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import {startAddTransaction} from '../actions/transactions';
 import TransactionList from '../components/TransactionList';
 import {updateAccountBalance} from '../actions/accounts';
+import AddFloatingButton from '../components/AddFloatingButton';
+
 
 
 const styles = theme => ({
@@ -65,6 +67,7 @@ class AddTransactionContainer extends React.Component {
                     </Grid>
 
                     </Grid>
+                    <AddFloatingButton/>
                 </div>
             </div>
         );

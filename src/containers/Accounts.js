@@ -7,6 +7,8 @@ import AccountForm from '../components/AccountForm';
 import {connect} from 'react-redux';
 import {startAddAccount} from '../actions/accounts';
 import AccountList from '../components/AccountList';
+import AddFloatingButton from '../components/AddFloatingButton';
+
 
 const styles = theme => ({
     button: {
@@ -66,6 +68,7 @@ class AddAccountContainer extends React.Component {
                         </Grid>
 
                     </Grid>
+                    <AddFloatingButton/>
                 </div>
             </div>
         );

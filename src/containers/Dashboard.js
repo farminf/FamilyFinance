@@ -6,7 +6,7 @@ import Constants from '../utils/constants';
 import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
 import CategoryList from '../components/CategoryList';
-import AddFloatingBtton from '../components/AddFloatingButton';
+import AddFloatingButton from '../components/AddFloatingButton';
 
 const styles = theme => ({
     floatingButton: {
@@ -76,7 +76,7 @@ class Dashboard extends React.Component {
         </Grid>*/}
 
                     </Grid>
-                    <AddFloatingBtton/>
+                    <AddFloatingButton/>
 
                 </div>
             </div>

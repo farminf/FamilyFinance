@@ -2,6 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     textField: {
@@ -17,8 +18,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 250,
         marginTop: theme.spacing.unit,
-        marginBottom: theme.spacing.unit,
-        
+        marginBottom: theme.spacing.unit
     }
 });
 
@@ -41,12 +41,14 @@ class CategoryForm extends React.Component {
         if (!this.state.name) {
             this.setState(() => ({error: 'Please provide name and balance.'}));
         } else {
-            this.setState(() => ({error: ''}));
-            this
-                .props
-                .onSubmit({
-                    name: this.state.name
-                });
+            if (this.props.categories.find((category) => category.name === this.state.name) === undefined) {
+                this.setState(() => ({error: ''}));
+                this
+                    .props
+                    .onSubmit({name: this.state.name});
+            }else {
+                this.setState(() => ({name: '', balance: '' , error: 'Category already exists'}));
+            }
         }
     };
 
@@ -55,7 +57,6 @@ class CategoryForm extends React.Component {
         this.setState(() => ({name}));
     };
 
-    
     render() {
         const {classes} = this.props;
         return (
@@ -69,10 +70,10 @@ class CategoryForm extends React.Component {
                         autoFocus
                         value={this.state.name}
                         onChange={this.onNameChange}/>
-                    
+
                     <Button
                         onClick={this.onSubmit}
-                            className={classes.button}
+                        className={classes.button}
                         raised
                         color="primary">{this.state.submit_button_title}</Button>
                 </form>
@@ -82,4 +83,8 @@ class CategoryForm extends React.Component {
 
 }
 
-export default withStyles(styles)(CategoryForm);
+const mapStateToProps = (state, props) => {
+    return {categories: state.categories};
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(CategoryForm));

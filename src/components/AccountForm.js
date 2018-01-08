@@ -49,7 +49,7 @@ class AccountForm extends React.Component {
         if (!this.state.name || !this.state.balance) {
             this.setState(() => ({error: 'Please provide name and balance.'}));
         } else {
-            if (this.props.accounts.find((a) => a.name === this.state.name) === undefined) {
+            if (this.props.accounts.find((category) => category.name === this.state.name) === undefined) {
                 this.setState(() => ({error: ''}));
                 this
                     .props
