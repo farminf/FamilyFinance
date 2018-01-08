@@ -7,15 +7,19 @@ export const startAddTransaction = (transactionData = {}) => {
     return (dispatch, getState) => {
         const user_uid = getState().auth.uid;
         const {
+            type = '',
             amount = 0,
             description = '',
             account = '',
+            category='',
             date = ''
         } = transactionData;
         const transaction = {
+            type,
             amount,
             description,
             account,
+            category,
             date
         };
 

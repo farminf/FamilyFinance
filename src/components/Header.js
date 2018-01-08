@@ -14,6 +14,7 @@ import {startLogout} from '../actions/auth';
 import Constants from '../utils/constants';
 import AddIcon from 'material-ui-icons/NoteAdd';
 import DashboardIcon from 'material-ui-icons/Dashboard';
+import ShowChartIcon from 'material-ui-icons/ShowChart';
 import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
 
 import {ListItem, ListItemText} from 'material-ui/List';
@@ -77,13 +78,11 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit
     },
-    
+
     avatar: {
         margin: 10
     },
-    
-    
-    
+
     appBar: {
         position: 'absolute',
         zIndex: theme.zIndex.navDrawer + 1,
@@ -109,16 +108,16 @@ const styles = theme => ({
             })
     },
     appFrame: {
-        
+
         position: 'relative',
         display: 'flex',
-        width: '100%',
+        width: '100%'
     },
     content: {
         width: '100%',
         flexGrow: 1,
         padding: 24,
-        marginLeft:50,
+        marginLeft: 50,
         height: 'calc(100% - 56px)',
         marginTop: 56,
         [
@@ -158,7 +157,7 @@ class Header extends React.Component {
 
                     <NavLink to="/dashboard" activeClassName="is-active">
                         <ListItem button>
-                            <DashboardIcon/>
+                            <ShowChartIcon/>
                             <ListItemText primary="Dashboard"/>
                         </ListItem>
                     </NavLink>
@@ -172,6 +171,12 @@ class Header extends React.Component {
                         <ListItem button>
                             <AddIcon/>
                             <ListItemText primary="Transactions"/>
+                        </ListItem>
+                    </NavLink>
+                    <NavLink to="/categories" activeClassName="is-active">
+                        <ListItem button>
+                            <DashboardIcon/>
+                            <ListItemText primary="Categories"/>
                         </ListItem>
                     </NavLink>
                 </div>

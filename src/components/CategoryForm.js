@@ -17,41 +17,35 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 250,
         marginTop: theme.spacing.unit,
-        marginBottom: theme.spacing.unit
+        marginBottom: theme.spacing.unit,
+        
     }
 });
 
-class AccountForm extends React.Component {
+class CategoryForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: props.account
-                ? props.account.name
-                : '',
-            balance: props.account
-                ? (props.account.balance / 100).toString()
+            name: props.category
+                ? props.category.name
                 : '',
             error: '',
-            submit_button_title: props.account
+            submit_button_title: props.category
                 ? 'Update'
-                : 'Add',
-            disableName: props.account
-                ? true
-                : false
+                : 'Add'
         };
     };
 
     onSubmit = (e) => {
         e.preventDefault();
-        if (!this.state.name || !this.state.balance) {
+        if (!this.state.name) {
             this.setState(() => ({error: 'Please provide name and balance.'}));
         } else {
             this.setState(() => ({error: ''}));
             this
                 .props
                 .onSubmit({
-                    name: this.state.name,
-                    balance: parseFloat(this.state.balance, 10) * 100
+                    name: this.state.name
                 });
         }
     };
@@ -61,14 +55,7 @@ class AccountForm extends React.Component {
         this.setState(() => ({name}));
     };
 
-    onBalanceChange = (e) => {
-        const balance = e.target.value;
-
-        if (!balance || balance.match(/^\d{1,}(\.\d{0,2})?$/)) {
-            this.setState(() => ({balance}));
-        }
-    };
-
+    
     render() {
         const {classes} = this.props;
         return (
@@ -76,25 +63,16 @@ class AccountForm extends React.Component {
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
                     <TextField
-                        required
-                        disabled={this.state.disableName}
                         className={classes.textField}
                         type="text"
-                        placeholder="name"
+                        placeholder="category"
                         autoFocus
                         value={this.state.name}
                         onChange={this.onNameChange}/>
-                    <TextField
-                        required
-                        className={classes.textField}
-                        type="text"
-                        placeholder="Balance"
-                        value={this.state.balance}
-                        onChange={this.onBalanceChange}/>
-
+                    
                     <Button
                         onClick={this.onSubmit}
-                        className={classes.button}
+                            className={classes.button}
                         raised
                         color="primary">{this.state.submit_button_title}</Button>
                 </form>
@@ -104,4 +82,4 @@ class AccountForm extends React.Component {
 
 }
 
-export default withStyles(styles)(AccountForm);
+export default withStyles(styles)(CategoryForm);

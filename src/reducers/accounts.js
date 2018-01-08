@@ -7,7 +7,7 @@ export default(state = {}, action) => {
             ];
         case 'UPDATE_ACCOUNTS':
             return state.map((account) => {
-                if (account.id === action.id) {
+                if (account.name === action.name) {
                     return {
                         ...account,
                         ...action.updates
@@ -16,8 +16,19 @@ export default(state = {}, action) => {
                     return account;
                 }
             });
+        case 'UPDATE_ACCOUNT_AMOUNT':
+        return state.map((account) => {
+            if (account.name === action.name) {
+                return {
+                    ...account,
+                    ...action.updates
+                };
+            } else {
+                return account;
+            }
+        }); 
         case 'DELETE_ACCOUNTS':
-            return state.filter(({id}) => id !== action.id);
+            return state.filter(({name}) => name !== action.name);
         case 'SET_ACCOUNTS':
             return action.accounts;
         default:

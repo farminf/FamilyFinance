@@ -5,6 +5,7 @@ import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
+import CategoryList from '../components/CategoryList';
 import AddFloatingBtton from '../components/AddFloatingButton';
 
 const styles = theme => ({
@@ -24,9 +25,9 @@ const styles = theme => ({
     },
     root: {
         flexGrow: 1,
-        marginTop: 30,
-        marginRight: 30,
-        marginLeft: 30,
+        marginTop: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing.unit,
         textAlign: 'center'
     },
     paper: {
@@ -34,6 +35,10 @@ const styles = theme => ({
         width: '100%',
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto'
+    },
+    rootgrid:{
+        justifyContent:'center'
+        
     }
 });
 
@@ -47,16 +52,21 @@ class Dashboard extends React.Component {
             <div>
                 <h1>{Constants.DASHBOARD_PAGE_TITLE}</h1>
                 <div className={classes.root}>
-                    <Grid container spacing={8} justify-content='center'>
+                    <Grid container spacing={8} className={classes.rootgrid}>
 
+                        <Grid item md={10} xs={10} sm={11}>
+                            <Paper className={classes.paper}>
+                                <TransactionList/>
+                            </Paper>
+                        </Grid>
                         <Grid item md={5} xs={10} sm={11}>
                             <Paper className={classes.paper}>
                                 <AccountList/>
                             </Paper>
                         </Grid>
-                        <Grid item md={7} xs={10} sm={11}>
+                        <Grid item md={5} xs={10} sm={11}>
                             <Paper className={classes.paper}>
-                                <TransactionList/>
+                                <CategoryList/>
                             </Paper>
                         </Grid>
                         {/*<Grid item md={12} xs={10} sm={11}>

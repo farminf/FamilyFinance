@@ -7,6 +7,8 @@ import TransactionForm from '../components/TransactionForm';
 import {connect} from 'react-redux';
 import {startAddTransaction} from '../actions/transactions';
 import TransactionList from '../components/TransactionList';
+import {updateAccountBalance} from '../actions/accounts';
+
 
 const styles = theme => ({
     button: {
@@ -71,6 +73,13 @@ class AddTransactionContainer extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction))
+    .then(() => {
+        let delta = transaction.amount
+        if(transaction.type === 'Expense'){
+           delta = -delta 
+        }
+        dispatch(updateAccountBalance(transaction.account, delta))
+    })
 });
 
 export default connect(undefined, mapDispatchToProps)(withStyles(styles)(AddTransactionContainer));

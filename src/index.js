@@ -12,6 +12,7 @@ import './firebase/firebase';
 import LoadProgress from './components/LoadProgress';
 import {startSetTransactions} from './actions/transactions';
 import {startSetAccounts} from './actions/accounts';
+import {startSetCategories} from './actions/categories';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
@@ -47,10 +48,14 @@ firebase
                     store
                         .dispatch(startSetAccounts())
                         .then(() => {
-                            renderApp();
-                            if (history.location.pathname === '/') {
-                                history.push('/dashboard');
-                            }
+                            store
+                                .dispatch(startSetCategories())
+                                .then(() => {
+                                    renderApp();
+                                    if (history.location.pathname === '/') {
+                                        history.push('/dashboard');
+                                    }
+                                });
                         });
                 });
 

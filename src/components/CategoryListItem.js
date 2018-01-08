@@ -1,5 +1,4 @@
 import React from 'react';
-import numeral from 'numeral';
 import {TableCell, TableRow} from 'material-ui/Table';
 import IconButton from 'material-ui/IconButton';
 import Menu, {MenuItem} from 'material-ui/Menu';
@@ -8,7 +7,7 @@ import {withRouter} from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 
-class AccountListItems extends React.Component {
+class CategoryListItem extends React.Component {
     state = {
         anchorEl: null
     };
@@ -21,24 +20,18 @@ class AccountListItems extends React.Component {
         this.setState({anchorEl: null});
     };
 
-    deleteAccount = () => {
+    deleteCategory = () => {
         this
             .props
-            .onDelete({name: this.props.name});
+            .onDelete({id: this.props.id});
     };
 
-    editAccount = () => {
-        this
-            .props
-            .history
-            .push('/accounts/edit/' + this.props.name);
-        this.setState({anchorEl: null});
-    };
 
-    copyAccount = () => {
+
+    copyCategory = () => {
         this
             .props
-            .onCopy(this.props.name);
+            .onCopy(this.props.id);
         this.setState({anchorEl: null});
     };
 
@@ -46,9 +39,8 @@ class AccountListItems extends React.Component {
         const open = Boolean(this.state.anchorEl);
         return (
 
-            <TableRow key={this.props.name}>
+            <TableRow key={this.props.id}>
                 <TableCell>{this.props.name}</TableCell>
-                <TableCell numeric>{numeral(this.props.balance / 100).format('€ 0,0.00')}</TableCell>
                 <TableCell>
                     <IconButton
                         aria-label="More"
@@ -74,17 +66,15 @@ class AccountListItems extends React.Component {
                         <Link to={`/accounts/edit/${this.props.id}`}>
                             <button >Edit</button>
                         </Link>*/}
-                        <MenuItem key='Edit' onClick={this.editAccount}>
-                            Edit
-                        </MenuItem>
 
-                        <MenuItem key='Remove' onClick={this.deleteAccount}>
+
+                        <MenuItem key='Remove' onClick={this.deleteCategory}>
                             Remove
                         </MenuItem>
 
-                        {/*<MenuItem key='Copy' onClick={this.copyAccount}>
+                        <MenuItem key='Copy' onClick={this.copyCategory}>
                             Copy
-                        </MenuItem>*/}
+                        </MenuItem>
 
                     </Menu>
 
@@ -95,4 +85,4 @@ class AccountListItems extends React.Component {
     }
 }
 
-export default withRouter(AccountListItems);
+export default withRouter(CategoryListItem);

@@ -23,7 +23,7 @@ class TransactionListItem extends React.Component {
     deleteTransaction = () => {
         this
             .props
-            .onDelete({id: this.props.id});
+            .onDelete({id: this.props.id} , this.props.id);
         this.setState({anchorEl: null});
     };
 
@@ -46,10 +46,13 @@ class TransactionListItem extends React.Component {
         const open = Boolean(this.state.anchorEl);
         return (
             <TableRow key={this.props.id}>
+                <TableCell>{this.props.type}</TableCell>
                 <TableCell>{this.props.description}</TableCell>
                 <TableCell numeric>{numeral(this.props.amount / 100).format('€ 0,0.00')}</TableCell>
                 <TableCell>{moment(this.props.date).format('MMMM Do, YYYY')}</TableCell>
                 <TableCell>{this.props.account}</TableCell>
+                <TableCell>{this.props.category}</TableCell>
+
                 <TableCell>
                     <IconButton
                         aria-label="More"

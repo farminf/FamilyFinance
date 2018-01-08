@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import AccountListItem from './AccountListItem';
-import {startDeleteAccount, startAddAccount} from '../actions/accounts';
+import CategoryListItem from './CategoryListItem';
+import {startDeleteCategory, startAddCategory} from '../actions/categories';
 import {withStyles} from 'material-ui/styles';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 
@@ -17,26 +17,26 @@ const styles = theme => ({
     }
 });
 
-export class AccountList extends React.Component {
+export class CategoryList extends React.Component {
 
-    onDelete = (name) => {
+    onDelete = (id) => {
         this
             .props
-            .startDeleteAccount(name);
+            .startDeleteCategory(id);
     };
 
-    onCopy = (name) => {
+    onCopy = (id) => {
+        console.log(id)
         this
             .props
-            .accounts
-            .map((account) => {
-                if (account.name === name) {
+            .categories
+            .map((category) => {
+                if (category.id === id) {
                     return this
                         .props
-                        .startAddAccount({...account , name:account.name+'-copy'});
-                } 
-                else {
-                    return null
+                        .startAddCategory(category);
+                } else {
+                    return console.log('no category with this ID found')
                 }
             })
 
@@ -46,30 +46,28 @@ export class AccountList extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                {this.props.accounts.lenght === 0
+                {this.props.categories.lenght === 0
                     ? (
-                        <p>no accounts</p>
+                        <p>no categories</p>
                     )
                     : (
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Account</TableCell>
-                                    <TableCell numeric>Balance</TableCell>
+                                    <TableCell>Category</TableCell>
                                     <TableCell ></TableCell>
-
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {this
+                                { this
                                     .props
-                                    .accounts
-                                    .map((account) => {
-                                        return <AccountListItem 
-                                            key={account.name} 
+                                    .categories
+                                    .map((category) => {
+                                        return <CategoryListItem 
+                                            key={category.id} 
                                             onDelete={this.onDelete}
                                             onCopy={this.onCopy}
-                                            {...account}/>
+                                            {...category}/>
                                     })
                                 }
                             </TableBody>
@@ -84,14 +82,14 @@ export class AccountList extends React.Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        accounts: state.accounts,
+        categories: state.categories,
         ...props
     };
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-    startAddAccount: (account) => dispatch(startAddAccount(account)),
-    startDeleteAccount: (data) => dispatch(startDeleteAccount(data))
+    startAddCategory: (category) => dispatch(startAddCategory(category)),
+    startDeleteCategory: (data) => dispatch(startDeleteCategory(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AccountList))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CategoryList))
