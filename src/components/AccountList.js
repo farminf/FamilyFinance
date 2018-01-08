@@ -35,9 +35,9 @@ export class AccountList extends React.Component {
                         .props
                         .startAddAccount({...account , name:account.name+'-copy'});
                 } 
-                // else {
-                    // return console.log('no account with this ID found')
-                // }
+                else {
+                    return null
+                }
             })
 
     };

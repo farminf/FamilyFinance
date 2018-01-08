@@ -19,16 +19,16 @@ const styles = theme => ({
 
 class TransactionList extends React.Component {
 
-    onDelete = (idObject , id) => {
+    onDelete = (idObject, id) => {
         console.log(id);
         this
             .props
             .transactions
             .map((transaction) => {
                 if (transaction.id === id) {
-                    this
+                    return this
                         .props
-                        .startDeleteTransaction(idObject , transaction);
+                        .startDeleteTransaction(idObject, transaction);
                 } else {
                     return null;
                 }

@@ -22,6 +22,8 @@ export const startAddAccount = (accountData = {}) => {
                 dispatch(addAccount({
                     ...account
                 }));
+            }).catch((err)=>{
+                console.log(err)
             });
     }
 
