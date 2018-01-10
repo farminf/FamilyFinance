@@ -1,24 +1,54 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import {firebase, googleAuthProvider} from '../firebase/firebase';
 
-export const login = ({uid = '' , photoURL = ''} = {}) => ({
-  type: 'LOGIN',
-  uid : uid,
-  photoURL : photoURL
-});
+export const login = ({
+  uid = '',
+  photoURL = ''
+} = {}) => ({type: 'LOGIN', uid: uid, photoURL: photoURL});
 
-export const startLogin = () => {
+export const startLoginGoogle = () => {
   return () => {
     //return firebase.auth().signInWithRedirect(googleAuthProvider);
-    return firebase.auth().signInWithPopup(googleAuthProvider);
+    return firebase
+      .auth()
+      .signInWithPopup(googleAuthProvider);
   };
 };
 
-export const logout = () => ({
-  type: 'LOGOUT'
-});
+export const logout = () => ({type: 'LOGOUT'});
 
 export const startLogout = () => {
   return () => {
-    return firebase.auth().signOut();
+    return firebase
+      .auth()
+      .signOut();
+  };
+};
+
+export const startSignUp = (email, password) => {
+  return () => {
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode + ' ' + errorMessage ); 
+      });
+  };
+};
+
+
+export const startLoginWithEmail = (email, password) => {
+  return () => {
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode + ' ' + errorMessage ); 
+      });
   };
 };

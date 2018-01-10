@@ -11,7 +11,7 @@ export const startAddTransaction = (transactionData = {}) => {
             amount = 0,
             description = '',
             account = '',
-            category='',
+            category = '',
             date = ''
         } = transactionData;
         const transaction = {
@@ -25,7 +25,12 @@ export const startAddTransaction = (transactionData = {}) => {
 
         return database
             .ref(`users/${user_uid}/transactions`)
-            .push(transaction)
+            .push(transaction, (err) => {
+                if (err !== null) {
+                    console.log(err)
+                    return null
+                }
+            })
             .then((ref) => {
                 dispatch(addTransaction({
                     id: ref.key,
@@ -79,7 +84,9 @@ export const startEditTransaction = (id, updates) => {
         const uid = getState().auth.uid;
         return database
             .ref(`users/${uid}/transactions/${id}`)
-            .update(updates)
+            .update(updates, (err) => {
+                console.log(err)
+            })
             .then(() => {
                 dispatch(editTransaction(id, updates));
             });

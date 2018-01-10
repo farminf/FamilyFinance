@@ -36,9 +36,9 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto'
     },
-    rootgrid:{
-        justifyContent:'center'
-        
+    rootgrid: {
+        justifyContent: 'center'
+
     }
 });
 
@@ -77,7 +77,6 @@ class Dashboard extends React.Component {
 
                     </Grid>
                     <AddFloatingButton/>
-
                 </div>
             </div>
         );

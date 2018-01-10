@@ -168,7 +168,6 @@ class TransactionForm extends React.Component {
                         className={classes.textField}
                         type="text"
                         placeholder="description"
-                        autoFocus
                         value={this.state.description}
                         onChange={this.onDescriptionChange}/>
 

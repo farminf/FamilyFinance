@@ -72,9 +72,9 @@ class CategoryListItem extends React.Component {
                             Remove
                         </MenuItem>
 
-                        <MenuItem key='Copy' onClick={this.copyCategory}>
+                        {/*<MenuItem key='Copy' onClick={this.copyCategory}>
                             Copy
-                        </MenuItem>
+                        </MenuItem>*/}
 
                     </Menu>
 

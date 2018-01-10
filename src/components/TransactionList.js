@@ -33,7 +33,6 @@ class TransactionList extends React.Component {
                     return null;
                 }
             })
-
     };
 
     onCopy = (id) => {
@@ -73,7 +72,7 @@ class TransactionList extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this
+                        {this.props.transactions !== undefined && this
                             .props
                             .transactions
                             .map((transaction) => {

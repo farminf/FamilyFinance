@@ -7,7 +7,7 @@ export const startAddCategory = (categoryData = {}) => {
     return (dispatch, getState) => {
         const user_uid = getState().auth.uid;
         const {
-            name = 'default',
+            name = 'default'
         } = categoryData;
         const category = {
             name
@@ -15,12 +15,20 @@ export const startAddCategory = (categoryData = {}) => {
 
         return database
             .ref(`users/${user_uid}/categories`)
-            .push(category)
+            .push(category, (err) => {
+                if (err !== null) {
+                    console.log(err)
+                    return null
+                }
+            })
             .then((ref) => {
                 dispatch(addCategory({
                     id: ref.key,
                     ...category
                 }));
+            })
+            .catch((err) => {
+                console.log(err)
             });
     }
 
@@ -43,6 +51,9 @@ export const startSetCategories = () => {
                     })
                 });
                 dispatch(setCategories(categories));
+            })
+            .catch((err) => {
+                console.log(err)
             });
     };
 };
