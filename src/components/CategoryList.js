@@ -68,7 +68,7 @@ export class CategoryList extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                {this.props.categories.lenght === 0
+                {this.props.categories.lenght === 0 || this.props.categories.hasOwnProperty(0) === false
                     ? (
                         <p>no categories</p>
                     )

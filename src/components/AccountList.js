@@ -46,7 +46,7 @@ export class AccountList extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                {this.props.accounts.lenght === 0
+                {this.props.accounts.lenght === 0 || this.props.accounts.hasOwnProperty(0) === false
                     ? (
                         <p>no accounts</p>
                     )

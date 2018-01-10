@@ -7,6 +7,11 @@ import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
 import CategoryList from '../components/CategoryList';
 import AddFloatingButton from '../components/AddFloatingButton';
+import {connect} from 'react-redux';
+import {startSetTransactions} from '../actions/transactions';
+import {startSetAccounts} from '../actions/accounts';
+import {startSetCategories} from '../actions/categories';
+
 
 const styles = theme => ({
     floatingButton: {
@@ -46,6 +51,12 @@ class Dashboard extends React.Component {
 
     handleClickFloatingButton = event => {};
 
+    componentWillMount() {
+        // this.props.startSetTransactions();
+        // this.props.startSetAccounts();
+        // this.props.startSetCategories();
+    }
+
     render() {
         const {classes} = this.props;
         return (
@@ -83,4 +94,11 @@ class Dashboard extends React.Component {
     }
 }
 
-export default withStyles(styles)(Dashboard);
+const mapDispatchToProps = (dispatch) => ({
+    startSetTransactions: () => dispatch(startSetTransactions()),
+    startSetAccounts: () => dispatch(startSetAccounts()),
+    startSetCategories: () => dispatch(startSetCategories())
+});
+
+
+export default connect (undefined , mapDispatchToProps)(withStyles(styles)(Dashboard));
