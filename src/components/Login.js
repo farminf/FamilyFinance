@@ -101,6 +101,7 @@ class LoginUserNamePassword extends React.Component {
                     <Button onClick={this.onLoginWithEmail} raised className={classes.button}>
                         Login
                     </Button>
+                    {this.state.error && <p>{this.state.error}</p>}
                 </form>
             </Paper>
         )

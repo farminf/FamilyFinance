@@ -4,6 +4,7 @@ import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
+import Recaptcha from 'react-recaptcha';
 
 const styles = theme => ({
 
@@ -51,11 +52,8 @@ class SignUp extends React.Component {
 
     onSignup = (e) => {
         e.preventDefault();
-        if (!this.state.email || !this.state.password || !this.state.confirmpassword || 
-            !this.state.email.match(/^(([^<>()\\.,;:\s@"]+(\.[^<>()\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            this.setState(() => ({
-                error : 'All field should be filled'
-            }));
+        if (!this.state.email || !this.state.password || !this.state.confirmpassword || !this.state.email.match(/^(([^<>()\\.,;:\s@"]+(\.[^<>()\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            this.setState(() => ({error: 'All field should be filled in the correct way'}));
         } else {
             this.setState(() => ({error: ''}));
             this
@@ -66,8 +64,14 @@ class SignUp extends React.Component {
 
     onEmailChange = (e) => {
         const email = e.target.value;
-        //if (!email || email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            this.setState(() => ({email}));
+        // if (!email ||
+        // email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\
+        // 
+        //
+        //
+        // [[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-
+        // Z ]{2,}))$/)) {
+        this.setState(() => ({email}));
         //}
 
     };
@@ -87,7 +91,7 @@ class SignUp extends React.Component {
         return (
 
             <Paper className={classes.paper} elevation={4}>
-                {this.state.error && <p>{this.state.error}</p>}
+
                 <Typography type="body1" component="p">
                     Create New Account
                 </Typography>
@@ -115,9 +119,14 @@ class SignUp extends React.Component {
                         alue={this.state.confirmpassword}
                         onChange={this.onConfirmPasswordChange}/>
 
+                    <Recaptcha
+                        className={classes.textField}
+                        sitekey="6Lc1_j8UAAAAAH5zKYdv055fpSrIDghc3J6xZF02"
+                       />
                     <Button onClick={this.onSignup} raised className={classes.button}>
                         Register
                     </Button>
+                    {this.state.error && <p>{this.state.error}</p>}
                 </form>
             </Paper>
         )

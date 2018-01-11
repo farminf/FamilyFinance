@@ -4,6 +4,8 @@ import {withStyles} from 'material-ui/styles';
 import Constants from '../utils/constants'
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
+import FaGoogle from 'react-icons/lib/fa/google-plus-square';
+
 
 const styles = theme => ({
 
@@ -24,6 +26,10 @@ const styles = theme => ({
             marginLeft: 20,
             marginRight: 20
         })
+    ,
+    googleicon:{
+        marginRight : 5
+    }
 });
 
 const LoginGoogle = (props) => {
@@ -41,7 +47,9 @@ const LoginGoogle = (props) => {
                 Login With Google
             </Typography>
             <Button onClick={props.onLoginGoogle} raised className={classes.button}>
+                <FaGoogle size={30} color='red' className={classes.googleicon}/>
                 {Constants.ASSIGNS_LOGIN}
+                
             </Button>
 
         </Paper>

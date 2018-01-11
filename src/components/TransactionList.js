@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import TransactionListItem from './TransactionListItem';
 import {startDeleteTransaction, startAddTransaction} from '../actions/transactions';
 import {withStyles} from 'material-ui/styles';
-import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
+import Table, {TableBody, TableCell, TableHead, TableRow, TableFooter, TablePagination} from 'material-ui/Table';
 import {updateAccountBalance} from '../actions/accounts';
 
 const styles = theme => ({
@@ -18,10 +18,15 @@ const styles = theme => ({
 });
 
 class TransactionList extends React.Component {
-
-    componentDidMount(){
-        
+    constructor(props){
+        super(props);
+        this.state = {
+            page: 0,
+            rowsPerPage: 5
+        }
     }
+
+    componentDidMount() {}
 
     onDelete = (idObject, id) => {
         console.log(id);
@@ -56,6 +61,14 @@ class TransactionList extends React.Component {
 
     };
 
+    handleChangePage = (event, page) => {
+        this.setState({page});
+    };
+
+    handleChangeRowsPerPage = event => {
+        this.setState({rowsPerPage: event.target.value});
+    };
+
     render() {
         const {classes} = this.props;
         return (this.props.transactions.lenght === 0 || this.props.transactions.hasOwnProperty(0) === false
@@ -76,7 +89,11 @@ class TransactionList extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.transactions.map((transaction) => {
+                        {this
+                            .props
+                            .transactions
+                            .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
+                            .map((transaction) => {
                                 return <TransactionListItem
                                     key={transaction.id}
                                     onDelete={this.onDelete}
@@ -85,6 +102,17 @@ class TransactionList extends React.Component {
                             })
 }
                     </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                count={this.props.transactions.length}
+                                rowsPerPage={this.state.rowsPerPage}
+                                page={this.state.page}
+                                rowsPerPageOptions={[5 , 10]}
+                                onChangePage={this.handleChangePage}
+                                onChangeRowsPerPage={this.handleChangeRowsPerPage}/>
+                        </TableRow>
+                    </TableFooter>
                 </Table>
             ))
     }

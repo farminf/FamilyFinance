@@ -21,9 +21,9 @@ const styles = theme => ({
     },
     root: {
         flexGrow: 1,
-        marginTop: 30,
-        marginRight: 30,
-        marginLeft: 30,
+        marginTop: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing.unit,
         textAlign: 'center',
     },
     paper: {
@@ -52,7 +52,7 @@ class AddTransactionContainer extends React.Component {
             <div>
 
                 <div className={classes.root}>
-                    <h1>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h1>
+                    <h2>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h2>
                     <Grid container spacing={8}>
 
                         <Grid item md={4} xs={10} sm={11}>
