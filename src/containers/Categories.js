@@ -54,7 +54,7 @@ class CategoriesContainer extends React.Component {
             <div>
 
                 <div className={classes.root}>
-                    <h1>{Constants.ADD_CATEGORY_PAGE_TITLE}</h1>
+                    <h2>{Constants.ADD_CATEGORY_PAGE_TITLE}</h2>
                     <Grid container spacing={8} className={classes.rootgrid}>
 
                         <Grid item md={4} xs={10} sm={5}>

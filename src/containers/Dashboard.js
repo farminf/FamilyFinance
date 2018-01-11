@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import Constants from '../utils/constants';
 import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
 import CategoryList from '../components/CategoryList';
@@ -61,7 +60,7 @@ class Dashboard extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <h1>{Constants.DASHBOARD_PAGE_TITLE}</h1>
+                {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
                 <div className={classes.root}>
                     <Grid container spacing={8} className={classes.rootgrid}>
 
