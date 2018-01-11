@@ -19,6 +19,10 @@ const styles = theme => ({
 
 class TransactionList extends React.Component {
 
+    componentDidMount(){
+        
+    }
+
     onDelete = (idObject, id) => {
         console.log(id);
         this
@@ -33,7 +37,6 @@ class TransactionList extends React.Component {
                     return null;
                 }
             })
-
     };
 
     onCopy = (id) => {
@@ -55,7 +58,7 @@ class TransactionList extends React.Component {
 
     render() {
         const {classes} = this.props;
-        return (this.props.transactions.lenght === 0
+        return (this.props.transactions.lenght === 0 || this.props.transactions.hasOwnProperty(0) === false
             ? (
                 <p>no transaction</p>
             )
@@ -73,10 +76,7 @@ class TransactionList extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this
-                            .props
-                            .transactions
-                            .map((transaction) => {
+                        {this.props.transactions.map((transaction) => {
                                 return <TransactionListItem
                                     key={transaction.id}
                                     onDelete={this.onDelete}

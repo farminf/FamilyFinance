@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import {startAddCategory} from '../actions/categories';
 import CategotyList from '../components/CategoryList';
 import CategoryForm from '../components/CategoryForm';
+import AddFloatingButton from '../components/AddFloatingButton';
+
 
 const styles = theme => ({
     button: {
@@ -67,6 +69,7 @@ class CategoriesContainer extends React.Component {
                         </Grid>
 
                     </Grid>
+                    <AddFloatingButton/>
                 </div>
             </div>
         );

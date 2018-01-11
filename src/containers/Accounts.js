@@ -7,6 +7,8 @@ import AccountForm from '../components/AccountForm';
 import {connect} from 'react-redux';
 import {startAddAccount} from '../actions/accounts';
 import AccountList from '../components/AccountList';
+import AddFloatingButton from '../components/AddFloatingButton';
+
 
 const styles = theme => ({
     button: {
@@ -20,7 +22,7 @@ const styles = theme => ({
         marginTop: 30,
         marginRight: 30,
         marginLeft: 30,
-        textAlign: 'center',
+        textAlign: 'center'
     },
     paper: {
         textAlign: 'center',
@@ -34,6 +36,7 @@ const styles = theme => ({
 class AddAccountContainer extends React.Component {
 
     onSubmit = (account) => {
+
         this
             .props
             .startAddAccount(account);
@@ -41,6 +44,7 @@ class AddAccountContainer extends React.Component {
             .props
             .history
             .push('/accounts');
+
     };
 
     render() {
@@ -64,11 +68,14 @@ class AddAccountContainer extends React.Component {
                         </Grid>
 
                     </Grid>
+                    <AddFloatingButton/>
                 </div>
             </div>
         );
     }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => ({
     startAddAccount: (account) => dispatch(startAddAccount(account))

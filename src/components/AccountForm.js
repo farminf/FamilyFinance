@@ -2,6 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import {connect} from 'react-redux';
 
 const styles = theme => ({
     textField: {
@@ -42,17 +43,23 @@ class AccountForm extends React.Component {
     };
 
     onSubmit = (e) => {
+
         e.preventDefault();
+
         if (!this.state.name || !this.state.balance) {
             this.setState(() => ({error: 'Please provide name and balance.'}));
         } else {
-            this.setState(() => ({error: ''}));
-            this
-                .props
-                .onSubmit({
-                    name: this.state.name,
-                    balance: parseFloat(this.state.balance, 10) * 100
-                });
+            if (this.props.accounts.find((account) => account.name === this.state.name) === undefined) {
+                this.setState(() => ({error: ''}));
+                this
+                    .props
+                    .onSubmit({
+                        name: this.state.name,
+                        balance: parseFloat(this.state.balance, 10) * 100
+                    });
+            } else {
+                this.setState(() => ({name: '', balance: '' , error: 'Account already exists'}));
+            }
         }
     };
 
@@ -81,7 +88,6 @@ class AccountForm extends React.Component {
                         className={classes.textField}
                         type="text"
                         placeholder="name"
-                        autoFocus
                         value={this.state.name}
                         onChange={this.onNameChange}/>
                     <TextField
@@ -103,5 +109,8 @@ class AccountForm extends React.Component {
     }
 
 }
+const mapStateToProps = (state, props) => {
+    return {accounts: state.accounts};
+};
 
-export default withStyles(styles)(AccountForm);
+export default connect(mapStateToProps)(withStyles(styles)(AccountForm));

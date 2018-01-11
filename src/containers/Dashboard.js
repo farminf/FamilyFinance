@@ -6,7 +6,12 @@ import Constants from '../utils/constants';
 import AccountList from '../components/AccountList';
 import TransactionList from '../components/TransactionList';
 import CategoryList from '../components/CategoryList';
-import AddFloatingBtton from '../components/AddFloatingButton';
+import AddFloatingButton from '../components/AddFloatingButton';
+import {connect} from 'react-redux';
+import {startSetTransactions} from '../actions/transactions';
+import {startSetAccounts} from '../actions/accounts';
+import {startSetCategories} from '../actions/categories';
+
 
 const styles = theme => ({
     floatingButton: {
@@ -36,15 +41,21 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto'
     },
-    rootgrid:{
-        justifyContent:'center'
-        
+    rootgrid: {
+        justifyContent: 'center'
+
     }
 });
 
 class Dashboard extends React.Component {
 
     handleClickFloatingButton = event => {};
+
+    componentWillMount() {
+        // this.props.startSetTransactions();
+        // this.props.startSetAccounts();
+        // this.props.startSetCategories();
+    }
 
     render() {
         const {classes} = this.props;
@@ -76,12 +87,18 @@ class Dashboard extends React.Component {
         </Grid>*/}
 
                     </Grid>
-                    <AddFloatingBtton/>
-
+                    <AddFloatingButton/>
                 </div>
             </div>
         );
     }
 }
 
-export default withStyles(styles)(Dashboard);
+const mapDispatchToProps = (dispatch) => ({
+    startSetTransactions: () => dispatch(startSetTransactions()),
+    startSetAccounts: () => dispatch(startSetAccounts()),
+    startSetCategories: () => dispatch(startSetCategories())
+});
+
+
+export default connect (undefined , mapDispatchToProps)(withStyles(styles)(Dashboard));
