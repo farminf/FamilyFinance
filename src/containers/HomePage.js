@@ -33,7 +33,7 @@ const HomePage = (props) => {
     return (
         <div >
             {/*<h1>Home</h1>*/}
-            <Grid container spacing={8} justify="center">
+            <Grid container spacing={0} justify="center">
                 <Grid item xs={12} sm={12} md={12}>
                     <Typography type="headline" component="h3">
                         {Constants.TEXT_LOGIN_CARD_HEADER}
