@@ -43,13 +43,13 @@ const HomePage = (props) => {
                     </Typography>
 
                 </Grid>
-                <Grid item xs={12} sm={3} md={3}>
+                <Grid item xs={12} sm={10} md={4} lg={4}>
                     <LoginGoogle onLoginGoogle={props.startLoginGoogle}/>
                 </Grid>
-                <Grid item xs={12} sm={3} md={3}>
+                <Grid item xs={12} sm={10} md={4} lg={4}>
                     <LoginUserNamePassword onLoginEmail={props.startLoginWithEmail}/>
                 </Grid>
-                <Grid item xs={12} sm={3} md={3}>
+                <Grid item xs={12} sm={10} md={4} lg={4}>
                     <SignUp onSignup={props.startSignUp}/>
                 </Grid>
             </Grid>

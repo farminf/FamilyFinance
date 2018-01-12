@@ -36,7 +36,6 @@ const styles = theme => ({
     },
     paper: {
         color: theme.palette.text.secondary,
-        width: '100%',
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto'
     },
@@ -61,20 +60,19 @@ class Dashboard extends React.Component {
         return (
             <div>
                 {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
-                <div className={classes.root}>
-                    <Grid container spacing={8} className={classes.rootgrid}>
+                    <Grid container spacing={8}  justify="center">
 
-                        <Grid item md={10} xs={10} sm={11}>
-                            <Paper className={classes.paper}>
+                        <Grid item xs={12} sm={10} md={10} lg={10}>
+                            <Paper className={classes.paper} elevation={4}>
                                 <TransactionList/>
                             </Paper>
                         </Grid>
-                        <Grid item md={5} xs={10} sm={11}>
+                        <Grid item md={5} xs={12} sm={11} lg={5}>
                             <Paper className={classes.paper}>
                                 <AccountList/>
                             </Paper>
                         </Grid>
-                        <Grid item md={5} xs={10} sm={11}>
+                        <Grid item md={5} xs={12} sm={11} lg={5}>
                             <Paper className={classes.paper}>
                                 <CategoryList/>
                             </Paper>
@@ -87,7 +85,6 @@ class Dashboard extends React.Component {
 
                     </Grid>
                     <AddFloatingButton/>
-                </div>
             </div>
         );
     }
