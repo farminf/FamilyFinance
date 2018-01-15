@@ -1,4 +1,7 @@
-import database from '../firebase/firebase'
+import database , {storage} from '../firebase/firebase'
+import moment from 'moment';
+
+
 
 export const addTransaction = (transaction) => ({type: 'ADD_TRANSACTION', transaction});
 
@@ -43,12 +46,15 @@ export const startAddTransaction = (transactionData = {}) => {
 
 export const setTransactions = (transactions) => ({type: 'SET_TRANSACTIONS', transactions});
 
-export const startSetTransactions = () => {
+export const startSetTransactions = ( fromMoment = moment().startOf('month').valueOf() , toMoment = moment().valueOf() ) => {
 
     return (dispatch, getState) => {
         const user_uid = getState().auth.uid;
         return database
             .ref(`users/${user_uid}/transactions`)
+            .orderByChild('date')
+            .startAt(fromMoment)
+            .endAt(toMoment)
             .once('value')
             .then((snapshot) => {
                 const transactions = [];

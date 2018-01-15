@@ -41,6 +41,7 @@ export const startSetCategories = () => {
         const user_uid = getState().auth.uid;
         return database
             .ref(`users/${user_uid}/categories`)
+            .orderByChild('name')
             .once('value')
             .then((snapshot) => {
                 const categories = [];

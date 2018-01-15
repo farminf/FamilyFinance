@@ -55,12 +55,12 @@ class AddTransactionContainer extends React.Component {
                     <h2>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h2>
                     <Grid container spacing={8}>
 
-                        <Grid item md={4} xs={10} sm={11}>
+                        <Grid item md={3} xs={10} sm={11}>
                             <Paper className={classes.paper}>
                                 <TransactionForm onSubmit={this.onSubmit}/>
                             </Paper>
                         </Grid>
-                        <Grid item md={8} xs={10} sm={11}>
+                        <Grid item md={9} xs={10} sm={11}>
                         <Paper className={classes.paper}>
                             <TransactionList />
                         </Paper>

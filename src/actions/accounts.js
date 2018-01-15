@@ -36,6 +36,7 @@ export const startSetAccounts = () => {
         const user_uid = getState().auth.uid;
         return database
             .ref(`users/${user_uid}/accounts`)
+            .orderByKey()
             .once('value')
             .then((snapshot) => {
                 const accounts = [];
