@@ -1,6 +1,5 @@
 import React from 'react';
 import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import {connect} from 'react-redux';
@@ -23,13 +22,6 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         marginLeft: theme.spacing.unit,
         textAlign: 'center'
-    },
-    paper: {
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        marginTop: theme.spacing.unit * 3,
-        overflowX: 'auto'
-
     },
     rootgrid: {
         justifyContent: 'center'
@@ -55,17 +47,13 @@ class CategoriesContainer extends React.Component {
 
                 <div className={classes.root}>
                     <h2>{Constants.ADD_CATEGORY_PAGE_TITLE}</h2>
-                    <Grid container spacing={8} className={classes.rootgrid}>
+                    <Grid container spacing={8} >
 
                         <Grid item md={4} xs={10} sm={5}>
-                            <Paper className={classes.paper}>
                                 <CategoryForm onSubmit={this.onSubmit}/>
-                            </Paper>
                         </Grid>
                         <Grid item md={6} xs={10} sm={5}>
-                            <Paper className={classes.paper}>
                                 <CategotyList/>
-                            </Paper>
                         </Grid>
 
                     </Grid>

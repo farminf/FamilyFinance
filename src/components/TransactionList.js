@@ -14,6 +14,8 @@ import Table, {
 import {updateAccountBalance} from '../actions/accounts';
 import FilterListBar from '../components/FilterListBar';
 import transactionSelector from '../selectors/TransactionSelector';
+import Paper from 'material-ui/Paper';
+
 
 const styles = theme => ({
     root: {
@@ -23,7 +25,19 @@ const styles = theme => ({
     },
     table: {
         minWidth: 700
-    }
+    },
+    paper: theme
+        .mixins
+        .gutters({
+
+
+            paddingLeft: 0,
+            paddingRight: 0,
+            marginTop: theme.spacing.unit * 3,
+            marginLeft: 10,
+            marginRight: 10,
+            overflowX: 'auto'
+        })
 });
 
 class TransactionList extends React.Component {
@@ -31,7 +45,7 @@ class TransactionList extends React.Component {
         super(props);
         this.state = {
             page: 0,
-            rowsPerPage: 10,
+            rowsPerPage: this.props.rowsPerPage,
             transactions: this.props.transactions
         }
     }
@@ -96,7 +110,8 @@ class TransactionList extends React.Component {
                 </div>
             )
             : (
-                <div>
+                <Paper className={classes.paper} elevation={4}>
+
 
                     <FilterListBar onFilter={this.onFilter}/>
 
@@ -139,7 +154,7 @@ class TransactionList extends React.Component {
                         </TableFooter>
                     </Table>
 
-                </div>
+                </Paper>
             ))
     }
 }

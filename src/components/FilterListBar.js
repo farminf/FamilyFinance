@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
 import Select from 'material-ui/Select';
 import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
-import moment from 'moment';
-import {SingleDatePicker} from 'react-dates';
+// import moment from 'moment';
+// import {SingleDatePicker} from 'react-dates';
 
 const styles = theme => ({
     root: {

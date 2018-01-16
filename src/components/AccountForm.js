@@ -3,6 +3,8 @@ import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import {connect} from 'react-redux';
+import Paper from 'material-ui/Paper';
+
 
 const styles = theme => ({
     textField: {
@@ -19,7 +21,19 @@ const styles = theme => ({
         width: 250,
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit
-    }
+    },
+    paper: theme
+        .mixins
+        .gutters({
+
+
+            paddingLeft: 0,
+            paddingRight: 0,
+            marginTop: theme.spacing.unit * 3,
+            marginLeft: 10,
+            marginRight: 10,
+            overflowX: 'auto'
+        })
 });
 
 class AccountForm extends React.Component {
@@ -79,7 +93,8 @@ class AccountForm extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <Paper className={classes.paper} elevation={4}>
+
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
                     <TextField
@@ -104,7 +119,7 @@ class AccountForm extends React.Component {
                         raised
                         color="primary">{this.state.submit_button_title}</Button>
                 </form>
-            </div>
+            </Paper>
         )
     }
 

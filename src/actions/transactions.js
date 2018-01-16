@@ -1,6 +1,6 @@
-import database , {storage} from '../firebase/firebase'
+import database  from '../firebase/firebase'
 import moment from 'moment';
-
+//{storage}
 
 
 export const addTransaction = (transaction) => ({type: 'ADD_TRANSACTION', transaction});

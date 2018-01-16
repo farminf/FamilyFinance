@@ -11,6 +11,8 @@ import Table, {
     TableFooter,
     TablePagination
 } from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
+
 
 const styles = theme => ({
     root: {
@@ -20,7 +22,19 @@ const styles = theme => ({
     },
     table: {
         minWidth: 500
-    }
+    },
+    paper: theme
+        .mixins
+        .gutters({
+
+
+            paddingLeft: 16,
+            paddingRight: 16,
+            marginTop: theme.spacing.unit * 3,
+            marginLeft: 10,
+            marginRight: 10,
+            overflowX: 'auto'
+        })
 });
 
 export class CategoryList extends React.Component {
@@ -67,12 +81,14 @@ export class CategoryList extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <Paper className={classes.paper} elevation={4}>
+
                 {this.props.categories.lenght === 0 || this.props.categories.hasOwnProperty(0) === false
                     ? (
                         <p>no categories</p>
                     )
                     : (
+
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow>
@@ -108,7 +124,7 @@ export class CategoryList extends React.Component {
                         </Table>
                     )
 }
-            </div>
+            </Paper>
 
         )
     }

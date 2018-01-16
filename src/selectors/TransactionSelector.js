@@ -1,4 +1,3 @@
-import moment from 'moment';
 
 export default(transactions, {typeFilter, descriptionFilter}) => {
     return transactions.filter((transaction) => {
