@@ -15,7 +15,7 @@ import {updateAccountBalance} from '../actions/accounts';
 import FilterListBar from '../components/FilterListBar';
 import transactionSelector from '../selectors/TransactionSelector';
 import Paper from 'material-ui/Paper';
-
+import {setTypeFilter , setDescriptionFilter} from '../actions/filters';
 
 const styles = theme => ({
     root: {
@@ -29,7 +29,6 @@ const styles = theme => ({
     paper: theme
         .mixins
         .gutters({
-
 
             paddingLeft: 0,
             paddingRight: 0,
@@ -46,10 +45,17 @@ class TransactionList extends React.Component {
         this.state = {
             page: 0,
             rowsPerPage: this.props.rowsPerPage,
-            transactions: this.props.transactions
+            typeFilter:'',
+            descriptionFilter:''
         }
     }
+    componentDidUpdate() {
+        // this.setState(() => ({transactions: this.props.transactions}));
+    }
+    componentWillReceiveProps() {
+        //this.setState(() => ({transactions: this.props.transactions}));
 
+    }
     componentDidMount() {}
 
     onDelete = (idObject, id) => {
@@ -86,9 +92,16 @@ class TransactionList extends React.Component {
     };
 
     onFilter = ({typeFilter, descriptionFilter}) => {
-        const transactionsFilter = transactionSelector(this.props.transactions, {typeFilter, descriptionFilter})
+        // const transactionsFilter = transactionSelector(this.props.transactions, {typeFilter, descriptionFilter})
 
-        this.setState(() => ({transactions: transactionsFilter}));
+        // this.setState(() => ({transactions: transactionsFilter}));
+        this.setState(() => ({  typeFilter,
+                                descriptionFilter
+                            }));
+        this.props.setDescriptionFilter(descriptionFilter);
+        this.props.setTypeFilter(typeFilter);
+        
+
 
     }
 
@@ -102,7 +115,7 @@ class TransactionList extends React.Component {
 
     render() {
         const {classes} = this.props;
-        return (this.state.transactions.lenght === 0 || this.state.transactions.hasOwnProperty(0) === false
+        return (this.props.transactions.lenght === 0 || this.props.transactions.hasOwnProperty(0) === false
             ? (
                 <div>
                     <FilterListBar onFilter={this.onFilter}/>
@@ -111,7 +124,6 @@ class TransactionList extends React.Component {
             )
             : (
                 <Paper className={classes.paper} elevation={4}>
-
 
                     <FilterListBar onFilter={this.onFilter}/>
 
@@ -129,7 +141,7 @@ class TransactionList extends React.Component {
                         </TableHead>
                         <TableBody>
                             {this
-                                .state
+                                .props
                                 .transactions
                                 .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
                                 .map((transaction) => {
@@ -144,7 +156,7 @@ class TransactionList extends React.Component {
                         <TableFooter>
                             <TableRow>
                                 <TablePagination
-                                    count={this.state.transactions.length}
+                                    count={this.props.transactions.length}
                                     rowsPerPage={this.state.rowsPerPage}
                                     page={this.state.page}
                                     rowsPerPageOptions={[5, 10]}
@@ -158,9 +170,13 @@ class TransactionList extends React.Component {
             ))
     }
 }
-const mapStateToProps = (state) => {
-    return {transactions: state.transactions};
+const mapStateToProps = (state, props) => {
+    return {
+        transactions: transactionSelector(state.transactions, state.filters )
+    };
+
 };
+
 const mapDispatchToProps = (dispatch, props) => ({
     startDeleteTransaction: (id, transaction) => dispatch(startDeleteTransaction(id)).then(() => {
         let delta = -transaction.amount
@@ -175,7 +191,11 @@ const mapDispatchToProps = (dispatch, props) => ({
             delta = -delta
         }
         dispatch(updateAccountBalance(transaction.account, delta))
-    })
+    }),
+    setDescriptionFilter: (descriptionFilter) => dispatch(setDescriptionFilter(descriptionFilter)),
+    setTypeFilter: (typeFilter) => dispatch(setTypeFilter(typeFilter))
+
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TransactionList))

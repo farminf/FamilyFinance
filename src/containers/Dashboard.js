@@ -15,18 +15,16 @@ class Dashboard extends React.Component {
 
     handleClickFloatingButton = event => {};
 
-    componentWillMount() {
-        // this.props.startSetTransactions(); this.props.startSetAccounts();
-        // this.props.startSetCategories();
-    }
-
     render() {
         return (
             <div>
                 {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
                 <Grid container spacing={0} >
 
-                    <Grid item xs={10} sm={10} md={12} lg={12}>
+                    <Grid item xs={10} sm={10} md={6} lg={6}>
+                        <LineChartMonth/>
+                    </Grid>
+                    <Grid item xs={10} sm={10} md={6} lg={6}>
                         <LineChartMonth/>
                     </Grid>
 
@@ -41,11 +39,6 @@ class Dashboard extends React.Component {
                     <Grid item xs={10} sm={10} md={6} lg={6}>
                         <CategoryList/>
                     </Grid>
-                    {/*<Grid item md={12} xs={10} sm={11}>
-                            <Paper className={classes.paper}>
-                                <h3>ff</h3>
-                            </Paper>
-        </Grid>*/}
 
                 </Grid>
                 <AddFloatingButton/>

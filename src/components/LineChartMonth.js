@@ -11,16 +11,15 @@ import {
     ResponsiveContainer
 } from 'recharts';
 import Paper from 'material-ui/Paper';
+import transactions from '../reducers/transactions';
 
 
 const styles = theme => ({
     root: {
         WebkitBoxSizing: "border-box",
         MozBoxSizing: "border-box",
-        boxSizing: "border - box",
         padding: 10,
-        width: 1000,
-        height: 600,
+        height: 400,
         backgroundColor: "#fff"
     },
     paper: theme
@@ -77,12 +76,25 @@ const data = [
 
 class LineChartMonth extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     //this.state = {}
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            chartData :[]
+        }
+    }
 
-    componentWillMount() {}
+    componentWillMount() {
+    //     let memo = [];
+    //    let f = this.props.transactions
+    //     .reduce((memo, obj) => {
+    //         memo[obj.name = obj.date] += obj.amount;
+    //         return memo; 
+    //     }, {})
+
+    //     f.map((amount, date) => ({date, amount}))   
+    //     .value();
+        
+    }
 
     render() {
 
