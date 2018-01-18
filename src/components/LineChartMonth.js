@@ -11,7 +11,6 @@ import {
     ResponsiveContainer
 } from 'recharts';
 import Paper from 'material-ui/Paper';
-import transactions from '../reducers/transactions';
 
 
 const styles = theme => ({
