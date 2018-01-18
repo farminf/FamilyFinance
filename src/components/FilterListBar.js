@@ -4,6 +4,8 @@ import TextField from 'material-ui/TextField';
 import Select from 'material-ui/Select';
 import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
+import Paper from 'material-ui/Paper';
+
 // import moment from 'moment';
 // import {SingleDatePicker} from 'react-dates';
 
@@ -84,6 +86,7 @@ class FilterListBar extends Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
+            <Paper >
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="type-native-simple">Type</InputLabel>
                     <Select
@@ -106,6 +109,7 @@ class FilterListBar extends Component {
                 {/*<Button onClick={this.onFilter} className={classes.button} raised>
                     Filter
         </Button>*/}
+        </Paper >
             </div>
         )
     }

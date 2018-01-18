@@ -46,7 +46,6 @@ const styles = theme => ({
         .mixins
         .gutters({
 
-
             paddingLeft: 0,
             paddingRight: 0,
             marginTop: theme.spacing.unit * 3,

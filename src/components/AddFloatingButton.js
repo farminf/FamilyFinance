@@ -18,7 +18,7 @@ const styles = theme => ({
     },
     dialogContent:{
         textAlign: 'center',
-        maxWidth:300,
+        maxWidth:400,
     },
     dialogTitle:{
         textAlign: 'center'        
