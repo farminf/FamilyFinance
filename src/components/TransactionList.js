@@ -132,9 +132,7 @@ class TransactionList extends React.Component {
                             .transactions
                             .hasOwnProperty(0) === false
                             ? (
-                                <div>
-                                    <p>no transaction</p>
-                                </div>
+                                <TableRow key='empty'/>
                             )
                             : (this.props.transactions.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map((transaction) => {
                                 return <TransactionListItem
@@ -148,10 +146,10 @@ class TransactionList extends React.Component {
                     <TableFooter>
                         <TableRow>
                             <TablePagination
-                                count={this.props.transactions.length}
+                                count={this.props.transactions.length !== undefined ? this.props.transactions.length : 0}
                                 rowsPerPage={this.state.rowsPerPage}
                                 page={this.state.page}
-                                rowsPerPageOptions={[5, 10]}
+                                rowsPerPageOptions={[5, 10 , 20]}
                                 onChangePage={this.handleChangePage}
                                 onChangeRowsPerPage={this.handleChangeRowsPerPage}/>
                         </TableRow>

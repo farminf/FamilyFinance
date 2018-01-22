@@ -76,7 +76,7 @@ class TransactionForm extends React.Component {
                 : '',
             date: props.transaction
                 ? moment(props.transaction.date)
-                : moment(),
+                : moment().set({'hour': 12 , 'minute' : 0 , 'second' : 0 , 'millisecond' : 0}).get('today'),
             error: '',
             calendarFocused: false,
             submit_button_title: props.transaction
@@ -134,8 +134,8 @@ class TransactionForm extends React.Component {
         this.setState(() => ({category}));
     };
 
-    onDateChange = (date) => {
-        //const date = e.target.value;
+    onDateChange = (d) => {
+        const date = d.get('today');
         this.setState(() => ({date}));
     };
 
