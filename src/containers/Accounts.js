@@ -1,6 +1,5 @@
 import React from 'react';
 import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import AccountForm from '../components/AccountForm';
@@ -23,13 +22,6 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         marginLeft: theme.spacing.unit,
         textAlign: 'center'
-    },
-    paper: {
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        marginTop: theme.spacing.unit * 3,
-        overflowX: 'auto'
-
     }
 });
 
@@ -57,14 +49,10 @@ class AddAccountContainer extends React.Component {
                     <Grid container spacing={8}>
 
                         <Grid item md={4} xs={10} sm={5}>
-                            <Paper className={classes.paper}>
                                 <AccountForm onSubmit={this.onSubmit}/>
-                            </Paper>
                         </Grid>
                         <Grid item md={8} xs={10} sm={5}>
-                            <Paper className={classes.paper}>
                                 <AccountList/>
-                            </Paper>
                         </Grid>
 
                     </Grid>

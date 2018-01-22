@@ -1,6 +1,5 @@
 import React from 'react';
 import {withStyles} from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import TransactionForm from '../components/TransactionForm';
@@ -21,11 +20,6 @@ const styles = theme => ({
         marginLeft: 10,
         marginRight: 5,
         height: 'auto'
-    },
-    paper: {
-        padding: 60,
-        textAlign: 'center',
-        color: theme.palette.text.secondary
     }
 });
 
@@ -53,10 +47,8 @@ class EditTransactionContainer extends React.Component {
                     <h1>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h1>
                     <Grid container spacing={8} justify="center">
 
-                        <Grid item md={4} xs={12} sm={6}>
-                            <Paper className={classes.paper}>
+                        <Grid item md={4} xs={11} sm={6}>
                                 <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
-                            </Paper>
                         </Grid>
 
                     </Grid>

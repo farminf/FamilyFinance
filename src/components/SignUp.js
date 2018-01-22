@@ -14,13 +14,14 @@ const styles = theme => ({
     paper: theme
         .mixins
         .gutters({
-            paddingTop: 40,
-            paddingBottom: 40,
+            alignContent: "center",
+            paddingTop: 20,
+            paddingBottom: 20,
             paddingLeft: 16,
             paddingRight: 16,
             marginTop: theme.spacing.unit * 3,
-            marginLeft: 20,
-            marginRight: 20
+            marginLeft: 10,
+            marginRight: 10
         }),
     textField: {
         marginLeft: theme.spacing.unit,
@@ -36,6 +37,12 @@ const styles = theme => ({
         width: 250,
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit
+    },
+    recaptcha:{
+        textAlign:"center",
+        justify: "center",
+        margin:"auto",
+        width: 300,
     }
 });
 
@@ -118,11 +125,12 @@ class SignUp extends React.Component {
                         placeholder="Confirm Password"
                         alue={this.state.confirmpassword}
                         onChange={this.onConfirmPasswordChange}/>
-
+                    <div className={classes.recaptcha}>
                     <Recaptcha
-                        className={classes.textField}
+                        
                         sitekey="6Lc1_j8UAAAAAH5zKYdv055fpSrIDghc3J6xZF02"
                        />
+                    </div>
                     <Button onClick={this.onSignup} raised className={classes.button}>
                         Register
                     </Button>

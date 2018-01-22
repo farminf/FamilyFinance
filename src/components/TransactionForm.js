@@ -9,6 +9,8 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import {SingleDatePicker} from 'react-dates';
 import '../react_dates_overrides.css'
+import Paper from 'material-ui/Paper';
+
 
 const styles = theme => ({
 
@@ -26,7 +28,8 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 250,
         marginTop: theme.spacing.unit,
-        marginBottom: 40
+        marginBottom: 40,
+        
     },
     formControl: {
         margin: theme.spacing.unit,
@@ -38,7 +41,18 @@ const styles = theme => ({
         marginTop: 10,
         minWidth: 250,
         padding: 10
-    }
+    },
+    paper: theme
+        .mixins
+        .gutters({
+
+            paddingLeft: 0,
+            paddingRight: 0,
+            marginTop: theme.spacing.unit * 3,
+            marginLeft: 10,
+            marginRight: 10,
+            overflowX: 'auto'
+        })
 });
 
 class TransactionForm extends React.Component {
@@ -62,7 +76,7 @@ class TransactionForm extends React.Component {
                 : '',
             date: props.transaction
                 ? moment(props.transaction.date)
-                : moment(),
+                : moment().set({'hour': 12 , 'minute' : 0 , 'second' : 0 , 'millisecond' : 0}).get('today'),
             error: '',
             calendarFocused: false,
             submit_button_title: props.transaction
@@ -120,8 +134,8 @@ class TransactionForm extends React.Component {
         this.setState(() => ({category}));
     };
 
-    onDateChange = (date) => {
-        //const date = e.target.value;
+    onDateChange = (d) => {
+        const date = d.get('today');
         this.setState(() => ({date}));
     };
 
@@ -132,7 +146,8 @@ class TransactionForm extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <Paper className={classes.paper} elevation={4}>
+
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
                     <FormControl className={classes.dateFormControl}>
@@ -229,7 +244,7 @@ class TransactionForm extends React.Component {
                         {this.state.submit_button_title}
                     </Button>
                 </form>
-            </div>
+            </Paper>
         )
     }
 
