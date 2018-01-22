@@ -1,5 +1,6 @@
 import database  from '../firebase/firebase'
 import moment from 'moment';
+import _ from 'lodash';
 //{storage}
 
 
@@ -64,7 +65,7 @@ export const startSetTransactions = ( fromMoment = moment().startOf('month').val
                         ...childSnapshot.val()
                     })
                 });
-                dispatch(setTransactions(transactions));
+                dispatch(setTransactions( _.orderBy(transactions , ['date'] , ['desc'])));
             });
     };
 };

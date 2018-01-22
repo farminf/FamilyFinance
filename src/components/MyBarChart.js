@@ -8,8 +8,7 @@ import {
     Legend,
     CartesianGrid,
     Tooltip,
-    ResponsiveContainer,
-    Label
+    ResponsiveContainer
 } from 'recharts';
 import Paper from 'material-ui/Paper';
 

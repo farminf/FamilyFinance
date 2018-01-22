@@ -12,6 +12,7 @@ import {startSetCategories} from '../actions/categories';
 import MyAreaChart from '../components/MyAreaChart';
 import MyBarChart from '../components/MyBarChart.js';
 import MyPieChart from '../components/MyPieChart';
+import FilterDashboard from '../components/FilterDashboard';
 
 import _ from 'lodash';
 import moment from 'moment';
@@ -75,13 +76,26 @@ class Dashboard extends React.Component {
         this.updateStatisticData();
     }
 
-    handleClickFloatingButton = event => {};
+    // handleClickFloatingButton = event => {};
 
+    onFilterDashboard = ({dashboardYearFilter , dashboardMonthFilter}) =>{
+        var startDate = moment([dashboardYearFilter, dashboardMonthFilter - 1]);
+        var endDate = moment(startDate).endOf('month');
+
+        this
+            .props
+            .startSetTransactions(startDate.valueOf() , endDate.valueOf());
+    }
+
+    
     render() {
         return (
             <div>
                 {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
                 <Grid container spacing={0}>
+                    <Grid item xs={10} sm={10} md={12} lg={12}>
+                        <FilterDashboard onFilterDashboard={this.onFilterDashboard}  />
+                    </Grid>
 
                     <Grid item xs={10} sm={10} md={6} lg={6}>
                         <MyBarChart

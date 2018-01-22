@@ -3,7 +3,6 @@ import {withStyles} from 'material-ui/styles';
 import {
     PieChart,
     Pie,
-    Sector,
     Cell,
     ResponsiveContainer,
     Legend,
