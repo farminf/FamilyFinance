@@ -1,4 +1,6 @@
-import database from '../firebase/firebase'
+import database from '../firebase/firebase';
+import {addError} from './errors';
+
 
 export const addAccount = (account) => ({type: 'ADD_ACCOUNTS', account});
 
@@ -22,8 +24,10 @@ export const startAddAccount = (accountData = {}) => {
                 dispatch(addAccount({
                     ...account
                 }));
-            }).catch((err)=>{
-                console.log(err)
+            }, (error) => {
+                console.error("error: " + error);
+                dispatch(addError({code: error.code,message:error.message}))
+
             });
     }
 
@@ -46,6 +50,10 @@ export const startSetAccounts = () => {
                     })
                 });
                 dispatch(setAccounts(accounts));
+            }, (error) => {
+                console.error(error);
+                dispatch(addError({code: error.code,message:error.message}))
+
             });
     };
 };
@@ -92,7 +100,9 @@ export const updateAccountBalance = (name, delta) => {
                 } else if (!committed) {
                     console.log('aborted the transaction');
                 } else {
-                    dispatch(editAccount(name, {balance: snapshot.val()}));
+                    dispatch(editAccount(name, {
+                        balance: snapshot.val()
+                    }));
                 }
             });
     }

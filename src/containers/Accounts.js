@@ -56,7 +56,7 @@ class AddAccountContainer extends React.Component {
                         </Grid>
 
                     </Grid>
-                    <AddFloatingButton/>
+                     <AddFloatingButton/>
                 </div>
             </div>
         );

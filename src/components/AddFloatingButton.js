@@ -6,6 +6,7 @@ import Dialog, {DialogContent, DialogTitle} from 'material-ui/Dialog';
 import TransactionFrom from './TransactionForm';
 import {connect} from 'react-redux';
 import {startAddTransaction} from '../actions/transactions';
+import {updateAccountBalance} from '../actions/accounts';
 
 const styles = theme => ({
     floatingButton: {
@@ -73,7 +74,13 @@ class AddFloatingButton extends React.Component {
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction))
+    startAddTransaction: (transaction) => dispatch(startAddTransaction(transaction)).then(() => {
+        let delta = transaction.amount
+        if (transaction.type === 'Expense') {
+            delta = -delta
+        }
+        dispatch(updateAccountBalance(transaction.account, delta))
+    }),
 });
 
 export default connect(undefined, mapDispatchToProps) (withStyles(styles)(AddFloatingButton));

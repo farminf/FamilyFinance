@@ -8,12 +8,12 @@ import {connect} from 'react-redux';
 import {startSetTransactions} from '../actions/transactions';
 import {startSetAccounts} from '../actions/accounts';
 import {startSetCategories} from '../actions/categories';
+import {setDashboardMonthFilter , setDashboardYearFilter} from '../actions/filters'
 //import MyLineChart from '../components/MyLineChart';
 import MyAreaChart from '../components/MyAreaChart';
 import MyBarChart from '../components/MyBarChart.js';
 import MyPieChart from '../components/MyPieChart';
 import FilterDashboard from '../components/FilterDashboard';
-
 import _ from 'lodash';
 import moment from 'moment';
 
@@ -27,10 +27,10 @@ class Dashboard extends React.Component {
         }
     }
 
-    updateStatisticData = () => {
-        let totalExpenseDay = _.filter(this.props.transactions, {'type': 'Expense'});
-        let totalIncomeDay = _.filter(this.props.transactions, {'type': 'Income'});
-        let expensesByCategory = _.filter(this.props.transactions, {'type': 'Expense'});
+    updateStatisticData = (nextProps = this.props) => {
+        let totalExpenseDay = _.filter(nextProps.transactions, {'type': 'Expense'});
+        let totalIncomeDay = _.filter(nextProps.transactions, {'type': 'Income'});
+        let expensesByCategory = _.filter(nextProps.transactions, {'type': 'Expense'});
 
         totalExpenseDay = _(totalExpenseDay)
             .groupBy('date')
@@ -65,41 +65,57 @@ class Dashboard extends React.Component {
         this.setState({totalExpenseDay, totalIncomeDay, expensesByCategory});
     }
 
-    componentWillReceiveProps() {
-        this.updateStatisticData();
+    componentWillReceiveProps(nextProps) {
+        this.updateStatisticData(nextProps);
     }
 
     componentDidMount() {
-        this
-            .props
-            .startSetTransactions();
+        // this     .props     .startSetTransactions();
         this.updateStatisticData();
     }
 
     // handleClickFloatingButton = event => {};
 
-    onFilterDashboard = ({dashboardYearFilter , dashboardMonthFilter}) =>{
-        var startDate = moment([dashboardYearFilter, dashboardMonthFilter - 1]);
+    onFilterDashboard = ({dashboardYearFilter, dashboardMonthFilter}) => {
+        this.props.setDashboardMonthFilter(dashboardMonthFilter);
+        this.props.setDashboardYearFilter(dashboardYearFilter);
+
+        var startDate = moment([
+            dashboardYearFilter, dashboardMonthFilter - 1
+        ]);
         var endDate = moment(startDate).endOf('month');
 
         this
             .props
-            .startSetTransactions(startDate.valueOf() , endDate.valueOf());
+            .startSetTransactions(startDate.valueOf(), endDate.valueOf());
     }
 
-    
+    onSubmit = (transaction) => {
+        this
+            .props
+            .startAddTransaction(transaction);
+        
+    };
+
     render() {
         return (
             <div>
                 {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
                 <Grid container spacing={0}>
                     <Grid item xs={10} sm={10} md={12} lg={12}>
-                        <FilterDashboard onFilterDashboard={this.onFilterDashboard}  />
+                        <FilterDashboard onFilterDashboard={this.onFilterDashboard} filters={this.props.filters}/>
                     </Grid>
 
                     <Grid item xs={10} sm={10} md={6} lg={6}>
                         <MyBarChart
-                            data={_.orderBy(_.merge(this.state.totalExpenseDay, this.state.totalIncomeDay), ['date'], ['asc'])}
+                            data={_.orderBy(([
+                            ...this
+                                .state
+                                .totalExpenseDay
+                                .concat(this.state.totalIncomeDay)
+                                .reduce((m, o) => m.set(o.date, Object.assign(m.get(o.date) || {}, o)), new Map())
+                                .values()
+                        ]), ['date'], ['asc'])}
                             title="Expense/Income/Time"
                             yAxis1="expense"
                             yAxis2="income"
@@ -117,16 +133,16 @@ class Dashboard extends React.Component {
                             fillColor="#8884d8"/>
                     </Grid>
 
-                    <Grid item xs={10} sm={10} md={6} lg={6}>
+                    <Grid item xs={10} sm={10} md={12} lg={12}>
                         <MyAreaChart
-                            data={this.state.totalExpenseDay}
+                            data={_.orderBy(this.state.totalExpenseDay, ['date'], ['asc'])}
                             title="Expense / Time"
                             yAxis="expense"
                             xAxis="date"
                             lineColor="#c40000"
                             fillColor="#c40000"/>
                     </Grid>
-                    <Grid item xs={10} sm={10} md={6} lg={6}>
+                    {/*<Grid item xs={10} sm={10} md={6} lg={6}>
                         <MyAreaChart
                             data={this.state.totalIncomeDay}
                             title="Income / Time"
@@ -135,7 +151,7 @@ class Dashboard extends React.Component {
                             xAxis="date"
                             lineColor="#8884d8"
                             fillColor="#8884d8"/>
-                    </Grid>
+        </Grid>*/}
 
                     <Grid item xs={10} sm={10} md={12} lg={12}>
                         <TransactionList rowsPerPage={5}/>
@@ -157,13 +173,15 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {transactions: state.transactions};
+    return {transactions: state.transactions, filters: state.filters};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    startSetTransactions: () => dispatch(startSetTransactions()),
+    startSetTransactions: (startDate, endDate) => dispatch(startSetTransactions(startDate, endDate)),
     startSetAccounts: () => dispatch(startSetAccounts()),
-    startSetCategories: () => dispatch(startSetCategories())
+    startSetCategories: () => dispatch(startSetCategories()),
+    setDashboardMonthFilter: (dashboardMonthFilter) => dispatch(setDashboardMonthFilter(dashboardMonthFilter)),
+    setDashboardYearFilter: (dashboardYearFilter) => dispatch(setDashboardYearFilter(dashboardYearFilter))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

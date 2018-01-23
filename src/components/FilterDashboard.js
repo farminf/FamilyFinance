@@ -2,8 +2,9 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Select from 'material-ui/Select';
-import Input, {InputLabel} from 'material-ui/Input';
-import {FormControl} from 'material-ui/Form';
+// import Input, {InputLabel} from 'material-ui/Input';
+import {FormControl , FormHelperText} from 'material-ui/Form';
+import moment from 'moment';
 
 const styles = theme => ({
     root: {
@@ -32,19 +33,22 @@ const styles = theme => ({
         marginTop: 10,
         minWidth: 200,
         padding: 10
-    }
+    },
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2,
+      },
 });
 
 class FilterDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dashboardMonthFilter: props.dashboardMonthFilter
-            ? props.dashboardMonthFilter
-            : '',
-            dashboardYearFilter: props.dashboardYearFilter
-            ? props.dashboardYearFilter
-            : ''
+            dashboardMonthFilter: props.filters.dashboardMonthFilter
+            ? props.filters.dashboardMonthFilter
+            : moment().month() +1,
+            dashboardYearFilter: props.filters.dashboardYearFilter
+            ? props.filters.dashboardYearFilter
+            : moment().year()
         };
     }
 
@@ -75,13 +79,12 @@ class FilterDashboard extends React.Component {
         return (
             <Paper className={classes.paper} elevation={4}>
                 <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="type-native-simple">Month</InputLabel>
                     <Select
                         native
                         value={this.state.dashboardMonthFilter}
                         onChange={this.onDashboardMonthFilterChange}
-                        input={< Input id = "type-native-simple" />}>
-                        <option key="all" value=""></option>
+                        className={classes.selectEmpty}>
+                        <option key="month" value={String(this.state.dashboardMonthFilter)}>  {String(this.state.dashboardMonthFilter)} </option>
                         <option key="january" value="01">January</option>
                         <option key="february" value="02">February</option>
                         <option key="march" value="03">March</option>
@@ -95,19 +98,23 @@ class FilterDashboard extends React.Component {
                         <option key="november" value="11">November</option>
                         <option key="december" value="12">December</option>
                     </Select>
+                    <FormHelperText>Month</FormHelperText>
                 </FormControl>
                 <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="type-native-simple">Year</InputLabel>
                     <Select
                         native
                         value={this.state.dashboardYearFilter}
                         onChange={this.onDashboardYearFilterChange}
-                        input={< Input id = "type-native-simple" />}>
-                        <option key="all" value=""></option>
-                        <option key="2017" value="2017">2017</option>
+                        className={classes.selectEmpty}
+                        >
+                        <option key="year" value={String(this.state.dashboardYearFilter)}> {String(this.state.dashboardYearFilter)} </option>
                         <option key="2018" value="2018">2018</option>
+                        <option key="2017" value="2017">2017</option>
+                        <option key="2016" value="2016">2016</option>
 
                     </Select>
+                    <FormHelperText>Year</FormHelperText>
+
                 </FormControl>
             </Paper>
         )

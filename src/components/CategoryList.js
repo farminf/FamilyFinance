@@ -43,7 +43,7 @@ export class CategoryList extends React.Component {
 
         this.state = {
             page: 0,
-            rowsPerPage: 5
+            rowsPerPage: 10
         }
     }
 
@@ -116,7 +116,7 @@ export class CategoryList extends React.Component {
                                         count={this.props.categories.length}
                                         rowsPerPage={this.state.rowsPerPage}
                                         page={this.state.page}
-                                        rowsPerPageOptions={[5]}
+                                        rowsPerPageOptions={[5 , 10]}
                                         onChangePage={this.handleChangePage}
                                         onChangeRowsPerPage={this.handleChangeRowsPerPage}/>
                                 </TableRow>

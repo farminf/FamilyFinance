@@ -47,6 +47,16 @@ export default(state = filtersReducerDefaultState, action) => {
         ...state,
         endDate: action.endDate
       };
+    case 'SET_DASHBOARD_MONTH':
+      return {
+        ...state,
+        dashboardMonthFilter: action.dashboardMonthFilter
+      };
+      case 'SET_DASHBOARD_YEAR':
+      return {
+        ...state,
+        dashboardYearFilter: action.dashboardYearFilter
+      };
     default:
       return state;
   }

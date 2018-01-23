@@ -10,7 +10,7 @@ import moment from 'moment';
 import {SingleDatePicker} from 'react-dates';
 import '../react_dates_overrides.css'
 import Paper from 'material-ui/Paper';
-
+import _ from 'lodash';
 
 const styles = theme => ({
 
@@ -28,8 +28,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 250,
         marginTop: theme.spacing.unit,
-        marginBottom: 40,
-        
+        marginBottom: 40
     },
     formControl: {
         margin: theme.spacing.unit,
@@ -76,7 +75,9 @@ class TransactionForm extends React.Component {
                 : '',
             date: props.transaction
                 ? moment(props.transaction.date)
-                : moment().set({'hour': 12 , 'minute' : 0 , 'second' : 0 , 'millisecond' : 0}).get('today'),
+                : moment()
+                    .set({'hour': 12, 'minute': 0, 'second': 0, 'millisecond': 0})
+                    .get('today'),
             error: '',
             calendarFocused: false,
             submit_button_title: props.transaction
@@ -147,79 +148,82 @@ class TransactionForm extends React.Component {
         const {classes} = this.props;
         return (
             <Paper className={classes.paper} elevation={4}>
-
                 {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
-                    <FormControl className={classes.dateFormControl}>
-                        <SingleDatePicker
-                            date={this.state.date}
-                            onDateChange={this.onDateChange}
-                            focused={this.state.calendarFocused}
-                            onFocusChange={this.onFocusChange}
-                            numberOfMonths={1}
-                            isOutsideRange={() => false}/>
-                    </FormControl>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Type</InputLabel>
-                        <Select
-                            native
-                            value={this.state.type}
-                            onChange={this.onTypeChange}
-                            input={< Input id = "age-native-simple" />}>
-                            <option key=""></option>
-                            <option key="expense" value="Expense">Expense</option>
-                            <option key="income" value="Income">Income</option>
+                {this.props.accounts.hasOwnProperty(0) === false
+                    ? (<p>Please create an account first</p>)
+                    : (
 
-                        </Select>
-                    </FormControl>
-                    <TextField
-                        className={classes.textField}
-                        type="text"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}/>
+                        <form onSubmit={this.onSubmit}>
+                            <FormControl className={classes.dateFormControl}>
+                                <SingleDatePicker
+                                    date={this.state.date}
+                                    onDateChange={this.onDateChange}
+                                    focused={this.state.calendarFocused}
+                                    onFocusChange={this.onFocusChange}
+                                    numberOfMonths={1}
+                                    isOutsideRange={() => false}/>
+                            </FormControl>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">Type</InputLabel>
+                                <Select
+                                    native
+                                    value={this.state.type}
+                                    onChange={this.onTypeChange}
+                                    input={< Input id = "age-native-simple" />}>
+                                    <option key=""></option>
+                                    <option key="expense" value="Expense">Expense</option>
+                                    <option key="income" value="Income">Income</option>
 
-                    <TextField
-                        className={classes.textField}
-                        type="text"
-                        placeholder="description"
-                        value={this.state.description}
-                        onChange={this.onDescriptionChange}/>
+                                </Select>
+                            </FormControl>
+                            <TextField
+                                className={classes.textField}
+                                type="text"
+                                placeholder="Amount"
+                                value={this.state.amount}
+                                onChange={this.onAmountChange}/>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Account</InputLabel>
-                        <Select
-                            native
-                            value={this.state.account}
-                            onChange={this.onAccountChange}
-                            input={< Input id = "age-native-simple" />}>
-                            <option value=""/> {this
-                                .props
-                                .accounts
-                                .map((account) => {
-                                    return <option key={account.name} value={account.name}>{account.name}</option>
-                                })}
+                            <TextField
+                                className={classes.textField}
+                                type="text"
+                                placeholder="description"
+                                value={this.state.description}
+                                onChange={this.onDescriptionChange}/>
 
-                        </Select>
-                    </FormControl>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="age-native-simple">Category</InputLabel>
-                        <Select
-                            native
-                            value={this.state.category}
-                            onChange={this.onCategoryChange}
-                            input={< Input id = "age-native-simple" />}>
-                            <option value=""/> {this
-                                .props
-                                .categories
-                                .map((category) => {
-                                    return <option key={category.name} value={category.name}>{category.name}</option>
-                                })}
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">Account</InputLabel>
+                                <Select
+                                    native
+                                    value={this.state.account}
+                                    onChange={this.onAccountChange}
+                                    input={< Input id = "age-native-simple" />}>
+                                    <option value=""/> {this
+                                        .props
+                                        .accounts
+                                        .map((account) => {
+                                            return <option key={account.name} value={account.name}>{account.name}</option>
+                                        })}
 
-                        </Select>
-                    </FormControl>
+                                </Select>
+                            </FormControl>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="age-native-simple">Category</InputLabel>
+                                <Select
+                                    native
+                                    value={this.state.category}
+                                    onChange={this.onCategoryChange}
+                                    input={< Input id = "age-native-simple" />}>
+                                    <option value=""/>{_.orderBy(this
+                                        .props
+                                        .categories, ['date'], ['asc']) 
+                                        .map((category) => {
+                                            return <option key={category.name} value={category.name}>{category.name}</option>
+                                        })}
 
-                    {/*<TextField
+                                </Select>
+                            </FormControl>
+
+                            {/*<TextField
                         className={classes.textField}
                         type="text"
                         placeholder="Account"
@@ -235,15 +239,16 @@ class TransactionForm extends React.Component {
                         .format("DD/mm/YYYY")}
                         onChange={this.onDateChange}/>*/}
 
-                    <Button
-                        onClick={this.onSubmit}
-                        className={classes.button}
-                        raised
-                        color="primary">
-                        {/*<Save className={classes.leftIcon}/> */}
-                        {this.state.submit_button_title}
-                    </Button>
-                </form>
+                            <Button
+                                onClick={this.onSubmit}
+                                className={classes.button}
+                                raised
+                                color="primary">
+                                {/*<Save className={classes.leftIcon}/> */}
+                                {this.state.submit_button_title}
+                            </Button>
+                        </form>
+                    )}
             </Paper>
         )
     }

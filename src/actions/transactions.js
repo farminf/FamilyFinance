@@ -1,8 +1,8 @@
-import database  from '../firebase/firebase'
+import database from '../firebase/firebase'
 import moment from 'moment';
 import _ from 'lodash';
+import {addError} from './errors';
 //{storage}
-
 
 export const addTransaction = (transaction) => ({type: 'ADD_TRANSACTION', transaction});
 
@@ -40,6 +40,9 @@ export const startAddTransaction = (transactionData = {}) => {
                     id: ref.key,
                     ...transaction
                 }));
+            }, (error) => {
+                console.error("error: " + error);
+                dispatch(addError({code: error.code,message:error.message}))
             });
     }
 
@@ -47,7 +50,7 @@ export const startAddTransaction = (transactionData = {}) => {
 
 export const setTransactions = (transactions) => ({type: 'SET_TRANSACTIONS', transactions});
 
-export const startSetTransactions = ( fromMoment = moment().startOf('month').valueOf() , toMoment = moment().valueOf() ) => {
+export const startSetTransactions = (fromMoment = moment().startOf('month').valueOf(), toMoment = moment().valueOf()) => {
 
     return (dispatch, getState) => {
         const user_uid = getState().auth.uid;
@@ -65,7 +68,11 @@ export const startSetTransactions = ( fromMoment = moment().startOf('month').val
                         ...childSnapshot.val()
                     })
                 });
-                dispatch(setTransactions( _.orderBy(transactions , ['date'] , ['desc'])));
+                dispatch(setTransactions(_.orderBy(transactions, ['date'], ['desc'])));
+            }, (error) => {
+                console.error(error);
+                dispatch(addError({code: error.code,message:error.message}))
+
             });
     };
 };
@@ -80,6 +87,8 @@ export const startDeleteTransaction = ({id} = {}) => {
             .remove()
             .then(() => {
                 dispatch(deleteTransaction({id}));
+            }, (error) => {
+                console.error(error);
             });
     }
 };

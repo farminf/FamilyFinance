@@ -1,10 +1,11 @@
 import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import {
-    LineChart,
-    Line,
+    BarChart,
+    Bar,
     XAxis,
     YAxis,
+    Legend,
     CartesianGrid,
     Tooltip,
     ResponsiveContainer
@@ -33,7 +34,7 @@ const styles = theme => ({
         })
 });
 
-class MyLineChart extends React.Component {
+class MyBarChart extends React.Component {
 
     render() {
 
@@ -44,13 +45,19 @@ class MyLineChart extends React.Component {
                 <div className={classes.root}>
 
                     <ResponsiveContainer>
-                        <LineChart data={this.props.data}>
-                            <Line type="monotone" dataKey="amount" stroke="#8884d8" unit="€"/>
-                            <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
-                            <XAxis dataKey="date"/>
+                        <BarChart data={this.props.data}>
+                            {/*<Line type="monotone" dataKey="amount" stroke="#8884d8"/>*/}
+                            <CartesianGrid stroke="#ccc" strokeDasharray="1 1"/>
+                            <XAxis dataKey={this.props.xAxis}>
+                                {/*<Label value={this.props.xAxis} offset={0} position="bottom"/>*/}
+                            </XAxis>
                             <YAxis/>
                             <Tooltip/>
-                        </LineChart>
+                            <Legend verticalAlign="top" height={26}/>
+                            <Bar dataKey={this.props.yAxis1} fill={this.props.fillColor1} unit="€"/>
+                            <Bar dataKey={this.props.yAxis2} fill={this.props.fillColor2} unit="€"/>
+                        </BarChart>
+
                     </ResponsiveContainer>
                 </div>
             </Paper>
@@ -58,4 +65,4 @@ class MyLineChart extends React.Component {
     }
 }
 
-export default withStyles(styles)(MyLineChart);
+export default withStyles(styles)(MyBarChart);
