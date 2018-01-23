@@ -32,11 +32,36 @@ const styles = theme => ({
         })
 });
 
-
-
-
-
 class MyPieChart extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            colors: []
+        }
+    }
+
+    
+
+    getRandomColor = (categoriesNumber) => {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        let colors = []
+        while (colors.length < categoriesNumber) {
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            colors.push(color);
+            color = '#';
+        }
+        this.setState ({
+            colors
+        })
+    }
+    
+    componentWillReceiveProps(nextProps){
+        this.getRandomColor(nextProps.data.length);
+    }
 
     renderCustomizedLabel = ({
         cx,
@@ -51,7 +76,7 @@ class MyPieChart extends React.Component {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
-    
+
         return (
             <text
                 x={x}
@@ -63,11 +88,11 @@ class MyPieChart extends React.Component {
                 dominantBaseline="central">
                 {`${ (percent * 100).toFixed(0)}%`}
             </text>
-        );
+        )
     };
 
     render() {
-        const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+        //const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
         const {classes} = this.props;
         return (
             <Paper className={classes.paper} elevation={4}>
@@ -83,15 +108,14 @@ class MyPieChart extends React.Component {
                                 cy="50%"
                                 outerRadius={100}
                                 fill="#8884d8"
-                                label={this.renderCustomizedLabel} 
-                                labelLine={false}
-                                >
+                                label={this.renderCustomizedLabel}
+                                labelLine={false}>
                                 {this
                                     .props
                                     .data
-                                    .map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]} />)}
+                                    .map((entry, index) => <Cell key={index} fill={this.state.colors[index]}/>)}
                             </Pie>
-                            <Tooltip />
+                            <Tooltip/>
 
                             <Legend/>
                         </PieChart>

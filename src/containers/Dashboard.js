@@ -27,10 +27,10 @@ class Dashboard extends React.Component {
         }
     }
 
-    updateStatisticData = () => {
-        let totalExpenseDay = _.filter(this.props.transactions, {'type': 'Expense'});
-        let totalIncomeDay = _.filter(this.props.transactions, {'type': 'Income'});
-        let expensesByCategory = _.filter(this.props.transactions, {'type': 'Expense'});
+    updateStatisticData = (nextProps = this.props) => {
+        let totalExpenseDay = _.filter(nextProps.transactions, {'type': 'Expense'});
+        let totalIncomeDay = _.filter(nextProps.transactions, {'type': 'Income'});
+        let expensesByCategory = _.filter(nextProps.transactions, {'type': 'Expense'});
 
         totalExpenseDay = _(totalExpenseDay)
             .groupBy('date')
@@ -65,14 +65,14 @@ class Dashboard extends React.Component {
         this.setState({totalExpenseDay, totalIncomeDay, expensesByCategory});
     }
 
-    componentWillReceiveProps() {
-        this.updateStatisticData();
+    componentWillReceiveProps(nextProps) {
+        this.updateStatisticData(nextProps);
     }
 
     componentDidMount() {
-        this
-            .props
-            .startSetTransactions();
+        // this
+        //     .props
+        //     .startSetTransactions();
         this.updateStatisticData();
     }
 
@@ -119,10 +119,10 @@ class Dashboard extends React.Component {
 
                     <Grid item xs={10} sm={10} md={6} lg={6}>
                         <MyAreaChart
-                            data={this.state.totalExpenseDay}
+                            data={_.orderBy(this.state.totalExpenseDay, ['date'], ['asc'])}
                             title="Expense / Time"
                             yAxis="expense"
-                            xAxis="date"
+                            xAxis="day"
                             lineColor="#c40000"
                             fillColor="#c40000"/>
                     </Grid>
@@ -161,7 +161,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    startSetTransactions: () => dispatch(startSetTransactions()),
+    startSetTransactions: (startDate , endDate) => dispatch(startSetTransactions(startDate,endDate)),
     startSetAccounts: () => dispatch(startSetAccounts()),
     startSetCategories: () => dispatch(startSetCategories())
 });

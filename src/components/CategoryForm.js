@@ -82,7 +82,6 @@ class CategoryForm extends React.Component {
                         className={classes.textField}
                         type="text"
                         placeholder="category"
-                        autoFocus
                         value={this.state.name}
                         onChange={this.onNameChange}/>
 
