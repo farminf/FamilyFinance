@@ -10,7 +10,7 @@ export const startLoginGoogle = () => {
     //return firebase.auth().signInWithRedirect(googleAuthProvider);
     return firebase
       .auth()
-      .signInWithPopup(googleAuthProvider);
+      .signInWithRedirect(googleAuthProvider);
   };
 };
 
