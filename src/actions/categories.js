@@ -1,4 +1,6 @@
-import database from '../firebase/firebase'
+import database from '../firebase/firebase';
+import {addError} from './errors';
+
 
 export const addCategory = (category) => ({type: 'ADD_CATEGORIES', category});
 
@@ -26,9 +28,11 @@ export const startAddCategory = (categoryData = {}) => {
                     id: ref.key,
                     ...category
                 }));
-            })
-            .catch((err) => {
-                console.log(err)
+            },
+            (error) => {
+                console.error(error);
+                dispatch(addError({code: error.code,message:error.message}))
+
             });
     }
 
@@ -52,9 +56,11 @@ export const startSetCategories = () => {
                     })
                 });
                 dispatch(setCategories(categories));
-            })
-            .catch((err) => {
-                console.log(err)
+            },
+            (error) => {
+                console.error(error);
+                dispatch(addError({code: error.code,message:error.message}))
+
             });
     };
 };

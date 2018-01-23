@@ -5,7 +5,6 @@ import Button from 'material-ui/Button';
 import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 
-
 const styles = theme => ({
     textField: {
         marginLeft: theme.spacing.unit,
@@ -25,7 +24,6 @@ const styles = theme => ({
     paper: theme
         .mixins
         .gutters({
-
 
             paddingLeft: 0,
             paddingRight: 0,
@@ -63,7 +61,30 @@ class AccountForm extends React.Component {
         if (!this.state.name || !this.state.balance) {
             this.setState(() => ({error: 'Please provide name and balance.'}));
         } else {
-            if (this.props.accounts.find((account) => account.name === this.state.name) === undefined) {
+            if (typeof this.props.accounts !== 'undefined' && this.props.accounts.length > 0) {
+
+                if (this.props.accounts.find((account) => account.name === this.state.name) === undefined) {
+                    this.setState(() => ({error: ''}));
+                    this
+                        .props
+                        .onSubmit({
+                            name: this.state.name,
+                            balance: parseFloat(this.state.balance, 10) * 100
+                        });
+                } else {
+                    if (this.state.submit_button_title === "Update") {
+                        this
+                            .props
+                            .onSubmit({
+                                name: this.state.name,
+                                balance: parseFloat(this.state.balance, 10) * 100
+                            });
+                    } else {
+                        this.setState(() => ({name: '', balance: '', error: 'Account already exists'}));
+                    }
+                }
+
+            } else {
                 this.setState(() => ({error: ''}));
                 this
                     .props
@@ -71,8 +92,6 @@ class AccountForm extends React.Component {
                         name: this.state.name,
                         balance: parseFloat(this.state.balance, 10) * 100
                     });
-            } else {
-                this.setState(() => ({name: '', balance: '' , error: 'Account already exists'}));
             }
         }
     };

@@ -90,6 +90,13 @@ class Dashboard extends React.Component {
             .startSetTransactions(startDate.valueOf(), endDate.valueOf());
     }
 
+    onSubmit = (transaction) => {
+        this
+            .props
+            .startAddTransaction(transaction);
+        
+    };
+
     render() {
         return (
             <div>

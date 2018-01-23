@@ -106,14 +106,15 @@ class MyPieChart extends React.Component {
                                 nameKey={this.props.nameKey}
                                 cx="50%"
                                 cy="50%"
-                                outerRadius={100}
+                                outerRadius={120}
                                 fill="#8884d8"
                                 label={this.renderCustomizedLabel}
-                                labelLine={false}>
+                                labelLine={false}
+                                unit="€">
                                 {this
                                     .props
                                     .data
-                                    .map((entry, index) => <Cell key={index} fill={this.state.colors[index]}/>)}
+                                    .map((entry, index) => <Cell key={index} fill={this.state.colors[index]} unit="€"/>)}
                             </Pie>
                             <Tooltip/>
 
