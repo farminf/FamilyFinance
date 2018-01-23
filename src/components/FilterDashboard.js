@@ -43,11 +43,11 @@ class FilterDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dashboardMonthFilter: props.dashboardMonthFilter
-            ? props.dashboardMonthFilter
+            dashboardMonthFilter: props.filters.dashboardMonthFilter
+            ? props.filters.dashboardMonthFilter
             : moment().month() +1,
-            dashboardYearFilter: props.dashboardYearFilter
-            ? props.dashboardYearFilter
+            dashboardYearFilter: props.filters.dashboardYearFilter
+            ? props.filters.dashboardYearFilter
             : moment().year()
         };
     }

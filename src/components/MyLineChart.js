@@ -45,7 +45,7 @@ class MyLineChart extends React.Component {
 
                     <ResponsiveContainer>
                         <LineChart data={this.props.data}>
-                            <Line type="monotone" dataKey="amount" stroke="#8884d8"/>
+                            <Line type="monotone" dataKey="amount" stroke="#8884d8" unit="€"/>
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                             <XAxis dataKey="date"/>
                             <YAxis/>

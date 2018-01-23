@@ -49,12 +49,15 @@ class MyAreaChart extends React.Component {
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                             <XAxis dataKey={this.props.xAxis}/>
                             <YAxis/>
-                            <Tooltip/>
+                            <Tooltip />
                             <Area
                                 type='monotone'
                                 dataKey={this.props.yAxis}
                                 stroke={this.props.lineColor}
-                                fill={this.props.fillColor}/>
+                                fill={this.props.fillColor}
+                                unit="€"
+                                
+                                />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>

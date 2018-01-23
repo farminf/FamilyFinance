@@ -19,5 +19,12 @@ export const setTypeFilter = (typeFilter) => ({type: 'SET_TRANSACTION_TYPE_FILTE
 // SET_TRANSACTION_TYPE_DESCRIPTION
 export const setDescriptionFilter = (descriptionFilter) => ({type: 'SET_TRANSACTION_DESCRIPTION_FILTER', descriptionFilter});
 
+// SET_DASHBOARD_MONTH
+export const setDashboardMonthFilter = (dashboardMonthFilter) => ({type: 'SET_DASHBOARD_MONTH', dashboardMonthFilter});
+
+//SET_DASHBOARD_YEAR
+export const setDashboardYearFilter = (dashboardYearFilter) => ({type: 'SET_DASHBOARD_YEAR', dashboardYearFilter});
+
+
 
 
