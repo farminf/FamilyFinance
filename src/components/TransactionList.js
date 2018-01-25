@@ -16,6 +16,7 @@ import FilterListBar from '../components/FilterListBar';
 import transactionSelector from '../selectors/TransactionSelector';
 import Paper from 'material-ui/Paper';
 import {setTypeFilter, setDescriptionFilter} from '../actions/filters';
+import _ from 'lodash';
 
 const styles = theme => ({
     root: {
@@ -50,7 +51,6 @@ class TransactionList extends React.Component {
         }
     }
 
-
     onDelete = (idObject, id) => {
         //console.log(id);
         this
@@ -58,9 +58,15 @@ class TransactionList extends React.Component {
             .transactions
             .map((transaction) => {
                 if (transaction.id === id) {
-                    return this
-                        .props
-                        .startDeleteTransaction(idObject, transaction);
+                    if (transaction.type === 'Transfer') {
+                        return this
+                            .props
+                            .startDeleteTransfer(idObject, transaction);
+                    } else {
+                        return this
+                            .props
+                            .startDeleteTransaction(idObject, transaction);
+                    }
                 } else {
                     return null;
                 }
@@ -74,13 +80,38 @@ class TransactionList extends React.Component {
             .transactions
             .map((transaction) => {
                 if (transaction.id === id) {
-                    return this
-                        .props
-                        .startAddTransaction(transaction);
+
+                    if (transaction.type === 'Transfer') {
+                        let firstTransaction = {
+                            type: transaction.type,
+                            description: transaction.description,
+                            amount: transaction.amount,
+                            category: transaction.category,
+                            date: transaction.date,
+                            account: transaction.transferFrom
+                        }
+                        let SecondTransaction = {
+                            type: transaction.type,
+                            description: transaction.description,
+                            amount: transaction.amount,
+                            category: transaction.category,
+                            date: transaction.date,
+                            account: transaction.transferTo
+                        }
+                        return this
+                            .props
+                            .startAddTransfer(transaction, firstTransaction, SecondTransaction);
+                    } else {
+                        return this
+                            .props
+                            .startAddTransaction(transaction);
+                    }
+
                 } else {
                     return null;
                 }
             })
+        // this     .props     .history     .push('/transactions');
 
     };
 
@@ -131,25 +162,25 @@ class TransactionList extends React.Component {
                             .props
                             .transactions
                             .hasOwnProperty(0) === false
-                            ? (
-                                <TableRow key='empty'/>
-                            )
-                            : (this.props.transactions.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map((transaction) => {
+                            ? (<TableRow key='empty'/>)
+                            : (_.orderBy(this.props.transactions, ['date'], ['desc']).slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map((transaction) => {
                                 return <TransactionListItem
                                     key={transaction.id}
                                     onDelete={this.onDelete}
                                     onCopy={this.onCopy}
                                     {...transaction}/>
                             }))
-                        }
+}
                     </TableBody>
                     <TableFooter>
                         <TableRow>
                             <TablePagination
-                                count={this.props.transactions.length !== undefined ? this.props.transactions.length : 0}
+                                count={this.props.transactions.length !== undefined
+                                ? this.props.transactions.length
+                                : 0}
                                 rowsPerPage={this.state.rowsPerPage}
                                 page={this.state.page}
-                                rowsPerPageOptions={[5, 10 , 20]}
+                                rowsPerPageOptions={[5, 10, 20]}
                                 onChangePage={this.handleChangePage}
                                 onChangeRowsPerPage={this.handleChangeRowsPerPage}/>
                         </TableRow>
@@ -169,6 +200,17 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
+    startDeleteTransfer: (id, transaction) => dispatch(startDeleteTransaction(id)).then(() => {
+
+        dispatch(updateAccountBalance(transaction.transferFrom, transaction.amount))
+    }).then(() => {
+        dispatch(updateAccountBalance(transaction.transferTo, -transaction.amount))
+    }),
+    startAddTransfer: (transaction, firstTransaction, secondTransaction) => dispatch(startAddTransaction(transaction)).then(() => {
+        dispatch(updateAccountBalance(firstTransaction.account, -transaction.amount))
+    }).then(() => {
+        dispatch(updateAccountBalance(secondTransaction.account, transaction.amount))
+    }),
     startDeleteTransaction: (id, transaction) => dispatch(startDeleteTransaction(id)).then(() => {
         let delta = -transaction.amount
         if (transaction.type === 'Expense') {

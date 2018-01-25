@@ -17,12 +17,12 @@ const styles = theme => ({
         left: 'auto',
         position: 'fixed'
     },
-    dialogContent:{
+    dialogContent: {
         textAlign: 'center',
-        maxWidth:400,
+        maxWidth: 400
     },
-    dialogTitle:{
-        textAlign: 'center'        
+    dialogTitle: {
+        textAlign: 'center'
     }
 });
 
@@ -32,10 +32,33 @@ class AddFloatingButton extends React.Component {
     };
 
     onSubmit = (transaction) => {
+        if (transaction.type === 'Transfer') {
+            let firstTransaction = {
+                type: transaction.type,
+                description: transaction.description,
+                amount: transaction.amount,
+                category: transaction.category,
+                date: transaction.date,
+                account: transaction.transferFrom
+            }
+            let SecondTransaction = {
+                type: transaction.type,
+                description: transaction.description,
+                amount: transaction.amount,
+                category: transaction.category,
+                date: transaction.date,
+                account: transaction.transferTo
+            }
+            this
+                .props
+                .startAddTransfer(transaction, firstTransaction, SecondTransaction);
+            return this.handleClose();
+        }
         this
             .props
             .startAddTransaction(transaction);
-        this.handleClose();
+
+        return this.handleClose();
     };
 
     handleClickFloatingButton = event => {
@@ -60,13 +83,11 @@ class AddFloatingButton extends React.Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title">
-                    <DialogTitle className={classes.dialogTitle}   id="form-dialog-title">Add a transaction</DialogTitle>
-                    <DialogContent
-                    className={classes.dialogContent}                
-                    >
+                    <DialogTitle className={classes.dialogTitle} id="form-dialog-title">Add a transaction</DialogTitle>
+                    <DialogContent className={classes.dialogContent}>
                         <TransactionFrom onSubmit={this.onSubmit}/>
                     </DialogContent>
-                    
+
                 </Dialog>
             </div>
 
@@ -81,6 +102,11 @@ const mapDispatchToProps = (dispatch) => ({
         }
         dispatch(updateAccountBalance(transaction.account, delta))
     }),
+    startAddTransfer: (transaction, firstTransaction, secondTransaction) => dispatch(startAddTransaction(transaction)).then(() => {
+        dispatch(updateAccountBalance(firstTransaction.account, -transaction.amount))
+    }).then(() => {
+        dispatch(updateAccountBalance(secondTransaction.account, transaction.amount))
+    })
 });
 
-export default connect(undefined, mapDispatchToProps) (withStyles(styles)(AddFloatingButton));
+export default connect(undefined, mapDispatchToProps)(withStyles(styles)(AddFloatingButton));

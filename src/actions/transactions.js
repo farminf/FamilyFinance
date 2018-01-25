@@ -16,7 +16,9 @@ export const startAddTransaction = (transactionData = {}) => {
             description = '',
             account = '',
             category = '',
-            date = ''
+            date = '',
+            transferFrom ='',
+            transferTo=''
         } = transactionData;
         const transaction = {
             type,
@@ -24,7 +26,9 @@ export const startAddTransaction = (transactionData = {}) => {
             description,
             account,
             category,
-            date
+            date,
+            transferFrom,
+            transferTo
         };
 
         return database
@@ -50,7 +54,7 @@ export const startAddTransaction = (transactionData = {}) => {
 
 export const setTransactions = (transactions) => ({type: 'SET_TRANSACTIONS', transactions});
 
-export const startSetTransactions = (fromMoment = moment().startOf('month').valueOf(), toMoment = moment().valueOf()) => {
+export const startSetTransactions = (fromMoment = moment().startOf('month').valueOf(), toMoment = moment().endOf('month').valueOf()) => {
 
     return (dispatch, getState) => {
         const user_uid = getState().auth.uid;

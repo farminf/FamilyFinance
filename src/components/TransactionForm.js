@@ -79,6 +79,16 @@ class TransactionForm extends React.Component {
                     .set({'hour': 12, 'minute': 0, 'second': 0, 'millisecond': 0})
                     .get('today'),
             error: '',
+
+            transferFrom: props.transaction
+                ? props.transaction.transferFrom
+                : '',
+            transferTo: props.transaction
+                ? props.transaction.transferTo
+                : '',
+            disableType: props.transaction && props.transaction.type === 'Transfer'
+                ? true
+                : false,
             calendarFocused: false,
             submit_button_title: props.transaction
                 ? 'Update'
@@ -100,6 +110,30 @@ class TransactionForm extends React.Component {
                     amount: parseFloat(this.state.amount, 10) * 100,
                     account: this.state.account,
                     category: this.state.category,
+                    date: this
+                        .state
+                        .date
+                        .valueOf()
+                });
+        }
+    };
+
+    onTransferSubmit = (e) => {
+        e.preventDefault();
+        if (!this.state.amount || !this.state.transferFrom || !this.state.transferTo || !this.state.date || !this.state.type) {
+            this.setState(() => ({error: 'Please provide all required data.'}));
+        } else {
+            this.setState(() => ({error: ''}));
+            this
+                .props
+                .onSubmit({
+                    type: this.state.type,
+                    description: 'Transfer',
+                    amount: parseFloat(this.state.amount, 10) * 100,
+                    account: this.state.transferFrom + ' > ' + this.state.transferTo,
+                    transferFrom: this.state.transferFrom,
+                    transferTo: this.state.transferTo,
+                    category: 'Transfer',
                     date: this
                         .state
                         .date
@@ -130,6 +164,16 @@ class TransactionForm extends React.Component {
         this.setState(() => ({account}));
     };
 
+    onTransferFromChange = (e) => {
+        const transferFrom = e.target.value;
+        this.setState(() => ({transferFrom}));
+    };
+
+    onTransferToChange = (e) => {
+        const transferTo = e.target.value;
+        this.setState(() => ({transferTo}));
+    };
+
     onCategoryChange = (e) => {
         const category = e.target.value;
         this.setState(() => ({category}));
@@ -149,8 +193,13 @@ class TransactionForm extends React.Component {
         return (
             <Paper className={classes.paper} elevation={4}>
                 {this.state.error && <p>{this.state.error}</p>}
-                {this.props.accounts.hasOwnProperty(0) === false
-                    ? (<p>Please create an account first</p>)
+                {this
+                    .props
+                    .accounts
+                    .hasOwnProperty(0) === false
+                    ? (
+                        <p>Please create an account first</p>
+                    )
                     : (
 
                         <form onSubmit={this.onSubmit}>
@@ -166,6 +215,7 @@ class TransactionForm extends React.Component {
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="age-native-simple">Type</InputLabel>
                                 <Select
+                                    disabled={this.state.disableType}
                                     native
                                     value={this.state.type}
                                     onChange={this.onTypeChange}
@@ -173,80 +223,121 @@ class TransactionForm extends React.Component {
                                     <option key=""></option>
                                     <option key="expense" value="Expense">Expense</option>
                                     <option key="income" value="Income">Income</option>
-
-                                </Select>
-                            </FormControl>
-                            <TextField
-                                className={classes.textField}
-                                type="text"
-                                placeholder="Amount"
-                                value={this.state.amount}
-                                onChange={this.onAmountChange}/>
-
-                            <TextField
-                                className={classes.textField}
-                                type="text"
-                                placeholder="description"
-                                value={this.state.description}
-                                onChange={this.onDescriptionChange}/>
-
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">Account</InputLabel>
-                                <Select
-                                    native
-                                    value={this.state.account}
-                                    onChange={this.onAccountChange}
-                                    input={< Input id = "age-native-simple" />}>
-                                    <option value=""/> {this
-                                        .props
-                                        .accounts
-                                        .map((account) => {
-                                            return <option key={account.name} value={account.name}>{account.name}</option>
-                                        })}
-
-                                </Select>
-                            </FormControl>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">Category</InputLabel>
-                                <Select
-                                    native
-                                    value={this.state.category}
-                                    onChange={this.onCategoryChange}
-                                    input={< Input id = "age-native-simple" />}>
-                                    <option value=""/>{_.orderBy(this
-                                        .props
-                                        .categories, ['date'], ['asc']) 
-                                        .map((category) => {
-                                            return <option key={category.name} value={category.name}>{category.name}</option>
-                                        })}
+                                    <option key="Transfer" value="Transfer">Transfer</option>
 
                                 </Select>
                             </FormControl>
 
-                            {/*<TextField
-                        className={classes.textField}
-                        type="text"
-                        placeholder="Account"
-                        value={this.state.account}
-                    onChange={this.onAccountChange}/>
+                            {this.state.type === 'Transfer'
+                                ? (
+                                    <div>
 
-                 <TextField
-                        className={classes.textField}
-                        type="date"
-                        placeholder="date"
-                        value={moment
-                        .unix(this.state.date)
-                        .format("DD/mm/YYYY")}
-                        onChange={this.onDateChange}/>*/}
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel htmlFor="age-native-simple">From Account</InputLabel>
+                                            <Select
+                                                native
+                                                value={this.state.transferFrom}
+                                                onChange={this.onTransferFromChange}
+                                                input={< Input id = "age-native-simple" />}>
+                                                <option value=""/> {this
+                                                    .props
+                                                    .accounts
+                                                    .map((account) => {
+                                                        return <option key={account.name} value={account.name}>{account.name}</option>
+                                                    })}
 
-                            <Button
-                                onClick={this.onSubmit}
-                                className={classes.button}
-                                raised
-                                color="primary">
-                                {/*<Save className={classes.leftIcon}/> */}
-                                {this.state.submit_button_title}
-                            </Button>
+                                            </Select>
+                                        </FormControl>
+
+                                        <TextField
+                                            className={classes.textField}
+                                            type="text"
+                                            placeholder="Amount"
+                                            value={this.state.amount}
+                                            onChange={this.onAmountChange}/>
+
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel htmlFor="age-native-simple">To Account</InputLabel>
+                                            <Select
+                                                native
+                                                value={this.state.transferTo}
+                                                onChange={this.onTransferToChange}
+                                                input={< Input id = "age-native-simple" />}>
+                                                <option value=""/> {this
+                                                    .props
+                                                    .accounts
+                                                    .map((account) => {
+                                                        return <option key={account.name} value={account.name}>{account.name}</option>
+                                                    })}
+
+                                            </Select>
+                                        </FormControl>
+
+                                        <Button
+                                            onClick={this.onTransferSubmit}
+                                            className={classes.button}
+                                            raised
+                                            color="primary">
+                                            Transfer
+                                        </Button>
+                                    </div>
+                                )
+                                : (
+                                    <div>
+                                        <TextField
+                                            className={classes.textField}
+                                            type="text"
+                                            placeholder="Amount"
+                                            value={this.state.amount}
+                                            onChange={this.onAmountChange}/>
+
+                                        <TextField
+                                            className={classes.textField}
+                                            type="text"
+                                            placeholder="description"
+                                            value={this.state.description}
+                                            onChange={this.onDescriptionChange}/>
+
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel htmlFor="age-native-simple">Account</InputLabel>
+                                            <Select
+                                                native
+                                                value={this.state.account}
+                                                onChange={this.onAccountChange}
+                                                input={< Input id = "age-native-simple" />}>
+                                                <option value=""/> {this
+                                                    .props
+                                                    .accounts
+                                                    .map((account) => {
+                                                        return <option key={account.name} value={account.name}>{account.name}</option>
+                                                    })}
+
+                                            </Select>
+                                        </FormControl>
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel htmlFor="age-native-simple">Category</InputLabel>
+                                            <Select
+                                                native
+                                                value={this.state.category}
+                                                onChange={this.onCategoryChange}
+                                                input={< Input id = "age-native-simple" />}>
+                                                <option value=""/>{_.orderBy(this.props.categories, ['date'], ['asc']).map((category) => {
+                                                    return <option key={category.name} value={category.name}>{category.name}</option>
+                                                })}
+
+                                            </Select>
+                                        </FormControl>
+
+                                        <Button
+                                            onClick={this.onSubmit}
+                                            className={classes.button}
+                                            raised
+                                            color="primary">
+                                            {/*<Save className={classes.leftIcon}/> */}
+                                            {this.state.submit_button_title}
+                                        </Button>
+                                    </div>
+                                )}
                         </form>
                     )}
             </Paper>
