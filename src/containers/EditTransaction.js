@@ -4,7 +4,7 @@ import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
 import TransactionForm from '../components/TransactionForm';
 import {connect} from 'react-redux';
-import {startEditTransaction} from '../actions/transactions';
+import {startEditTransaction, startAddTransaction, startDeleteTransaction} from '../actions/transactions';
 import {updateAccountBalance} from '../actions/accounts';
 
 const styles = theme => ({
@@ -27,12 +27,37 @@ class EditTransactionContainer extends React.Component {
 
     onSubmit = (transaction) => {
         // console.log(this.props.transaction)
-        
 
-        this
-            .props
-            .startEditTransaction(this.props.transaction, transaction);
-        this
+        if (transaction.type === 'Transfer') {
+            let firstTransaction = {
+                type: transaction.type,
+                description: transaction.description,
+                amount: transaction.amount,
+                category: transaction.category,
+                date: transaction.date,
+                account: transaction.transferFrom
+            }
+            let SecondTransaction = {
+                type: transaction.type,
+                description: transaction.description,
+                amount: transaction.amount,
+                category: transaction.category,
+                date: transaction.date,
+                account: transaction.transferTo
+            }
+            this
+                .props
+                .startEditTransfer(transaction, this.props.transaction, firstTransaction, SecondTransaction)
+            // this     .props     .startAddTransfer(transaction, firstTransaction,
+            // SecondTransaction); this     .props
+            // .startDeleteTransfer(this.props.transaction.id, this.props.transaction);
+        } else {
+            this
+                .props
+                .startEditTransaction(this.props.transaction, transaction);
+        }
+
+        return this
             .props
             .history
             .push('/transactions');
@@ -48,7 +73,7 @@ class EditTransactionContainer extends React.Component {
                     <Grid container spacing={8} justify="center">
 
                         <Grid item md={4} xs={11} sm={6}>
-                                <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
+                            <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
                         </Grid>
 
                     </Grid>
@@ -65,8 +90,29 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startEditTransaction: (oldTransaction, transaction) => dispatch(startEditTransaction(oldTransaction.id, transaction))
-    .then(() => {
+    startEditTransfer: (transaction, oldTransaction, firstTransaction, secondTransaction) => dispatch(startAddTransaction(transaction)).then(() => {
+        dispatch(updateAccountBalance(firstTransaction.account, -transaction.amount))
+    }).then(() => {
+        dispatch(updateAccountBalance(secondTransaction.account, transaction.amount))
+    }).then(() => {
+        dispatch(startDeleteTransaction({id : oldTransaction.id}))
+    }).then(() => {
+        dispatch(updateAccountBalance(oldTransaction.transferFrom, oldTransaction.amount))
+    }).then(() => {
+        dispatch(updateAccountBalance(oldTransaction.transferTo, -oldTransaction.amount))
+    }),
+
+    // startAddTransfer: (transaction, firstTransaction, secondTransaction) =>
+    // dispatch(startAddTransaction(transaction)).then(() => {
+    // dispatch(updateAccountBalance(firstTransaction.account, -transaction.amount))
+    // }).then(() => {     dispatch(updateAccountBalance(secondTransaction.account,
+    // transaction.amount)) }), startDeleteTransfer: (id, transaction) =>
+    // dispatch(startDeleteTransaction(id)).then(() => {
+    // dispatch(updateAccountBalance(transaction.transferFrom, transaction.amount))
+    // }).then(() => {     dispatch(updateAccountBalance(transaction.transferTo,
+    // -transaction.amount)) }),
+
+    startEditTransaction: (oldTransaction, transaction) => dispatch(startEditTransaction(oldTransaction.id, transaction)).then(() => {
         let delta = -oldTransaction.amount
         if (oldTransaction.type === 'Expense') {
             delta = -delta

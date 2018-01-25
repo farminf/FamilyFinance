@@ -2,6 +2,11 @@
 
 [![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://familyfinance-webapp.herokuapp.com)
 
+[![Build Status](https://travis-ci.org/farminf/FamilyFinance.svg)](https://travis-ci.org/farminf/FamilyFinance)
+
+[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=102)](https://github.com/farminf/FamilyFinance/)
+
+
 *Bootstrapped by [create-react-app](https://github.com/facebook/create-react-app)*
 
 

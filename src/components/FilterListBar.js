@@ -99,6 +99,7 @@ class FilterListBar extends Component {
                         <option key="all" value=""></option>
                         <option key="expense" value="Expense">Expense</option>
                         <option key="income" value="Income">Income</option>
+                        <option key="transfer" value="Transfer">Transfer</option>
                     </Select>
                 </FormControl>
                 <TextField
