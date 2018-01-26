@@ -5,13 +5,22 @@ import Select from 'material-ui/Select';
 import Input, {InputLabel} from 'material-ui/Input';
 import {FormControl} from 'material-ui/Form';
 
-// import moment from 'moment';
-// import {SingleDatePicker} from 'react-dates';
+// import moment from 'moment'; import {SingleDatePicker} from 'react-dates';
 
 const styles = theme => ({
     root: {
-        position: "relative",
-        textAlign: "left"
+        //position: "relative"
+        display: "inline-block",
+        width: "100%"
+    },
+    divLeft: {
+        //textAlign: "left", marginLeft: 0,
+        float: "left"
+    },
+    divRight: {
+        //textAlign: "right", marginRight: 0
+        float: "right",
+        padding: 10
     },
     textField: {
         marginLeft: theme.spacing.unit,
@@ -21,14 +30,6 @@ const styles = theme => ({
         padding: 10
     },
 
-    button: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 100,
-        right: 10,
-        top: 30,
-        position: "absolute"
-    },
     formControl: {
         margin: theme.spacing.unit,
         minWidth: 100,
@@ -47,11 +48,11 @@ class FilterListBar extends Component {
         super(props);
         this.state = {
             typeFilter: props.filters.typeFilter
-            ? props.filters.typeFilter
-            : '',
+                ? props.filters.typeFilter
+                : '',
             descriptionFilter: props.filters.descriptionFilter
-            ? props.filters.descriptionFilter
-            : '',
+                ? props.filters.descriptionFilter
+                : ''
         };
     }
 
@@ -89,29 +90,33 @@ class FilterListBar extends Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="type-native-simple">Type</InputLabel>
-                    <Select
-                        native
-                        value={this.state.typeFilter}
-                        onChange={this.onTypeFilerChange}
-                        input={< Input id = "type-native-simple" />}>
-                        <option key="all" value=""></option>
-                        <option key="expense" value="Expense">Expense</option>
-                        <option key="income" value="Income">Income</option>
-                        <option key="transfer" value="Transfer">Transfer</option>
-                    </Select>
-                </FormControl>
-                <TextField
-                    className={classes.textField}
-                    type="text"
-                    placeholder="Description"
-                    value={this.state.descriptionFilter}
-                    onChange={this.onDescriptionFilter}/>
-
-                {/*<Button onClick={this.onFilter} className={classes.button} raised>
+                <div className={classes.divLeft}>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="type-native-simple">Type</InputLabel>
+                        <Select
+                            native
+                            value={this.state.typeFilter}
+                            onChange={this.onTypeFilerChange}
+                            input={< Input id = "type-native-simple" />}>
+                            <option key="all" value=""></option>
+                            <option key="expense" value="Expense">Expense</option>
+                            <option key="income" value="Income">Income</option>
+                            <option key="transfer" value="Transfer">Transfer</option>
+                        </Select>
+                    </FormControl>
+                    <TextField
+                        className={classes.textField}
+                        type="text"
+                        label="Description"
+                        value={this.state.descriptionFilter}
+                        onChange={this.onDescriptionFilter}/> {/*<Button onClick={this.onFilter} className={classes.button} raised>
                     Filter
         </Button>*/}
+
+                </div>
+                <div className={classes.divRight}>
+                    {this.props.exportComponent}
+                </div>
             </div>
         )
     }
