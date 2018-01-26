@@ -14,14 +14,14 @@ const styles = theme => ({
     paper: theme
         .mixins
         .gutters({
-            alignContent: "center",
             paddingTop: 20,
             paddingBottom: 20,
             paddingLeft: 16,
             paddingRight: 16,
             marginTop: theme.spacing.unit * 3,
             marginLeft: 10,
-            marginRight: 10
+            marginRight: 10,
+            overflowX: 'auto'
         }),
     textField: {
         marginLeft: theme.spacing.unit,
@@ -38,11 +38,11 @@ const styles = theme => ({
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit
     },
-    recaptcha:{
-        textAlign:"center",
+    recaptcha: {
+        textAlign: "center",
         justify: "center",
-        margin:"auto",
-        width: 300,
+        margin: "auto",
+        width: 300
     }
 });
 
@@ -76,6 +76,7 @@ class SignUp extends React.Component {
         // 
         //
         //
+        //
         // [[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-
         // Z ]{2,}))$/)) {
         this.setState(() => ({email}));
@@ -99,7 +100,7 @@ class SignUp extends React.Component {
 
             <Paper className={classes.paper} elevation={4}>
 
-                <Typography type="headline" >
+                <Typography type="headline">
                     Create New Account
                 </Typography>
 
@@ -126,10 +127,7 @@ class SignUp extends React.Component {
                         alue={this.state.confirmpassword}
                         onChange={this.onConfirmPasswordChange}/>
                     <div className={classes.recaptcha}>
-                    <Recaptcha
-                        
-                        sitekey="6Lc1_j8UAAAAAH5zKYdv055fpSrIDghc3J6xZF02"
-                       />
+                        <Recaptcha sitekey="6Lc1_j8UAAAAAH5zKYdv055fpSrIDghc3J6xZF02"/>
                     </div>
                     <Button onClick={this.onSignup} raised className={classes.button}>
                         Register

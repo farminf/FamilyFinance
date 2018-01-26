@@ -47,12 +47,12 @@ class CategoriesContainer extends React.Component {
 
                 <div className={classes.root}>
                     <h2>{Constants.ADD_CATEGORY_PAGE_TITLE}</h2>
-                    <Grid container spacing={8} >
+                    <Grid container spacing={8}  justify="center" style={{width: "calc(100% - 81px)"}} >
 
-                        <Grid item md={4} xs={10} sm={5}>
+                        <Grid item md={4} xs={12} sm={12}>
                                 <CategoryForm onSubmit={this.onSubmit}/>
                         </Grid>
-                        <Grid item md={6} xs={10} sm={5}>
+                        <Grid item md={4} xs={12} sm={12}>
                                 <CategotyList/>
                         </Grid>
 

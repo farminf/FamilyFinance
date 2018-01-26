@@ -24,9 +24,7 @@ const styles = theme => ({
         textAlign: 'center',
         justifyContent: 'center'
     },
-    rootGrid:{
-        
-    }
+
 });
 
 class AddAccountContainer extends React.Component {
@@ -50,12 +48,12 @@ class AddAccountContainer extends React.Component {
 
                 <div className={classes.root}>
                     <h2>{Constants.ADD_ACCOUNT_PAGE_TITLE}</h2>
-                    <Grid container spacing={8} className={classes.rootGrid}>
+                    <Grid container spacing={8}  justify="center" style={{width: "calc(100% - 81px)"}}>
 
-                        <Grid item md={4} xs={10} sm={7}>
+                        <Grid item md={4} xs={12} sm={10}>
                                 <AccountForm onSubmit={this.onSubmit}/>
                         </Grid>
-                        <Grid item md={6} xs={10} sm={8}>
+                        <Grid item md={6} xs={12} sm={10}>
                                 <AccountList/>
                         </Grid>
 

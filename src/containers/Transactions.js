@@ -92,18 +92,18 @@ class AddTransactionContainer extends React.Component {
 
                 <div className={classes.root}>
                     <h2>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h2>
-                    <Grid container spacing={8}>
+                    <Grid container spacing={8}  justify="center" style={{width: "calc(100% - 81px)"}}>
 
-                        <Grid item xs={10} sm={10} md={12} lg={12}>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
                             <FilterDashboard
                                 onFilterDashboard={this.onFilterDashboard}
                                 filters={this.props.filters}/>
                         </Grid>
 
-                        <Grid item md={3} xs={10} sm={11}>
+                        <Grid item md={3} xs={12} sm={11}>
                             <TransactionForm onSubmit={this.onSubmit}/>
                         </Grid>
-                        <Grid item md={9} xs={10} sm={11}>
+                        <Grid item md={9} xs={12} sm={11}>
                             <TransactionList rowsPerPage={10}/>
                         </Grid>
 

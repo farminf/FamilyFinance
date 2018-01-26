@@ -17,8 +17,6 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         marginTop: 30,
-        marginLeft: 10,
-        marginRight: 5,
         height: 'auto'
     }
 });
@@ -70,9 +68,9 @@ class EditTransactionContainer extends React.Component {
 
                 <div className={classes.root}>
                     <h1>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h1>
-                    <Grid container spacing={8} justify="center">
+                    <Grid container spacing={8} justify="center" >
 
-                        <Grid item md={4} xs={11} sm={6}>
+                        <Grid item md={5} xs={12} sm={8}>
                             <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
                         </Grid>
 
