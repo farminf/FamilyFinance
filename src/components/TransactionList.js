@@ -17,7 +17,7 @@ import transactionSelector from '../selectors/TransactionSelector';
 import Paper from 'material-ui/Paper';
 import {setTypeFilter, setDescriptionFilter} from '../actions/filters';
 import _ from 'lodash';
-import {CSVLink, CSVDownload} from 'react-csv';
+import {CSVLink} from 'react-csv';
 import moment from 'moment';
 import Button from 'material-ui/Button';
 
@@ -151,7 +151,13 @@ class TransactionList extends React.Component {
                     onFilter={this.onFilter} 
                     filters={this.props.filters} 
                     exportComponent={<CSVLink
-                        data={this.props.transactions}
+                        data={this.props.transactions.lenght === 0 || this
+                            .props
+                            .transactions
+                            .hasOwnProperty(0) === false
+                            ? []
+                            : this.props.transactions
+                        }
                         filename={"familyfinance" + moment().unix() + ".csv"}>
                         <Button
                             className={classes.button}

@@ -1,16 +1,17 @@
 import React from 'react';
 import Button from 'material-ui/Button';
 import {withStyles} from 'material-ui/styles';
-import Constants from '../utils/constants'
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
 import FaGoogle from 'react-icons/lib/fa/google-plus-square';
 
 
 const styles = theme => ({
 
     button: {
-        margin: theme.spacing.unit
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 300,
+        marginTop: 30,
+        marginBottom: theme.spacing.unit
     },
     input: {
         display: 'none'
@@ -35,25 +36,28 @@ const styles = theme => ({
 const LoginGoogle = (props) => {
     const {classes} = props;
     return (
-        <Paper className={classes.paper} elevation={4}>
+       
 
-            {/*<Link
-                                to="/dashboard"
-                                style={{
-                                textDecoration: 'none'
-                            }}>
-                            </Link>*/}
-            <Typography type="body1" component="p">
-                Login With Google
-            </Typography>
+ 
+            
             <Button onClick={props.onLoginGoogle} raised className={classes.button}>
                 <FaGoogle size={30} color='red' className={classes.googleicon}/>
-                {Constants.ASSIGNS_LOGIN}
-                
+                Login With Google
             </Button>
-
-        </Paper>
+            
     )
 }
 
 export default withStyles(styles)(LoginGoogle);
+
+           /* <Paper className={classes.paper} elevation={4}><Link
+                                to="/dashboard"
+                                style={{
+                                textDecoration: 'none'
+                            }}>
+                            </Link>
+            <Typography type="body1" component="p">
+                Login With Google
+            </Typography>
+            </Paper>
+            */

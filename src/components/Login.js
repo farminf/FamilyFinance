@@ -8,6 +8,8 @@ import VisibilityOff from 'material-ui-icons/VisibilityOff';
 import Input, {InputLabel, InputAdornment} from 'material-ui/Input';
 import IconButton from 'material-ui/IconButton';
 import FormControl from 'material-ui/Form/FormControl';
+import LoginGoogle from '../components/LoginGoogle';
+
 
 const styles = theme => ({
 
@@ -17,8 +19,8 @@ const styles = theme => ({
     paper: theme
         .mixins
         .gutters({
-            paddingTop: 40,
-            paddingBottom: 40,
+            paddingTop: 20,
+            paddingBottom: 20,
             paddingLeft: 16,
             paddingRight: 16,
             marginTop: theme.spacing.unit * 3,
@@ -89,11 +91,11 @@ class LoginUserNamePassword extends React.Component {
         const {classes} = this.props;
         return (
             <Paper className={classes.paper} elevation={4}>
-                <Typography type="body1" component="p">
-                    Login With Username and Password
+                <Typography type="headline">
+                    Login To Your Account
                 </Typography>
 
-                <form onSubmit={this.onSubmit}>
+                <form>
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="username">Username</InputLabel>
                         <Input
@@ -132,6 +134,7 @@ class LoginUserNamePassword extends React.Component {
                         {this.state.error && <p>{this.state.error}</p>}
                     </FormControl>
                 </form>
+                <LoginGoogle onLoginGoogle={this.props.onLoginGoogle}/>
             </Paper>
         )
     }

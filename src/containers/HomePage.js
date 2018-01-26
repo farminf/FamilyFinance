@@ -6,9 +6,8 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import {connect} from 'react-redux';
 import {startLoginGoogle, startSignUp, startLoginWithEmail} from '../actions/auth';
-import LoginGoogle from '../components/LoginGoogle';
 import SignUp from '../components/SignUp';
-import LoginUserNamePassword from '../components/Login';
+import Login from '../components/Login';
 
 const styles = theme => ({
 
@@ -37,15 +36,12 @@ const HomePage = (props) => {
                     <Typography type="display2" component="h3">
                         {Constants.TEXT_LOGIN_CARD_HEADER}
                     </Typography>
-                    <Typography type="headline" component="p">
-                        {Constants.TEXT_LOGIN_CARD_BODY}
-                    </Typography>
+
                 </Grid>
                 <Grid item xs={12} sm={10} md={4} lg={4}>
-                    <LoginGoogle onLoginGoogle={props.startLoginGoogle}/>
-                </Grid>
-                <Grid item xs={12} sm={10} md={4} lg={4}>
-                    <LoginUserNamePassword onLoginEmail={props.startLoginWithEmail}/>
+                    <Login
+                        onLoginEmail={props.startLoginWithEmail}
+                        onLoginGoogle={props.startLoginGoogle}/>
                 </Grid>
                 <Grid item xs={12} sm={10} md={4} lg={4}>
                     <SignUp onSignup={props.startSignUp}/>
@@ -62,3 +58,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(undefined, mapDispatchToProps)(withStyles(styles)(HomePage));
+
+/*
+<Grid item xs={12} sm={10} md={4} lg={4}>
+                    <LoginGoogle onLoginGoogle={props.startLoginGoogle}/>
+                </Grid> */
