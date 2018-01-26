@@ -155,26 +155,62 @@ class Header extends React.Component {
             <List>
                 <div>
 
-                    <NavLink to="/dashboard" activeClassName="is-active">
-                        <ListItem button>
+                    <NavLink
+                        to="/dashboard"
+                        activeClassName="is-active"
+                        activeStyle={{
+                        fontWeight: 'bold',
+                        color: 'red'
+                    }}
+                        style={{
+                        textDecoration: 'none'
+                    }}>
+                        <ListItem button divider>
                             <ShowChartIcon/>
                             <ListItemText primary="Dashboard"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/accounts" activeClassName="is-active">
-                        <ListItem button>
+                    <NavLink
+                        to="/accounts"
+                        activeClassName="is-active"
+                        activeStyle={{
+                        fontWeight: 'bold',
+                        color: 'red'
+                    }}
+                        style={{
+                        textDecoration: 'none'
+                    }}>
+                        <ListItem button divider>
                             <AccountBalanceIcon/>
                             <ListItemText primary="Accounts"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/transactions" activeClassName="is-active">
-                        <ListItem button>
+                    <NavLink
+                        to="/transactions"
+                        activeClassName="is-active"
+                        activeStyle={{
+                        fontWeight: 'bold',
+                        color: 'red'
+                    }}
+                        style={{
+                        textDecoration: 'none'
+                    }}>
+                        <ListItem button divider>
                             <AddIcon/>
                             <ListItemText primary="Transactions"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/categories" activeClassName="is-active">
-                        <ListItem button>
+                    <NavLink
+                        to="/categories"
+                        activeClassName="is-active"
+                        activeStyle={{
+                        fontWeight: 'bold',
+                        color: 'red'
+                    }}
+                        style={{
+                        textDecoration: 'none'
+                    }}>
+                        <ListItem button divider>
                             <DashboardIcon/>
                             <ListItemText primary="Categories"/>
                         </ListItem>

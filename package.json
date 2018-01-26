@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vtex/react-csv-parse": "^1.0.3-beta.3",
     "classnames": "^2.2.5",
     "express": "^4.16.2",
     "firebase": "^4.8.0",
@@ -12,6 +13,7 @@
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
     "react": "^16.2.0",
+    "react-csv": "^1.0.12",
     "react-dates": "^16.0.1",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",

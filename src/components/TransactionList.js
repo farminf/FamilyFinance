@@ -17,6 +17,9 @@ import transactionSelector from '../selectors/TransactionSelector';
 import Paper from 'material-ui/Paper';
 import {setTypeFilter, setDescriptionFilter} from '../actions/filters';
 import _ from 'lodash';
+import {CSVLink} from 'react-csv';
+import moment from 'moment';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
     root: {
@@ -47,7 +50,8 @@ class TransactionList extends React.Component {
             page: 0,
             rowsPerPage: this.props.rowsPerPage,
             typeFilter: '',
-            descriptionFilter: ''
+            descriptionFilter: '',
+            downloadCSV: false
         }
     }
 
@@ -143,7 +147,30 @@ class TransactionList extends React.Component {
 
             <Paper className={classes.paper} elevation={4}>
 
-                <FilterListBar onFilter={this.onFilter} filters={this.props.filters}/>
+                <FilterListBar 
+                    onFilter={this.onFilter} 
+                    filters={this.props.filters} 
+                    exportComponent={<CSVLink
+                        data={this.props.transactions.lenght === 0 || this
+                            .props
+                            .transactions
+                            .hasOwnProperty(0) === false
+                            ? []
+                            : this.props.transactions
+                        }
+                        filename={"familyfinance" + moment().unix() + ".csv"}>
+                        <Button
+                            className={classes.button}
+                            raised
+                            color="primary">
+                            Download CSV
+                        </Button>
+                    </CSVLink>}
+                />
+
+                
+
+            
 
                 <Table className={classes.table}>
                     <TableHead>

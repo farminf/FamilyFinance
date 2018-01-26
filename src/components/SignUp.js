@@ -99,7 +99,7 @@ class SignUp extends React.Component {
 
             <Paper className={classes.paper} elevation={4}>
 
-                <Typography type="body1" component="p">
+                <Typography type="headline" >
                     Create New Account
                 </Typography>
 
