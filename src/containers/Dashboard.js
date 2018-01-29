@@ -105,7 +105,7 @@ class Dashboard extends React.Component {
         return (
             <div >
                 {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
-                <Grid container spacing={0}  justify="center" style={{width: "calc(100% - 81px)"}}>
+                <Grid container spacing={0} justify="center">
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <FilterDashboard
                             onFilterDashboard={this.onFilterDashboard}

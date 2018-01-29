@@ -41,7 +41,7 @@ class EditAccountContainer extends React.Component {
                 <div className={classes.root}>
                     <h1>{Constants.ADD_ACCOUNT_PAGE_TITLE}</h1>
                     <Grid container spacing={8} justify="center" >
-                        <Grid item md={5} xs={12} sm={10}>
+                        <Grid item md={4} xs={12} sm={10}>
                                 <AccountForm onSubmit={this.onSubmit} account={this.props.account}/>
                         </Grid>
                     </Grid>

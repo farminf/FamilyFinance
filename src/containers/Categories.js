@@ -17,14 +17,8 @@ const styles = theme => ({
         display: 'none'
     },
     root: {
-        flexGrow: 1,
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        marginLeft: theme.spacing.unit,
-        textAlign: 'center'
-    },
-    rootgrid: {
-        justifyContent: 'center'
+        marginTop: 60,
+       
     }
 });
 
@@ -43,11 +37,9 @@ class CategoriesContainer extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
-
                 <div className={classes.root}>
                     <h2>{Constants.ADD_CATEGORY_PAGE_TITLE}</h2>
-                    <Grid container spacing={8}  justify="center" style={{width: "calc(100% - 81px)"}} >
+                    <Grid container spacing={8}  justify="center">
 
                         <Grid item md={4} xs={12} sm={12}>
                                 <CategoryForm onSubmit={this.onSubmit}/>
@@ -59,7 +51,6 @@ class CategoriesContainer extends React.Component {
                     </Grid>
                      <AddFloatingButton/>
                 </div>
-            </div>
         );
     }
 }

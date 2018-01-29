@@ -11,7 +11,7 @@ import TransactionsContainer from '../containers/Transactions';
 import CategoriesContainer from '../containers/Categories';
 import EditAccountContainer from '../containers/EditAccount';
 import EditTransactionContainer from '../containers/EditTransaction';
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 
 export const history = createHistory();
 
