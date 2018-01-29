@@ -83,9 +83,9 @@ class AddFloatingButton extends React.Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title">
-                    <DialogTitle className={classes.dialogTitle} id="form-dialog-title">Add a transaction</DialogTitle>
+                    <DialogTitle className={classes.dialogTitle} id="form-dialog-title">Add Transaction</DialogTitle>
                     <DialogContent className={classes.dialogContent}>
-                        <TransactionFrom onSubmit={this.onSubmit}/>
+                        <TransactionFrom onSubmit={this.onSubmit} onClose={this.handleClose}/>
                     </DialogContent>
 
                 </Dialog>
