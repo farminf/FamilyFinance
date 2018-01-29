@@ -19,7 +19,7 @@ const styles = theme => ({
     },
     dialogContent: {
         textAlign: 'center',
-        maxWidth: 400
+        maxWidth: 400,
     },
     dialogTitle: {
         textAlign: 'center'

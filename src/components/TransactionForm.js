@@ -24,11 +24,10 @@ const styles = theme => ({
     },
 
     button: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 120,
-        marginTop: theme.spacing.unit,
-        marginBottom: 10
+        margin: theme.spacing.unit,
+        minWidth: 250,
+        marginBottom: 5,
+        padding: 5
     },
     formControl: {
         margin: theme.spacing.unit,
@@ -37,7 +36,6 @@ const styles = theme => ({
     },
     dateFormControl: {
         margin: theme.spacing.unit,
-        marginTop: 10,
         minWidth: 250,
         padding: 10
     },
@@ -47,7 +45,6 @@ const styles = theme => ({
 
             paddingLeft: 0,
             paddingRight: 0,
-            marginTop: theme.spacing.unit * 3,
             overflowX: 'auto'
         })
 });
@@ -281,14 +278,14 @@ class TransactionForm extends React.Component {
                                             onClick={this.onTransferSubmit}
                                             className={classes.button}
                                             raised
-                                            color="primary">
+                                            color="default">
                                             Transfer
                                         </Button>
                                         <Button
                                             onClick={this.props.onClose}
                                             className={classes.button}
                                             raised
-                                            color="primary">
+                                            color="default">
                                             Cancel
                                         </Button>
                                     </div>
@@ -343,7 +340,7 @@ class TransactionForm extends React.Component {
                                             onClick={this.onSubmit}
                                             className={classes.button}
                                             raised
-                                            color="primary">
+                                            color="default">
                                             {/*<Save className={classes.leftIcon}/> */}
                                             {this.state.submit_button_title}
                                         </Button>
@@ -351,7 +348,7 @@ class TransactionForm extends React.Component {
                                             onClick={this.props.onClose}
                                             className={classes.button}
                                             raised
-                                            color="primary">
+                                            color="default">
                                             Cancel
                                         </Button>
                                     </div>

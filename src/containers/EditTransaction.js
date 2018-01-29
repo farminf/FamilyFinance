@@ -6,6 +6,8 @@ import TransactionForm from '../components/TransactionForm';
 import {connect} from 'react-redux';
 import {startEditTransaction, startAddTransaction, startDeleteTransaction} from '../actions/transactions';
 import {updateAccountBalance} from '../actions/accounts';
+import Paper from 'material-ui/Paper';
+
 
 const styles = theme => ({
     button: {
@@ -18,7 +20,15 @@ const styles = theme => ({
         flexGrow: 1,
         marginTop: 30,
         height: 'auto'
-    }
+    },
+    paper: theme
+        .mixins
+        .gutters({
+            paddingLeft: 0,
+            paddingRight: 0,
+            marginTop: theme.spacing.unit * 3,
+            overflowX: 'auto'
+        })
 });
 
 class EditTransactionContainer extends React.Component {
@@ -71,7 +81,9 @@ class EditTransactionContainer extends React.Component {
                     <Grid container spacing={8} justify="center" >
 
                         <Grid item md={4} xs={12} sm={8}>
+                        <Paper className={classes.paper} elevation={4}>
                             <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
+                        </Paper>
                         </Grid>
 
                     </Grid>
