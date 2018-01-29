@@ -71,6 +71,13 @@ class EditTransactionContainer extends React.Component {
             .push('/transactions');
     };
 
+    handleClose = () => {
+        return this
+            .props
+            .history
+            .push('/transactions');
+    };
+
     render() {
         const {classes} = this.props;
         return (
@@ -82,7 +89,7 @@ class EditTransactionContainer extends React.Component {
 
                         <Grid item md={4} xs={12} sm={8}>
                         <Paper className={classes.paper} elevation={4}>
-                            <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit}/>
+                            <TransactionForm transaction={this.props.transaction} onSubmit={this.onSubmit} onClose={this.handleClose}/>
                         </Paper>
                         </Grid>
 
