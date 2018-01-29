@@ -150,6 +150,9 @@ class TransactionList extends React.Component {
                     onFilter={this.onFilter} 
                     filters={this.props.filters} 
                     exportComponent={<CSVLink
+                        style={{
+                            textDecoration: 'none'
+                        }}
                         data={this.props.transactions.lenght === 0 || this
                             .props
                             .transactions

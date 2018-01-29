@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Constants from '../utils/constants';
-import TransactionForm from '../components/TransactionForm';
+//import TransactionForm from '../components/TransactionForm';
 import {connect} from 'react-redux';
 import {startSetTransactions, startAddTransaction} from '../actions/transactions';
 import {setDashboardMonthFilter, setDashboardYearFilter} from '../actions/filters'
@@ -90,7 +90,7 @@ class AddTransactionContainer extends React.Component {
                     <h2>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h2>
                     <Grid container spacing={8}  justify="center" >
 
-                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                        {/*<Grid item xs={12} sm={12} md={12} lg={12}>
                             <FilterDashboard
                                 onFilterDashboard={this.onFilterDashboard}
                                 filters={this.props.filters}/>
@@ -98,8 +98,11 @@ class AddTransactionContainer extends React.Component {
 
                         <Grid item xs={12} md={4}  sm={12}>
                             <TransactionForm onSubmit={this.onSubmit}/>
-                        </Grid>
-                        <Grid item xs={12} md={8}  sm={12}>
+                        </Grid>*/}
+                        <Grid item xs={12} sm={12} md={10}>
+                        <FilterDashboard
+                                onFilterDashboard={this.onFilterDashboard}
+                                filters={this.props.filters}/>
                             <TransactionList rowsPerPage={10}/>
                         </Grid>
 

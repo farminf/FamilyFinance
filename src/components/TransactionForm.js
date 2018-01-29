@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import {SingleDatePicker} from 'react-dates';
 import '../react_dates_overrides.css'
-import Paper from 'material-ui/Paper';
+//import Paper from 'material-ui/Paper';
 import _ from 'lodash';
 
 const styles = theme => ({
@@ -24,11 +24,10 @@ const styles = theme => ({
     },
 
     button: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 250,
-        marginTop: theme.spacing.unit,
-        marginBottom: 40
+        margin: theme.spacing.unit,
+        minWidth: 250,
+        marginBottom: 5,
+        padding: 5
     },
     formControl: {
         margin: theme.spacing.unit,
@@ -37,7 +36,6 @@ const styles = theme => ({
     },
     dateFormControl: {
         margin: theme.spacing.unit,
-        marginTop: 10,
         minWidth: 250,
         padding: 10
     },
@@ -47,7 +45,6 @@ const styles = theme => ({
 
             paddingLeft: 0,
             paddingRight: 0,
-            marginTop: theme.spacing.unit * 3,
             overflowX: 'auto'
         })
 });
@@ -178,8 +175,10 @@ class TransactionForm extends React.Component {
     };
 
     onDateChange = (d) => {
-        const date = d.get('today');
-        this.setState(() => ({date}));
+        if (d !== null) {
+            const date = d.get('today');
+            this.setState(() => ({date}));
+        }
     };
 
     onFocusChange = ({focused}) => {
@@ -189,8 +188,8 @@ class TransactionForm extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <Paper className={classes.paper} elevation={4}>
-                {this.state.error && <p>{this.state.error}</p>}
+            <div>
+
                 {this
                     .props
                     .accounts
@@ -202,7 +201,11 @@ class TransactionForm extends React.Component {
 
                         <form onSubmit={this.onSubmit}>
                             <FormControl className={classes.dateFormControl}>
+                                {/*InputLabel htmlFor="age-native-date">Date</InputLabel>*/}
                                 <SingleDatePicker
+                                    id="age-native-date"
+                                    block={true}
+                                    showDefaultInputIcon={true}
                                     date={this.state.date}
                                     onDateChange={this.onDateChange}
                                     focused={this.state.calendarFocused}
@@ -211,13 +214,13 @@ class TransactionForm extends React.Component {
                                     isOutsideRange={() => false}/>
                             </FormControl>
                             <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="age-native-simple">Type</InputLabel>
+                                <InputLabel htmlFor="age-native-type">Type</InputLabel>
                                 <Select
                                     disabled={this.state.disableType}
                                     native
                                     value={this.state.type}
                                     onChange={this.onTypeChange}
-                                    input={< Input id = "age-native-simple" />}>
+                                    input={< Input id = "age-native-type" />}>
                                     <option key=""></option>
                                     <option key="expense" value="Expense">Expense</option>
                                     <option key="income" value="Income">Income</option>
@@ -231,12 +234,12 @@ class TransactionForm extends React.Component {
                                     <div>
 
                                         <FormControl className={classes.formControl}>
-                                            <InputLabel htmlFor="age-native-simple">From Account</InputLabel>
+                                            <InputLabel htmlFor="age-native-transferfrom">From Account</InputLabel>
                                             <Select
                                                 native
                                                 value={this.state.transferFrom}
                                                 onChange={this.onTransferFromChange}
-                                                input={< Input id = "age-native-simple" />}>
+                                                input={< Input id = "age-native-transferfrom" />}>
                                                 <option value=""/> {this
                                                     .props
                                                     .accounts
@@ -255,12 +258,12 @@ class TransactionForm extends React.Component {
                                             onChange={this.onAmountChange}/>
 
                                         <FormControl className={classes.formControl}>
-                                            <InputLabel htmlFor="age-native-simple">To Account</InputLabel>
+                                            <InputLabel htmlFor="age-native-transferto">To Account</InputLabel>
                                             <Select
                                                 native
                                                 value={this.state.transferTo}
                                                 onChange={this.onTransferToChange}
-                                                input={< Input id = "age-native-simple" />}>
+                                                input={< Input id = "age-native-transferto" />}>
                                                 <option value=""/> {this
                                                     .props
                                                     .accounts
@@ -275,8 +278,15 @@ class TransactionForm extends React.Component {
                                             onClick={this.onTransferSubmit}
                                             className={classes.button}
                                             raised
-                                            color="primary">
+                                            color="default">
                                             Transfer
+                                        </Button>
+                                        <Button
+                                            onClick={this.props.onClose}
+                                            className={classes.button}
+                                            raised
+                                            color="default">
+                                            Cancel
                                         </Button>
                                     </div>
                                 )
@@ -297,12 +307,12 @@ class TransactionForm extends React.Component {
                                             onChange={this.onDescriptionChange}/>
 
                                         <FormControl className={classes.formControl}>
-                                            <InputLabel htmlFor="age-native-simple">Account</InputLabel>
+                                            <InputLabel htmlFor="age-native-account">Account</InputLabel>
                                             <Select
                                                 native
                                                 value={this.state.account}
                                                 onChange={this.onAccountChange}
-                                                input={< Input id = "age-native-simple" />}>
+                                                input={< Input id = "age-native-account" />}>
                                                 <option value=""/> {this
                                                     .props
                                                     .accounts
@@ -313,12 +323,12 @@ class TransactionForm extends React.Component {
                                             </Select>
                                         </FormControl>
                                         <FormControl className={classes.formControl}>
-                                            <InputLabel htmlFor="age-native-simple">Category</InputLabel>
+                                            <InputLabel htmlFor="age-native-category">Category</InputLabel>
                                             <Select
                                                 native
                                                 value={this.state.category}
                                                 onChange={this.onCategoryChange}
-                                                input={< Input id = "age-native-simple" />}>
+                                                input={< Input id = "age-native-category" />}>
                                                 <option value=""/>{_.orderBy(this.props.categories, ['date'], ['asc']).map((category) => {
                                                     return <option key={category.name} value={category.name}>{category.name}</option>
                                                 })}
@@ -330,15 +340,25 @@ class TransactionForm extends React.Component {
                                             onClick={this.onSubmit}
                                             className={classes.button}
                                             raised
-                                            color="primary">
+                                            color="default">
                                             {/*<Save className={classes.leftIcon}/> */}
                                             {this.state.submit_button_title}
+                                        </Button>
+                                        <Button
+                                            onClick={this.props.onClose}
+                                            className={classes.button}
+                                            raised
+                                            color="default">
+                                            Cancel
                                         </Button>
                                     </div>
                                 )}
                         </form>
                     )}
-            </Paper>
+                {this.state.error && <p style={{
+                    color: 'red'
+                }}>{this.state.error}</p>}
+            </div>
         )
     }
 
