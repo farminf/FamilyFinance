@@ -8,7 +8,7 @@
   "repository": {
     "url": "http://github.com/farminf/FamilyFinance"
   },
-  "homepage": "https://farminf.github.io",
+  "homepage": "https://familyfinance-webapp.herokuapp.com/",
   "dependencies": {
     "classnames": "^2.2.5",
     "express": "^4.16.2",
