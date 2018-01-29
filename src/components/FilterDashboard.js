@@ -7,10 +7,7 @@ import {FormControl , FormHelperText} from 'material-ui/Form';
 import moment from 'moment';
 
 const styles = theme => ({
-    root: {
-        position: "relative",
-        textAlign: "left"
-    },
+
     paper: theme
         .mixins
         .gutters({
@@ -19,8 +16,7 @@ const styles = theme => ({
             paddingLeft: 16,
             paddingRight: 16,
             marginTop: theme.spacing.unit * 3,
-            marginLeft: 10,
-            marginRight: 10,
+            
             overflowX: 'auto'
         }),
     formControl: {

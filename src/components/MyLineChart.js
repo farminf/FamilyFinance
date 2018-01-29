@@ -27,8 +27,6 @@ const styles = theme => ({
             paddingLeft: 16,
             paddingRight: 16,
             marginTop: theme.spacing.unit * 3,
-            marginLeft: 10,
-            marginRight: 10,
             overflowX: 'auto'
         })
 });

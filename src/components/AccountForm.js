@@ -24,12 +24,9 @@ const styles = theme => ({
     paper: theme
         .mixins
         .gutters({
-
             paddingLeft: 0,
             paddingRight: 0,
             marginTop: theme.spacing.unit * 3,
-            marginLeft: 10,
-            marginRight: 10,
             overflowX: 'auto'
         })
 });

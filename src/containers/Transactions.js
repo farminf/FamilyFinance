@@ -20,11 +20,8 @@ const styles = theme => ({
         display: 'none'
     },
     root: {
-        flexGrow: 1,
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        marginLeft: theme.spacing.unit,
-        textAlign: 'center'
+        marginTop: 60,
+       
     }
 
 });
@@ -88,28 +85,26 @@ class AddTransactionContainer extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
+            <div className={classes.root}>
 
-                <div className={classes.root}>
                     <h2>{Constants.ADD_TRANSACTION_PAGE_TITLE}</h2>
-                    <Grid container spacing={8}>
+                    <Grid container spacing={8}  justify="center" >
 
-                        <Grid item xs={10} sm={10} md={12} lg={12}>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
                             <FilterDashboard
                                 onFilterDashboard={this.onFilterDashboard}
                                 filters={this.props.filters}/>
                         </Grid>
 
-                        <Grid item md={3} xs={10} sm={11}>
+                        <Grid item xs={12} md={4}  sm={12}>
                             <TransactionForm onSubmit={this.onSubmit}/>
                         </Grid>
-                        <Grid item md={9} xs={10} sm={11}>
+                        <Grid item xs={12} md={8}  sm={12}>
                             <TransactionList rowsPerPage={10}/>
                         </Grid>
 
                     </Grid>
                     <AddFloatingButton/>
-                </div>
             </div>
         );
     }

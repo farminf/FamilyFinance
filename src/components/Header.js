@@ -16,7 +16,7 @@ import AddIcon from 'material-ui-icons/NoteAdd';
 import DashboardIcon from 'material-ui-icons/Dashboard';
 import ShowChartIcon from 'material-ui-icons/ShowChart';
 import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
-
+import Hidden from 'material-ui/Hidden';
 import {ListItem, ListItemText} from 'material-ui/List';
 import List from 'material-ui/List';
 import Divider from 'material-ui/Divider';
@@ -24,7 +24,7 @@ import Drawer from 'material-ui/Drawer';
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 const styles = theme => ({
     root: {
         width: '100%',
@@ -84,7 +84,7 @@ const styles = theme => ({
     },
 
     appBar: {
-        position: 'absolute',
+        position: 'fixed',
         zIndex: theme.zIndex.navDrawer + 1,
         transition: theme
             .transitions
@@ -113,21 +113,43 @@ const styles = theme => ({
         display: 'flex',
         width: '100%'
     },
+    // content: {
+    //     width: '100%',
+    //     flexGrow: 1,
+    //     padding: theme.spacing.unit * 3,
+    //     height: 'calc(100% - 56px)',
+    //     marginTop: 26,
+    //     [
+    //         theme
+    //             .breakpoints
+    //             .up('sm')
+    //     ]: {
+    //         height: 'calc(100% - 64px)',
+    //         marginTop: 64
+    //     }
+    // },
     content: {
         width: '100%',
         flexGrow: 1,
-        padding: 24,
-        marginLeft: 50,
-        height: 'calc(100% - 56px)',
-        marginTop: 56,
+        padding: 20,
+        height: 'calc(100% - 50px)',
+        marginTop: 26,
         [
             theme
                 .breakpoints
                 .up('sm')
         ]: {
             height: 'calc(100% - 64px)',
-            marginTop: 64
-        }
+            width: 'calc(100% - 60px)',
+            marginTop: 24,
+            marginBottom: 80,
+            margin: 40
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding:0,
+            marginTop: 44,
+            marginBottom: 80
+          },
     }
 });
 
@@ -136,9 +158,15 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            mobileOpen: false
         }
     }
+    handleDrawerToggle = () => {
+        this.setState({
+            mobileOpen: !this.state.mobileOpen
+        });
+    };
 
     handleDrawerOpen = () => {
         this.setState({open: true});
@@ -175,7 +203,8 @@ class Header extends React.Component {
                         activeClassName="is-active"
                         activeStyle={{
                         fontWeight: 'bold',
-                        color: 'red'
+                        color: 'red',
+                        fontColor: 'red'
                     }}
                         style={{
                         textDecoration: 'none'
@@ -246,27 +275,55 @@ class Header extends React.Component {
 
                         </Toolbar>
                     </AppBar>
-                    <Drawer
-                        type="permanent"
-                        classes={{
-                        paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose)
-                    }}
-                        open={this.state.open}>
-                        <div className={classes.drawerInner}>
-                            <div className={classes.drawerHeader}>
-                                <IconButton onClick={this.handleDrawerClose}>
-                                    {theme.direction === 'rtl'
-                                        ? <ChevronRightIcon/>
-                                        : <ChevronLeftIcon/>}
-                                </IconButton>
+                    <Hidden mdUp>
+                        <Drawer
+                            type="temporary"
+                            anchor={theme.direction === 'rtl'
+                            ? 'right'
+                            : 'left'}
+                            open={this.state.open}
+                            classes={{
+                            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose)
+                        }}
+                            onClose={this.handleDrawerToggle}
+                            ModalProps={{
+                            keepMounted: true
+                        }}>
+                            <div className={classes.drawerInner}>
+                                <div className={classes.drawerHeader}>
+                                    <IconButton onClick={this.handleDrawerClose}>
+                                        {theme.direction === 'rtl'
+                                            ? <ChevronRightIcon/>
+                                            : <ChevronLeftIcon/>}
+                                    </IconButton>
+                                </div>
+                                <Divider/> {items}
                             </div>
-                            <Divider/> {items}
-                        </div>
-                    </Drawer>
-                    <main className={classes.content}>
-                        {this.props.children}
-                    </main>
+                        </Drawer>
+                    </Hidden>
+                    <Hidden smDown implementation="css">
+                        <Drawer
+                            type="permanent"
+                            classes={{
+                            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose)
+                        }}
+                            open={this.state.open}>
+                            <div className={classes.drawerInner}>
+                                <div className={classes.drawerHeader}>
+                                    <IconButton onClick={this.handleDrawerClose}>
+                                        {theme.direction === 'rtl'
+                                            ? <ChevronRightIcon/>
+                                            : <ChevronLeftIcon/>}
+                                    </IconButton>
+                                </div>
+                                <Divider/> {items}
+                            </div>
+                        </Drawer>
+                    </Hidden>
                 </div>
+                <main className={classes.content}>
+                    {this.props.children}
+                </main>
             </div>
 
         )

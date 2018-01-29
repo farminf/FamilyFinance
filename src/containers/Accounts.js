@@ -17,16 +17,10 @@ const styles = theme => ({
         display: 'none'
     },
     root: {
-        flexGrow: 1,
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        marginLeft: theme.spacing.unit,
-        textAlign: 'center',
-        justifyContent: 'center'
-    },
-    rootGrid:{
-        
+        marginTop: 60,
+       
     }
+
 });
 
 class AddAccountContainer extends React.Component {
@@ -46,23 +40,21 @@ class AddAccountContainer extends React.Component {
     render() {
         const {classes} = this.props;
         return (
-            <div>
 
                 <div className={classes.root}>
                     <h2>{Constants.ADD_ACCOUNT_PAGE_TITLE}</h2>
-                    <Grid container spacing={8} className={classes.rootGrid}>
+                    <Grid container spacing={8}  justify="center">
 
-                        <Grid item md={4} xs={10} sm={7}>
+                        <Grid item md={4} xs={12} sm={12}>
                                 <AccountForm onSubmit={this.onSubmit}/>
                         </Grid>
-                        <Grid item md={6} xs={10} sm={8}>
+                        <Grid item md={6} xs={12} sm={12}>
                                 <AccountList/>
                         </Grid>
 
                     </Grid>
                      <AddFloatingButton/>
                 </div>
-            </div>
         );
     }
 }

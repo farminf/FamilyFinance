@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {startSetTransactions} from '../actions/transactions';
 import {startSetAccounts} from '../actions/accounts';
 import {startSetCategories} from '../actions/categories';
-import {setDashboardMonthFilter , setDashboardYearFilter} from '../actions/filters'
+import {setDashboardMonthFilter, setDashboardYearFilter} from '../actions/filters'
 //import MyLineChart from '../components/MyLineChart';
 import MyAreaChart from '../components/MyAreaChart';
 import MyBarChart from '../components/MyBarChart.js';
@@ -77,8 +77,12 @@ class Dashboard extends React.Component {
     // handleClickFloatingButton = event => {};
 
     onFilterDashboard = ({dashboardYearFilter, dashboardMonthFilter}) => {
-        this.props.setDashboardMonthFilter(dashboardMonthFilter);
-        this.props.setDashboardYearFilter(dashboardYearFilter);
+        this
+            .props
+            .setDashboardMonthFilter(dashboardMonthFilter);
+        this
+            .props
+            .setDashboardYearFilter(dashboardYearFilter);
 
         var startDate = moment([
             dashboardYearFilter, dashboardMonthFilter - 1
@@ -94,19 +98,21 @@ class Dashboard extends React.Component {
         this
             .props
             .startAddTransaction(transaction);
-        
+
     };
 
     render() {
         return (
-            <div>
+            <div >
                 {/*<h2>{Constants.DASHBOARD_PAGE_TITLE}</h2>*/}
-                <Grid container spacing={0}>
-                    <Grid item xs={10} sm={10} md={12} lg={12}>
-                        <FilterDashboard onFilterDashboard={this.onFilterDashboard} filters={this.props.filters}/>
+                <Grid container spacing={0} justify="center">
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                        <FilterDashboard
+                            onFilterDashboard={this.onFilterDashboard}
+                            filters={this.props.filters}/>
                     </Grid>
 
-                    <Grid item xs={10} sm={10} md={6} lg={6}>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
                         <MyBarChart
                             data={_.orderBy(([
                             ...this
@@ -124,7 +130,7 @@ class Dashboard extends React.Component {
                             fillColor2="#8884d8"/>
                     </Grid>
 
-                    <Grid item xs={10} sm={10} md={6} lg={6}>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
                         <MyPieChart
                             data={this.state.expensesByCategory}
                             title="Expenses By Categories"
@@ -133,7 +139,7 @@ class Dashboard extends React.Component {
                             fillColor="#8884d8"/>
                     </Grid>
 
-                    <Grid item xs={10} sm={10} md={12} lg={12}>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
                         <MyAreaChart
                             data={_.orderBy(this.state.totalExpenseDay, ['date'], ['asc'])}
                             title="Expense / Time"
@@ -153,7 +159,7 @@ class Dashboard extends React.Component {
                             fillColor="#8884d8"/>
         </Grid>*/}
 
-                    <Grid item xs={10} sm={10} md={12} lg={12}>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
                         <TransactionList rowsPerPage={5}/>
                     </Grid>
 

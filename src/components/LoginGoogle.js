@@ -9,7 +9,7 @@ const styles = theme => ({
     button: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: 300,
+        width: 270,
         marginTop: 30,
         marginBottom: theme.spacing.unit
     },
