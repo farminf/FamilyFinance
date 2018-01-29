@@ -1,9 +1,15 @@
 {
   "name": "familyfinance-webapp",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "FarminF",
+    "email": "farmin.f@gmail.com"
+  },
+  "repository": {
+    "url": "http://github.com/farminf/FamilyFinance"
+  },
+  "homepage": "https://farminf.github.io",
   "dependencies": {
-    "@vtex/react-csv-parse": "^1.0.3-beta.3",
     "classnames": "^2.2.5",
     "express": "^4.16.2",
     "firebase": "^4.8.0",
