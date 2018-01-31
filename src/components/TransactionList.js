@@ -158,7 +158,11 @@ class TransactionList extends React.Component {
                             .transactions
                             .hasOwnProperty(0) === false
                             ? []
-                            : this.props.transactions
+                            : _.cloneDeep(this.props.transactions).map((object)=>{
+                                delete object.id;
+                                object.dateFormatted = moment(object.date).format("DD/MM/YYYY");
+                                return object
+                            })
                         }
                         filename={"familyfinance" + moment().unix() + ".csv"}>
                         <Button
