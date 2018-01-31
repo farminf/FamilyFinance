@@ -12,7 +12,8 @@
 
 FamilyFinance is an open source personal finance mangement app made by Firebase, React.
 
-![alt text](https://github.com/farminf/FamilyFinance/blob/dev/Screenshots.png?raw=true "Family Finance")
+![alt text](https://github.com/farminf/FamilyFinance/blob/dev/screenshots.png?raw=true
+ "Family Finance")
 
 ## Your Installation
 You can use FamilyFinance on your premises/host with your firebase account easiliy. You need to just add your firebase config to your environment variables as
