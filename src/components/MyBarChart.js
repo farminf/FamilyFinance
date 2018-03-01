@@ -17,7 +17,7 @@ const styles = theme => ({
         WebkitBoxSizing: "border-box",
         MozBoxSizing: "border-box",
         padding: 10,
-        height: 300,
+        height: 350,
         backgroundColor: "#fff"
     },
     paper: theme
@@ -27,7 +27,7 @@ const styles = theme => ({
             boxSizing: "border - box",
             paddingLeft: 16,
             paddingRight: 16,
-            marginTop: theme.spacing.unit * 3,
+            marginTop: theme.spacing.unit ,
 
             overflowX: 'auto'
         })

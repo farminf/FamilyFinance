@@ -1,10 +1,12 @@
 import moment from 'moment';
 
 // Filters Reducer
-
+// Default Filters which are coming at start of the app
 const filtersReducerDefaultState = {
   typeFilter: '',
   descriptionFilter: '',
+  accountFilter: '',
+  categoryFilter:'',
   sortBy: 'date',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month')
@@ -21,6 +23,16 @@ export default(state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         descriptionFilter: action.descriptionFilter
+      };
+    case 'SET_TRANSACTION_ACCOUNT_FILTER':
+      return {
+        ...state,
+        accountFilter: action.accountFilter
+      };
+    case 'SET_TRANSACTION_CATEGORY_FILTER':
+      return {
+        ...state,
+        categoryFilter: action.categoryFilter
       };
     case 'SET_TEXT_FILTER':
       return {

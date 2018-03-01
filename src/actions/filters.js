@@ -16,8 +16,14 @@ export const setEndDate = (endDate) => ({type: 'SET_END_DATE', endDate});
 // SET_TRANSACTION_TYPE_FILTER
 export const setTypeFilter = (typeFilter) => ({type: 'SET_TRANSACTION_TYPE_FILTER', typeFilter});
 
-// SET_TRANSACTION_TYPE_DESCRIPTION
+// SET_TRANSACTION_DESCRIPTION_FILTER
 export const setDescriptionFilter = (descriptionFilter) => ({type: 'SET_TRANSACTION_DESCRIPTION_FILTER', descriptionFilter});
+
+// SET_TRANSACTION_ACCOUNT_FILTER
+export const setAccountFilter = (accountFilter) => ({type: 'SET_TRANSACTION_ACCOUNT_FILTER', accountFilter});
+
+// SET_TRANSACTION_CATEGORY_FILTER
+export const setCategoryFilter = (categoryFilter) => ({type: 'SET_TRANSACTION_CATEGORY_FILTER', categoryFilter});
 
 // SET_DASHBOARD_MONTH
 export const setDashboardMonthFilter = (dashboardMonthFilter) => ({type: 'SET_DASHBOARD_MONTH', dashboardMonthFilter});

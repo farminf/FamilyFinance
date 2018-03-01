@@ -113,6 +113,15 @@ class Dashboard extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <MyPieChart
+                            data={this.state.expensesByCategory}
+                            title="Expenses By Categories"
+                            dataKey="expense"
+                            nameKey="categories"
+                            fillColor="#8884d8"/>
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
                         <MyBarChart
                             data={_.orderBy(([
                             ...this
@@ -130,14 +139,7 @@ class Dashboard extends React.Component {
                             fillColor2="#8884d8"/>
                     </Grid>
 
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                        <MyPieChart
-                            data={this.state.expensesByCategory}
-                            title="Expenses By Categories"
-                            dataKey="expense"
-                            nameKey="categories"
-                            fillColor="#8884d8"/>
-                    </Grid>
+                    
 
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <MyAreaChart

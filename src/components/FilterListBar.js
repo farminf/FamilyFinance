@@ -52,7 +52,13 @@ class FilterListBar extends Component {
                 : '',
             descriptionFilter: props.filters.descriptionFilter
                 ? props.filters.descriptionFilter
-                : ''
+                : '',
+            accountFilter : props.filters.accountFilter
+            ? props.filters.accountFilter
+            : '',
+            categoryFilter: props.filters.categoryFilter
+            ? props.filters.categoryFilter
+            : '',
         };
     }
 
@@ -72,6 +78,30 @@ class FilterListBar extends Component {
         const descriptionFilter = e.target.value;
         this.setState({
             descriptionFilter
+        }, () => {
+            this
+                .props
+                .onFilter(this.state)
+        })
+
+    }
+
+    onAccountFilter = (e) => {
+        const accountFilter = e.target.value;
+        this.setState({
+            accountFilter
+        }, () => {
+            this
+                .props
+                .onFilter(this.state)
+        })
+
+    }
+
+    onCategoryFilter = (e) => {
+        const categoryFilter = e.target.value;
+        this.setState({
+            categoryFilter
         }, () => {
             this
                 .props
@@ -109,9 +139,26 @@ class FilterListBar extends Component {
                         type="text"
                         label="Description"
                         value={this.state.descriptionFilter}
-                        onChange={this.onDescriptionFilter}/> {/*<Button onClick={this.onFilter} className={classes.button} raised>
-                    Filter
-        </Button>*/}
+                        onChange={this.onDescriptionFilter}/> 
+                    
+                    <TextField
+                        className={classes.textField}
+                        type="text"
+                        label="Account"
+                        value={this.state.accountFilter}
+                        onChange={this.onAccountFilter}/>
+
+                    <TextField
+                        className={classes.textField}
+                        type="text"
+                        label="Category"
+                        value={this.state.categoryFilter}
+                        onChange={this.onCategoryFilter}/>
+
+
+                        {/*<Button onClick={this.onFilter} className={classes.button} raised>
+                            Filter
+                        </Button>*/}
 
                 </div>
                 <div className={classes.divRight}>

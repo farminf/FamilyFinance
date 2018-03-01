@@ -15,7 +15,7 @@ const styles = theme => ({
         WebkitBoxSizing: "border-box",
         MozBoxSizing: "border-box",
         padding: 10,
-        height: 300,
+        height: 350,
         backgroundColor: "#fff"
     },
     paper: theme
@@ -25,7 +25,7 @@ const styles = theme => ({
             boxSizing: "border - box",
             paddingLeft: 16,
             paddingRight: 16,
-            marginTop: theme.spacing.unit * 3,
+            marginTop: theme.spacing.unit,
             overflowX: 'auto'
         })
 });
@@ -103,7 +103,7 @@ class MyPieChart extends React.Component {
                                 dataKey={this.props.dataKey}
                                 nameKey={this.props.nameKey}
                                 cx="50%"
-                                cy="50%"
+                                cy="40%"
                                 outerRadius={120}
                                 fill="#8884d8"
                                 label={this.renderCustomizedLabel}

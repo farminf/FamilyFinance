@@ -15,7 +15,7 @@ import {updateAccountBalance} from '../actions/accounts';
 import FilterListBar from '../components/FilterListBar';
 import transactionSelector from '../selectors/TransactionSelector';
 import Paper from 'material-ui/Paper';
-import {setTypeFilter, setDescriptionFilter} from '../actions/filters';
+import {setTypeFilter, setDescriptionFilter ,setAccountFilter , setCategoryFilter} from '../actions/filters';
 import _ from 'lodash';
 import {CSVLink} from 'react-csv';
 import moment from 'moment';
@@ -50,6 +50,8 @@ class TransactionList extends React.Component {
             rowsPerPage: this.props.rowsPerPage,
             typeFilter: '',
             descriptionFilter: '',
+            accountFilter: '',
+            categoryFilter: '',
             downloadCSV: false
         }
     }
@@ -118,17 +120,24 @@ class TransactionList extends React.Component {
 
     };
 
-    onFilter = ({typeFilter, descriptionFilter}) => {
+    onFilter = ({typeFilter, descriptionFilter , accountFilter , categoryFilter}) => {
         // const transactionsFilter = transactionSelector(this.props.transactions,
         // {typeFilter, descriptionFilter}) this.setState(() => ({transactions:
         // transactionsFilter}));
-        this.setState(() => ({typeFilter, descriptionFilter}));
+        this.setState(() => ({typeFilter, descriptionFilter ,accountFilter}));
         this
             .props
             .setDescriptionFilter(descriptionFilter);
         this
             .props
             .setTypeFilter(typeFilter);
+
+        this
+            .props
+            .setAccountFilter(accountFilter);
+        this
+            .props
+            .setCategoryFilter(categoryFilter)
 
     }
 
@@ -259,7 +268,9 @@ const mapDispatchToProps = (dispatch, props) => ({
         dispatch(updateAccountBalance(transaction.account, delta))
     }),
     setDescriptionFilter: (descriptionFilter) => dispatch(setDescriptionFilter(descriptionFilter)),
-    setTypeFilter: (typeFilter) => dispatch(setTypeFilter(typeFilter))
+    setTypeFilter: (typeFilter) => dispatch(setTypeFilter(typeFilter)),
+    setAccountFilter: (accountFilter) => dispatch(setAccountFilter(accountFilter)),
+    setCategoryFilter: (categoryFilter) => dispatch(setCategoryFilter(categoryFilter))
 
 });
 
