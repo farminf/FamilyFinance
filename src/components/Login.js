@@ -128,7 +128,7 @@ class LoginUserNamePassword extends React.Component {
                                     </IconButton> 
                                 </InputAdornment>}/>
 
-                        <Button onClick={this.onLoginWithEmail} raised className={classes.button}>
+                        <Button onClick={this.onLoginWithEmail} raised="true" className={classes.button}>
                             Login
                         </Button>
                         {this.state.error && <p>{this.state.error}</p>}
