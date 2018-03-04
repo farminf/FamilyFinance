@@ -268,7 +268,7 @@ class Header extends React.Component {
                                 {this.props.title}
                             </Typography>
 
-                            <Button onClick={this.props.startLogout} raised className={classes.button}>
+                            <Button onClick={this.props.startLogout} raised="true" className={classes.button}>
                                 {Constants.ASSIGNS_LOGOUT}
                             </Button>
                             <Avatar alt="Name" src={this.props.avatarSrc} className={classes.avatar}/>

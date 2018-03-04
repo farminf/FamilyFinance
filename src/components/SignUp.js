@@ -128,7 +128,7 @@ class SignUp extends React.Component {
                     <div className={classes.recaptcha}>
                         <Recaptcha sitekey="6Lc1_j8UAAAAAH5zKYdv055fpSrIDghc3J6xZF02"/>
                     </div>
-                    <Button onClick={this.onSignup} raised className={classes.button}>
+                    <Button onClick={this.onSignup} raised="true" className={classes.button}>
                         Register
                     </Button>
                     {this.state.error && <p>{this.state.error}</p>}
