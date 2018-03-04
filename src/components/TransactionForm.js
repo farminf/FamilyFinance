@@ -277,14 +277,14 @@ class TransactionForm extends React.Component {
                                         <Button
                                             onClick={this.onTransferSubmit}
                                             className={classes.button}
-                                            raised
+                                            raised="true"
                                             color="default">
                                             Transfer
                                         </Button>
                                         <Button
                                             onClick={this.props.onClose}
                                             className={classes.button}
-                                            raised
+                                            raised="true"
                                             color="default">
                                             Cancel
                                         </Button>
@@ -339,7 +339,7 @@ class TransactionForm extends React.Component {
                                         <Button
                                             onClick={this.onSubmit}
                                             className={classes.button}
-                                            raised
+                                            raised="true"
                                             color="default">
                                             {/*<Save className={classes.leftIcon}/> */}
                                             {this.state.submit_button_title}
@@ -347,7 +347,7 @@ class TransactionForm extends React.Component {
                                         <Button
                                             onClick={this.props.onClose}
                                             className={classes.button}
-                                            raised
+                                            raised="true"
                                             color="default">
                                             Cancel
                                         </Button>
