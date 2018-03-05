@@ -176,7 +176,7 @@ class TransactionList extends React.Component {
                         filename={"familyfinance" + moment().unix() + ".csv"}>
                         <Button
                             className={classes.button}
-                            raised="true"
+                            variant="raised"
                             color="primary">
                             Download CSV
                         </Button>
