@@ -40,7 +40,7 @@ const LoginGoogle = (props) => {
 
  
             
-            <Button onClick={props.onLoginGoogle} raised="true" className={classes.button}>
+            <Button onClick={props.onLoginGoogle} variant="raised" className={classes.button}>
                 <FaGoogle size={30} color='red' className={classes.googleicon}/>
                 Login With Google
             </Button>

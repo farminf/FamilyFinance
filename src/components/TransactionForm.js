@@ -277,15 +277,15 @@ class TransactionForm extends React.Component {
                                         <Button
                                             onClick={this.onTransferSubmit}
                                             className={classes.button}
-                                            raised="true"
-                                            color="default">
+                                            variant="raised"
+                                            >
                                             Transfer
                                         </Button>
                                         <Button
                                             onClick={this.props.onClose}
                                             className={classes.button}
-                                            raised="true"
-                                            color="default">
+                                            variant="raised"
+                                            >
                                             Cancel
                                         </Button>
                                     </div>
@@ -339,16 +339,15 @@ class TransactionForm extends React.Component {
                                         <Button
                                             onClick={this.onSubmit}
                                             className={classes.button}
-                                            raised="true"
-                                            color="default">
+                                            variant="raised"
+                                            >
                                             {/*<Save className={classes.leftIcon}/> */}
                                             {this.state.submit_button_title}
                                         </Button>
                                         <Button
                                             onClick={this.props.onClose}
                                             className={classes.button}
-                                            raised="true"
-                                            color="default">
+                                            variant="raised">
                                             Cancel
                                         </Button>
                                     </div>

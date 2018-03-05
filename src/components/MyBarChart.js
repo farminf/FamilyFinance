@@ -17,7 +17,7 @@ const styles = theme => ({
         WebkitBoxSizing: "border-box",
         MozBoxSizing: "border-box",
         padding: 10,
-        height: 350,
+        height: 380,
         backgroundColor: "#fff"
     },
     paper: theme

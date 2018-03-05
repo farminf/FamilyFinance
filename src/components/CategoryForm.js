@@ -96,7 +96,7 @@ class CategoryForm extends React.Component {
                     <Button
                         onClick={this.onSubmit}
                         className={classes.button}
-                        raised="true"
+                        variant="raised"
                         color="primary">{this.state.submit_button_title}</Button>
                 </form>
             </Paper>

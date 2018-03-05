@@ -14,7 +14,7 @@
     "express": "^4.16.2",
     "firebase": "^4.8.0",
     "lodash": "^4.17.4",
-    "material-ui": "^1.0.0-beta.22",
+    "material-ui": "^1.0.0-beta.36",
     "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
@@ -37,10 +37,17 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
     "jest": "^22.0.0",
-    "jest-cli": "^22.0.0"
+    "jest-cli": "^22.0.0",
+    "@storybook/react": "^3.3.14",
+    "@storybook/addon-actions": "^3.3.14",
+    "@storybook/addon-links": "^3.3.14",
+    "@storybook/addons": "^3.3.14",
+    "babel-core": "^6.26.0"
   }
 }
