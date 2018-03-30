@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import Card, {CardActions, CardContent} from 'material-ui/Card';
+import Card, { CardContent} from 'material-ui/Card';
 
 // import purple from 'material-ui/colors/purple'; const textColor =
 // purple['50'];
