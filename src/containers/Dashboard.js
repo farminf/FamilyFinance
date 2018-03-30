@@ -16,6 +16,7 @@ import MyPieChart from '../components/MyPieChart';
 import FilterDashboard from '../components/FilterDashboard';
 import _ from 'lodash';
 import moment from 'moment';
+import Statistic from '../components/Statistic';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -23,7 +24,9 @@ class Dashboard extends React.Component {
         this.state = {
             totalExpenseDay: [],
             totalIncomeDay: [],
-            expensesByCategory: []
+            expensesByCategory: [],
+            totalExpenseMonth: '',
+            totalIncomeMonth: ''
         }
     }
 
@@ -31,6 +34,11 @@ class Dashboard extends React.Component {
         let totalExpenseDay = _.filter(nextProps.transactions, {'type': 'Expense'});
         let totalIncomeDay = _.filter(nextProps.transactions, {'type': 'Income'});
         let expensesByCategory = _.filter(nextProps.transactions, {'type': 'Expense'});
+        let totalIncomeMonth = _.filter(nextProps.transactions, {'type': 'Income'});
+        let totalExpenseMonth = _.filter(nextProps.transactions, {'type': 'Expense'});
+
+        totalIncomeMonth = _.sumBy(totalIncomeMonth, 'amount') / 100
+        totalExpenseMonth = _.sumBy(totalExpenseMonth, 'amount') / 100
 
         totalExpenseDay = _(totalExpenseDay)
             .groupBy('date')
@@ -62,7 +70,7 @@ class Dashboard extends React.Component {
             }))
             .value();
 
-        this.setState({totalExpenseDay, totalIncomeDay, expensesByCategory});
+        this.setState({totalExpenseDay, totalIncomeDay, expensesByCategory, totalIncomeMonth, totalExpenseMonth});
     }
 
     componentWillReceiveProps(nextProps) {
@@ -139,9 +147,17 @@ class Dashboard extends React.Component {
                             fillColor2="#8884d8"/>
                     </Grid>
 
-                    
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                        
+                        <Statistic
+                            variableName="Expense"
+                            variableValue={this.state.totalExpenseMonth}
+                            variableName2="Income"
+                            variableValue2={this.state.totalIncomeMonth}/>
 
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={8} lg={8}>
                         <MyAreaChart
                             data={_.orderBy(this.state.totalExpenseDay, ['date'], ['asc'])}
                             title="Expense / Time"
