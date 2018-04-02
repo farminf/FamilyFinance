@@ -17,6 +17,7 @@ import FilterDashboard from '../components/FilterDashboard';
 import _ from 'lodash';
 import moment from 'moment';
 import Statistic from '../components/Statistic';
+import CategoryStatisticTable from '../components/CategoryStatisticTable';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -180,6 +181,11 @@ class Dashboard extends React.Component {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <TransactionList rowsPerPage={5}/>
                     </Grid>
+
+                    <Grid item xs={12} sm={12} md={4} lg={4}>
+                        <CategoryStatisticTable data={this.state.expensesByCategory} />
+                    </Grid>
+
 
                     {/*<Grid item xs={10} sm={10} md={6} lg={6}>
                         <AccountList/>
