@@ -44,7 +44,7 @@ class CategoriesContainer extends React.Component {
                         <Grid item md={4} xs={12} sm={12}>
                                 <CategoryForm onSubmit={this.onSubmit}/>
                         </Grid>
-                        <Grid item md={4} xs={12} sm={12}>
+                        <Grid item md={6} xs={12} sm={12}>
                                 <CategotyList/>
                         </Grid>
 
