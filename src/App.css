@@ -31,6 +31,10 @@
   padding : 0 !important;
 }
 
+.DateInput__block{
+  width: 80% !important;
+}
+
 .container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

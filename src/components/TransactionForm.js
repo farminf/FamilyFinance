@@ -37,7 +37,7 @@ const styles = theme => ({
     dateFormControl: {
         margin: theme.spacing.unit,
         minWidth: 250,
-        padding: 10
+        padding: 10,
     },
     paper: theme
         .mixins
@@ -211,7 +211,8 @@ class TransactionForm extends React.Component {
                                     focused={this.state.calendarFocused}
                                     onFocusChange={this.onFocusChange}
                                     numberOfMonths={1}
-                                    isOutsideRange={() => false}/>
+                                    isOutsideRange={() => false}
+                                    displayFormat="DD MMM YYYY"/>
                             </FormControl>
                             <FormControl className={classes.formControl}>
                                 <InputLabel htmlFor="age-native-type">Type</InputLabel>
@@ -249,8 +250,10 @@ class TransactionForm extends React.Component {
 
                                             </Select>
                                         </FormControl>
-
+                                        
                                         <TextField
+                                            id="age-native-amount"
+                                            label="Amount"
                                             className={classes.textField}
                                             type="text"
                                             placeholder="Amount"
@@ -294,6 +297,7 @@ class TransactionForm extends React.Component {
                                     <div>
                                         <TextField
                                             className={classes.textField}
+                                            label="Amount"
                                             type="text"
                                             placeholder="Amount"
                                             value={this.state.amount}
@@ -301,6 +305,7 @@ class TransactionForm extends React.Component {
 
                                         <TextField
                                             className={classes.textField}
+                                            label="Description"
                                             type="text"
                                             placeholder="description"
                                             value={this.state.description}

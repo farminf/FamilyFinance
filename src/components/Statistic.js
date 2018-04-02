@@ -4,8 +4,6 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Card, { CardContent} from 'material-ui/Card';
 
-// import purple from 'material-ui/colors/purple'; const textColor =
-// purple['50'];
 
 const styles = theme => ({
    root: {
@@ -39,15 +37,15 @@ const Statistic = ({classes, variableName, variableValue , variableName2, variab
    return (
       <Paper className={classes.paper} elevation={4}>
          <div className={classes.root}>
-            <h3>Total Stats</h3>
+            <h3>Month Total Stats</h3>
             <Card className={classes.card}>
                <CardContent>
 
-                  <Typography variant="headline" component="h2">
+                  <Typography variant="title" component="h2">
                      {variableName}
                   </Typography>
 
-                  <Typography variant="headline" component="h3">
+                  <Typography variant="display2"  color='error'>
                      {variableValue}
                   </Typography>
                </CardContent>
@@ -56,11 +54,11 @@ const Statistic = ({classes, variableName, variableValue , variableName2, variab
             <Card className={classes.card}>
                <CardContent>
 
-                  <Typography variant="headline" component="h2">
+                  <Typography variant="title" component="h2">
                      {variableName2}
                   </Typography>
 
-                  <Typography variant="headline" component="h3">
+                  <Typography variant="display2"  color='textSecondary'>
                      {variableValue2}
                   </Typography>
                </CardContent>

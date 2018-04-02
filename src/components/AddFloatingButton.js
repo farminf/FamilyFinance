@@ -2,7 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import AddIcon from 'material-ui-icons/Add';
 import Button from 'material-ui/Button';
-import Dialog, {DialogContent, DialogTitle} from 'material-ui/Dialog';
+import Dialog, {DialogContent, DialogTitle , withMobileDialog} from 'material-ui/Dialog';
 import TransactionFrom from './TransactionForm';
 import {connect} from 'react-redux';
 import {startAddTransaction} from '../actions/transactions';
@@ -68,7 +68,8 @@ class AddFloatingButton extends React.Component {
       this.setState({open: false});
    };
    render() {
-      const {classes} = this.props;
+      const {classes , fullScreen} = this.props;
+
       return (
          <div>
             <Button
@@ -80,6 +81,7 @@ class AddFloatingButton extends React.Component {
                <AddIcon/>
             </Button>
             <Dialog
+               fullScreen={fullScreen}
                open={this.state.open}
                onClose={this.handleClose}
                aria-labelledby="form-dialog-title">
@@ -109,4 +111,4 @@ const mapDispatchToProps = (dispatch) => ({
    })
 });
 
-export default connect(undefined, mapDispatchToProps)(withStyles(styles)(AddFloatingButton));
+export default connect(undefined, mapDispatchToProps)(withStyles(styles)(withMobileDialog()(AddFloatingButton)));
