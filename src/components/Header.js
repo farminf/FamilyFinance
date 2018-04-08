@@ -8,10 +8,8 @@ import Typography from 'material-ui/Typography';
 import Toolbar from 'material-ui/Toolbar';
 import MenuIcon from 'material-ui-icons/Menu';
 import IconButton from 'material-ui/IconButton';
-import Button from 'material-ui/Button';
 import {connect} from 'react-redux';
 import {startLogout} from '../actions/auth';
-import Constants from '../utils/constants';
 import AddIcon from 'material-ui-icons/NoteAdd';
 import DashboardIcon from 'material-ui-icons/Dashboard';
 import ShowChartIcon from 'material-ui-icons/ShowChart';
@@ -23,6 +21,9 @@ import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
+import AccountCircle from 'material-ui-icons/AccountCircle';
+import Menu, { MenuItem } from 'material-ui/Menu';
+
 
 const drawerWidth = 280;
 const styles = theme => ({
@@ -143,6 +144,9 @@ const styles = theme => ({
          marginTop: 44,
          marginBottom: 80
       }
+   },
+   menuIcon:{
+         marginRight:0
    }
 });
 
@@ -152,7 +156,8 @@ class Header extends React.Component {
       super(props);
       this.state = {
          open: false,
-         mobileOpen: false
+         mobileOpen: false,
+         anchorEl:null
       }
    }
    handleDrawerToggle = () => {
@@ -168,8 +173,18 @@ class Header extends React.Component {
    handleDrawerClose = () => {
       this.setState({open: false});
    };
+
+   handleMenu =(event)=>{
+      this.setState({ anchorEl: event.currentTarget });
+   };
+   handleCloseMenu = () => {
+      this.setState({ anchorEl: null });
+    };
+
    render() {
       const {classes, theme} = this.props;
+      const { anchorEl } = this.state;
+      const openMenuButton = Boolean(anchorEl);
 
       const items = (
 
@@ -261,10 +276,38 @@ class Header extends React.Component {
                         {this.props.title}
                      </Typography>
 
-                     <Button onClick={this.props.startLogout} className={classes.button}>
+                     {/*<Button onClick={this.props.startLogout} className={classes.button}>
                         {Constants.ASSIGNS_LOGOUT}
-                     </Button>
-                     <Avatar alt="Name" src={this.props.avatarSrc} className={classes.avatar}/>
+                        </Button>*/}
+                     
+                        <IconButton
+                              aria-owns= {openMenuButton ? 'menu-appbar' : null}
+                              aria-haspopup="true"
+                              onClick={this.handleMenu}
+                              color="inherit"
+                              className={classes.menuIcon}
+                        >
+                              <AccountCircle />
+                        </IconButton>
+                        <Menu
+                              id="menu-appbar"
+                              anchorEl={anchorEl}
+                              anchorOrigin={{
+                              vertical: 'top',
+                              horizontal: 'right',
+                              }}
+                              transformOrigin={{
+                              vertical: 'top',
+                              horizontal: 'right',
+                              }}
+                              open={openMenuButton}
+                              onClose={this.handleCloseMenu}
+                        >
+                              <MenuItem >
+                                    {this.props.fullname} <Avatar alt="Name" src={this.props.avatarSrc} className={classes.avatar}/>
+                              </MenuItem>
+                              <MenuItem onClick={this.props.startLogout}>Logout</MenuItem>
+                        </Menu>
 
                   </Toolbar>
                </AppBar>
@@ -320,7 +363,10 @@ class Header extends React.Component {
       )
    }
 }
-const mapStateToProps = (state, props) => ({avatarSrc: state.auth.photoURL});
+const mapStateToProps = (state, props) => ({
+      avatarSrc: state.auth.photoURL,
+      fullname: state.auth.name
+});
 
 const mapDispatchToProps = (dispatch) => ({
    startLogout: () => dispatch(startLogout())

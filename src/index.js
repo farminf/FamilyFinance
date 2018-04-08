@@ -42,7 +42,7 @@ firebase
     .auth()
     .onAuthStateChanged((user) => {
         if (user) {
-            store.dispatch(login({"uid": user.uid, "photoURL": user.photoURL}));
+            store.dispatch(login({"uid": user.uid, "photoURL": user.photoURL , "name":user.displayName , "email":user.email}));
             store
                 .dispatch(startSetTransactions())
                 .then(() => {
