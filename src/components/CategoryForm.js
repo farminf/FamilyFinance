@@ -50,7 +50,7 @@ class CategoryForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         if (!this.state.name) {
-            this.setState(() => ({error: 'Please provide name and balance.'}));
+            this.setState(() => ({error: 'Please provide name'}));
         } else {
             if (typeof this.props.categories !== 'undefined' && this.props.categories.length > 0) {
 
@@ -60,15 +60,15 @@ class CategoryForm extends React.Component {
                         .props
                         .onSubmit({name: this.state.name});
                 } else {
-                    this.setState(() => ({name: '', balance: '', error: 'Category already exists'}));
+                    this.setState(() => ({name: '', error: 'Category already exists'}));
                 }
             } else {
+                // First Added Category
                 this.setState(() => ({error: ''}));
                 this
                     .props
                     .onSubmit({
                         name: this.state.name,
-                        balance: parseFloat(this.state.balance, 10) * 100
                     });
             }
         }
