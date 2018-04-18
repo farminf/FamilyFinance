@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import _ from 'lodash'
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -45,7 +46,7 @@ const CategoryStatisticTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.data.map(n => {
+          {_.orderBy(props.data, ['expense'], ['desc']).map(n => {
             return (
               <TableRow key={n.categories} className={classes.row}>
                 <CustomTableCell>{n.categories}</CustomTableCell>
