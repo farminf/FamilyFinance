@@ -6,7 +6,6 @@ const port = process.env.PORT || 9000;
 
 app.use(express.static(publicPath));
 
-/* At the top, with other redirect methods before other routes */
 app.get("*", function(req, res, next) {
   if (req.headers["x-forwarded-proto"] != "https")
     res.redirect("https://familyfinance-webapp.herokuapp.com" + req.url);
