@@ -6,23 +6,12 @@ const port = process.env.PORT || 9000;
 
 app.use(express.static(publicPath));
 
-const redirectionFilter = function(req, res, next) {
-  const theDate = new Date();
-  const receivedUrl = `${req.protocol}:\/\/${req.hostname}:${port}${req.url}`;
-  console.log(req.get("X-Forwarded-Proto"));
-  if (
-    req.get("X-Forwarded-Proto") === "http" ||
-    req.get("X-Forwarded-Proto") === undefined
-  ) {
-    const redirectTo = `https:\/\/${req.hostname}:443${req.url}`;
-    console.log(`${theDate} Redirecting ${receivedUrl} --> ${redirectTo}`);
-    res.redirect(301, redirectTo);
-  } else {
-    next();
-  }
-};
-
-app.get("/*", redirectionFilter);
+/* At the top, with other redirect methods before other routes */
+app.get("*", function(req, res, next) {
+  if (req.headers["x-forwarded-proto"] != "https")
+    res.redirect("https://familyfinance-webapp.herokuapp.com" + req.url);
+  else next(); /* Continue to other routes if we're not redirecting */
+});
 
 app.get("/*", function(req, res) {
   res.sendFile(path.join(publicPath, "index.html"));
