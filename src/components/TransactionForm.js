@@ -176,7 +176,16 @@ class TransactionForm extends React.Component {
     return (
       <div>
         {this.props.accounts.hasOwnProperty(0) === false ? (
-          <p>Please create an account first</p>
+          <div>
+            <p>Please create an account first</p>
+            <Button
+              onClick={this.props.onClose}
+              className={classes.button}
+              variant="raised"
+            >
+              Ok
+            </Button>
+          </div>
         ) : (
           <form onSubmit={this.onSubmit}>
             <FormControl className={classes.dateFormControl}>
