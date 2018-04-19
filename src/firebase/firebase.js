@@ -1,5 +1,4 @@
-import * as firebase from 'firebase'
-
+import * as firebase from "firebase";
 
 // Initialize Firebase
 const config = {
@@ -10,12 +9,10 @@ const config = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
-  
+
 firebase.initializeApp(config);
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-
 export { firebase, googleAuthProvider, database as default };
 //export const storage = firebase.storage();
-

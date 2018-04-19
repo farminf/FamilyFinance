@@ -1,7 +1,7 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import Accessibility from 'material-ui-icons/Accessibility';
-import {withStyles} from 'material-ui/styles';
+import React from "react";
+import { Link } from "react-router-dom";
+import Accessibility from "material-ui-icons/Accessibility";
+import { withStyles } from "material-ui/styles";
 
 const styles = theme => ({
   icon: {
@@ -11,18 +11,18 @@ const styles = theme => ({
   }
 });
 
-const NotFoundPage = (props) => {
-
-  const {classes} = props;
+const NotFoundPage = props => {
+  const { classes } = props;
   return (
     <div>
-      <Accessibility className={classes.icon}/>
+      <Accessibility className={classes.icon} />
       <h1>Oooops</h1>
-      <h1>404 -
+      <h1>
+        404 -
         <Link to="/">Go home</Link>
       </h1>
     </div>
   );
-}
+};
 
-export default(withStyles(styles)(NotFoundPage));
+export default withStyles(styles)(NotFoundPage);
