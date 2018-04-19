@@ -8,7 +8,7 @@ app.use(express.static(publicPath));
 
 app.get("*", function(req, res, next) {
   if (req.headers["x-forwarded-proto"] != "https")
-    res.redirect("https://familyfinance-webapp.herokuapp.com" + req.url);
+    res.redirect("https://" + req.hostname + ":443" + req.url);
   else next(); /* Continue to other routes if we're not redirecting */
 });
 
