@@ -1,39 +1,44 @@
-import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
-import _ from 'lodash'
+import React from "react";
+import { withStyles } from "material-ui/styles";
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from "material-ui/Table";
+import Paper from "material-ui/Paper";
+import _ from "lodash";
 
 const CustomTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: '#3F51B5',
+    backgroundColor: "#3F51B5",
     color: theme.palette.common.white,
-    textAlign: 'center'
+    textAlign: "center"
   },
   body: {
     fontSize: 14,
-    textAlign: 'center'
-  },
+    textAlign: "center"
+  }
 }))(TableCell);
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: "100%",
     marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
+    overflowX: "auto"
   },
   table: {
     minWidth: 200,
-    textAlign: 'center'
+    textAlign: "center"
   },
   row: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.background.default,
-    },
-  },
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.background.default
+    }
+  }
 });
 
-const CategoryStatisticTable = (props) => {
+const CategoryStatisticTable = props => {
   const { classes } = props;
 
   return (
@@ -46,12 +51,11 @@ const CategoryStatisticTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {_.orderBy(props.data, ['expense'], ['desc']).map(n => {
+          {_.orderBy(props.data, ["expense"], ["desc"]).map(n => {
             return (
               <TableRow key={n.categories} className={classes.row}>
                 <CustomTableCell>{n.categories}</CustomTableCell>
                 <CustomTableCell numeric>{n.expense}</CustomTableCell>
-
               </TableRow>
             );
           })}
@@ -59,8 +63,6 @@ const CategoryStatisticTable = (props) => {
       </Table>
     </Paper>
   );
-}
-
-
+};
 
 export default withStyles(styles)(CategoryStatisticTable);

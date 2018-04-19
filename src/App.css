@@ -23,15 +23,19 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .DateInput_input {
-  padding : 0 !important;
+  padding: 0 !important;
 }
 
-.DateInput__block{
+.DateInput__block {
   width: 80% !important;
 }
 
