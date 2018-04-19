@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
-import Constants from "../utils/constants";
 import AccountForm from "../components/AccountForm";
 import { connect } from "react-redux";
 import { startAddAccount } from "../actions/accounts";

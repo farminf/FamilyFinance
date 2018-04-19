@@ -1,6 +1,5 @@
 import React from "react";
 // import {Link} from 'react-router-dom';
-import Constants from "../utils/constants";
 import Typography from "material-ui/Typography";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";

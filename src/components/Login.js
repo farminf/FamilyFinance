@@ -5,7 +5,7 @@ import Paper from "material-ui/Paper";
 import Typography from "material-ui/Typography";
 import Visibility from "material-ui-icons/Visibility";
 import VisibilityOff from "material-ui-icons/VisibilityOff";
-import Input, { InputLabel, InputAdornment } from "material-ui/Input";
+import Input, { InputAdornment } from "material-ui/Input";
 import IconButton from "material-ui/IconButton";
 import FormControl from "material-ui/Form/FormControl";
 import LoginGoogle from "../components/LoginGoogle";
