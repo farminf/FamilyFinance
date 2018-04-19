@@ -13,6 +13,7 @@
     "classnames": "^2.2.5",
     "express": "^4.16.2",
     "firebase": "^4.8.0",
+    "heroku-ssl-redirect": "^0.0.4",
     "lodash": "^4.17.4",
     "material-ui": "1.0.0-beta.36",
     "material-ui-icons": "1.0.0-beta.17",
@@ -43,11 +44,11 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "jest": "20.0.4",
-    "jest-cli": "20.0.4",
     "enzyme": "^3.3.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "jest": "20.0.4",
+    "jest-cli": "20.0.4",
     "prettier": "^1.12.1",
     "pretty-quick": "^1.4.1"
   }
