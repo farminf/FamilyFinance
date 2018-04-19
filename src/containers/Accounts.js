@@ -17,7 +17,8 @@ const styles = theme => ({
   },
   root: {
     marginTop: 60
-  }
+  },
+  headerTitle: {}
 });
 
 class AddAccountContainer extends React.Component {
@@ -30,7 +31,10 @@ class AddAccountContainer extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <h2>{Constants.ADD_ACCOUNT_PAGE_TITLE}</h2>
+        <div>
+          <h2>Accounts</h2>
+        </div>
+
         <Grid container spacing={8} justify="center">
           <Grid item md={4} xs={12} sm={12}>
             <AccountForm onSubmit={this.onSubmit} />
