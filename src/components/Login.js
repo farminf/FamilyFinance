@@ -5,7 +5,7 @@ import Paper from "material-ui/Paper";
 import Typography from "material-ui/Typography";
 import Visibility from "material-ui-icons/Visibility";
 import VisibilityOff from "material-ui-icons/VisibilityOff";
-import Input, { InputLabel, InputAdornment } from "material-ui/Input";
+import Input, { InputAdornment } from "material-ui/Input";
 import IconButton from "material-ui/IconButton";
 import FormControl from "material-ui/Form/FormControl";
 import LoginGoogle from "../components/LoginGoogle";
@@ -92,13 +92,13 @@ class LoginUserNamePassword extends React.Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.paper} elevation={4}>
-        <Typography type="headline">Login To Your Account</Typography>
+        <Typography variant="headline">Login To Your Account</Typography>
 
         <form>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="username">Username</InputLabel>
             <Input
               required
+              placeholder="Username"
               id="username"
               className={classes.textField}
               type="text"
@@ -107,11 +107,11 @@ class LoginUserNamePassword extends React.Component {
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="password">Password</InputLabel>
-
             <Input
               required
+              placeholder="Password"
               id="password"
+              className={classes.textField}
               type={this.state.showPassword ? "text" : "password"}
               value={this.state.password}
               onChange={this.onPasswordChange}

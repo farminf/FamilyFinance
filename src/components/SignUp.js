@@ -100,7 +100,7 @@ class SignUp extends React.Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.paper} elevation={4}>
-        <Typography type="headline">Create New Account</Typography>
+        <Typography variant="headline">Create New Account</Typography>
 
         <form>
           <TextField
