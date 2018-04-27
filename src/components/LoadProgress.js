@@ -5,7 +5,10 @@ import { CircularProgress } from "material-ui/Progress";
 
 const styles = theme => ({
   progress: {
-    margin: `0 ${theme.spacing.unit * 2}px`
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    margin: "-50px 0px 0px -50px"
   },
   divclass: {
     textAlign: "center"
@@ -16,7 +19,7 @@ const LoadProgress = props => {
   const { classes } = props;
   return (
     <div className={classes.divclass}>
-      <CircularProgress className={classes.progress} size={100} />
+      <CircularProgress className={classes.progress} size={200} />
     </div>
   );
 };
