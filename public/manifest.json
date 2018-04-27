@@ -1,8 +1,7 @@
 {
   "short_name": "FF",
   "name": "Family Finance",
-  "icons": [
-    {
+  "icons": [{
       "src": "favicon.png",
       "sizes": "50x50",
       "type": "image/x-icon"
