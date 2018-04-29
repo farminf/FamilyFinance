@@ -6,8 +6,6 @@ import TransactionList from "../components/TransactionList";
 import AddFloatingButton from "../components/AddFloatingButton";
 import { connect } from "react-redux";
 import { startSetTransactions } from "../actions/transactions";
-import { startSetAccounts } from "../actions/accounts";
-import { startSetCategories } from "../actions/categories";
 import {
   setDashboardMonthFilter,
   setDashboardYearFilter
@@ -92,11 +90,8 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    // this     .props     .startSetTransactions();
     this.updateStatisticData();
   }
-
-  // handleClickFloatingButton = event => {};
 
   onFilterDashboard = ({ dashboardYearFilter, dashboardMonthFilter }) => {
     this.props.setDashboardMonthFilter(dashboardMonthFilter);
@@ -218,8 +213,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   startSetTransactions: (startDate, endDate) =>
     dispatch(startSetTransactions(startDate, endDate)),
-  startSetAccounts: () => dispatch(startSetAccounts()),
-  startSetCategories: () => dispatch(startSetCategories()),
   setDashboardMonthFilter: dashboardMonthFilter =>
     dispatch(setDashboardMonthFilter(dashboardMonthFilter)),
   setDashboardYearFilter: dashboardYearFilter =>
