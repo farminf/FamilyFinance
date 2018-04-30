@@ -1,4 +1,6 @@
 import { firebase, googleAuthProvider } from "../firebase/firebase";
+import { demoChageType } from "./demo";
+import { resetError } from "./errors";
 
 export const login = ({
   uid = "",
@@ -17,8 +19,15 @@ export const startLoginGoogle = () => {
 export const logout = () => ({ type: "LOGOUT" });
 
 export const startLogout = () => {
-  return () => {
-    return firebase.auth().signOut();
+  return (dispatch, getState) => {
+    const appState = getState().demoReducers.demotype;
+    if (appState === "demo") {
+      dispatch(demoChageType("logout"));
+      dispatch(resetError());
+      return dispatch(logout());
+    } else {
+      return firebase.auth().signOut();
+    }
   };
 };
 

@@ -44,8 +44,8 @@ const styles = theme => ({
   },
 
   drawerPaper: {
-    position: "fix",
-    height: "100%",
+    position: "fixed",
+    top: "inherit",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,

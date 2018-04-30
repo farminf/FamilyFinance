@@ -7,6 +7,9 @@ import registerServiceWorker from "./registerServiceWorker";
 import { firebase } from "./firebase/firebase";
 import { history } from "./routers/AppRouter";
 import { login, logout } from "./actions/auth";
+import { setTransactions } from "./actions/transactions";
+import { setAccounts } from "./actions/accounts";
+import { setCategories } from "./actions/categories";
 import configureStore from "./store/configureStore";
 import "./firebase/firebase";
 import LoadProgress from "./components/LoadProgress";
@@ -57,6 +60,10 @@ firebase.auth().onAuthStateChanged(user => {
     });
   } else {
     store.dispatch(logout());
+    store.dispatch(setAccounts([]));
+    store.dispatch(setTransactions([]));
+    store.dispatch(setCategories([]));
+
     renderApp();
     history.push("/");
   }

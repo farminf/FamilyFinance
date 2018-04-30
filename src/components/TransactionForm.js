@@ -19,7 +19,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
     width: 250,
-    padding: 10
+    padding: 0
   },
 
   button: {
@@ -31,12 +31,12 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 250,
-    padding: 10
+    padding: 0
   },
   dateFormControl: {
     margin: theme.spacing.unit,
     minWidth: 250,
-    padding: 10
+    padding: 0
   },
   paper: theme.mixins.gutters({
     paddingLeft: 0,

@@ -11,23 +11,31 @@ export const startAddAccount = (accountData = {}) => {
       name,
       balance
     };
-
-    return database
-      .ref(`users/${user_uid}/accounts/${account.name}`)
-      .update(account)
-      .then(
-        ref => {
-          dispatch(
-            addAccount({
-              ...account
-            })
-          );
-        },
-        error => {
-          console.error("error: " + error);
-          dispatch(addError({ code: error.code, message: error.message }));
-        }
+    const appState = getState().demoReducers.demotype;
+    if (appState === "demo") {
+      dispatch(
+        addAccount({
+          ...account
+        })
       );
+    } else {
+      return database
+        .ref(`users/${user_uid}/accounts/${account.name}`)
+        .update(account)
+        .then(
+          ref => {
+            dispatch(
+              addAccount({
+                ...account
+              })
+            );
+          },
+          error => {
+            console.error("error: " + error);
+            dispatch(addError({ code: error.code, message: error.message }));
+          }
+        );
+    }
   };
 };
 
@@ -36,25 +44,49 @@ export const setAccounts = accounts => ({ type: "SET_ACCOUNTS", accounts });
 export const startSetAccounts = () => {
   return (dispatch, getState) => {
     const user_uid = getState().auth.uid;
-    return database
-      .ref(`users/${user_uid}/accounts`)
-      .orderByKey()
-      .once("value")
-      .then(
-        snapshot => {
-          const accounts = [];
-          snapshot.forEach(childSnapshot => {
-            accounts.push({
-              ...childSnapshot.val()
-            });
-          });
-          dispatch(setAccounts(accounts));
+    const appState = getState().demoReducers.demotype;
+    if (appState === "demo") {
+      let demoAccounts = [
+        {
+          balance: 5000,
+          name: "Cash"
         },
-        error => {
-          console.error(error);
-          dispatch(addError({ code: error.code, message: error.message }));
+        {
+          balance: -65250,
+          name: "Credit"
+        },
+        {
+          balance: 99164,
+          name: "Debit"
+        },
+
+        {
+          balance: 50000,
+          name: "Saving"
         }
-      );
+      ];
+      dispatch(setAccounts(demoAccounts));
+    } else {
+      return database
+        .ref(`users/${user_uid}/accounts`)
+        .orderByKey()
+        .once("value")
+        .then(
+          snapshot => {
+            const accounts = [];
+            snapshot.forEach(childSnapshot => {
+              accounts.push({
+                ...childSnapshot.val()
+              });
+            });
+            dispatch(setAccounts(accounts));
+          },
+          error => {
+            console.error(error);
+            dispatch(addError({ code: error.code, message: error.message }));
+          }
+        );
+    }
   };
 };
 
@@ -66,12 +98,17 @@ export const deleteAccount = ({ name } = {}) => ({
 export const startDeleteAccount = ({ name } = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database
-      .ref(`users/${uid}/accounts/${name}`)
-      .remove()
-      .then(() => {
-        dispatch(deleteAccount({ name }));
-      });
+    const appState = getState().demoReducers.demotype;
+    if (appState === "demo") {
+      dispatch(deleteAccount({ name }));
+    } else {
+      return database
+        .ref(`users/${uid}/accounts/${name}`)
+        .remove()
+        .then(() => {
+          dispatch(deleteAccount({ name }));
+        });
+    }
   };
 };
 
@@ -84,12 +121,17 @@ export const editAccount = (name, updates) => ({
 export const startEditAccount = (name, updates) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database
-      .ref(`users/${uid}/accounts/${name}`)
-      .update(updates)
-      .then(() => {
-        dispatch(editAccount(name, updates));
-      });
+    const appState = getState().demoReducers.demotype;
+    if (appState === "demo") {
+      dispatch(editAccount(name, updates));
+    } else {
+      return database
+        .ref(`users/${uid}/accounts/${name}`)
+        .update(updates)
+        .then(() => {
+          dispatch(editAccount(name, updates));
+        });
+    }
   };
 };
 
@@ -97,23 +139,35 @@ export const startEditAccount = (name, updates) => {
 export const updateAccountBalance = (name, delta) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`users/${uid}/accounts/${name}/balance`).transaction(
-      function(currentBalance) {
-        return Number(currentBalance) + Number(delta);
-      },
-      function(error, committed, snapshot) {
-        if (error) {
-          console.log("Transaction failed abnormally!", error);
-        } else if (!committed) {
-          console.log("aborted the transaction");
-        } else {
-          dispatch(
-            editAccount(name, {
-              balance: snapshot.val()
-            })
-          );
+    const appState = getState().demoReducers.demotype;
+    if (appState === "demo") {
+      let account = getState().accounts.find(account => {
+        return account.name === name;
+      });
+      dispatch(
+        editAccount(name, {
+          balance: Number(account.balance) + Number(delta)
+        })
+      );
+    } else {
+      return database.ref(`users/${uid}/accounts/${name}/balance`).transaction(
+        function(currentBalance) {
+          return Number(currentBalance) + Number(delta);
+        },
+        function(error, committed, snapshot) {
+          if (error) {
+            console.log("Transaction failed abnormally!", error);
+          } else if (!committed) {
+            console.log("aborted the transaction");
+          } else {
+            dispatch(
+              editAccount(name, {
+                balance: snapshot.val()
+              })
+            );
+          }
         }
-      }
-    );
+      );
+    }
   };
 };

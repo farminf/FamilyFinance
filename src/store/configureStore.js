@@ -9,6 +9,7 @@ import categoriesReducer from "../reducers/categories";
 import filtersReducer from "../reducers/filters";
 import errorsReducer from "../reducers/errors";
 import defaultReducers from "../reducers/defaultReducers";
+import demoReducers from "../reducers/demo";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
@@ -20,7 +21,8 @@ export default () => {
       categories: categoriesReducer,
       filters: filtersReducer,
       errors: errorsReducer,
-      defaultReducers: defaultReducers
+      defaultReducers: defaultReducers,
+      demoReducers: demoReducers
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

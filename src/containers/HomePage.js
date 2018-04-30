@@ -11,6 +11,8 @@ import {
 } from "../actions/auth";
 import SignUp from "../components/SignUp";
 import Login from "../components/Login";
+import { startDemo } from "../actions/demo";
+import DemoStarter from "../components/DemoStarter";
 
 const styles = theme => ({
   header: {
@@ -59,6 +61,9 @@ const HomePage = props => {
         <Grid item xs={12} sm={8} md={5} lg={4}>
           <SignUp onSignup={props.startSignUp} />
         </Grid>
+        <Grid item xs={12} sm={8} md={5} lg={4}>
+          <DemoStarter onDemo={() => props.startDemo("demo")} />
+        </Grid>
       </Grid>
     </div>
   );
@@ -68,7 +73,8 @@ const mapDispatchToProps = dispatch => ({
   startLoginGoogle: () => dispatch(startLoginGoogle()),
   startSignUp: (email, password) => dispatch(startSignUp(email, password)),
   startLoginWithEmail: (email, password) =>
-    dispatch(startLoginWithEmail(email, password))
+    dispatch(startLoginWithEmail(email, password)),
+  startDemo: type => dispatch(startDemo(type))
 });
 
 export default withStyles(styles)(
