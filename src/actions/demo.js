@@ -1,7 +1,7 @@
 import { startSetTransactions } from "./transactions";
 import { startSetAccounts } from "./accounts";
 import { startSetCategories } from "./categories";
-import { login, logout } from "./auth";
+import { login } from "./auth";
 import demoUserPic from "../images/demouser.png";
 import { addError } from "./errors";
 
