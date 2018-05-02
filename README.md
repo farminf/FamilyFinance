@@ -6,16 +6,14 @@
 
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=102)](https://github.com/farminf/FamilyFinance/)
 
+_Bootstrapped by [create-react-app](https://github.com/facebook/create-react-app)_
 
-*Bootstrapped by [create-react-app](https://github.com/facebook/create-react-app)*
+FamilyFinance is an open source personal finance management app made by Firebase, React.
 
-
-FamilyFinance is an open source personal finance mangement app made by Firebase, React.
-
-![alt text](https://github.com/farminf/FamilyFinance/blob/dev/screenshots.png?raw=true
- "Family Finance")
+![alt text](https://github.com/farminf/FamilyFinance/blob/dev/screenshots.png?raw=true "Family Finance")
 
 ## Your Installation
+
 You can use FamilyFinance on your premises/host with your firebase account easiliy. You need to just add your firebase config to your environment variables as
 
 ```
@@ -27,17 +25,16 @@ storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
 messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 ```
 
-## Live Demo 
+## Live Demo
 
 ## Run for Development
 
-
-``` 
-> npm install 
-> npm run dev 
+```
+> npm install
+> npm run dev
 ```
 
-## Run for Production 
+## Run for Production
 
 You can run the app in production either using server (static) or on nodejs server.
 
@@ -46,6 +43,7 @@ You can run the app in production either using server (static) or on nodejs serv
 > npm install -g serve
 > serve -p 80 -s build
 ```
+
 or
 
 ```
