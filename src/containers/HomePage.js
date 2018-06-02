@@ -13,6 +13,7 @@ import SignUp from "../components/SignUp";
 import Login from "../components/Login";
 import { startDemo } from "../actions/demo";
 import DemoStarter from "../components/DemoStarter";
+import bgImage from "../images/background.jpg";
 
 const styles = theme => ({
   header: {
@@ -29,6 +30,7 @@ const HomePage = props => {
   return (
     <div>
       {/*<h1>Home</h1>*/}
+      <img src={bgImage} alt="bg" class="bg" />
       <a href="https://github.com/farminf/FamilyFinance">
         <img
           style={{

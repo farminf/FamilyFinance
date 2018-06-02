@@ -17,7 +17,8 @@ const styles = theme => ({
     paddingRight: 16,
     marginTop: theme.spacing.unit * 3,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    backgroundColor: "rgba(255,255,255,0.7)"
   }),
   textField: {
     marginLeft: theme.spacing.unit,

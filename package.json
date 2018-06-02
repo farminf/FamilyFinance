@@ -36,7 +36,9 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "20.0.4",
+    "jest-cli": "20.0.4"
   },
   "scripts": {
     "start": "node server/server.js",
@@ -45,13 +47,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "jest": "20.0.4",
-    "jest-cli": "20.0.4"
+    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "prettier": "^1.12.1",
