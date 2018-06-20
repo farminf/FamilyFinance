@@ -1,6 +1,6 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import Grid from "material-ui/Grid";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import Constants from "../utils/constants";
 import TransactionForm from "../components/TransactionForm";
 import { connect } from "react-redux";
@@ -10,7 +10,7 @@ import {
   startDeleteTransaction
 } from "../actions/transactions";
 import { updateAccountBalance } from "../actions/accounts";
-import Paper from "material-ui/Paper";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   button: {

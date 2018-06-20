@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "material-ui/Grid";
+import Grid from "@material-ui/core/Grid";
 //import AccountList from '../components/AccountList';
 import TransactionList from "../components/TransactionList";
 //import CategoryList from '../components/CategoryList';

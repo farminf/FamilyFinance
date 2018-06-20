@@ -1,8 +1,10 @@
 import React from "react";
-import { TableCell, TableRow } from "material-ui/Table";
-import IconButton from "material-ui/IconButton";
-import Menu, { MenuItem } from "material-ui/Menu";
-import MoreVertIcon from "material-ui-icons/MoreVert";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { withRouter } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;

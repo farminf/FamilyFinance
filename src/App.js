@@ -3,7 +3,7 @@ import "./App.css";
 import AppRouter from "./routers/AppRouter";
 import { connect } from "react-redux";
 import UserErrors from "./components/UserErrors";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 // console.log(store.getState())
 const styles = theme => ({

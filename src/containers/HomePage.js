@@ -1,8 +1,8 @@
 import React from "react";
 // import {Link} from 'react-router-dom';
-import Typography from "material-ui/Typography";
-import { withStyles } from "material-ui/styles";
-import Grid from "material-ui/Grid";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import {
   startLoginGoogle,
@@ -30,7 +30,7 @@ const HomePage = props => {
   return (
     <div>
       {/*<h1>Home</h1>*/}
-      <img src={bgImage} alt="bg" class="bg" />
+      <img src={bgImage} alt="bg" className="bg" />
       <a href="https://github.com/farminf/FamilyFinance">
         <img
           style={{

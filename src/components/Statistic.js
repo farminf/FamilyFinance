@@ -1,8 +1,9 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import Paper from "material-ui/Paper";
-import Typography from "material-ui/Typography";
-import Card, { CardContent } from "material-ui/Card";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 const styles = theme => ({
   root: {

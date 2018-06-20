@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "material-ui/Button";
-import { withStyles } from "material-ui/styles";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
 import FaGoogle from "react-icons/lib/fa/google-plus-square";
 
 const styles = theme => ({

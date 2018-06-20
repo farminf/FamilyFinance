@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 import {
   PieChart,
   Pie,
@@ -8,7 +8,7 @@ import {
   Legend,
   Tooltip
 } from "recharts";
-import Paper from "material-ui/Paper";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   root: {
