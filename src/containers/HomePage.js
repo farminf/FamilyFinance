@@ -55,13 +55,13 @@ const HomePage = props => {
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8} md={5} lg={4}>
+          <SignUp onSignup={props.startSignUp} />
+        </Grid>
+        <Grid item xs={12} sm={8} md={5} lg={4}>
           <Login
             onLoginEmail={props.startLoginWithEmail}
             onLoginGoogle={props.startLoginGoogle}
           />
-        </Grid>
-        <Grid item xs={12} sm={8} md={5} lg={4}>
-          <SignUp onSignup={props.startSignUp} />
         </Grid>
         <Grid item xs={12} sm={8} md={5} lg={4}>
           <DemoStarter onDemo={() => props.startDemo("demo")} />
