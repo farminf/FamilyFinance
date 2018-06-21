@@ -1,14 +1,14 @@
-# FamilyFinance
+# Family Finance
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://familyfinance-webapp.herokuapp.com)
-
-[![Build Status](https://travis-ci.org/farminf/FamilyFinance.svg)](https://travis-ci.org/farminf/FamilyFinance)
+[![Build Status](https://travis-ci.org/farminf/FamilyFinance.svg?branch=master)](https://travis-ci.org/farminf/FamilyFinance)
 
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=102)](https://github.com/farminf/FamilyFinance/)
 
 _Bootstrapped by [create-react-app](https://github.com/facebook/create-react-app)_
 
-FamilyFinance is an open source personal finance management app made by Firebase, React.
+[FamilyFinance Webapp](http://familyfinance.xyz)
+
+FamilyFinance is an open source personal finance management webapp made with Firebase and React.
 
 ![alt text](https://github.com/farminf/FamilyFinance/blob/dev/screenshots.png?raw=true "Family Finance")
 
@@ -26,6 +26,8 @@ messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 ```
 
 ## Live Demo
+
+In the [FamilyFinance](http://familyfinance.xyz) you can find the demo session.
 
 ## Run for Development
 
@@ -50,7 +52,3 @@ or
 > npm run build
 > npm start
 ```
-
-## CI
-
-This project is using Travis-CI for Continuous Deployemnt. On the merge request, it tests and builds and on deployement from branch master, it tests, builds and deploys on Heroku.
