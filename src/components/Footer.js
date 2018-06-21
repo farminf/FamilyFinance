@@ -1,8 +1,8 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import Typography from "material-ui/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import CopyrightIcon from "react-icons/lib/fa/copyright";
-// import purple from 'material-ui/colors/purple'; const textColor =
+// import purple from '@material-ui/core/colors/purple'; const textColor =
 // purple['50'];
 
 const styles = theme => ({

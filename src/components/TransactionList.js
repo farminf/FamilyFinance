@@ -5,19 +5,18 @@ import {
   startDeleteTransaction,
   startAddTransaction
 } from "../actions/transactions";
-import { withStyles } from "material-ui/styles";
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableFooter,
-  TablePagination
-} from "material-ui/Table";
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableFooter from "@material-ui/core/TableFooter";
+import TablePagination from "@material-ui/core/TablePagination";
 import { updateAccountBalance } from "../actions/accounts";
 import FilterListBar from "../components/FilterListBar";
 import transactionSelector from "../selectors/TransactionSelector";
-import Paper from "material-ui/Paper";
+import Paper from "@material-ui/core/Paper";
 import {
   setTypeFilter,
   setDescriptionFilter,
@@ -27,7 +26,7 @@ import {
 import _ from "lodash";
 import { CSVLink } from "react-csv";
 import moment from "moment";
-import Button from "material-ui/Button";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {

@@ -2,16 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import CategoryListItem from "./CategoryListItem";
 import { startDeleteCategory, startAddCategory } from "../actions/categories";
-import { withStyles } from "material-ui/styles";
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableFooter,
-  TablePagination
-} from "material-ui/Table";
-import Paper from "material-ui/Paper";
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableFooter from "@material-ui/core/TableFooter";
+import TablePagination from "@material-ui/core/TablePagination";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   root: {

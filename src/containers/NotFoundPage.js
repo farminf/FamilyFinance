@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Accessibility from "material-ui-icons/Accessibility";
-import { withStyles } from "material-ui/styles";
+import Accessibility from "@material-ui/icons/Accessibility";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   icon: {

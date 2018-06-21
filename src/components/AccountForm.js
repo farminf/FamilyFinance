@@ -1,9 +1,9 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import TextField from "material-ui/TextField";
-import Button from "material-ui/Button";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import Paper from "material-ui/Paper";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   textField: {

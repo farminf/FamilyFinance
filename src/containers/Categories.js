@@ -1,14 +1,14 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import Grid from "material-ui/Grid";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import Constants from "../utils/constants";
 import { connect } from "react-redux";
 import { startAddCategory } from "../actions/categories";
 import CategotyList from "../components/CategoryList";
 import CategoryForm from "../components/CategoryForm";
 import AddFloatingButton from "../components/AddFloatingButton";
-import Button from "material-ui/Button";
-import Paper from "material-ui/Paper";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   button: {

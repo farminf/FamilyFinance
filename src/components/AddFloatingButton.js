@@ -1,16 +1,16 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import AddIcon from "material-ui-icons/Add";
-import Button from "material-ui/Button";
-import Dialog, {
-  DialogContent,
-  DialogTitle,
-  withMobileDialog
-} from "material-ui/Dialog";
+import { withStyles } from "@material-ui/core/styles";
+import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
 import TransactionFrom from "./TransactionForm";
 import { connect } from "react-redux";
 import { startAddTransaction } from "../actions/transactions";
 import { updateAccountBalance } from "../actions/accounts";
+import withMobileDialog from "@material-ui/core/withMobileDialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
 
 const styles = theme => ({
   floatingButton: {

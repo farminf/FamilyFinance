@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { withStyles } from "material-ui/styles";
-import TextField from "material-ui/TextField";
-import Select from "material-ui/Select";
-import Input, { InputLabel } from "material-ui/Input";
-import { FormControl } from "material-ui/Form";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+
+import FormControl from "@material-ui/core/FormControl";
 
 // import moment from 'moment'; import {SingleDatePicker} from 'react-dates';
 

@@ -1,15 +1,16 @@
 import React from "react";
-import { withStyles } from "material-ui/styles";
-import TextField from "material-ui/TextField";
-import Button from "material-ui/Button";
-import Select from "material-ui/Select";
-import Input, { InputLabel } from "material-ui/Input";
-import { FormControl } from "material-ui/Form";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 import { connect } from "react-redux";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import "../react_dates_overrides.css";
-//import Paper from 'material-ui/Paper';
+//import Paper from '@material-ui/core/Paper';
 import _ from "lodash";
 
 const styles = theme => ({
