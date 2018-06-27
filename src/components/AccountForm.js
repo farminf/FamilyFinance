@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 
-const styles = theme => ({
+export const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -29,7 +29,7 @@ const styles = theme => ({
   })
 });
 
-class AccountForm extends React.Component {
+export class AccountForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +71,7 @@ class AccountForm extends React.Component {
             this.setState(() => ({
               name: "",
               balance: "",
-              error: "Account already exists"
+              error: "This Account already exists"
             }));
           }
         }

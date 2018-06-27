@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 
-const styles = theme => ({
+export const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -30,7 +30,7 @@ const styles = theme => ({
   })
 });
 
-class CategoryForm extends React.Component {
+export class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

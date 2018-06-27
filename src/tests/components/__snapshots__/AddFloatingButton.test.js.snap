@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddFloatingButton /> should work 1`] = `
+<div>
+  <WithStyles(Button)
+    aria-label="add"
+    color="primary"
+    onClick={[Function]}
+    variant="fab"
+  >
+    <pure(Add) />
+  </WithStyles(Button)>
+  <WithStyles(Dialog)
+    aria-labelledby="form-dialog-title"
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(DialogTitle)
+      id="form-dialog-title"
+    >
+      Add Transaction
+    </WithStyles(DialogTitle)>
+    <WithStyles(DialogContent)>
+      <Connect(WithStyles(TransactionForm))
+        onClose={[Function]}
+        onSubmit={[Function]}
+      />
+    </WithStyles(DialogContent)>
+  </WithStyles(Dialog)>
+</div>
+`;

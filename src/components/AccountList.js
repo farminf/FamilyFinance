@@ -11,7 +11,7 @@ import TableRow from "@material-ui/core/TableRow";
 
 import Paper from "@material-ui/core/Paper";
 
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,

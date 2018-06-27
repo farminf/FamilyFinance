@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryForm /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <TextField
+      onChange={[Function]}
+      placeholder="category"
+      required={false}
+      select={false}
+      type="text"
+      value=""
+    />
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+      variant="raised"
+    >
+      Add
+    </WithStyles(Button)>
+  </form>
+</WithStyles(Paper)>
+`;
