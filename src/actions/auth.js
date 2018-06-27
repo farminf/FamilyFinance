@@ -1,4 +1,9 @@
-import { firebase, googleAuthProvider } from "../firebase/firebase";
+import {
+  firebase,
+  googleAuthProvider,
+  facebookAuthProvider,
+  githubAuthProvider
+} from "../firebase/firebase";
 import { demoChageType } from "./demo";
 import { resetError } from "./errors";
 
@@ -13,6 +18,18 @@ export const startLoginGoogle = () => {
   return () => {
     //return firebase.auth().signInWithRedirect(googleAuthProvider);
     return firebase.auth().signInWithRedirect(googleAuthProvider);
+  };
+};
+
+export const startLoginFacebook = () => {
+  return () => {
+    return firebase.auth().signInWithRedirect(facebookAuthProvider);
+  };
+};
+
+export const startLoginGithub = () => {
+  return () => {
+    return firebase.auth().signInWithRedirect(githubAuthProvider);
   };
 };
 

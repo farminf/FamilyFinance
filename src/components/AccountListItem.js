@@ -10,10 +10,13 @@ import { withRouter } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 
-class AccountListItems extends React.Component {
-  state = {
-    anchorEl: null
-  };
+export class AccountListItems extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null
+    };
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -38,7 +41,7 @@ class AccountListItems extends React.Component {
   };
 
   render() {
-    const open = Boolean(this.state.anchorEl);
+    let open = Boolean(this.state.anchorEl);
     return (
       <TableRow key={this.props.name}>
         <TableCell>{this.props.name}</TableCell>

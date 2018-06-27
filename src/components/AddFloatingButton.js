@@ -11,8 +11,7 @@ import withMobileDialog from "@material-ui/core/withMobileDialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-
-const styles = theme => ({
+export const styles = theme => ({
   floatingButton: {
     margin: 0,
     top: "auto",
@@ -30,7 +29,7 @@ const styles = theme => ({
   }
 });
 
-class AddFloatingButton extends React.Component {
+export class AddFloatingButton extends React.Component {
   state = {
     open: false
   };

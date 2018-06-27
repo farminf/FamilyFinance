@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountForm /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <TextField
+      disabled={false}
+      onChange={[Function]}
+      placeholder="name"
+      required={true}
+      select={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      onChange={[Function]}
+      placeholder="Balance"
+      required={true}
+      select={false}
+      type="text"
+      value=""
+    />
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+      variant="raised"
+    >
+      Add
+    </WithStyles(Button)>
+  </form>
+</WithStyles(Paper)>
+`;

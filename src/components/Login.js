@@ -1,15 +1,17 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
-import FormControl from "@material-ui/core/FormControl";
+// import Visibility from "@material-ui/icons/Visibility";
+// import VisibilityOff from "@material-ui/icons/VisibilityOff";
+// import Input from "@material-ui/core/Input";
+// import InputAdornment from "@material-ui/core/InputAdornment";
+// import IconButton from "@material-ui/core/IconButton";
+// import FormControl from "@material-ui/core/FormControl";
 import LoginGoogle from "../components/LoginGoogle";
+import LoginFacebook from "./LoginFacebook";
+import LoginGithub from "./LoginGithub";
 
 const styles = theme => ({
   input: {
@@ -96,7 +98,7 @@ class LoginUserNamePassword extends React.Component {
       <Paper className={classes.paper} elevation={4}>
         <Typography variant="headline">Login To Your Account</Typography>
 
-        <form>
+        {/*<form>
           <FormControl className={classes.formControl}>
             <Input
               required
@@ -142,8 +144,10 @@ class LoginUserNamePassword extends React.Component {
             </Button>
             {this.state.error && <p>{this.state.error}</p>}
           </FormControl>
-        </form>
+            </form>*/}
         <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
+        <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
+        <LoginGithub onLoginGithub={this.props.onLoginGithub} />
       </Paper>
     );
   }

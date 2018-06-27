@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountList /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <p>
+    no accounts
+  </p>
+</WithStyles(Paper)>
+`;
