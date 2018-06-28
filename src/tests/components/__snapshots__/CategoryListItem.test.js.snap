@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryListItem /> should work 1`] = `
+<WithStyles(TableRow)
+  key="salary"
+>
+  <WithStyles(TableCell)>
+    salary
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    <WithStyles(IconButton)
+      aria-haspopup="true"
+      aria-label="More"
+      aria-owns={null}
+      onClick={[Function]}
+    >
+      <pure(MoreVert) />
+    </WithStyles(IconButton)>
+    <WithStyles(Menu)
+      PaperProps={
+        Object {
+          "style": Object {
+            "maxHeight": 216,
+            "width": 200,
+          },
+        }
+      }
+      anchorEl={null}
+      id="long-menu"
+      onClose={[Function]}
+      open={false}
+    >
+      <WithStyles(MenuItem)
+        key="Remove"
+        onClick={[Function]}
+      >
+        Remove
+      </WithStyles(MenuItem)>
+    </WithStyles(Menu)>
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;

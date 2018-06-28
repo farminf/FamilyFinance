@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterListBar /> should work 1`] = `
+<div>
+  <div>
+    <WithStyles(FormControl)>
+      <WithStyles(InputLabel)
+        htmlFor="type-native-simple"
+      >
+        Type
+      </WithStyles(InputLabel)>
+      <WithStyles(Select)
+        input={
+          <WithStyles(Input)
+            id="type-native-simple"
+          />
+        }
+        native={true}
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          key="all"
+          value=""
+        />
+        <option
+          key="expense"
+          value="Expense"
+        >
+          Expense
+        </option>
+        <option
+          key="income"
+          value="Income"
+        >
+          Income
+        </option>
+        <option
+          key="transfer"
+          value="Transfer"
+        >
+          Transfer
+        </option>
+      </WithStyles(Select)>
+    </WithStyles(FormControl)>
+    <TextField
+      label="Description"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      label="Account"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      label="Category"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="text"
+      value=""
+    />
+  </div>
+  <div />
+</div>
+`;

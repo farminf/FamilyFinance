@@ -12,7 +12,7 @@ import TableFooter from "@material-ui/core/TableFooter";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import FaGoogle from "react-icons/lib/fa/google-plus-square";
 
-const styles = theme => ({
+export const styles = theme => ({
   button: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -28,7 +28,7 @@ const styles = theme => ({
   }
 });
 
-const LoginGoogle = props => {
+export const LoginGoogle = props => {
   const { classes } = props;
   return (
     <Button
@@ -43,15 +43,3 @@ const LoginGoogle = props => {
 };
 
 export default withStyles(styles)(LoginGoogle);
-
-/* <Paper className={classes.paper} elevation={4}><Link
-                                to="/dashboard"
-                                style={{
-                                textDecoration: 'none'
-                            }}>
-                            </Link>
-            <Typography type="body1" component="p">
-                Login With Google
-            </Typography>
-            </Paper>
-            */
