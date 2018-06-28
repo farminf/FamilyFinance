@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <WithStyles(Typography)
+    variant="headline"
+  >
+    Login To Your Account
+  </WithStyles(Typography)>
+  <WithStyles(Component) />
+  <WithStyles(Component) />
+  <WithStyles(Component) />
+</WithStyles(Paper)>
+`;

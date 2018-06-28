@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserErrors /> should work 1`] = `
+<div
+  style={
+    Object {
+      "position": "fixed",
+      "top": "10%",
+      "width": "100%",
+    }
+  }
+>
+  <p
+    key="error"
+    style={
+      Object {
+        "color": "red",
+      }
+    }
+  >
+    error
+     : 
+    generic error
+  </p>
+</div>
+`;

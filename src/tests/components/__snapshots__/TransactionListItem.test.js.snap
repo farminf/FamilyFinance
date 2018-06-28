@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TransactionListItem /> should work 1`] = `
+<WithStyles(TableRow)>
+  <WithStyles(TableCell) />
+  <WithStyles(TableCell) />
+  <WithStyles(TableCell)
+    numeric={true}
+  >
+    0.00
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    June 28th, 2018
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell) />
+  <WithStyles(TableCell) />
+  <WithStyles(TableCell)>
+    <WithStyles(IconButton)
+      aria-haspopup="true"
+      aria-label="More"
+      aria-owns={null}
+      onClick={[Function]}
+    >
+      <pure(MoreVert) />
+    </WithStyles(IconButton)>
+    <WithStyles(Menu)
+      PaperProps={
+        Object {
+          "style": Object {
+            "maxHeight": 216,
+            "width": 200,
+          },
+        }
+      }
+      anchorEl={null}
+      id="long-menu"
+      onClose={[Function]}
+      open={false}
+    >
+      <WithStyles(MenuItem)
+        key="Edit"
+        onClick={[Function]}
+      >
+        Edit
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="Remove"
+        onClick={[Function]}
+      >
+        Remove
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="Copy"
+        onClick={[Function]}
+      >
+        Copy
+      </WithStyles(MenuItem)>
+    </WithStyles(Menu)>
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;

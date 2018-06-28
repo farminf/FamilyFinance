@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Recaptcha from "react-recaptcha";
 
-const styles = theme => ({
+export const styles = theme => ({
   input: {
     display: "none"
   },
@@ -43,7 +43,7 @@ const styles = theme => ({
   }
 });
 
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

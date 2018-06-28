@@ -28,7 +28,7 @@ import { CSVLink } from "react-csv";
 import moment from "moment";
 import Button from "@material-ui/core/Button";
 
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,
@@ -46,7 +46,7 @@ const styles = theme => ({
   })
 });
 
-class TransactionList extends React.Component {
+export class TransactionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -160,7 +160,7 @@ class TransactionList extends React.Component {
                       return object;
                     })
               }
-              filename={"familyfinance" + moment().unix() + ".csv"}
+              filename={"familyfinance-transactions.csv"}
             >
               <Button
                 className={classes.button}

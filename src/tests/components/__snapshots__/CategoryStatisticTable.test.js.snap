@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryStatisticTable /> should work 1`] = `
+<WithStyles(Paper)>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(WithStyles(TableCell))>
+          Category
+        </WithStyles(WithStyles(TableCell))>
+        <WithStyles(WithStyles(TableCell))
+          numeric={true}
+        >
+          Amount (€)
+        </WithStyles(WithStyles(TableCell))>
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody) />
+  </WithStyles(Table)>
+</WithStyles(Paper)>
+`;

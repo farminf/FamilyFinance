@@ -13,7 +13,7 @@ import LoginGoogle from "../components/LoginGoogle";
 import LoginFacebook from "./LoginFacebook";
 import LoginGithub from "./LoginGithub";
 
-const styles = theme => ({
+export const styles = theme => ({
   input: {
     display: "none"
   },
@@ -44,7 +44,7 @@ const styles = theme => ({
   }
 });
 
-class LoginUserNamePassword extends React.Component {
+export class LoginUserNamePassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

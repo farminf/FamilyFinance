@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginFacebook /> should work 1`] = `
+<WithStyles(Button)
+  variant="raised"
+>
+  <FaGooglePlusSquare
+    color="red"
+    size={30}
+  />
+  Login With Google
+</WithStyles(Button)>
+`;

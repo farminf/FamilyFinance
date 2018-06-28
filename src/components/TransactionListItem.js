@@ -11,10 +11,13 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { withRouter } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
-class TransactionListItem extends React.Component {
-  state = {
-    anchorEl: null
-  };
+export class TransactionListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null
+    };
+  }
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };

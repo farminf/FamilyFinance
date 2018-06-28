@@ -9,7 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 
 // import moment from 'moment'; import {SingleDatePicker} from 'react-dates';
 
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     //position: "relative"
     display: "inline-block",
@@ -45,7 +45,7 @@ const styles = theme => ({
   }
 });
 
-class FilterListBar extends Component {
+export class FilterListBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
