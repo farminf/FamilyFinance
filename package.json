@@ -5,6 +5,7 @@
     "name": "FarminF",
     "email": "farmin.f@gmail.com"
   },
+  "main": "public/electron.js",
   "repository": {
     "url": "http://github.com/farminf/FamilyFinance"
   },
@@ -13,6 +14,7 @@
     "@material-ui/core": "^1.2.2",
     "@material-ui/icons": "^1.1.0",
     "classnames": "^2.2.5",
+    "electron-is-dev": "^1.0.1",
     "enzyme-to-json": "3.0.1",
     "express": "^4.16.2",
     "firebase": "^4.8.0",
@@ -43,10 +45,14 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "electron-dev": "concurrently \"BROWSER=none yarn dev\" \"wait-on http://localhost:3000 && electron .\""
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "concurrently": "^4.0.1",
+    "electron": "^3.0.3",
+    "electron-builder": "^20.28.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-prettier": "^2.9.0",
@@ -54,6 +60,7 @@
     "jest": "^23.1.0",
     "jest-cli": "20.0.4",
     "prettier": "^1.12.1",
-    "pretty-quick": "^1.4.1"
+    "pretty-quick": "^1.4.1",
+    "wait-on": "^3.1.0"
   }
 }
