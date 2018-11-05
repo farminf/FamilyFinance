@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import FaFacebook from "react-icons/lib/fa/facebook-square";
 
-const styles = theme => ({
+export const styles = theme => ({
   button: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -28,7 +28,7 @@ const styles = theme => ({
   }
 });
 
-const LoginFacebook = props => {
+export const LoginFacebook = props => {
   const { classes } = props;
   return (
     <Button

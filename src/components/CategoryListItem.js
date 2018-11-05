@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 
-class CategoryListItem extends React.Component {
+export class CategoryListItem extends React.Component {
   state = {
     anchorEl: null
   };

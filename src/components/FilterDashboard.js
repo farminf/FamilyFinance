@@ -2,12 +2,11 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Select from "@material-ui/core/Select";
-// import Input, {InputLabel} from '@material-ui/core/Input';
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import moment from "moment";
 
-const styles = theme => ({
+export const styles = theme => ({
   paper: theme.mixins.gutters({
     boxSizing: "border - box",
     paddingLeft: 16,
@@ -32,7 +31,7 @@ const styles = theme => ({
   }
 });
 
-class FilterDashboard extends React.Component {
+export class FilterDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUp /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <WithStyles(Typography)
+    variant="headline"
+  >
+    Create New Account
+  </WithStyles(Typography)>
+  <form>
+    <TextField
+      onChange={[Function]}
+      placeholder="Email Address"
+      required={true}
+      select={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      alue=""
+      onChange={[Function]}
+      placeholder="Password"
+      required={true}
+      select={false}
+      type="password"
+    />
+    <TextField
+      alue=""
+      onChange={[Function]}
+      placeholder="Confirm Password"
+      required={true}
+      select={false}
+      type="password"
+    />
+    <div>
+      <t
+        badge="bottomright"
+        elementID="g-recaptcha"
+        expiredCallbackName="expiredCallback"
+        hl="en"
+        onloadCallbackName="onloadCallback"
+        render="onload"
+        sitekey="6Lc1_j8UAAAAAH5zKYdv055fpSrIDghc3J6xZF02"
+        size="normal"
+        tabindex="0"
+        theme="light"
+        type="image"
+        verifyCallbackName="verifyCallback"
+      />
+    </div>
+    <WithStyles(Button)
+      onClick={[Function]}
+      variant="raised"
+    >
+      Register
+    </WithStyles(Button)>
+  </form>
+</WithStyles(Paper)>
+`;

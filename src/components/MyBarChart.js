@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import Paper from "@material-ui/core/Paper";
 
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     WebkitBoxSizing: "border-box",
     MozBoxSizing: "border-box",
@@ -30,7 +30,7 @@ const styles = theme => ({
   })
 });
 
-class MyBarChart extends React.Component {
+export class MyBarChart extends React.Component {
   render() {
     const { classes } = this.props;
     return (

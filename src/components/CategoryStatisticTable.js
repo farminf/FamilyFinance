@@ -21,7 +21,7 @@ const CustomTableCell = withStyles(theme => ({
   }
 }))(TableCell);
 
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,
@@ -38,7 +38,7 @@ const styles = theme => ({
   }
 });
 
-const CategoryStatisticTable = props => {
+export const CategoryStatisticTable = props => {
   const { classes } = props;
 
   return (

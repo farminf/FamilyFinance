@@ -16,7 +16,7 @@ const styles = theme => ({
   }
 });
 
-const LoadProgress = props => {
+export const LoadProgress = props => {
   const { classes } = props;
   return (
     <div className={classes.divclass}>

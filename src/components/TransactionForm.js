@@ -13,7 +13,7 @@ import "../react_dates_overrides.css";
 //import Paper from '@material-ui/core/Paper';
 import _ from "lodash";
 
-const styles = theme => ({
+export const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -46,7 +46,7 @@ const styles = theme => ({
   })
 });
 
-class TransactionForm extends React.Component {
+export class TransactionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

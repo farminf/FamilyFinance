@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryList /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          Category
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell) />
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
+      <withRouter(CategoryListItem)
+        id="loan"
+        key="loan"
+        name="loan"
+        onCopy={[Function]}
+        onDelete={[Function]}
+      />
+      <withRouter(CategoryListItem)
+        id="salary"
+        key="salary"
+        name="salary"
+        onCopy={[Function]}
+        onDelete={[Function]}
+      />
+    </WithStyles(TableBody)>
+    <WithStyles(TableFooter)>
+      <WithStyles(TableRow)>
+        <WithStyles(TablePagination)
+          count={2}
+          onChangePage={[Function]}
+          onChangeRowsPerPage={[Function]}
+          page={0}
+          rowsPerPage={10}
+          rowsPerPageOptions={
+            Array [
+              5,
+              10,
+            ]
+          }
+        />
+      </WithStyles(TableRow)>
+    </WithStyles(TableFooter)>
+  </WithStyles(Table)>
+</WithStyles(Paper)>
+`;

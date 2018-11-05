@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should work 1`] = `
+<div>
+  <div>
+    <WithStyles(AppBar)
+      className=""
+      color="primary"
+      position="static"
+    >
+      <WithStyles(Toolbar)
+        disableGutters={true}
+      >
+        <WithStyles(IconButton)
+          aria-label="open drawer"
+          className=""
+          color="inherit"
+          onClick={[Function]}
+        >
+          <pure(Menu) />
+        </WithStyles(IconButton)>
+        <WithStyles(Typography)
+          color="inherit"
+          variant="headline"
+        />
+        <WithStyles(IconButton)
+          aria-haspopup="true"
+          aria-owns={null}
+          color="inherit"
+          onClick={[Function]}
+        >
+          <pure(AccountCircle) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "top",
+            }
+          }
+          id="menu-appbar"
+          onClose={[Function]}
+          open={false}
+          transformOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "top",
+            }
+          }
+        >
+          <WithStyles(MenuItem)>
+             
+            <WithStyles(Avatar)
+              alt="Name"
+            />
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)>
+            Logout
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </WithStyles(Toolbar)>
+    </WithStyles(AppBar)>
+    <Hidden
+      implementation="js"
+      lgDown={false}
+      lgUp={false}
+      mdDown={false}
+      mdUp={true}
+      smDown={false}
+      smUp={false}
+      xlDown={false}
+      xlUp={false}
+      xsDown={false}
+      xsUp={false}
+    >
+      <WithStyles(Drawer)
+        ModalProps={
+          Object {
+            "keepMounted": true,
+          }
+        }
+        anchor="left"
+        classes={
+          Object {
+            "paper": "",
+          }
+        }
+        onClose={[Function]}
+        open={false}
+        variant="temporary"
+      >
+        <div>
+          <div>
+            <WithStyles(IconButton)
+              onClick={[Function]}
+            >
+              <pure(ChevronLeft) />
+            </WithStyles(IconButton)>
+          </div>
+          <WithStyles(Divider) />
+           
+          <WithStyles(List)>
+            <div>
+              <NavLink
+                activeClassName="is-active"
+                activeStyle={
+                  Object {
+                    "color": "red",
+                    "fontWeight": "bold",
+                  }
+                }
+                ariaCurrent="true"
+                style={
+                  Object {
+                    "textDecoration": "none",
+                  }
+                }
+                to="/dashboard"
+              >
+                <WithStyles(ListItem)
+                  button={true}
+                  divider={true}
+                >
+                  <pure(ShowChart) />
+                  <WithStyles(ListItemText)
+                    primary="Dashboard"
+                  />
+                </WithStyles(ListItem)>
+              </NavLink>
+              <NavLink
+                activeClassName="is-active"
+                activeStyle={
+                  Object {
+                    "color": "red",
+                    "fontColor": "red",
+                    "fontWeight": "bold",
+                  }
+                }
+                ariaCurrent="true"
+                style={
+                  Object {
+                    "textDecoration": "none",
+                  }
+                }
+                to="/accounts"
+              >
+                <WithStyles(ListItem)
+                  button={true}
+                  divider={true}
+                >
+                  <pure(AccountBalance) />
+                  <WithStyles(ListItemText)
+                    primary="Accounts"
+                  />
+                </WithStyles(ListItem)>
+              </NavLink>
+              <NavLink
+                activeClassName="is-active"
+                activeStyle={
+                  Object {
+                    "color": "red",
+                    "fontWeight": "bold",
+                  }
+                }
+                ariaCurrent="true"
+                style={
+                  Object {
+                    "textDecoration": "none",
+                  }
+                }
+                to="/transactions"
+              >
+                <WithStyles(ListItem)
+                  button={true}
+                  divider={true}
+                >
+                  <pure(NoteAdd) />
+                  <WithStyles(ListItemText)
+                    primary="Transactions"
+                  />
+                </WithStyles(ListItem)>
+              </NavLink>
+              <NavLink
+                activeClassName="is-active"
+                activeStyle={
+                  Object {
+                    "color": "red",
+                    "fontWeight": "bold",
+                  }
+                }
+                ariaCurrent="true"
+                style={
+                  Object {
+                    "textDecoration": "none",
+                  }
+                }
+                to="/categories"
+              >
+                <WithStyles(ListItem)
+                  button={true}
+                  divider={true}
+                >
+                  <pure(Dashboard) />
+                  <WithStyles(ListItemText)
+                    primary="Categories"
+                  />
+                </WithStyles(ListItem)>
+              </NavLink>
+            </div>
+          </WithStyles(List)>
+        </div>
+      </WithStyles(Drawer)>
+    </Hidden>
+    <Hidden
+      implementation="css"
+      lgDown={false}
+      lgUp={false}
+      mdDown={false}
+      mdUp={false}
+      smDown={true}
+      smUp={false}
+      xlDown={false}
+      xlUp={false}
+      xsDown={false}
+      xsUp={false}
+    >
+      <WithStyles(Drawer)
+        classes={
+          Object {
+            "paper": "",
+          }
+        }
+        open={false}
+        variant="permanent"
+      >
+        <div>
+          <WithStyles(IconButton)
+            onClick={[Function]}
+          >
+            <pure(ChevronLeft) />
+          </WithStyles(IconButton)>
+        </div>
+        <WithStyles(Divider) />
+         
+        <WithStyles(List)>
+          <div>
+            <NavLink
+              activeClassName="is-active"
+              activeStyle={
+                Object {
+                  "color": "red",
+                  "fontWeight": "bold",
+                }
+              }
+              ariaCurrent="true"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
+              to="/dashboard"
+            >
+              <WithStyles(ListItem)
+                button={true}
+                divider={true}
+              >
+                <pure(ShowChart) />
+                <WithStyles(ListItemText)
+                  primary="Dashboard"
+                />
+              </WithStyles(ListItem)>
+            </NavLink>
+            <NavLink
+              activeClassName="is-active"
+              activeStyle={
+                Object {
+                  "color": "red",
+                  "fontColor": "red",
+                  "fontWeight": "bold",
+                }
+              }
+              ariaCurrent="true"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
+              to="/accounts"
+            >
+              <WithStyles(ListItem)
+                button={true}
+                divider={true}
+              >
+                <pure(AccountBalance) />
+                <WithStyles(ListItemText)
+                  primary="Accounts"
+                />
+              </WithStyles(ListItem)>
+            </NavLink>
+            <NavLink
+              activeClassName="is-active"
+              activeStyle={
+                Object {
+                  "color": "red",
+                  "fontWeight": "bold",
+                }
+              }
+              ariaCurrent="true"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
+              to="/transactions"
+            >
+              <WithStyles(ListItem)
+                button={true}
+                divider={true}
+              >
+                <pure(NoteAdd) />
+                <WithStyles(ListItemText)
+                  primary="Transactions"
+                />
+              </WithStyles(ListItem)>
+            </NavLink>
+            <NavLink
+              activeClassName="is-active"
+              activeStyle={
+                Object {
+                  "color": "red",
+                  "fontWeight": "bold",
+                }
+              }
+              ariaCurrent="true"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
+              to="/categories"
+            >
+              <WithStyles(ListItem)
+                button={true}
+                divider={true}
+              >
+                <pure(Dashboard) />
+                <WithStyles(ListItemText)
+                  primary="Categories"
+                />
+              </WithStyles(ListItem)>
+            </NavLink>
+          </div>
+        </WithStyles(List)>
+      </WithStyles(Drawer)>
+    </Hidden>
+  </div>
+  <main />
+</div>
+`;

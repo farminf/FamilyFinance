@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Statistic /> should work 1`] = `
+<WithStyles(Paper)
+  elevation={4}
+>
+  <div>
+    <h3>
+      Month Total Stats
+    </h3>
+    <WithStyles(Card)>
+      <WithStyles(CardContent)>
+        <WithStyles(Typography)
+          component="h2"
+          variant="title"
+        />
+        <WithStyles(Typography)
+          color="error"
+          variant="display2"
+        />
+      </WithStyles(CardContent)>
+    </WithStyles(Card)>
+    <WithStyles(Card)>
+      <WithStyles(CardContent)>
+        <WithStyles(Typography)
+          component="h2"
+          variant="title"
+        />
+        <WithStyles(Typography)
+          color="textSecondary"
+          variant="display2"
+        />
+      </WithStyles(CardContent)>
+    </WithStyles(Card)>
+  </div>
+</WithStyles(Paper)>
+`;

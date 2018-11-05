@@ -26,9 +26,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-
 const drawerWidth = 280;
-const styles = theme => ({
+export const styles = theme => ({
   root: {
     width: "100%",
     height: "auto",
@@ -131,7 +130,7 @@ const styles = theme => ({
   }
 });
 
-class Header extends React.Component {
+export class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
