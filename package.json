@@ -46,7 +46,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "electron-dev": "concurrently \"BROWSER=none yarn dev\" \"wait-on http://localhost:3000 && electron .\""
+    "electron-dev":
+      "concurrently \"BROWSER=none yarn dev\" \"wait-on http://localhost:3000 && electron .\""
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
