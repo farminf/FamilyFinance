@@ -11,7 +11,7 @@ exports[`<TransactionList /> should work 1`] = `
           Array [
             Object {
               "amount": "10",
-              "dateFormatted": "28/06/2018",
+              "dateFormatted": "14/11/2018",
             },
           ]
         }
