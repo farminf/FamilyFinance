@@ -37,6 +37,7 @@ exports[`<SignUp /> should work 1`] = `
     <div>
       <t
         badge="bottomright"
+        className="g-recaptcha"
         elementID="g-recaptcha"
         expiredCallbackName="expiredCallback"
         hl="en"

@@ -8,12 +8,14 @@ exports[`<TransactionForm /> should work 1`] = `
     <WithStyles(FormControl)>
       <withStyles(SingleDatePicker)
         anchorDirection="left"
+        appendToBody={false}
         block={true}
         calendarInfoPosition="bottom"
         customCloseIcon={null}
         customInputIcon={null}
-        date={"2018-06-28T10:00:00.000Z"}
+        date={"2018-11-16T11:00:00.000Z"}
         daySize={39}
+        disableScroll={false}
         disabled={false}
         displayFormat="DD MMM YYYY"
         enableOutsideDays={false}
@@ -57,7 +59,7 @@ exports[`<TransactionForm /> should work 1`] = `
             "jumpToNextMonth": "Move forward to switch to the next month.",
             "jumpToPrevMonth": "Move backward to switch to the previous month.",
             "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
-            select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+  select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
             "keyboardShortcuts": "Keyboard Shortcuts",
             "leftArrowRightArrow": "Right and left arrow keys",
             "moveFocusByOneDay": "Move backward (left) and forward (right) by one day.",
@@ -109,7 +111,9 @@ exports[`<TransactionForm /> should work 1`] = `
         onChange={[Function]}
         value=""
       >
-        <option />
+        <option
+          key=""
+        />
         <option
           key="expense"
           value="Expense"
