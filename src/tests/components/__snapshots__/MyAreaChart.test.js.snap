@@ -97,6 +97,7 @@ exports[`<MyAreaChart /> should work 1`] = `
           active={false}
           animationDuration={400}
           animationEasing="ease"
+          contentStyle={Object {}}
           coordinate={
             Object {
               "x": 0,
