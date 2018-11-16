@@ -5,7 +5,7 @@ cache:
   directories:
     - node_modules
 script:
-  - NODE_ENV=development npm install
+  - npm --production=false install
   - npm test
   - npm run build
   - rimraf build/**/*.map
