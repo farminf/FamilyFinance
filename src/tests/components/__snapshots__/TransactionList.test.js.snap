@@ -7,11 +7,12 @@ exports[`<TransactionList /> should work 1`] = `
   <WithStyles(FilterListBar)
     exportComponent={
       <CSVLink
+        asyncOnClick={false}
         data={
           Array [
             Object {
               "amount": "10",
-              "dateFormatted": "14/11/2018",
+              "dateFormatted": "16/11/2018",
             },
           ]
         }
@@ -26,7 +27,6 @@ exports[`<TransactionList /> should work 1`] = `
         uFEFF={true}
       >
         <WithStyles(Button)
-          className={undefined}
           color="primary"
           variant="raised"
         >
