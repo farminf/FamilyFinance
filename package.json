@@ -46,11 +46,11 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "electron-dev":
-      "concurrently \"BROWSER=none yarn dev\" \"wait-on http://localhost:3000 && electron .\""
+    "electron-dev": "concurrently \"BROWSER=none yarn dev\" \"wait-on http://localhost:3000 && electron .\""
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
     "concurrently": "^4.0.1",
     "electron": "^3.0.3",
     "electron-builder": "^20.28.4",
