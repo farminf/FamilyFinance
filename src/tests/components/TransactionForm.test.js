@@ -17,6 +17,17 @@ describe("<TransactionForm />", () => {
       <TransactionForm
         classes={styles}
         accounts={[{ id: "id", name: "bank" }]}
+        transaction={{
+          id: "-LRfehdCidl_bQ8njUsj",
+          type: "Expense",
+          amount: 10000,
+          description: "test",
+          account: "ING Credit",
+          category: "Balance",
+          date: 1542625200000,
+          transferFrom: "",
+          transferTo: ""
+        }}
       />
     );
     expect(toJSON(wrapper)).toMatchSnapshot();
