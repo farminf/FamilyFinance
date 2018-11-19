@@ -109,7 +109,7 @@ exports[`<TransactionForm /> should work 1`] = `
         }
         native={true}
         onChange={[Function]}
-        value=""
+        value="Expense"
       >
         <option
           key=""
@@ -142,7 +142,7 @@ exports[`<TransactionForm /> should work 1`] = `
         required={false}
         select={false}
         type="text"
-        value=""
+        value="100"
       />
       <TextField
         label="Description"
@@ -151,7 +151,7 @@ exports[`<TransactionForm /> should work 1`] = `
         required={false}
         select={false}
         type="text"
-        value=""
+        value="test"
       />
       <WithStyles(FormControl)>
         <WithStyles(InputLabel)
@@ -167,7 +167,7 @@ exports[`<TransactionForm /> should work 1`] = `
           }
           native={true}
           onChange={[Function]}
-          value=""
+          value="ING Credit"
         >
           <option
             value=""
@@ -195,7 +195,7 @@ exports[`<TransactionForm /> should work 1`] = `
           }
           native={true}
           onChange={[Function]}
-          value=""
+          value="Balance"
         >
           <option
             value=""
@@ -206,7 +206,7 @@ exports[`<TransactionForm /> should work 1`] = `
         onClick={[Function]}
         variant="raised"
       >
-        Add
+        Update
       </WithStyles(Button)>
       <WithStyles(Button)
         variant="raised"
