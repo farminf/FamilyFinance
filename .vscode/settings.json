@@ -5,7 +5,8 @@
     "activityBar.background": "#415041",
     "sideBar.background": "#001300",
     "foreground": "#be7171",
-    "button.background": "#415041"
+    "button.background": "#415041",
+    "titleBar.activeBackground": "#FF2C70",
+    "titleBar.inactiveBackground": "#FF2C70CC"
   }
-
 }
