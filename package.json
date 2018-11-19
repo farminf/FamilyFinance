@@ -58,9 +58,15 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^1.1.4",
     "jest-cli": "20.0.4",
     "prettier": "^1.12.1",
     "pretty-quick": "^1.4.1",
     "wait-on": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   }
 }
