@@ -10,7 +10,7 @@ exports[`<TransactionListItem /> should work 1`] = `
     0.00
   </WithStyles(TableCell)>
   <WithStyles(TableCell)>
-    November 16th, 2018
+    November 19th, 2018
   </WithStyles(TableCell)>
   <WithStyles(TableCell) />
   <WithStyles(TableCell) />
