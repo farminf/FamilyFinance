@@ -27,7 +27,7 @@ exports[`<AccountForm /> should work 1`] = `
     <WithStyles(Button)
       color="primary"
       onClick={[Function]}
-      variant="raised"
+      variant="contained"
     >
       Add
     </WithStyles(Button)>

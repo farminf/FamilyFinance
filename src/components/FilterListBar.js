@@ -163,7 +163,7 @@ export class FilterListBar extends Component {
             onChange={this.onCategoryFilter}
           />
 
-          {/*<Button onClick={this.onFilter} className={classes.button} raised>
+          {/*<Button onClick={this.onFilter} className={classes.button} contained>
                             Filter
                         </Button>*/}
         </div>

@@ -28,7 +28,7 @@ exports[`<TransactionList /> should work 1`] = `
       >
         <WithStyles(Button)
           color="primary"
-          variant="raised"
+          variant="contained"
         >
           Download CSV
         </WithStyles(Button)>

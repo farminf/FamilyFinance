@@ -53,7 +53,7 @@ exports[`<SignUp /> should work 1`] = `
     </div>
     <WithStyles(Button)
       onClick={[Function]}
-      variant="raised"
+      variant="contained"
     >
       Register
     </WithStyles(Button)>

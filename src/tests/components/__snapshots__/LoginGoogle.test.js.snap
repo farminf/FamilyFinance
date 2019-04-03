@@ -2,7 +2,7 @@
 
 exports[`<LoginFacebook /> should work 1`] = `
 <WithStyles(Button)
-  variant="raised"
+  variant="contained"
 >
   <FaGooglePlusSquare
     color="red"

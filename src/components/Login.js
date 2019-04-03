@@ -2,6 +2,8 @@ import React from "react";
 // import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+
 import Typography from "@material-ui/core/Typography";
 // import Visibility from "@material-ui/icons/Visibility";
 // import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -96,58 +98,69 @@ export class LoginUserNamePassword extends React.Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.paper} elevation={4}>
-        <Typography variant="headline">Login To Your Account</Typography>
+        <Grid
+          container
+          item
+          xs={8}
+          md={8}
+          lg={8}
+          justify="center"
+          alignItems={"center"}
+          alignContent={"center"}
+        >
+          <Typography variant="headline">Login To Your Account</Typography>
 
-        {/*<form>
+          {/*<form>
           <FormControl className={classes.formControl}>
-            <Input
-              required
-              placeholder="Username"
-              id="username"
-              className={classes.textField}
-              type="text"
-              value={this.state.email}
-              onChange={this.onEmailChange}
-            />
+          <Input
+          required
+          placeholder="Username"
+          id="username"
+          className={classes.textField}
+          type="text"
+          value={this.state.email}
+          onChange={this.onEmailChange}
+          />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <Input
-              required
-              placeholder="Password"
-              id="password"
-              className={classes.textField}
-              type={this.state.showPassword ? "text" : "password"}
-              value={this.state.password}
-              onChange={this.onPasswordChange}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={this.handleClickShowPasssword}
-                    onMouseDown={this.handleMouseDownPassword}
-                  >
-                    {this.state.showPassword ? (
-                      <VisibilityOff />
-                    ) : (
-                      <Visibility />
-                    )}
-                  </IconButton>
+          <Input
+          required
+          placeholder="Password"
+          id="password"
+          className={classes.textField}
+          type={this.state.showPassword ? "text" : "password"}
+          value={this.state.password}
+          onChange={this.onPasswordChange}
+          endAdornment={
+            <InputAdornment position="end">
+            <IconButton
+            onClick={this.handleClickShowPasssword}
+            onMouseDown={this.handleMouseDownPassword}
+            >
+            {this.state.showPassword ? (
+              <VisibilityOff />
+              ) : (
+                <Visibility />
+                )}
+                </IconButton>
                 </InputAdornment>
               }
-            />
-
-            <Button
+              />
+              
+              <Button
               onClick={this.onLoginWithEmail}
-              variant="raised"
+              variant="contained"
               className={classes.button}
-            >
+              >
               Login
-            </Button>
-            {this.state.error && <p>{this.state.error}</p>}
-          </FormControl>
+              </Button>
+              {this.state.error && <p>{this.state.error}</p>}
+              </FormControl>
             </form>*/}
-        <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
-        <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
-        <LoginGithub onLoginGithub={this.props.onLoginGithub} />
+          <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
+          <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
+          <LoginGithub onLoginGithub={this.props.onLoginGithub} />
+        </Grid>
       </Paper>
     );
   }

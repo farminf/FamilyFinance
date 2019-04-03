@@ -33,7 +33,7 @@ export const LoginGithub = props => {
   return (
     <Button
       onClick={props.onLoginGithub}
-      variant="raised"
+      variant="contained"
       className={classes.button}
     >
       <FaGithub size={30} color="#333" className={classes.googleicon} />

@@ -164,7 +164,7 @@ export class TransactionList extends React.Component {
             >
               <Button
                 className={classes.button}
-                variant="raised"
+                variant="contained"
                 color="primary"
               >
                 Download CSV

@@ -182,7 +182,7 @@ export class TransactionForm extends React.Component {
             <Button
               onClick={this.props.onClose}
               className={classes.button}
-              variant="raised"
+              variant="contained"
             >
               Ok
             </Button>
@@ -283,14 +283,14 @@ export class TransactionForm extends React.Component {
                 <Button
                   onClick={this.onTransferSubmit}
                   className={classes.button}
-                  variant="raised"
+                  variant="contained"
                 >
                   Transfer
                 </Button>
                 <Button
                   onClick={this.props.onClose}
                   className={classes.button}
-                  variant="raised"
+                  variant="contained"
                 >
                   Cancel
                 </Button>
@@ -359,7 +359,7 @@ export class TransactionForm extends React.Component {
                 <Button
                   onClick={this.onSubmit}
                   className={classes.button}
-                  variant="raised"
+                  variant="contained"
                 >
                   {/*<Save className={classes.leftIcon}/> */}
                   {this.state.submit_button_title}
@@ -367,7 +367,7 @@ export class TransactionForm extends React.Component {
                 <Button
                   onClick={this.props.onClose}
                   className={classes.button}
-                  variant="raised"
+                  variant="contained"
                 >
                   Cancel
                 </Button>

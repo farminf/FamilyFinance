@@ -88,7 +88,7 @@ class CategoriesContainer extends React.Component {
               <Button
                 onClick={this.onAddDefaultCategories}
                 className={classes.button}
-                variant="raised"
+                variant="contained"
                 color="default"
               >
                 Add Default Categories

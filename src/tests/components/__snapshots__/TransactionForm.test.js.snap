@@ -204,12 +204,12 @@ exports[`<TransactionForm /> should work 1`] = `
       </WithStyles(FormControl)>
       <WithStyles(Button)
         onClick={[Function]}
-        variant="raised"
+        variant="contained"
       >
         Update
       </WithStyles(Button)>
       <WithStyles(Button)
-        variant="raised"
+        variant="contained"
       >
         Cancel
       </WithStyles(Button)>

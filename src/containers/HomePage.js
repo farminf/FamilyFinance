@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import FaGithub from "react-icons/lib/fa/github";
 import IconButton from "@material-ui/core/IconButton";
 
