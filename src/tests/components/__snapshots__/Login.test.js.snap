@@ -9,9 +9,18 @@ exports[`<Login /> should work 1`] = `
   >
     Login To Your Account
   </WithStyles(Typography)>
+  <WithStyles(Button)
+    onClick={[Function]}
+    variant="contained"
+  >
+    <FaLock
+      color="black"
+      size={30}
+    />
+    Login With Email
+  </WithStyles(Button)>
   <WithStyles(LoginGoogle) />
   <WithStyles(LoginFacebook) />
   <WithStyles(LoginGithub) />
-  <WithStyles(LoginPasswordLess) />
 </WithStyles(Paper)>
 `;
