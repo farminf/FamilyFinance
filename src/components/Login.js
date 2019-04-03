@@ -2,7 +2,6 @@ import React from "react";
 // import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 
 import Typography from "@material-ui/core/Typography";
 // import Visibility from "@material-ui/icons/Visibility";
@@ -98,19 +97,9 @@ export class LoginUserNamePassword extends React.Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.paper} elevation={4}>
-        <Grid
-          container
-          item
-          xs={8}
-          md={8}
-          lg={8}
-          justify="center"
-          alignItems={"center"}
-          alignContent={"center"}
-        >
-          <Typography variant="headline">Login To Your Account</Typography>
+        <Typography variant="headline">Login To Your Account</Typography>
 
-          {/*<form>
+        {/*<form>
           <FormControl className={classes.formControl}>
           <Input
           required
@@ -157,10 +146,9 @@ export class LoginUserNamePassword extends React.Component {
               {this.state.error && <p>{this.state.error}</p>}
               </FormControl>
             </form>*/}
-          <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
-          <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
-          <LoginGithub onLoginGithub={this.props.onLoginGithub} />
-        </Grid>
+        <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
+        <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
+        <LoginGithub onLoginGithub={this.props.onLoginGithub} />
       </Paper>
     );
   }

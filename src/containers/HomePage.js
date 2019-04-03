@@ -82,7 +82,7 @@ const HomePage = props => {
         {/*<Grid item xs={12} sm={8} md={5} lg={4}>
           <SignUp onSignup={props.startSignUp} />
         </Grid>*/}
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid item xs={12} sm={8} md={4} lg={3} justify={"center"}>
           <Login
             onLoginEmail={props.startLoginWithEmail}
             onLoginGoogle={props.startLoginGoogle}
