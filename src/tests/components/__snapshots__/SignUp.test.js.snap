@@ -17,6 +17,7 @@ exports[`<SignUp /> should work 1`] = `
       select={false}
       type="text"
       value=""
+      variant="standard"
     />
     <TextField
       alue=""
@@ -25,6 +26,7 @@ exports[`<SignUp /> should work 1`] = `
       required={true}
       select={false}
       type="password"
+      variant="standard"
     />
     <TextField
       alue=""
@@ -33,6 +35,7 @@ exports[`<SignUp /> should work 1`] = `
       required={true}
       select={false}
       type="password"
+      variant="standard"
     />
     <div>
       <t

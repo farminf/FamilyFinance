@@ -10,7 +10,7 @@ exports[`<TransactionListItem /> should work 1`] = `
     0.00
   </WithStyles(TableCell)>
   <WithStyles(TableCell)>
-    November 19th, 2018
+    April 3rd, 2019
   </WithStyles(TableCell)>
   <WithStyles(TableCell) />
   <WithStyles(TableCell) />
@@ -21,7 +21,7 @@ exports[`<TransactionListItem /> should work 1`] = `
       aria-owns={null}
       onClick={[Function]}
     >
-      <pure(MoreVert) />
+      <pure(MoreVertIcon) />
     </WithStyles(IconButton)>
     <WithStyles(Menu)
       PaperProps={

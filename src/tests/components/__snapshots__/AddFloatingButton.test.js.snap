@@ -8,7 +8,7 @@ exports[`<AddFloatingButton /> should work 1`] = `
     onClick={[Function]}
     variant="fab"
   >
-    <pure(Add) />
+    <pure(AddIcon) />
   </WithStyles(Button)>
   <WithStyles(Dialog)
     aria-labelledby="form-dialog-title"
