@@ -12,5 +12,6 @@ exports[`<Login /> should work 1`] = `
   <WithStyles(LoginGoogle) />
   <WithStyles(LoginFacebook) />
   <WithStyles(LoginGithub) />
+  <WithStyles(LoginPasswordLess) />
 </WithStyles(Paper)>
 `;
