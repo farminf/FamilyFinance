@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import LoginGoogle from "../components/LoginGoogle";
 import LoginFacebook from "./LoginFacebook";
 import LoginGithub from "./LoginGithub";
+import LoginPasswordLess from "./LoginPasswordLess";
 
 export const styles = theme => ({
   input: {
@@ -149,6 +150,9 @@ export class LoginUserNamePassword extends React.Component {
         <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
         <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
         <LoginGithub onLoginGithub={this.props.onLoginGithub} />
+        <LoginPasswordLess
+          onLoginEmailPasswordless={this.props.onLoginEmailPasswordless}
+        />
       </Paper>
     );
   }

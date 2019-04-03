@@ -14,7 +14,8 @@ import {
   startSignUp,
   startLoginWithEmail,
   startLoginFacebook,
-  startLoginGithub
+  startLoginGithub,
+  startLoginEmailPasswordless
 } from "../actions/auth";
 // import SignUp from "../components/SignUp";
 import Login from "../components/Login";
@@ -82,8 +83,9 @@ const HomePage = props => {
         {/*<Grid item xs={12} sm={8} md={5} lg={4}>
           <SignUp onSignup={props.startSignUp} />
         </Grid>*/}
-        <Grid item xs={12} sm={8} md={4} lg={3} justify={"center"}>
+        <Grid container item xs={12} sm={8} md={4} lg={3} justify={"center"}>
           <Login
+            onLoginEmailPasswordless={props.startLoginEmailPasswordless}
             onLoginEmail={props.startLoginWithEmail}
             onLoginGoogle={props.startLoginGoogle}
             onLoginFacebook={props.startLoginFacebook}
@@ -105,7 +107,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(startLoginWithEmail(email, password)),
   startDemo: type => dispatch(startDemo(type)),
   startLoginFacebook: () => dispatch(startLoginFacebook()),
-  startLoginGithub: () => dispatch(startLoginGithub())
+  startLoginGithub: () => dispatch(startLoginGithub()),
+  startLoginEmailPasswordless: () =>
+    dispatch(startLoginEmailPasswordless("ff@digitalattitude.com"))
 });
 
 export default withStyles(styles)(
