@@ -58,13 +58,13 @@ const HomePage = props => {
             >
               Family Finance
             </Typography>
-            <Button
+            {/* <Button
               onClick={() => props.startDemo("demo")}
               variant="outlined"
               className={props.classes.button}
             >
               Try Demo
-            </Button>
+            </Button> */}
             <IconButton
               onClick={() =>
                 window.open(
@@ -109,5 +109,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withStyles(styles)(
-  connect(undefined, mapDispatchToProps)(HomePage)
+  connect(
+    undefined,
+    mapDispatchToProps
+  )(HomePage)
 );
