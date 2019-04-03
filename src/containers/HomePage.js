@@ -108,8 +108,8 @@ const mapDispatchToProps = dispatch => ({
   startDemo: type => dispatch(startDemo(type)),
   startLoginFacebook: () => dispatch(startLoginFacebook()),
   startLoginGithub: () => dispatch(startLoginGithub()),
-  startLoginEmailPasswordless: () =>
-    dispatch(startLoginEmailPasswordless("ff@digitalattitude.com"))
+  startLoginEmailPasswordless: email =>
+    dispatch(startLoginEmailPasswordless(email))
 });
 
 export default withStyles(styles)(

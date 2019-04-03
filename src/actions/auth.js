@@ -28,6 +28,7 @@ export const startLoginFacebook = () => {
 };
 
 export const startLoginEmailPasswordless = email => {
+  // TODO make it for production
   const actionCodeSettings = {
     url: "http://localhost:3000/dashboard",
     handleCodeInApp: true

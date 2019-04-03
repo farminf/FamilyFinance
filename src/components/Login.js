@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 // import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 import Typography from "@material-ui/core/Typography";
 // import Visibility from "@material-ui/icons/Visibility";
@@ -14,6 +15,7 @@ import LoginGoogle from "../components/LoginGoogle";
 import LoginFacebook from "./LoginFacebook";
 import LoginGithub from "./LoginGithub";
 import LoginPasswordLess from "./LoginPasswordLess";
+import Lock from "react-icons/lib/fa/lock";
 
 export const styles = theme => ({
   input: {
@@ -37,11 +39,12 @@ export const styles = theme => ({
     width: 250,
     padding: 10
   },
+
   button: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 250,
-    marginTop: theme.spacing.unit,
+    width: 270,
+    marginTop: 30,
     marginBottom: theme.spacing.unit
   }
 });
@@ -52,7 +55,8 @@ export class LoginUserNamePassword extends React.Component {
     this.state = {
       email: "",
       password: "",
-      showPassword: false
+      showPassword: false,
+      passwordless: false
     };
   }
 
@@ -98,9 +102,42 @@ export class LoginUserNamePassword extends React.Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.paper} elevation={4}>
-        <Typography variant="headline">Login To Your Account</Typography>
+        {!this.state.passwordless ? (
+          <Fragment>
+            <Typography variant="headline">Login To Your Account</Typography>
+            <Button
+              onClick={() =>
+                this.setState({
+                  passwordless: true
+                })
+              }
+              variant="contained"
+              className={classes.button}
+            >
+              <Lock size={30} color="black" className={classes.googleicon} />
+              Login With Email
+            </Button>
+            <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
+            <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
+            <LoginGithub onLoginGithub={this.props.onLoginGithub} />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <Typography variant="headline">Please insert your email</Typography>
+            <LoginPasswordLess
+              onLoginEmailPasswordless={this.props.onLoginEmailPasswordless}
+            />
+          </Fragment>
+        )}
+      </Paper>
+    );
+  }
+}
 
-        {/*<form>
+export default withStyles(styles)(LoginUserNamePassword);
+
+{
+  /*<form>
           <FormControl className={classes.formControl}>
           <Input
           required
@@ -146,16 +183,5 @@ export class LoginUserNamePassword extends React.Component {
               </Button>
               {this.state.error && <p>{this.state.error}</p>}
               </FormControl>
-            </form>*/}
-        <LoginGoogle onLoginGoogle={this.props.onLoginGoogle} />
-        <LoginFacebook onLoginFacebook={this.props.onLoginFacebook} />
-        <LoginGithub onLoginGithub={this.props.onLoginGithub} />
-        <LoginPasswordLess
-          onLoginEmailPasswordless={this.props.onLoginEmailPasswordless}
-        />
-      </Paper>
-    );
-  }
+            </form>*/
 }
-
-export default withStyles(styles)(LoginUserNamePassword);

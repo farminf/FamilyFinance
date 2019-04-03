@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import Lock from "react-icons/lib/fa/lock";
+import Input from "@material-ui/core/Input";
 
 export const styles = theme => ({
   button: {
@@ -25,20 +25,39 @@ export const styles = theme => ({
   }),
   googleicon: {
     marginRight: 5
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
+    width: 250,
+    padding: 10
   }
 });
 
 export const LoginPasswordLess = props => {
   const { classes } = props;
+  const [email, setEmail] = useState("");
   return (
-    <Button
-      onClick={props.onLoginEmailPasswordless}
-      variant="contained"
-      className={classes.button}
-    >
-      <Lock size={30} color="black" className={classes.googleicon} />
-      Login With Email
-    </Button>
+    <Fragment>
+      <Input
+        required
+        placeholder="Email"
+        id="email"
+        className={classes.textField}
+        type="text"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+      <Button
+        onClick={() => props.onLoginEmailPasswordless(email)}
+        variant="contained"
+        className={classes.button}
+      >
+        Login
+      </Button>
+    </Fragment>
   );
 };
 
