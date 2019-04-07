@@ -38,9 +38,9 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadProgress />, document.getElementById("root"));
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(async user => {
   if (user) {
-    store.dispatch(
+    await store.dispatch(
       login({
         uid: user.uid,
         photoURL: user.photoURL,
@@ -48,21 +48,18 @@ firebase.auth().onAuthStateChanged(user => {
         email: user.email
       })
     );
-    store.dispatch(startSetTransactions()).then(() => {
-      store.dispatch(startSetAccounts()).then(() => {
-        store.dispatch(startSetCategories()).then(() => {
-          renderApp();
-          if (history.location.pathname === "/") {
-            history.push("/dashboard");
-          }
-        });
-      });
-    });
+    await store.dispatch(startSetTransactions());
+    await store.dispatch(startSetAccounts());
+    await store.dispatch(startSetCategories());
+    renderApp();
+    if (history.location.pathname === "/") {
+      history.push("/dashboard");
+    }
   } else {
-    store.dispatch(logout());
-    store.dispatch(setAccounts([]));
-    store.dispatch(setTransactions([]));
-    store.dispatch(setCategories([]));
+    await store.dispatch(logout());
+    await store.dispatch(setAccounts([]));
+    await store.dispatch(setTransactions([]));
+    await store.dispatch(setCategories([]));
 
     renderApp();
     history.push("/");
