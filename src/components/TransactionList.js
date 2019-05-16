@@ -37,6 +37,10 @@ export const styles = theme => ({
   table: {
     minWidth: 700
   },
+  button: {
+    padding: 10,
+    margin: 10
+  },
   paper: theme.mixins.gutters({
     paddingLeft: 0,
     paddingRight: 0,
@@ -136,6 +140,10 @@ export class TransactionList extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
+  handleBatchImport = () => {
+    console.log("batch import ");
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -144,32 +152,42 @@ export class TransactionList extends React.Component {
           onFilter={this.onFilter}
           filters={this.props.filters}
           exportComponent={
-            <CSVLink
-              style={{
-                textDecoration: "none"
-              }}
-              data={
-                this.props.transactions.lenght === 0 ||
-                this.props.transactions.hasOwnProperty(0) === false
-                  ? []
-                  : _.cloneDeep(this.props.transactions).map(object => {
-                      delete object.id;
-                      object.dateFormatted = moment(object.date).format(
-                        "DD/MM/YYYY"
-                      );
-                      return object;
-                    })
-              }
-              filename={"familyfinance-transactions.csv"}
-            >
+            <React.Fragment>
+              <CSVLink
+                style={{
+                  textDecoration: "none"
+                }}
+                data={
+                  this.props.transactions.lenght === 0 ||
+                  this.props.transactions.hasOwnProperty(0) === false
+                    ? []
+                    : _.cloneDeep(this.props.transactions).map(object => {
+                        delete object.id;
+                        object.dateFormatted = moment(object.date).format(
+                          "DD/MM/YYYY"
+                        );
+                        return object;
+                      })
+                }
+                filename={"familyfinance-transactions.csv"}
+              >
+                <Button
+                  className={classes.button}
+                  variant="outlined"
+                  color="primary"
+                >
+                  Download CSV
+                </Button>
+              </CSVLink>
               <Button
                 className={classes.button}
                 variant="outlined"
                 color="primary"
+                onClick={this.handleBatchImport}
               >
-                Download CSV
+                Import CSV
               </Button>
-            </CSVLink>
+            </React.Fragment>
           }
         />
 
