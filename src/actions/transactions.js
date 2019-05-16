@@ -1,15 +1,26 @@
+//@flow
+
 import database from "../firebase/firebase";
 import moment from "moment";
 import _ from "lodash";
 import { addError } from "./errors";
 //{storage}
-
+type Transaction = {
+  type: string,
+  amount: number,
+  description: string,
+  account: string,
+  category: string,
+  date: string,
+  transferFrom: string,
+  transferTo: string,
+};
 export const addTransaction = transaction => ({
   type: "ADD_TRANSACTION",
-  transaction
+  transaction,
 });
 
-export const startAddTransaction = (transactionData = {}) => {
+export const startAddTransaction = (transactionData: Transaction = {}) => {
   return (dispatch, getState) => {
     const user_uid = getState().auth.uid;
     const appState = getState().demoReducers.demotype;
@@ -21,7 +32,7 @@ export const startAddTransaction = (transactionData = {}) => {
       category = "",
       date = "",
       transferFrom = "",
-      transferTo = ""
+      transferTo = "",
     } = transactionData;
     const transaction = {
       type,
@@ -31,14 +42,14 @@ export const startAddTransaction = (transactionData = {}) => {
       category,
       date,
       transferFrom,
-      transferTo
+      transferTo,
     };
     if (appState === "demo") {
       return new Promise((resolve, reject) => {
         dispatch(
           addTransaction({
             id: String(moment().unix()),
-            ...transaction
+            ...transaction,
           })
         );
         resolve();
@@ -57,7 +68,7 @@ export const startAddTransaction = (transactionData = {}) => {
             dispatch(
               addTransaction({
                 id: ref.key,
-                ...transaction
+                ...transaction,
               })
             );
           },
@@ -72,7 +83,7 @@ export const startAddTransaction = (transactionData = {}) => {
 
 export const setTransactions = transactions => ({
   type: "SET_TRANSACTIONS",
-  transactions
+  transactions,
 });
 
 export const startSetTransactions = (
@@ -98,7 +109,7 @@ export const startSetTransactions = (
           description: "SuperMarket",
           transferFrom: "",
           transferTo: "",
-          type: "Expense"
+          type: "Expense",
         },
         {
           id: "-LBAcYgAg0twZp1saaaN",
@@ -109,7 +120,7 @@ export const startSetTransactions = (
           description: "salary",
           transferFrom: "",
           transferTo: "",
-          type: "Income"
+          type: "Income",
         },
         {
           id: "-LBDA6K_s1izssgKMNnn",
@@ -120,7 +131,7 @@ export const startSetTransactions = (
           description: "Mexican",
           transferFrom: "",
           transferTo: "",
-          type: "Expense"
+          type: "Expense",
         },
         {
           id: "-LB1vVqRNpJqX5Ui7fUr",
@@ -131,7 +142,7 @@ export const startSetTransactions = (
           description: "food",
           transferFrom: "",
           transferTo: "",
-          type: "Expense"
+          type: "Expense",
         },
         {
           id: "-LAt-H-1TUPz7XtZrkSP",
@@ -142,7 +153,7 @@ export const startSetTransactions = (
           description: "Pizza",
           transferFrom: "",
           transferTo: "",
-          type: "Expense"
+          type: "Expense",
         },
         {
           id: "-LAnRaKGSRGLq8Xf6m6u",
@@ -153,7 +164,7 @@ export const startSetTransactions = (
           description: "Benzin",
           transferFrom: "",
           transferTo: "",
-          type: "Expense"
+          type: "Expense",
         },
         {
           id: "-LAcIukNGJaiBkUJIVY9",
@@ -164,7 +175,7 @@ export const startSetTransactions = (
           description: "Transfer",
           transferFrom: "Debit",
           transferTo: "Credit",
-          type: "Transfer"
+          type: "Transfer",
         },
         {
           id: "-LAcIukNGJaiBkfGIVY9",
@@ -175,8 +186,8 @@ export const startSetTransactions = (
           description: "Rome",
           transferFrom: "",
           transferTo: "",
-          type: "Expense"
-        }
+          type: "Expense",
+        },
       ];
       dispatch(
         setTransactions(_.orderBy(demoTransactions, ["date"], ["desc"]))
@@ -194,7 +205,7 @@ export const startSetTransactions = (
             snapshot.forEach(childSnapshot => {
               transactions.push({
                 id: childSnapshot.key,
-                ...childSnapshot.val()
+                ...childSnapshot.val(),
               });
             });
             dispatch(
@@ -212,7 +223,7 @@ export const startSetTransactions = (
 
 export const deleteTransaction = ({ id } = {}) => ({
   type: "DELETE_TRANSACTION",
-  id
+  id,
 });
 
 export const startDeleteTransaction = ({ id } = {}) => {
@@ -243,7 +254,7 @@ export const startDeleteTransaction = ({ id } = {}) => {
 export const editTransaction = (id, updates) => ({
   type: "UPDATE_TRANSACTION",
   id,
-  updates
+  updates,
 });
 
 export const startEditTransaction = (id, updates) => {

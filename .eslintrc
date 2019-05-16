@@ -1,7 +1,74 @@
 {
-    "extends": "react-app",
-    "plugins": ["prettier"],
-    "rules": {
-        "prettier/prettier": "error"
+  "parser": "babel-eslint",
+  "extends": [
+    "prettier",
+    "plugin:flowtype/recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "prettier",
+    "flowtype",
+    "flowtype-errors",
+    "jest",
+    "react",
+    "import"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": false,
+        "trailingComma": "es5"
+      }
+    ],
+    "no-undef": "error",
+    "no-unused-vars": ["warn"],
+    "indent": ["off"],
+    "no-alert": "off",
+    "no-warning-comments": "off",
+    "max-params": "off",
+    "complexity": "off",
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-negated-condition": [0],
+    "camelcase": [0],
+    "capitalized-comments": [0],
+    "new-cap": "off",
+    "jest/no-disabled-tests": "error",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "flowtype/space-after-type-colon": "error",
+    "consistent-return": "warn",
+    "no-console": "off",
+    "flowtype-errors/show-errors": "error",
+    "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "jasmine": true
+  },
+  "settings": {
+    "flowtype-errors": {
+      "flowDir": "./"
     }
+  }
 }
