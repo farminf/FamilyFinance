@@ -1,27 +1,35 @@
 //@flow
+/* eslint-disable no-unused-vars */
 
 import database from "../firebase/firebase";
 import moment from "moment";
 import _ from "lodash";
 import { addError } from "./errors";
+import { demoTransactions } from "./demoTransactions";
 //{storage}
+
+type Type = "Expense" | "Income" | "Transfer";
 type Transaction = {
+  id: string,
   type: string,
   amount: number,
   description: string,
   account: string,
   category: string,
-  date: string,
+  date: number,
   transferFrom: string,
   transferTo: string,
 };
-export const addTransaction = transaction => ({
+
+type Transactions = Array<Transaction>;
+
+export const addTransaction = (transaction: Transaction) => ({
   type: "ADD_TRANSACTION",
   transaction,
 });
 
 export const startAddTransaction = (transactionData: Transaction = {}) => {
-  return (dispatch, getState) => {
+  return (dispatch: any, getState: any) => {
     const user_uid = getState().auth.uid;
     const appState = getState().demoReducers.demotype;
     const {
@@ -30,7 +38,7 @@ export const startAddTransaction = (transactionData: Transaction = {}) => {
       description = "",
       account = "",
       category = "",
-      date = "",
+      date = 0,
       transferFrom = "",
       transferTo = "",
     } = transactionData;
@@ -45,7 +53,7 @@ export const startAddTransaction = (transactionData: Transaction = {}) => {
       transferTo,
     };
     if (appState === "demo") {
-      return new Promise((resolve, reject) => {
+      return (new Promise((resolve, reject) => {
         dispatch(
           addTransaction({
             id: String(moment().unix()),
@@ -53,7 +61,7 @@ export const startAddTransaction = (transactionData: Transaction = {}) => {
           })
         );
         resolve();
-      });
+      }): Function);
     } else {
       return database
         .ref(`users/${user_uid}/transactions`)
@@ -81,114 +89,31 @@ export const startAddTransaction = (transactionData: Transaction = {}) => {
   };
 };
 
-export const setTransactions = transactions => ({
+export const startAddBatchTransaction = (transactions: Transactions) => {
+  const promises = transactions.map(transaction =>
+    startAddTransaction(transaction)
+  );
+  new Promise.all(promises).then(res => console.log("add batch trans", res));
+};
+
+export const setTransactions = (transactions: Transactions) => ({
   type: "SET_TRANSACTIONS",
   transactions,
 });
 
 export const startSetTransactions = (
-  fromMoment = moment()
+  fromMoment: number = moment()
     .startOf("month")
     .valueOf(),
-  toMoment = moment()
+  toMoment: number = moment()
     .endOf("month")
     .valueOf()
 ) => {
-  return (dispatch, getState) => {
+  return (dispatch: any, getState: any) => {
     const user_uid = getState().auth.uid;
     const appState = getState().demoReducers.demotype;
     if (appState === "demo") {
       //TODO timestamp needs to be better
-      let demoTransactions = [
-        {
-          id: "-LBAcYgAg0twZp1saPbN",
-          account: "Debit",
-          amount: Math.floor(Math.random() * 10000) + 5500,
-          category: "Groceries",
-          date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
-          description: "SuperMarket",
-          transferFrom: "",
-          transferTo: "",
-          type: "Expense",
-        },
-        {
-          id: "-LBAcYgAg0twZp1saaaN",
-          account: "Debit",
-          amount: 100000,
-          category: "Salary",
-          date: fromMoment,
-          description: "salary",
-          transferFrom: "",
-          transferTo: "",
-          type: "Income",
-        },
-        {
-          id: "-LBDA6K_s1izssgKMNnn",
-          account: "Debit",
-          amount: Math.floor(Math.random() * 5000) + 3600,
-          category: "Eating Out",
-          date: toMoment - Math.floor(Math.random() * 864000000) + 86400000,
-          description: "Mexican",
-          transferFrom: "",
-          transferTo: "",
-          type: "Expense",
-        },
-        {
-          id: "-LB1vVqRNpJqX5Ui7fUr",
-          account: "Debit",
-          amount: Math.floor(Math.random() * 4000) + 1000,
-          category: "Pet",
-          date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
-          description: "food",
-          transferFrom: "",
-          transferTo: "",
-          type: "Expense",
-        },
-        {
-          id: "-LAt-H-1TUPz7XtZrkSP",
-          account: "Cash",
-          amount: Math.floor(Math.random() * 1500) + 1000,
-          category: "Eating Out",
-          date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
-          description: "Pizza",
-          transferFrom: "",
-          transferTo: "",
-          type: "Expense",
-        },
-        {
-          id: "-LAnRaKGSRGLq8Xf6m6u",
-          account: "Credit",
-          amount: Math.floor(Math.random() * 8500) + 6500,
-          category: "Car",
-          date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
-          description: "Benzin",
-          transferFrom: "",
-          transferTo: "",
-          type: "Expense",
-        },
-        {
-          id: "-LAcIukNGJaiBkUJIVY9",
-          account: "Debit > Credit",
-          amount: 1500,
-          category: "Transfer",
-          date: fromMoment - Math.floor(Math.random() * 864000000) + 86400000,
-          description: "Transfer",
-          transferFrom: "Debit",
-          transferTo: "Credit",
-          type: "Transfer",
-        },
-        {
-          id: "-LAcIukNGJaiBkfGIVY9",
-          account: "Credit",
-          amount: Math.floor(Math.random() * 30000) + 23000,
-          category: "Trip",
-          date: fromMoment - Math.floor(Math.random() * 864000000) + 86400000,
-          description: "Rome",
-          transferFrom: "",
-          transferTo: "",
-          type: "Expense",
-        },
-      ];
       dispatch(
         setTransactions(_.orderBy(demoTransactions, ["date"], ["desc"]))
       );
@@ -221,20 +146,20 @@ export const startSetTransactions = (
   };
 };
 
-export const deleteTransaction = ({ id } = {}) => ({
+export const deleteTransaction = ({ id }: any = {}) => ({
   type: "DELETE_TRANSACTION",
   id,
 });
 
-export const startDeleteTransaction = ({ id } = {}) => {
-  return (dispatch, getState) => {
+export const startDeleteTransaction = ({ id }: any = {}) => {
+  return (dispatch: any, getState: any) => {
     const uid = getState().auth.uid;
     const appState = getState().demoReducers.demotype;
     if (appState === "demo") {
-      return new Promise((resolve, reject) => {
+      return (new Promise((resolve, reject) => {
         dispatch(deleteTransaction({ id }));
         resolve();
-      });
+      }): Function);
     } else {
       return database
         .ref(`users/${uid}/transactions/${id}`)
@@ -251,21 +176,21 @@ export const startDeleteTransaction = ({ id } = {}) => {
   };
 };
 
-export const editTransaction = (id, updates) => ({
+export const editTransaction = (id: string, updates: Transaction) => ({
   type: "UPDATE_TRANSACTION",
   id,
   updates,
 });
 
-export const startEditTransaction = (id, updates) => {
-  return (dispatch, getState) => {
+export const startEditTransaction = (id: string, updates: Transaction) => {
+  return (dispatch: any, getState: any) => {
     const uid = getState().auth.uid;
     const appState = getState().demoReducers.demotype;
     if (appState === "demo") {
-      return new Promise((resolve, reject) => {
+      return (new Promise((resolve, reject) => {
         dispatch(editTransaction(id, updates));
         resolve();
-      });
+      }): Function);
     } else {
       return database
         .ref(`users/${uid}/transactions/${id}`)

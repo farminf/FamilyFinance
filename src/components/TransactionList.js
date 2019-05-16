@@ -1,9 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+
+import ReactFileReader from 'react-file-reader';
+
 import TransactionListItem from "./TransactionListItem";
 import {
   startDeleteTransaction,
-  startAddTransaction
+  startAddTransaction,
+  startAddBatchTransaction,
 } from "../actions/transactions";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -21,7 +25,7 @@ import {
   setTypeFilter,
   setDescriptionFilter,
   setAccountFilter,
-  setCategoryFilter
+  setCategoryFilter,
 } from "../actions/filters";
 import _ from "lodash";
 import { CSVLink } from "react-csv";
@@ -32,22 +36,21 @@ export const styles = theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
+    overflowX: "auto",
   },
   table: {
-    minWidth: 700
+    minWidth: 700,
   },
   button: {
     padding: 10,
-    margin: 10
+    margin: 10,
   },
   paper: theme.mixins.gutters({
     paddingLeft: 0,
     paddingRight: 0,
     marginTop: theme.spacing.unit * 3,
-
-    overflowX: "auto"
-  })
+    overflowX: "auto",
+  }),
 });
 
 export class TransactionList extends React.Component {
@@ -60,7 +63,7 @@ export class TransactionList extends React.Component {
       descriptionFilter: "",
       accountFilter: "",
       categoryFilter: "",
-      downloadCSV: false
+      downloadCSV: false,
     };
   }
 
@@ -90,7 +93,7 @@ export class TransactionList extends React.Component {
             amount: transaction.amount,
             category: transaction.category,
             date: transaction.date,
-            account: transaction.transferFrom
+            account: transaction.transferFrom,
           };
           let SecondTransaction = {
             type: transaction.type,
@@ -98,7 +101,7 @@ export class TransactionList extends React.Component {
             amount: transaction.amount,
             category: transaction.category,
             date: transaction.date,
-            account: transaction.transferTo
+            account: transaction.transferTo,
           };
           return this.props.startAddTransfer(
             transaction,
@@ -119,7 +122,7 @@ export class TransactionList extends React.Component {
     typeFilter,
     descriptionFilter,
     accountFilter,
-    categoryFilter
+    categoryFilter,
   }) => {
     // const transactionsFilter = transactionSelector(this.props.transactions,
     // {typeFilter, descriptionFilter}) this.setState(() => ({transactions:
@@ -139,9 +142,35 @@ export class TransactionList extends React.Component {
   handleChangeRowsPerPage = event => {
     this.setState({ rowsPerPage: event.target.value });
   };
-
-  handleBatchImport = () => {
+  handleBatchImport = (files) => {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+    // Use reader.result
+    console.log(reader.result)
+    }
+  reader.readAsText(files[0]);
+  };
+  addBatchImport = importedTransactions => {
     console.log("batch import ");
+    // const example = [
+    //   {
+    //     type: "Expense",
+    //     description: "desc 1",
+    //     amount: 100,
+    //     account: "ING Debit",
+    //     category: "cat 1",
+    //     date: 1558022520,
+    //   },
+    //   {
+    //     type: "Expense",
+    //     description: "desc 2",
+    //     amount: 200,
+    //     account: "ING Debit",
+    //     category: "cat 2",
+    //     date: 1558022520,
+    //   },
+    // ];
+    importedTransactions.map(t => this.props.startAddTransaction(t));
   };
 
   render() {
@@ -155,7 +184,7 @@ export class TransactionList extends React.Component {
             <React.Fragment>
               <CSVLink
                 style={{
-                  textDecoration: "none"
+                  textDecoration: "none",
                 }}
                 data={
                   this.props.transactions.lenght === 0 ||
@@ -179,14 +208,15 @@ export class TransactionList extends React.Component {
                   Download CSV
                 </Button>
               </CSVLink>
+              <ReactFileReader handleFiles={this.handleBatchImport}>
               <Button
                 className={classes.button}
                 variant="outlined"
                 color="primary"
-                onClick={this.handleBatchImport}
               >
                 Import CSV
               </Button>
+              </ReactFileReader>
             </React.Fragment>
           }
         />
@@ -250,7 +280,7 @@ export class TransactionList extends React.Component {
 const mapStateToProps = (state, props) => {
   return {
     transactions: transactionSelector(state.transactions, state.filters),
-    filters: state.filters
+    filters: state.filters,
   };
 };
 
@@ -300,7 +330,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   setTypeFilter: typeFilter => dispatch(setTypeFilter(typeFilter)),
   setAccountFilter: accountFilter => dispatch(setAccountFilter(accountFilter)),
   setCategoryFilter: categoryFilter =>
-    dispatch(setCategoryFilter(categoryFilter))
+    dispatch(setCategoryFilter(categoryFilter)),
 });
 
 export default connect(

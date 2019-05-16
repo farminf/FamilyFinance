@@ -1,0 +1,98 @@
+import moment from "moment";
+const fromMoment = moment()
+  .startOf("month")
+  .valueOf();
+
+const toMoment = moment()
+  .endOf("month")
+  .valueOf();
+export const demoTransactions = [
+  {
+    id: "-LBAcYgAg0twZp1saPbN",
+    account: "Debit",
+    amount: Math.floor(Math.random() * 10000) + 5500,
+    category: "Groceries",
+    date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
+    description: "SuperMarket",
+    transferFrom: "",
+    transferTo: "",
+    type: "Expense",
+  },
+  {
+    id: "-LBAcYgAg0twZp1saaaN",
+    account: "Debit",
+    amount: 100000,
+    category: "Salary",
+    date: fromMoment,
+    description: "salary",
+    transferFrom: "",
+    transferTo: "",
+    type: "Income",
+  },
+  {
+    id: "-LBDA6K_s1izssgKMNnn",
+    account: "Debit",
+    amount: Math.floor(Math.random() * 5000) + 3600,
+    category: "Eating Out",
+    date: toMoment - Math.floor(Math.random() * 864000000) + 86400000,
+    description: "Mexican",
+    transferFrom: "",
+    transferTo: "",
+    type: "Expense",
+  },
+  {
+    id: "-LB1vVqRNpJqX5Ui7fUr",
+    account: "Debit",
+    amount: Math.floor(Math.random() * 4000) + 1000,
+    category: "Pet",
+    date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
+    description: "food",
+    transferFrom: "",
+    transferTo: "",
+    type: "Expense",
+  },
+  {
+    id: "-LAt-H-1TUPz7XtZrkSP",
+    account: "Cash",
+    amount: Math.floor(Math.random() * 1500) + 1000,
+    category: "Eating Out",
+    date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
+    description: "Pizza",
+    transferFrom: "",
+    transferTo: "",
+    type: "Expense",
+  },
+  {
+    id: "-LAnRaKGSRGLq8Xf6m6u",
+    account: "Credit",
+    amount: Math.floor(Math.random() * 8500) + 6500,
+    category: "Car",
+    date: fromMoment + Math.floor(Math.random() * 864000000) + 86400000,
+    description: "Benzin",
+    transferFrom: "",
+    transferTo: "",
+    type: "Expense",
+  },
+  {
+    id: "-LAcIukNGJaiBkUJIVY9",
+    account: "Debit > Credit",
+    amount: 1500,
+    category: "Transfer",
+    date: fromMoment - Math.floor(Math.random() * 864000000) + 86400000,
+    description: "Transfer",
+    transferFrom: "Debit",
+    transferTo: "Credit",
+    type: "Transfer",
+  },
+  {
+    id: "-LAcIukNGJaiBkfGIVY9",
+    account: "Credit",
+    amount: Math.floor(Math.random() * 30000) + 23000,
+    category: "Trip",
+    date: fromMoment - Math.floor(Math.random() * 864000000) + 86400000,
+    description: "Rome",
+    transferFrom: "",
+    transferTo: "",
+    type: "Expense",
+  },
+];
