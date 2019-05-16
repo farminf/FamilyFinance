@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import TransactionFrom from "./TransactionForm";
 import { connect } from "react-redux";
@@ -10,6 +9,7 @@ import { updateAccountBalance } from "../actions/accounts";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Fab from "@material-ui/core/Fab";
 
 export const styles = theme => ({
   floatingButton: {
@@ -75,15 +75,14 @@ export class AddFloatingButton extends React.Component {
 
     return (
       <div>
-        <Button
-          variant="fab"
+        <Fab
           color="primary"
           aria-label="add"
           className={classes.floatingButton}
           onClick={this.handleClickFloatingButton}
         >
           <AddIcon />
-        </Button>
+        </Fab>
         <Dialog
           fullScreen={fullScreen}
           open={this.state.open}
@@ -127,6 +126,7 @@ const mapDispatchToProps = dispatch => ({
       })
 });
 
-export default connect(undefined, mapDispatchToProps)(
-  withStyles(styles)(withMobileDialog()(AddFloatingButton))
-);
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(withStyles(styles)(withMobileDialog()(AddFloatingButton)));

@@ -137,7 +137,7 @@ export class LoginUserNamePassword extends React.Component {
 
             <Button
               onClick={this.onLoginWithEmail}
-              variant="raised"
+              variant="contained"
               className={classes.button}
             >
               Login

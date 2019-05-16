@@ -59,7 +59,7 @@ export class AccountList extends React.Component {
             <TableHead>
               <TableRow>
                 <TableCell>Account</TableCell>
-                <TableCell numeric>Balance</TableCell>
+                <TableCell align="right">Balance</TableCell>
                 <TableCell />
               </TableRow>
             </TableHead>
@@ -94,6 +94,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   startDeleteAccount: data => dispatch(startDeleteAccount(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(AccountList)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(AccountList));

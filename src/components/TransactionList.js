@@ -164,7 +164,7 @@ export class TransactionList extends React.Component {
             >
               <Button
                 className={classes.button}
-                variant="raised"
+                variant="outlined"
                 color="primary"
               >
                 Download CSV
@@ -178,7 +178,7 @@ export class TransactionList extends React.Component {
             <TableRow>
               <TableCell>Type</TableCell>
               <TableCell>Description</TableCell>
-              <TableCell numeric>Amount</TableCell>
+              <TableCell align="right">Amount</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>Account</TableCell>
               <TableCell>Category</TableCell>
@@ -285,6 +285,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     dispatch(setCategoryFilter(categoryFilter))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(TransactionList)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(TransactionList));

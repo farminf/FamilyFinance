@@ -33,7 +33,7 @@ export const LoginFacebook = props => {
   return (
     <Button
       onClick={props.onLoginFacebook}
-      variant="raised"
+      variant="contained"
       className={classes.button}
     >
       <FaFacebook size={30} color="#3B5998" className={classes.googleicon} />

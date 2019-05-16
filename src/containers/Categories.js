@@ -88,7 +88,7 @@ class CategoriesContainer extends React.Component {
               <Button
                 onClick={this.onAddDefaultCategories}
                 className={classes.button}
-                variant="raised"
+                variant="contained"
                 color="default"
               >
                 Add Default Categories
@@ -113,6 +113,7 @@ const mapDispatchToProps = dispatch => ({
   startAddCategory: category => dispatch(startAddCategory(category))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(CategoriesContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(CategoriesContainer));

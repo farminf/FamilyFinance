@@ -125,7 +125,7 @@ export class AccountForm extends React.Component {
           <Button
             onClick={this.onSubmit}
             className={classes.button}
-            variant="raised"
+            variant="contained"
             color="primary"
           >
             {this.state.submit_button_title}

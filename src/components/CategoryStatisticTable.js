@@ -47,7 +47,7 @@ export const CategoryStatisticTable = props => {
         <TableHead>
           <TableRow>
             <CustomTableCell>Category</CustomTableCell>
-            <CustomTableCell numeric>Amount (€)</CustomTableCell>
+            <CustomTableCell align="right">Amount (€)</CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,7 +55,7 @@ export const CategoryStatisticTable = props => {
             return (
               <TableRow key={n.categories} className={classes.row}>
                 <CustomTableCell>{n.categories}</CustomTableCell>
-                <CustomTableCell numeric>{n.expense}</CustomTableCell>
+                <CustomTableCell align="right">{n.expense}</CustomTableCell>
               </TableRow>
             );
           })}

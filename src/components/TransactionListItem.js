@@ -47,7 +47,7 @@ export class TransactionListItem extends React.Component {
       <TableRow key={this.props.id}>
         <TableCell>{this.props.type}</TableCell>
         <TableCell>{this.props.description}</TableCell>
-        <TableCell numeric>
+        <TableCell align="right">
           {numeral(this.props.amount / 100).format("€ 0,0.00")}
         </TableCell>
         <TableCell>{moment(this.props.date).format("MMMM Do, YYYY")}</TableCell>

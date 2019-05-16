@@ -133,7 +133,7 @@ export class SignUp extends React.Component {
           </div>
           <Button
             onClick={this.onSignup}
-            variant="raised"
+            variant="contained"
             className={classes.button}
           >
             Register

@@ -33,7 +33,7 @@ export const LoginGoogle = props => {
   return (
     <Button
       onClick={props.onLoginGoogle}
-      variant="raised"
+      variant="contained"
       className={classes.button}
     >
       <FaGoogle size={30} color="red" className={classes.googleicon} />

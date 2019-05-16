@@ -45,7 +45,7 @@ export class AccountListItems extends React.Component {
     return (
       <TableRow key={this.props.name}>
         <TableCell>{this.props.name}</TableCell>
-        <TableCell numeric>
+        <TableCell align="right">
           {numeral(this.props.balance / 100).format("€ 0,0.00")}
         </TableCell>
         <TableCell>
