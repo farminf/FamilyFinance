@@ -9,7 +9,7 @@ exports[`<CategoryStatisticTable /> should work 1`] = `
           Category
         </WithStyles(WithStyles(TableCell))>
         <WithStyles(WithStyles(TableCell))
-          numeric={true}
+          align="right"
         >
           Amount (€)
         </WithStyles(WithStyles(TableCell))>

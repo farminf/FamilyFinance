@@ -95,12 +95,12 @@ exports[`<TransactionForm /> should work 1`] = `
       />
     </WithStyles(FormControl)>
     <WithStyles(FormControl)>
-      <WithStyles(InputLabel)
+      <WithStyles(WithFormControlContext(InputLabel))
         htmlFor="age-native-type"
       >
         Type
-      </WithStyles(InputLabel)>
-      <WithStyles(Select)
+      </WithStyles(WithFormControlContext(InputLabel))>
+      <WithStyles(WithFormControlContext(Select))
         disabled={false}
         input={
           <WithStyles(Input)
@@ -132,7 +132,7 @@ exports[`<TransactionForm /> should work 1`] = `
         >
           Transfer
         </option>
-      </WithStyles(Select)>
+      </WithStyles(WithFormControlContext(Select))>
     </WithStyles(FormControl)>
     <div>
       <TextField
@@ -143,6 +143,7 @@ exports[`<TransactionForm /> should work 1`] = `
         select={false}
         type="text"
         value="100"
+        variant="standard"
       />
       <TextField
         label="Description"
@@ -152,14 +153,15 @@ exports[`<TransactionForm /> should work 1`] = `
         select={false}
         type="text"
         value="test"
+        variant="standard"
       />
       <WithStyles(FormControl)>
-        <WithStyles(InputLabel)
+        <WithStyles(WithFormControlContext(InputLabel))
           htmlFor="age-native-account"
         >
           Account
-        </WithStyles(InputLabel)>
-        <WithStyles(Select)
+        </WithStyles(WithFormControlContext(InputLabel))>
+        <WithStyles(WithFormControlContext(Select))
           input={
             <WithStyles(Input)
               id="age-native-account"
@@ -179,15 +181,15 @@ exports[`<TransactionForm /> should work 1`] = `
           >
             bank
           </option>
-        </WithStyles(Select)>
+        </WithStyles(WithFormControlContext(Select))>
       </WithStyles(FormControl)>
       <WithStyles(FormControl)>
-        <WithStyles(InputLabel)
+        <WithStyles(WithFormControlContext(InputLabel))
           htmlFor="age-native-category"
         >
           Category
-        </WithStyles(InputLabel)>
-        <WithStyles(Select)
+        </WithStyles(WithFormControlContext(InputLabel))>
+        <WithStyles(WithFormControlContext(Select))
           input={
             <WithStyles(Input)
               id="age-native-category"
@@ -200,16 +202,16 @@ exports[`<TransactionForm /> should work 1`] = `
           <option
             value=""
           />
-        </WithStyles(Select)>
+        </WithStyles(WithFormControlContext(Select))>
       </WithStyles(FormControl)>
       <WithStyles(Button)
         onClick={[Function]}
-        variant="raised"
+        variant="contained"
       >
         Update
       </WithStyles(Button)>
       <WithStyles(Button)
-        variant="raised"
+        variant="contained"
       >
         Cancel
       </WithStyles(Button)>

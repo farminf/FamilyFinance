@@ -5,7 +5,7 @@ exports[`<FilterDashboard /> should work 1`] = `
   elevation={4}
 >
   <WithStyles(FormControl)>
-    <WithStyles(Select)
+    <WithStyles(WithFormControlContext(Select))
       native={true}
       onChange={[Function]}
       value="01"
@@ -90,23 +90,23 @@ exports[`<FilterDashboard /> should work 1`] = `
       >
         December
       </option>
-    </WithStyles(Select)>
-    <WithStyles(FormHelperText)>
+    </WithStyles(WithFormControlContext(Select))>
+    <WithStyles(WithFormControlContext(FormHelperText))>
       Month
-    </WithStyles(FormHelperText)>
+    </WithStyles(WithFormControlContext(FormHelperText))>
   </WithStyles(FormControl)>
   <WithStyles(FormControl)>
-    <WithStyles(Select)
+    <WithStyles(WithFormControlContext(Select))
       native={true}
       onChange={[Function]}
-      value={2018}
+      value={2019}
     >
       <option
         key="year"
-        value="2018"
+        value="2019"
       >
          
-        2018
+        2019
          
       </option>
       <option
@@ -127,10 +127,10 @@ exports[`<FilterDashboard /> should work 1`] = `
       >
         2016
       </option>
-    </WithStyles(Select)>
-    <WithStyles(FormHelperText)>
+    </WithStyles(WithFormControlContext(Select))>
+    <WithStyles(WithFormControlContext(FormHelperText))>
       Year
-    </WithStyles(FormHelperText)>
+    </WithStyles(WithFormControlContext(FormHelperText))>
   </WithStyles(FormControl)>
 </WithStyles(Paper)>
 `;

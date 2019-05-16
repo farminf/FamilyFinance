@@ -15,6 +15,7 @@ exports[`<AccountForm /> should work 1`] = `
       select={false}
       type="text"
       value=""
+      variant="standard"
     />
     <TextField
       onChange={[Function]}
@@ -23,11 +24,12 @@ exports[`<AccountForm /> should work 1`] = `
       select={false}
       type="text"
       value=""
+      variant="standard"
     />
     <WithStyles(Button)
       color="primary"
       onClick={[Function]}
-      variant="raised"
+      variant="contained"
     >
       Add
     </WithStyles(Button)>

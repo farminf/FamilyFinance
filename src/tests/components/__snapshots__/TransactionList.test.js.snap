@@ -6,33 +6,42 @@ exports[`<TransactionList /> should work 1`] = `
 >
   <WithStyles(FilterListBar)
     exportComponent={
-      <CSVLink
-        asyncOnClick={false}
-        data={
-          Array [
-            Object {
-              "amount": "10",
-              "dateFormatted": "19/11/2018",
-            },
-          ]
-        }
-        filename="familyfinance-transactions.csv"
-        separator=","
-        style={
-          Object {
-            "textDecoration": "none",
+      <React.Fragment>
+        <CSVLink
+          asyncOnClick={false}
+          data={
+            Array [
+              Object {
+                "amount": "10",
+                "dateFormatted": "16/05/2019",
+              },
+            ]
           }
-        }
-        target="_blank"
-        uFEFF={true}
-      >
+          filename="familyfinance-transactions.csv"
+          separator=","
+          style={
+            Object {
+              "textDecoration": "none",
+            }
+          }
+          target="_blank"
+          uFEFF={true}
+        >
+          <WithStyles(Button)
+            color="primary"
+            variant="outlined"
+          >
+            Download CSV
+          </WithStyles(Button)>
+        </CSVLink>
         <WithStyles(Button)
           color="primary"
-          variant="raised"
+          onClick={[Function]}
+          variant="outlined"
         >
-          Download CSV
+          Import CSV
         </WithStyles(Button)>
-      </CSVLink>
+      </React.Fragment>
     }
     onFilter={[Function]}
   />
@@ -46,7 +55,7 @@ exports[`<TransactionList /> should work 1`] = `
           Description
         </WithStyles(TableCell)>
         <WithStyles(TableCell)
-          numeric={true}
+          align="right"
         >
           Amount
         </WithStyles(TableCell)>

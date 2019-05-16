@@ -14,7 +14,7 @@ exports[`<CategoryListItem /> should work 1`] = `
       aria-owns={null}
       onClick={[Function]}
     >
-      <pure(MoreVert) />
+      <pure(MoreVertIcon) />
     </WithStyles(IconButton)>
     <WithStyles(Menu)
       PaperProps={

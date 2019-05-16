@@ -17,7 +17,7 @@ exports[`<Header /> should work 1`] = `
           color="inherit"
           onClick={[Function]}
         >
-          <pure(Menu) />
+          <pure(MenuIcon) />
         </WithStyles(IconButton)>
         <WithStyles(Typography)
           color="inherit"
@@ -29,7 +29,7 @@ exports[`<Header /> should work 1`] = `
           color="inherit"
           onClick={[Function]}
         >
-          <pure(AccountCircle) />
+          <pure(AccountCircleIcon) />
         </WithStyles(IconButton)>
         <WithStyles(Menu)
           anchorEl={null}
@@ -95,7 +95,7 @@ exports[`<Header /> should work 1`] = `
             <WithStyles(IconButton)
               onClick={[Function]}
             >
-              <pure(ChevronLeft) />
+              <pure(ChevronLeftIcon) />
             </WithStyles(IconButton)>
           </div>
           <WithStyles(Divider) />
@@ -110,7 +110,6 @@ exports[`<Header /> should work 1`] = `
                     "fontWeight": "bold",
                   }
                 }
-                aria-current="page"
                 style={
                   Object {
                     "textDecoration": "none",
@@ -122,7 +121,7 @@ exports[`<Header /> should work 1`] = `
                   button={true}
                   divider={true}
                 >
-                  <pure(ShowChart) />
+                  <pure(ShowChartIcon) />
                   <WithStyles(ListItemText)
                     primary="Dashboard"
                   />
@@ -137,7 +136,6 @@ exports[`<Header /> should work 1`] = `
                     "fontWeight": "bold",
                   }
                 }
-                aria-current="page"
                 style={
                   Object {
                     "textDecoration": "none",
@@ -149,7 +147,7 @@ exports[`<Header /> should work 1`] = `
                   button={true}
                   divider={true}
                 >
-                  <pure(AccountBalance) />
+                  <pure(AccountBalanceIcon) />
                   <WithStyles(ListItemText)
                     primary="Accounts"
                   />
@@ -163,7 +161,6 @@ exports[`<Header /> should work 1`] = `
                     "fontWeight": "bold",
                   }
                 }
-                aria-current="page"
                 style={
                   Object {
                     "textDecoration": "none",
@@ -175,7 +172,7 @@ exports[`<Header /> should work 1`] = `
                   button={true}
                   divider={true}
                 >
-                  <pure(NoteAdd) />
+                  <pure(NoteAddIcon) />
                   <WithStyles(ListItemText)
                     primary="Transactions"
                   />
@@ -189,7 +186,6 @@ exports[`<Header /> should work 1`] = `
                     "fontWeight": "bold",
                   }
                 }
-                aria-current="page"
                 style={
                   Object {
                     "textDecoration": "none",
@@ -201,7 +197,7 @@ exports[`<Header /> should work 1`] = `
                   button={true}
                   divider={true}
                 >
-                  <pure(Dashboard) />
+                  <pure(DashboardIcon) />
                   <WithStyles(ListItemText)
                     primary="Categories"
                   />
@@ -238,7 +234,7 @@ exports[`<Header /> should work 1`] = `
           <WithStyles(IconButton)
             onClick={[Function]}
           >
-            <pure(ChevronLeft) />
+            <pure(ChevronLeftIcon) />
           </WithStyles(IconButton)>
         </div>
         <WithStyles(Divider) />
@@ -253,7 +249,6 @@ exports[`<Header /> should work 1`] = `
                   "fontWeight": "bold",
                 }
               }
-              aria-current="page"
               style={
                 Object {
                   "textDecoration": "none",
@@ -265,7 +260,7 @@ exports[`<Header /> should work 1`] = `
                 button={true}
                 divider={true}
               >
-                <pure(ShowChart) />
+                <pure(ShowChartIcon) />
                 <WithStyles(ListItemText)
                   primary="Dashboard"
                 />
@@ -280,7 +275,6 @@ exports[`<Header /> should work 1`] = `
                   "fontWeight": "bold",
                 }
               }
-              aria-current="page"
               style={
                 Object {
                   "textDecoration": "none",
@@ -292,7 +286,7 @@ exports[`<Header /> should work 1`] = `
                 button={true}
                 divider={true}
               >
-                <pure(AccountBalance) />
+                <pure(AccountBalanceIcon) />
                 <WithStyles(ListItemText)
                   primary="Accounts"
                 />
@@ -306,7 +300,6 @@ exports[`<Header /> should work 1`] = `
                   "fontWeight": "bold",
                 }
               }
-              aria-current="page"
               style={
                 Object {
                   "textDecoration": "none",
@@ -318,7 +311,7 @@ exports[`<Header /> should work 1`] = `
                 button={true}
                 divider={true}
               >
-                <pure(NoteAdd) />
+                <pure(NoteAddIcon) />
                 <WithStyles(ListItemText)
                   primary="Transactions"
                 />
@@ -332,7 +325,6 @@ exports[`<Header /> should work 1`] = `
                   "fontWeight": "bold",
                 }
               }
-              aria-current="page"
               style={
                 Object {
                   "textDecoration": "none",
@@ -344,7 +336,7 @@ exports[`<Header /> should work 1`] = `
                 button={true}
                 divider={true}
               >
-                <pure(Dashboard) />
+                <pure(DashboardIcon) />
                 <WithStyles(ListItemText)
                   primary="Categories"
                 />
