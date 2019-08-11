@@ -1,4 +1,6 @@
-import * as firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/auth';        // for authentication
+import 'firebase/database';    // for realtime database
 
 // Initialize Firebase
 const config = {

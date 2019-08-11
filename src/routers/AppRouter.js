@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, Router } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory as createHistory } from "history";
 import NotFoundPage from "../containers/NotFoundPage";
 import HomePage from "../containers/HomePage";
 import Dashboard from "../containers/Dashboard";
