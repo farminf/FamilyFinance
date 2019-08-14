@@ -51,7 +51,7 @@ export class MyPieChart extends React.Component {
     });
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.getRandomColor(nextProps.data.length);
   }
 

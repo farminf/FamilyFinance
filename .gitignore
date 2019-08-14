@@ -33,3 +33,5 @@ package-lock.json
 src/stories
 
 lunch.json
+.vscode
+.idea

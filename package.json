@@ -17,7 +17,7 @@
     "electron-is-dev": "^1.0.1",
     "enzyme-to-json": "3.0.1",
     "express": "^4.16.2",
-    "firebase": "^4.8.0",
+    "firebase": "latest",
     "heroku-ssl-redirect": "^0.0.4",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
@@ -68,5 +68,11 @@
     "hooks": {
       "pre-push": "CI=true npm test"
     }
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
