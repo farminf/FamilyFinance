@@ -52,7 +52,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^4.0.1",
-    "electron": "^3.0.3",
+    "electron": "^7.2.4",
     "electron-builder": "^20.28.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
